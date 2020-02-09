@@ -5,3 +5,4 @@ derived/temp/
 *.dta
 *.xls
 *.xlsx
+*.DS_Store
