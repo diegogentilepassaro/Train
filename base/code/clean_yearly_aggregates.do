@@ -1,7 +1,7 @@
 clear all
 adopath + ../../lib/stata/gslab_misc/ado
 
-cd "/Users/dgentil1/Desktop/Train/base/code"
+cd "/Users/dgentil1/Desktop/Diego/Train/base/code"
 
 program main
     import_and_clean_maddison, code(ARG)
@@ -60,6 +60,8 @@ program import_gdp_shares
 	foreach var in `r(varlist)' {
 	replace `var' = `var'/100
 	}
+	
+	drop if missing(year)
 			
 	save_data "../output/gdp_shares.dta", key(year) replace
 end
