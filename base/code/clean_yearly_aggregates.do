@@ -1,8 +1,6 @@
 clear all
 adopath + ../../lib/stata/gslab_misc/ado
 
-cd "/Users/dgentil1/Desktop/Diego/Train/base/code"
-
 program main
     import_and_clean_maddison, code(ARG)
 	*import_and_clean_maddison, code(USA)
