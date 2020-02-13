@@ -7,3 +7,4 @@ shell rm -r ../output/
 shell mkdir ../output
 
 do clean_yearly_aggregates.do
+do import_larkin_scores.do
