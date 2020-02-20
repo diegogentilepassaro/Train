@@ -50,7 +50,7 @@ program plot_yearly_aggregates
 		lcolor(brown) yaxis(2) ytitle("Real GDP per capita (USD 2011)", size(medium) axis(2))) ///
 		(connected real_gdp_pc_agric year, msym(triangle) mcolor(green) msize(small) ///
 		lcolor(green) yaxis(2) ytitle("Real GDP per capita (USD 2011)", size(medium) axis(2))) ///
-		(connected real_gdp_pc_ind year, msym(plus) mcolor(red) msize(small) ///
+		(connected real_gdp_pc_ind year, msym(X) mcolor(red) msize(medium) ///
 		lcolor(red) yaxis(2) ytitle("Real GDP per capita (USD 2011)", size(medium) axis(2))), ///
 		legend(cols(2) rows(2) size(medium) region(lwidth(none))) graphregion(color(white)) ///
 		bgcolor(white) 	ylabel(0(4000)16000, axis(2)) ///
@@ -65,7 +65,7 @@ program plot_yearly_aggregates
 		
 	graph export "../output/figure_3.png", replace
 		
-	graph combine fig_2 fig_3, col(2) xsize(30) ysize(10) ///
+	graph combine fig_2 fig_3, col(2) xsize(27) ysize(10) ///
 		graphregion(color(white))
 		
 	graph export "../output/figure_2_and_3_comb.png", replace 
