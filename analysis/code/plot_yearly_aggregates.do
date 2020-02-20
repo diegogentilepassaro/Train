@@ -27,10 +27,10 @@ program plot_yearly_aggregates
 	keep if year >=1935 & year <=1990
 
 	*(connected kms_dirt_road year, mcolor(red) msize(vsmall) lcolor(red))
-	twoway (connected kms_rail year, mcolor(navy) msize(vsmall) ///
+	twoway (connected kms_rail year, msym(cirlce) mcolor(navy) msize(small) ///
 		lcolor(navy) ytitle("Network extension (Kms)", size(medium))) ///
-		(connected kms_gravel_road year, mcolor(brown) msize(vsmall) lcolor(brown)) ///
-		(connected kms_paved_road year, mcolor(green) msize(vsmall) lcolor(green)), ///
+		(connected kms_gravel_road year, msym(square) mcolor(brown) msize(small) lcolor(brown)) ///
+		(connected kms_paved_road year, msym(triangle) mcolor(green) msize(small) lcolor(green)), ///
 		legend(cols(2) rows(2) size(medium) region(lwidth(none))) graphregion(color(white)) ///
 		bgcolor(white) 	ylabel(0(10000)50000, grid glwidth(medium) glcolor(gs14)) ///
 		xline(1947 1983, lpattern(dash) lcolor(gs5)) ///   
@@ -44,13 +44,13 @@ program plot_yearly_aggregates
 		
 	graph export "../output/figure_2.png", replace
 
-	twoway (connected pop_ARG year, mcolor(navy) msize(vsmall) ///
+	twoway (connected pop_ARG year, msym(circle) mcolor(navy) msize(small) ///
 		lcolor(navy) yaxis(1) ytitle("Population (thousands)", size(medium) axis(1))) ///
-		(connected real_gdp_per_cap_ARG year, mcolor(brown) msize(vsmall) ///
+		(connected real_gdp_per_cap_ARG year, msym(square) mcolor(brown) msize(small) ///
 		lcolor(brown) yaxis(2) ytitle("Real GDP per capita (USD 2011)", size(medium) axis(2))) ///
-		(connected real_gdp_pc_agric year, mcolor(green) msize(vsmall) ///
+		(connected real_gdp_pc_agric year, msym(triangle) mcolor(green) msize(small) ///
 		lcolor(green) yaxis(2) ytitle("Real GDP per capita (USD 2011)", size(medium) axis(2))) ///
-		(connected real_gdp_pc_ind year, mcolor(red) msize(vsmall) ///
+		(connected real_gdp_pc_ind year, msym(plus) mcolor(red) msize(small) ///
 		lcolor(red) yaxis(2) ytitle("Real GDP per capita (USD 2011)", size(medium) axis(2))), ///
 		legend(cols(2) rows(2) size(medium) region(lwidth(none))) graphregion(color(white)) ///
 		bgcolor(white) 	ylabel(0(4000)16000, axis(2)) ///
