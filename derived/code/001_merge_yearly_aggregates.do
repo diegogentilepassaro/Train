@@ -1,8 +1,6 @@
 clear all
 adopath + ../../lib/stata/gslab_misc/ado
 
-cd "/Users/dgentil1/Desktop/Diego/Train/derived/code"
-
 program main
     merge_and_derive
 end

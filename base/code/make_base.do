@@ -1,15 +1,12 @@
 clear all
 
-cd "/Users/dgentil1/Desktop/Diego/Train/base/code"
-* cd cote
+cd "/Users/diegog/Desktop/Diego/Train/base/code"
+*cd "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\__repoGitHub\base\code"
 
 shell rm -r ../output/
 shell mkdir ../output
 
-shell rm -r ../temp/
-shell mkdir ../temp
-
 do clean_yearly_aggregates.do
 do import_larkin_scores.do
-do unzip_damus_data.do
-do import_clean_nomina.do
+do clean_ipums.do
+do import_c1960.do
