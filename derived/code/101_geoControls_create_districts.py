@@ -12,7 +12,7 @@ import datetime
 print(datetime.datetime.now())
 print('Estimated duration: 50 min')
 
-path=r"C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\__repoGitHub\derived\code"
+path=r"C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\Train\derived\code"
 os.chdir(path)
 
 pathInput=r"../../raw_data"

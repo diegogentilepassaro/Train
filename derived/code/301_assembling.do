@@ -18,11 +18,11 @@ replace y=x if y==.
 drop provname x
 ren y provname
 
-foreach var of var indgen_* occisco_* classwk_*{
+foreach var of var indgen_* occisco_* classwk_* college{
   ren `var' `var'_
 }
 
-reshape wide pop urbpop mig5 indgen_* occisco_* classwk_*, i(geolev2) j(year)
+reshape wide pop urbpop mig5 indgen_* occisco_* classwk_* college_, i(geolev2) j(year)
 
 merge 1:1 geolev2 using "..\temp\ARG_districts_geo.dta"
 
@@ -90,22 +90,25 @@ foreach year in 1970 1980 1991 2001 2010{
   label var occisco_9_`year' "`year' occup. elementary occupations"
   label var occisco_10_`year' "`year' occup. armed forces"
 
-  label var indgen_1_`year' "`year' ind. agriculture, fishing, forestry"
-  label var indgen_2_`year' "`year' ind. mining"
-  label var indgen_3_`year' "`year' ind. manufacturing"
-  label var indgen_4_`year' "`year' ind. electricity, gas and water"
-  label var indgen_5_`year' "`year' ind. construction"
-  label var indgen_6_`year' "`year' ind. wholesale and retail trade"
-  label var indgen_7_`year' "`year' ind. hotels and restaurants"
-  label var indgen_8_`year' "`year' ind. transportation, storage and comunications"
-  label var indgen_9_`year' "`year' ind. financial services and insurance"
-  label var indgen_10_`year' "`year' ind. public administration and defense"
-  label var indgen_11_`year' "`year' ind. real estate and business services"
-  label var indgen_12_`year' "`year' ind. education"
-  label var indgen_13_`year' "`year' ind. health ans social work"
-  label var indgen_14_`year' "`year' ind. other services"
-  label var indgen_15_`year' "`year' ind. other household services"
+  label var indgen_1_`year' "`year' ind. agriculture, fishing, forestry - % of total labor"
+  label var indgen_2_`year' "`year' ind. mining - % of total labor"
+  label var indgen_3_`year' "`year' ind. manufacturing - % of total labor"
+  label var indgen_4_`year' "`year' ind. electricity, gas and water - % of total labor"
+  label var indgen_5_`year' "`year' ind. construction - % of total labor"
+  label var indgen_6_`year' "`year' ind. wholesale and retail trade - % of total labor"
+  label var indgen_7_`year' "`year' ind. hotels and restaurants - % of total labor"
+  label var indgen_8_`year' "`year' ind. transportation, storage and comunications - % of total labor"
+  label var indgen_9_`year' "`year' ind. financial services and insurance - % of total labor"
+  label var indgen_10_`year' "`year' ind. public administration and defense - % of total labor"
+  label var indgen_11_`year' "`year' ind. real estate and business services- % of total labor"
+  label var indgen_12_`year' "`year' ind. education - % of total labor"
+  label var indgen_13_`year' "`year' ind. health ans social work - % of total labor"
+  label var indgen_14_`year' "`year' ind. other services - % of total labor"
+  label var indgen_15_`year' "`year' ind. other household services - % of total labor"
+
+  label var mig5`year' "% of people living in the province they were born - `year'"
 }
+
 
 
 foreach var of var *{
@@ -114,5 +117,15 @@ foreach var of var *{
     drop `var'
   }
 }
+
+drop if geolev2 == 238094004 /* malvinas */
+drop if geolev2 == 239094003 /*south georgia and south sandwich*/
+
+list geo2* prov* if area_km2==.
+labellist geo2*
+drop if area_km2==.
+
+/*one obs is "entrerrios-district unkown", the other one is "unknown"
+
 
 save "..\output\departments_wide_panel.dta", replace

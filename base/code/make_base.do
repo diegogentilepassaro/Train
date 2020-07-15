@@ -1,7 +1,7 @@
 clear all
 
-cd "/Users/diegog/Desktop/Diego/Train/base/code"
-*cd "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\__repoGitHub\base\code"
+*cd "/Users/diegog/Desktop/Diego/Train/base/code"
+cd "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\Train\base\code"
 
 shell rm -r ../output/
 shell mkdir ../output

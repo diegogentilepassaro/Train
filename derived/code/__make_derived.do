@@ -1,7 +1,7 @@
 clear all
 
 *cd "/Users/dgentil1/Desktop/Diego/Train/derived/code"
-global dir "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\__repoGitHub\derived\code"
+global dir "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\Train\derived\code"
 cd $dir
 
 

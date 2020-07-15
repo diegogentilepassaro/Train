@@ -5,6 +5,16 @@ use "..\..\raw_data\IPUMS\ipumsi_00007\ipumsi_00007.dta", clear
 *Population
 bys country year geolev2: egen pop=sum(hhwt)
 
+*Education - percentage of people with ig
+gen e=hhwt if edattain==4
+bys country year geolev2: egen educ = sum(e)
+
+gen x=hhwt if edattain!=0
+by country year geolev2: egen den = sum(x)
+
+gen college = educ / den
+drop e x educ den
+
 *Urbanization
 gen u=1 if urban==2
 replace u=0 if urban==1
@@ -60,7 +70,7 @@ drop y z x
 
 }
 
-collapse (mean) pop urbpop mig5 indgen_* occisco_*  classwk_*, by(year country geolev1 geolev2 geo2_ar)
+collapse (mean) pop college urbpop mig5 indgen_* occisco_*  classwk_*, by(year country geolev1 geolev2 geo2_ar)
 
 preserve
 
