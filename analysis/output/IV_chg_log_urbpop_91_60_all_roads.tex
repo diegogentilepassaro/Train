@@ -1,0 +1,25 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                    &\multicolumn{1}{c}{chg\_log\_urbpop\_91\_60}&\multicolumn{1}{c}{chg\_log\_urbpop\_91\_60}&\multicolumn{1}{c}{chg\_log\_urbpop\_91\_60}&\multicolumn{1}{c}{chg\_log\_urbpop\_91\_60}&\multicolumn{1}{c}{chg\_log\_urbpop\_91\_60}&\multicolumn{1}{c}{chg\_log\_urbpop\_91\_60}\\
+\hline
+Change in kms of total roads&     0.00115\sym{**} &    0.000917\sym{*}  &    0.000404         &    0.000694         &    0.000822         &    0.000790         \\
+                    &  (0.000488)         &  (0.000482)         &  (0.000523)         &  (0.000610)         &  (0.000677)         &  (0.000658)         \\
+[1em]
+Change in kms of railroads&     0.00458\sym{***}&     0.00421\sym{***}&     0.00279\sym{***}&     0.00311\sym{***}&     0.00304\sym{***}&     0.00276\sym{**} \\
+                    &   (0.00106)         &   (0.00100)         &   (0.00104)         &   (0.00101)         &   (0.00110)         &   (0.00108)         \\
+[1em]
+Log urban population 1960&                     &      -0.124\sym{***}&                     &                     &                     &      -0.104\sym{***}\\
+                    &                     &    (0.0292)         &                     &                     &                     &    (0.0324)         \\
+\hline
+Geographic controls &          No         &          No         &         Yes         &          No         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
+Adj. R-squared      &    -.212645         &   -.0544112         &    .1406072         &   -.2926273         &   -.3244912         &   -.2336103         \\
+Observations        &         286         &         286         &         286         &         286         &         286         &         286         \\
+\hline\hline
+\multicolumn{7}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}

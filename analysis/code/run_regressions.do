@@ -6,33 +6,66 @@ program main
     use "../../derived/output/departments_wide_panel.dta", clear
     preclean_data
 	
-	*make_some_plots
+	make_some_plots
+	
+	local instrument_roads "euclidean_hypo_network"
+	
 	run_OLS_regression, depvar(chg_log_pop_91_60) ///
 	    baseline_depvar(log_pop1960) ///
 	    roads_var(tot_roads_chg_86_54) ///
-		table_name(chg_log_pop_91_60_all_roads)
+		table_name(OLS_chg_log_pop_91_60_all_roads)
 	run_OLS_regression, depvar(chg_log_urbpop_91_60) ///
 	    baseline_depvar(log_urbpop1960) ///
 	    roads_var(tot_roads_chg_86_54) ///
-		table_name(chg_log_urbpop_91_60_all_roads)
+		table_name(OLS_chg_log_urbpop_91_60_all_roads)
+	run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(tot_roads_chg_86_54) ///
+		table_name(IV_chg_log_pop_91_60_all_roads) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(tot_roads_chg_86_54) ///
+		table_name(IV_chg_log_urbpop_91_60_all_roads) ///
+		instrument_roads(`instrument_roads')
 		
 	run_OLS_regression, depvar(chg_log_pop_91_60) ///
 	    baseline_depvar(log_pop1960) ///
 	    roads_var(pav_and_grav_chg_86_54) ///
-		table_name(chg_log_pop_91_60_pav_and_grav)
+		table_name(OLS_chg_log_pop_91_60_pav_and_grav)
 	run_OLS_regression, depvar(chg_log_urbpop_91_60) ///
 	    baseline_depvar(log_urbpop1960) ///
 	    roads_var(pav_and_grav_chg_86_54) ///
-		table_name(chg_log_urbpop_91_60_pav_and_grav)
-
+		table_name(OLS_chg_log_urbpop_91_60_pav_and_grav)
+    run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(pav_and_grav_chg_86_54) ///
+		table_name(IV_chg_log_pop_91_60_pav_and_grav) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(pav_and_grav_chg_86_54) ///
+		table_name(IV_chg_log_urbpop_91_60_pav_and_grav) ///
+		instrument_roads(`instrument_roads')
+		
 	run_OLS_regression, depvar(chg_log_pop_91_60) ///
 	    baseline_depvar(log_pop1960) ///
 	    roads_var(paved_roads_chg_86_54) ///
-		table_name(chg_log_pop_91_60_paved)
+		table_name(OLS_chg_log_pop_91_60_paved)
 	run_OLS_regression, depvar(chg_log_urbpop_91_60) ///
 	    baseline_depvar(log_urbpop1960) ///
 	    roads_var(paved_roads_chg_86_54) ///
-		table_name(chg_log_urbpop_91_60_paved)
+		table_name(OLS_chg_log_urbpop_91_60_paved)
+	run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(paved_roads_chg_86_54) ///
+		table_name(IV_chg_log_pop_91_60_paved) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(paved_roads_chg_86_54) ///
+		table_name(IV_chg_log_urbpop_91_60_paved) ///
+		instrument_roads(`instrument_roads')
 end
 
 program preclean_data
@@ -147,38 +180,47 @@ program run_OLS_regression
 	    "Province FE" ///
 	    "Adj. R-squared" "Observations"))
 end
-	/*
+
+program run_IV_regression
+    syntax, depvar(str) baseline_depvar(str) ///
+	    roads_var(str) table_name(str) ///
+		instrument_roads(str)
+
+	local geo_vars "elev_mean_std rugged_mea_std wheat_std dist_to_BA_std"
+   
+    eststo clear
 	
-		eststo: reg chg_log_urbpop_91_60 pav_and_grav_chg_86_54 tot_rails_chg_80s_60
+	eststo: ivreg2 `depvar' (`roads_var' tot_rails_chg_80s_60 = `instrument_roads' studied_larkin)
 	estadd local geo_conts "No"
     estadd local prov_FE "No"
-	eststo: reg chg_log_urbpop_91_60 pav_and_grav_chg_86_54 tot_rails_chg_80s_60 ///
-	   elev_mean_std rugged_mea_std wheat_std dist_to_BA_std
+	eststo: ivreg2 `depvar' (`roads_var' tot_rails_chg_80s_60 = `instrument_roads' studied_larkin) ///
+	    `baseline_depvar'
+	estadd local geo_conts "No"
+    estadd local prov_FE "No"	
+	eststo: ivreg2 `depvar' (`roads_var' tot_rails_chg_80s_60 = `instrument_roads' studied_larkin) ///
+	   `geo_vars'
     estadd local geo_conts "Yes"
     estadd local prov_FE "No"
-	eststo: areg chg_log_urbpop_91_60 pav_and_grav_chg_86_54 tot_rails_chg_80s_60, ///
+	eststo: ivreghdfe `depvar' (`roads_var' tot_rails_chg_80s_60 = `instrument_roads' studied_larkin), ///
 	    absorb(provname)
 	estadd local geo_conts "No"
     estadd local prov_FE "Yes"
-    eststo: areg chg_log_urbpop_91_60 pav_and_grav_chg_86_54 tot_rails_chg_80s_60 ///
-	    elev_mean_std rugged_mea_std wheat_std dist_to_BA_std, absorb(provname)
+	eststo: ivreghdfe `depvar' (`roads_var' tot_rails_chg_80s_60 = `instrument_roads' studied_larkin) ///
+	    `geo_vars', absorb(provname)
 	estadd local geo_conts "Yes"
     estadd local prov_FE "Yes"
-	
-	
-	eststo clear
-	
-	eststo: ivreg2 chg_log_pop_91_60 (pav_and_grav_chg_86_54 tot_rails_chg_80s_60 = studied_1 hypoEMST_kms)
-	eststo: ivreg2 chg_log_pop_91_60 (pav_and_grav_chg_86_54 tot_rails_chg_80s_60 = studied_1 hypoEMST_kms) ///
-	   elev_mean_std
-	eststo: ivreg2 chg_log_pop_91_60 (pav_and_grav_chg_86_54 tot_rails_chg_80s_60 = studied_1 hypoEMST_kms) ///
-	   elev_mean_std dist_to_BA_std 
-	eststo: ivreg2 chg_log_urbpop_91_60 (pav_and_grav_chg_86_54 tot_rails_chg_80s_60 = studied_1 hypoEMST_kms)
-	eststo: ivreg2 chg_log_urbpop_91_60 (pav_and_grav_chg_86_54 tot_rails_chg_80s_60 = studied_1 hypoEMST_kms) ///
-	   elev_mean_std
-	eststo: ivreg2 chg_log_urbpop_91_60 (pav_and_grav_chg_86_54 tot_rails_chg_80s_60 = studied_1 hypoEMST_kms) ///
-	   elev_mean_std dist_to_BA_std 
-	   
-	esttab *, star(* 0.10 ** 0.05 *** 0.01)*/
+	eststo: ivreghdfe `depvar' (`roads_var' tot_rails_chg_80s_60 = `instrument_roads' studied_larkin) ///
+	    `geo_vars' `baseline_depvar', absorb(provname)
+	estadd local geo_conts "Yes"
+    estadd local prov_FE "Yes"	
+
+	esttab * using "../output/`table_name'.tex", replace ///
+	    se star(* 0.10 ** 0.05 *** 0.01) label ///
+	    keep(`roads_var' tot_rails_chg_80s_60 `baseline_depvar') ///
+		stats(geo_conts prov_FE r2_a N, fmt(%9.3f %9.0g) ///
+	    labels("Geographic controls" ///
+	    "Province FE" ///
+	    "Adj. R-squared" "Observations"))
+end
 
 main
