@@ -102,7 +102,7 @@ program preclean_data
 	
 	gen pav_and_grav54 = paved_roads54 + gravel_roads54
 	gen pav_and_grav86 = paved_roads86 + gravel_roads86
-	gen pav_and_grav_chg_86_54 = paved_roads86 - paved_roads54
+	gen pav_and_grav_chg_86_54 = pav_and_grav86 - pav_and_grav54
 	label var pav_and_grav_chg_86_54 "Change in kms of paved and gravel roads"
 
 	gen paved_roads_chg_86_54 = paved_roads86 - paved_roads54
