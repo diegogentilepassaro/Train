@@ -125,7 +125,7 @@ list geo2* prov* if area_km2==.
 labellist geo2*
 drop if area_km2==.
 
-/*one obs is "entrerrios-district unkown", the other one is "unknown"
+/*one obs is "entrerrios-district unkown", the other one is "unknown"*/
 
 
 save "..\output\departments_wide_panel.dta", replace
