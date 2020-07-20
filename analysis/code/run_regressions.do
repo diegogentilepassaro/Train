@@ -7,9 +7,7 @@ program main
     preclean_data
 	
 	make_some_plots
-	
-	local instrument_roads "euclidean_hypo_network"
-	
+		
 	run_OLS_regression, depvar(chg_log_pop_91_60) ///
 	    baseline_depvar(log_pop1960) ///
 	    roads_var(tot_roads_chg_86_54) ///
@@ -18,16 +16,6 @@ program main
 	    baseline_depvar(log_urbpop1960) ///
 	    roads_var(tot_roads_chg_86_54) ///
 		table_name(OLS_chg_log_urbpop_91_60_all_roads)
-	run_IV_regression, depvar(chg_log_pop_91_60) ///
-	    baseline_depvar(log_pop1960) ///
-	    roads_var(tot_roads_chg_86_54) ///
-		table_name(IV_chg_log_pop_91_60_all_roads) ///
-		instrument_roads(`instrument_roads')
-	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
-	    baseline_depvar(log_urbpop1960) ///
-	    roads_var(tot_roads_chg_86_54) ///
-		table_name(IV_chg_log_urbpop_91_60_all_roads) ///
-		instrument_roads(`instrument_roads')
 		
 	run_OLS_regression, depvar(chg_log_pop_91_60) ///
 	    baseline_depvar(log_pop1960) ///
@@ -37,18 +25,8 @@ program main
 	    baseline_depvar(log_urbpop1960) ///
 	    roads_var(pav_and_grav_chg_86_54) ///
 		table_name(OLS_chg_log_urbpop_91_60_pav_and_grav)
-    run_IV_regression, depvar(chg_log_pop_91_60) ///
-	    baseline_depvar(log_pop1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		table_name(IV_chg_log_pop_91_60_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
-	    baseline_depvar(log_urbpop1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		table_name(IV_chg_log_urbpop_91_60_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-		
-	run_OLS_regression, depvar(chg_log_pop_91_60) ///
+
+    run_OLS_regression, depvar(chg_log_pop_91_60) ///
 	    baseline_depvar(log_pop1960) ///
 	    roads_var(paved_roads_chg_86_54) ///
 		table_name(OLS_chg_log_pop_91_60_paved)
@@ -56,15 +34,75 @@ program main
 	    baseline_depvar(log_urbpop1960) ///
 	    roads_var(paved_roads_chg_86_54) ///
 		table_name(OLS_chg_log_urbpop_91_60_paved)
+
+	local instrument_roads "euclidean_hypo_network"
+
+    run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(tot_roads_chg_86_54) ///
+		table_name(IV_EUC_chg_log_pop_91_60_all_roads) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(tot_roads_chg_86_54) ///
+		table_name(IV_EUC_chg_log_urbpop_91_60_all_roads) ///
+		instrument_roads(`instrument_roads')
+		
+    run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(pav_and_grav_chg_86_54) ///
+		table_name(IV_EUC_chg_log_pop_91_60_pav_and_grav) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(pav_and_grav_chg_86_54) ///
+		table_name(IV_EUC_chg_log_urbpop_91_60_pav_and_grav) ///
+		instrument_roads(`instrument_roads')
+		
 	run_IV_regression, depvar(chg_log_pop_91_60) ///
 	    baseline_depvar(log_pop1960) ///
 	    roads_var(paved_roads_chg_86_54) ///
-		table_name(IV_chg_log_pop_91_60_paved) ///
+		table_name(IV_EUC_chg_log_pop_91_60_paved) ///
 		instrument_roads(`instrument_roads')
 	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
 	    baseline_depvar(log_urbpop1960) ///
 	    roads_var(paved_roads_chg_86_54) ///
-		table_name(IV_chg_log_urbpop_91_60_paved) ///
+		table_name(IV_EUC_chg_log_urbpop_91_60_paved) ///
+		instrument_roads(`instrument_roads')
+		
+	local instrument_roads "lcp_hypo_network"
+
+    run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(tot_roads_chg_86_54) ///
+		table_name(IV_LCP_chg_log_pop_91_60_all_roads) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(tot_roads_chg_86_54) ///
+		table_name(IV_LCP_chg_log_urbpop_91_60_all_roads) ///
+		instrument_roads(`instrument_roads')
+		
+    run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(pav_and_grav_chg_86_54) ///
+		table_name(IV_LCP_chg_log_pop_91_60_pav_and_grav) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(pav_and_grav_chg_86_54) ///
+		table_name(IV_LCP_chg_log_urbpop_91_60_pav_and_grav) ///
+		instrument_roads(`instrument_roads')
+		
+	run_IV_regression, depvar(chg_log_pop_91_60) ///
+	    baseline_depvar(log_pop1960) ///
+	    roads_var(paved_roads_chg_86_54) ///
+		table_name(IV_LCP_chg_log_pop_91_60_paved) ///
+		instrument_roads(`instrument_roads')
+	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
+	    baseline_depvar(log_urbpop1960) ///
+	    roads_var(paved_roads_chg_86_54) ///
+		table_name(IV_LCP_chg_log_urbpop_91_60_paved) ///
 		instrument_roads(`instrument_roads')
 end
 
