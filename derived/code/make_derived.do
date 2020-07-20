@@ -1,8 +1,7 @@
 clear all
 
-cd "/Users/diegog/Desktop/Diego/Train/derived/code"
-*global dir "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\__repoGitHub\derived\code"
-*cd $dir
+cap cd "/Users/diegog/Desktop/Diego/Train/derived/code"
+cap cd  "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\__repoGitHub\derived\code"
 
 shell rm -r ../output/
 shell mkdir ../output

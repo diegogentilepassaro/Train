@@ -1,7 +1,7 @@
 clear all
 adopath + ../../lib/stata/gslab_misc/ado
 
-cd "/Users/dgentil1/Desktop/Diego/Train/analysis/code"
+cd "/Users/diegog/Desktop/Diego/Train/analysis/code"
 
 program main
     use "../../derived/output/yearly_aggregates.dta", clear
