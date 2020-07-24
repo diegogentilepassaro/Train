@@ -33,8 +33,9 @@ merge 1:1 geolev2 using "..\temp\ARG_districts_infra_hypo.dta"
 
 *assert _merge==3
 drop _merge
-
 **CHECK: MISMATCH IN MERGE FOR TWO OBSERVATIONS FROM C1960_IPUMS
+
+
 label var geolev2 "id ipums"
 label var wheat "wheat pot yield - tons per Ha, average"
 label var wheat_std " wheat pot yield- standardized"
@@ -52,6 +53,7 @@ label var elev_mean_std "average elevation mts - standardized"
 
 label var dist_to_BA "distance to Buenos Aires in kms"
 label var dist_to_BA_std "distance to Buenos Aires"
+label var rugged_mea "average ruggedness"
 
 gen area_km2 = area_m2/1000000
 drop area_m2
@@ -105,6 +107,7 @@ foreach year in 1970 1980 1991 2001 2010{
   label var indgen_13_`year' "`year' ind. health ans social work - % of total labor"
   label var indgen_14_`year' "`year' ind. other services - % of total labor"
   label var indgen_15_`year' "`year' ind. other household services - % of total labor"
+
 
   label var mig5`year' "% of people living in the province they were born - `year'"
 }
