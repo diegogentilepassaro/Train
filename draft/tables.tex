@@ -1,0 +1,44 @@
+\documentclass{article}
+
+\usepackage{inputenc}
+\usepackage{csquotes}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{indentfirst}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage[backend = biber,
+		   style = authoryear,
+		   maxnames = 5,
+		   maxcitenames = 2,
+		   doi = false,
+		   eprint = false]{biblatex}
+
+
+\begin{document}
+
+\begin{table}[h!]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \input{../analysis/output/OLS_chg_log_pop_91_60_paved.tex}
+    }
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \input{../analysis/output/IV_EUC_chg_log_pop_91_60_paved.tex}
+    }
+\end{table}
+
+\begin{table}[h!]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \input{../analysis/output/IV_LCP_chg_log_pop_91_60_paved.tex}
+    }
+\end{table}
+
+\end{document}
