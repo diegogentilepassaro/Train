@@ -131,4 +131,4 @@ drop if area_km2==.
 /*one obs is "entrerrios-district unkown", the other one is "unknown"*/
 
 
-save "..\output\departments_wide_panel.dta", replace
+save_data "..\output\departments_wide_panel.dta", replace key(geolev2)
