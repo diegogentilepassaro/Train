@@ -22,7 +22,7 @@ pathTemp=r"../temp"
 
 
 #railroads: larkin plan + 1979 status
-input = pathInput + r"/georef/output/shapefiles/larkin_plan_1979.shp"
+input = pathInput + r"/georef/railroads/larkin_plan_1979.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
 output= pathTemp + r"/inter_lp79.shp"
 parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
@@ -34,7 +34,7 @@ parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LEN
 processing.run("qgis:fieldcalculator", parameters)
 
 #roads: 1954
-input = pathInput + r"/shapefiles_to_check/red_vial_1954.shp"
+input = pathInput + r"/georef/roads/red_vial_1954.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
 output= pathTemp + r"/inter_roads54.shp"
 parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
@@ -46,7 +46,7 @@ parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LEN
 processing.run("qgis:fieldcalculator", parameters)
 
 #roads: 1896
-input = pathInput + r"/shapefiles_to_check/red_vial_1986.shp"
+input = pathInput + r"/georef/roads/red_vial_1986.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
 output= pathTemp + r"/inter_roads86.shp"
 parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
