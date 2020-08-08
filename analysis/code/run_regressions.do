@@ -267,7 +267,7 @@ program run_OLS_regression
     estadd local prov_FE "Yes"
 	estadd local estimation "OLS"
 
-	esttab * /*using "../output/`table_name'.tex"*/, replace ///
+	esttab * using "../output/`table_name'.tex", replace ///
 	    se star(* 0.10 ** 0.05 *** 0.01) label ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(estimation p_val geo_conts prov_FE r2 N, fmt(%9.3f %9.0g) ///
@@ -335,7 +335,7 @@ program run_IV_regression
 	estadd local estimation "IV"
 	estadd local F_stat_fs = round(e(cdf), 0.001)
 
-	esttab * /*using "../output/`table_name'.tex"*/, replace ///
+	esttab * using "../output/`table_name'.tex", replace ///
 	    se star(* 0.10 ** 0.05 *** 0.01) label ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(estimation p_val F_stat_fs geo_conts prov_FE N, fmt(%9.0g) ///

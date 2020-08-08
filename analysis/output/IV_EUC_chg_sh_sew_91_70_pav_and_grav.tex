@@ -1,0 +1,27 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                    &\multicolumn{1}{c}{Change in share of self-employed labor 1991-1970}&\multicolumn{1}{c}{Change in share of self-employed labor 1991-1970}&\multicolumn{1}{c}{Change in share of self-employed labor 1991-1970}&\multicolumn{1}{c}{Change in share of self-employed labor 1991-1970}&\multicolumn{1}{c}{Change in share of self-employed labor 1991-1970}\\
+\hline
+Change in kms of paved and gravel roads&  -0.0000116         &-0.000000595         &   0.0000123         &  0.00000452         &  -0.0000285         \\
+                    & (0.0000256)         & (0.0000315)         & (0.0000335)         & (0.0000332)         & (0.0000246)         \\
+[1em]
+Change in kms of railroads&    0.000288         &  0.00000102         &    0.000444\sym{*}  &    0.000145         &   -0.000252         \\
+                    &  (0.000204)         &  (0.000216)         &  (0.000237)         &  (0.000221)         &  (0.000164)         \\
+[1em]
+Share of self-employed 1970&                     &                     &                     &                     &      -0.593\sym{***}\\
+                    &                     &                     &                     &                     &    (0.0406)         \\
+\hline
+Estimation          &          IV         &          IV         &          IV         &          IV         &          IV         \\
+P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &          .5         &          .5         &          .5         \\
+F-stat first stage  &      28.641         &      22.501         &      21.583         &      23.059         &      23.805         \\
+Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
+Observations        &         311         &         311         &         311         &         311         &         311         \\
+\hline\hline
+\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}

@@ -1,25 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{6}{c}}
+\begin{tabular}{l*{5}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
-                    &\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                    &\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}\\
 \hline
-Change in kms of paved and gravel roads&    0.000156         &  -0.0000187         &   -0.000108         &   -0.000204         &   -0.000163         &   -0.000194         \\
-                    &  (0.000135)         &  (0.000128)         &  (0.000128)         &  (0.000135)         &  (0.000141)         &  (0.000135)         \\
+Change in kms of paved and gravel roads&    0.000156         &  -0.0000192         &   -0.000204         &  -0.0000959         &  -0.0000977         \\
+                    &  (0.000135)         &  (0.000145)         &  (0.000135)         &  (0.000155)         &  (0.000147)         \\
 [1em]
-Change in kms of railroads&     0.00144\sym{***}&     0.00114\sym{**} &    0.000538         &    0.000320         &    0.000215         &   0.0000533         \\
-                    &  (0.000551)         &  (0.000514)         &  (0.000509)         &  (0.000511)         &  (0.000530)         &  (0.000507)         \\
+Change in kms of railroads&     0.00144\sym{***}&    0.000490         &    0.000320         &    0.000191         &   0.0000134         \\
+                    &  (0.000551)         &  (0.000510)         &  (0.000511)         &  (0.000530)         &  (0.000506)         \\
 [1em]
-Log urban population 1960&                     &      -0.156\sym{***}&                     &                     &                     &      -0.130\sym{***}\\
-                    &                     &    (0.0228)         &                     &                     &                     &    (0.0254)         \\
+Log urban population 1960&                     &                     &                     &                     &      -0.134\sym{***}\\
+                    &                     &                     &                     &                     &    (0.0254)         \\
 \hline
-Geographic controls &          No         &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-Adj. R-squared      &    .0170408         &    .1537915         &    .2243645         &    .2854991         &    .2796969         &    .3438149         \\
-Observations        &         286         &         286         &         286         &         286         &         286         &         286         \\
+Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&        .499         &          .5         &          .5         &          .5         &          .5         \\
+Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
+R-squared           &    .0239387         &    .2454514         &    .3456676         &    .3532172         &    .4163183         \\
+Observations        &         286         &         286         &         286         &         286         &         286         \\
 \hline\hline
-\multicolumn{7}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }
