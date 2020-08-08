@@ -5,7 +5,7 @@ program main
 	
 	global depvar pop1960 pop1991 urbpop1960 urbpop1991
 	global control elev_mean rugged_mea dist_to_BA area_km2
-	global rail60 tot_rails60 statusLP_1 statusLP_2 statusLP_3 studied_0 studied_1
+	global rail60 tot_rails60 statusLP_1 statusLP_2 statusLP_3 studied_0 studied_larkin
 	global rail80 tot_rails80s status79_1 status79_2 status79_3
 	global road54 tot_roads54  paved_roads54 gravel_roads54 dirt_roads54 footprint_roads54
 	global road86 tot_roads86 paved_roads86 gravel_roads86 dirt_roads86 footprint_roads86
@@ -27,7 +27,7 @@ program main
 	cells("mean(fmt(%12.0fc)) sd(fmt(%12.0fc)) min(fmt(%12.0fc)) max(fmt(%12.0fc))")  ///
 	title("Descriptive Statistics")
 
-	gen studsh=studied_1/tot_rails60
+	gen studsh=studied_larkin/tot_rails60
 
 	gen studied=(studsh>0.4 & studsh!=.)
 
