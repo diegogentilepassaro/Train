@@ -282,4 +282,4 @@ gen year=1960
 
 order id provincia distrito pop urb rur
 
-save "..\output\c1960_urb.dta", replace
+save_data "..\output\c1960_urb.dta", replace key(id)

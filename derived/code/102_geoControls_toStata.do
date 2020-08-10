@@ -150,4 +150,4 @@ drop if id_main=="032030000"
 *VIII. FINAL STEPS
 ren id_main geolev2
 destring geolev2, replace
-save "..\temp\ARG_districts_geo.dta", replace
+save_data "..\temp\ARG_districts_geo.dta", replace key(geolev2)

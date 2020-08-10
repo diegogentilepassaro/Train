@@ -9,11 +9,15 @@ bys country year geolev2: egen pop=sum(hhwt)
 gen e=hhwt if edattain==4
 bys country year geolev2: egen educ = sum(e)
 
-gen x=hhwt if edattain!=0
+gen s=hhwt if edattain==4 | edattain==3
+bys country year geolev2: egen educ2 = sum(s)
+
+gen x=hhwt if edattain!=0 & edattain!=9
 by country year geolev2: egen den = sum(x)
 
 gen college = educ / den
-drop e x educ den
+gen secondary = educ2 / den
+drop e x educ educ2 den
 
 *Urbanization
 gen u=1 if urban==2
@@ -56,21 +60,30 @@ label values x CLASSWK
 tab x, g(classwk_)
 drop x
 
+*Employment status
+
+gen x = empstat
+recode x 0 9=.
+label values x EMPSTAT
+tab x, g(empstat_)
+drop x
+
 *using weights for Industry, Occupation and Class of work
 
 
 
-foreach var of var indgen_* occisco_* classwk_*{
+foreach var of var indgen_* occisco_* classwk_* empstat_*{
 gen y=hhwt if `var'!=.
 bys year country geolev1 geolev2: egen x=sum(y)
 bys year country geolev1 geolev2: egen z=sum(y*`var')
 replace `var'=z/x
+gen n`var' = z
 
 drop y z x
 
 }
 
-collapse (mean) pop college urbpop mig5 indgen_* occisco_*  classwk_*, by(year country geolev1 geolev2 geo2_ar)
+collapse (mean) pop college secondary urbpop mig5 *indgen_* *occisco_*  *classwk_* *empstat_*, by(year country geolev1 geolev2 geo2_ar)
 
 preserve
 
@@ -88,4 +101,4 @@ drop _merge
 
 ren label provname
 
-save "..\output\ARG_IPUMS_7080910110.dta", replace
+save_data "..\output\ARG_IPUMS_7080910110.dta", replace key(geolev2)

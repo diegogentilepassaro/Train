@@ -110,6 +110,14 @@ foreach year in 1970 1980 1991 2001 2010{
 
 
   label var mig5`year' "% of people living in the province they were born - `year'"
+
+  label var classwk_1_`year' "`year' self-employed"
+  label var classwk_2_`year' "`year' waged"
+  label var classwk_3_`year' "`year' unpaid"
+
+  label var empstat_1_`year' "`year' employed"
+  label var empstat_2_`year' "`year' unemployed"
+  label var empstat_3_`year' "`year' inactive"
 }
 
 

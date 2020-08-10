@@ -112,7 +112,8 @@ ren *, lower
 keep length_met geolevel2
 
 collapse (sum) length_met, by(geolevel2)
-ren length_met hypoCMST_kms
+gen hypoCMST_kms = length_met / 1000
+drop length_met
 
 tempfile hypoCMST
 save `hypoCMST', replace
@@ -123,7 +124,8 @@ ren *, lower
 keep length_met geolevel2
 
 collapse (sum) length_met, by(geolevel2)
-ren length_met hypoEMST_kms
+gen hypoEMST_kms = length_met / 1000
+drop length_met
 
 tempfile hypoEMST
 save `hypoEMST', replace
@@ -133,7 +135,9 @@ ren *, lower
 keep length_met geolevel2
 
 collapse (sum) length_met, by(geolevel2)
-ren length_met hypomeanEMST_kms
+
+gen hypomeanEMST_kms = length_met / 1000
+drop length_met
 
 tempfile hypomeanEMST
 save `hypomeanEMST', replace
@@ -179,4 +183,4 @@ foreach var of var statusLP_1 statusLP_2 statusLP_3 status79_1 studied_0 studied
 *VI. FINAL STEPS
 ren id_main geolev2
 destring geolev2, replace
-save "..\temp\ARG_districts_infra_hypo.dta", replace
+save_data "..\temp\ARG_districts_infra_hypo.dta", replace key(geolev2)

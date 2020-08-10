@@ -259,7 +259,7 @@ save `e', replace
 I print the list on the screen and go one for one
 when changing names was sufficient I implemented the modification wherever
 it corresponds. In import_c1960.do if it is required before aggregating at the
-departamento level. Or in this do-file if. All these changes have a note below
+departamento level. Or in this do-file if not. All these changes have a note below
 */
 assert _merge!=1
 
@@ -292,4 +292,4 @@ label var pop "total population"
 label var rur "rural population"
 label var urb "urban population"
 
-save "..\temp\c1960_ipums.dta", replace
+save_data "..\temp\c1960_ipums.dta", replace key(geolev2)
