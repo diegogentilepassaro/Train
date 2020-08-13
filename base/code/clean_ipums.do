@@ -101,4 +101,4 @@ drop _merge
 
 ren label provname
 
-save_data "..\output\ARG_IPUMS_7080910110.dta", replace key(geolev2)
+save_data "..\output\ARG_IPUMS_7080910110.dta", replace key(geolev2 year)
