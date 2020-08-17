@@ -109,7 +109,7 @@ foreach year in 1970 1980 1991 2001 2010{
   label var indgen_15_`year' "`year' ind. other household services - % of total labor"
 
 
-  label var mig5`year' "% of people living in the province they were born - `year'"
+  label var mig5_`year' "% of people living in the province they were born - `year'"
 
   label var classwk_1_`year' "`year' self-employed"
   label var classwk_2_`year' "`year' waged"
