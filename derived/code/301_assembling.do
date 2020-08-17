@@ -18,11 +18,11 @@ replace y=x if y==.
 drop provname x
 ren y provname
 
-foreach var of var indgen_* occisco_* classwk_* college{
+foreach var of var urbpop mig5 *indgen_* *occisco_* *classwk_* *empstat* college secondary{
   ren `var' `var'_
 }
 
-reshape wide pop urbpop mig5 indgen_* occisco_* classwk_* college_, i(geolev2) j(year)
+reshape wide pop urbpop mig5 *indgen_* *occisco_* *classwk_* *empstat* college secondary, i(geolev2) j(year)
 
 merge 1:1 geolev2 using "..\temp\ARG_districts_geo.dta"
 
