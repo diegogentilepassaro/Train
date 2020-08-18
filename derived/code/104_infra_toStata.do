@@ -80,7 +80,7 @@ save `status79', replace
 
 
 
-*III. Roads - 1954, 1986 and hypo networks
+*III. Roads - 1954, 1970, 1986 and hypo networks
 
 import dbase using "..\temp\\inter_roads54_l.dbf", clear case(lower)
 ren *, lower
@@ -90,6 +90,18 @@ drop length_met
 collapse (sum) length_km, by(geolevel2 type)
 ren length_km roads54_type
 reshape wide roads54_type, i(geolevel2) j(type)
+
+tempfile roads54
+save `roads54', replace
+
+import dbase using "..\temp\\inter_roads70_l.dbf", clear case(lower)
+ren *, lower
+keep type length_met geolevel2
+gen length_km=length_met/1000
+drop length_met
+collapse (sum) length_km, by(geolevel2 type)
+ren length_km roads70_type
+reshape wide roads70_type, i(geolevel2) j(type)
 
 tempfile roads54
 save `roads54', replace
@@ -158,6 +170,8 @@ drop _merge
 merge 1:1 geolevel2 using `roads54'
 *assert _merge==3
 drop _merge
+merge 1:1 geolevel2 using `roads70'
+assert _merge==3
 merge 1:1 geolevel2 using `roads86'
 assert _merge==3
 drop _merge
@@ -173,7 +187,7 @@ drop _merge
 
 ren geolevel2 id_main
 
-foreach var of var statusLP_1 statusLP_2 statusLP_3 status79_1 studied_0 studied_1 status79_2 status79_3 roads54_type1 roads54_type2 roads54_type3 roads54_type4 roads86_type1 roads86_type2 roads86_type3 roads86_type4 hypoCMST_kms hypoEMST_kms hypomeanEMST_kms {
+foreach var of var statusLP_1 statusLP_2 statusLP_3 status79_1 studied_0 studied_1 status79_2 status79_3 roads54_type1 roads54_type2 roads54_type3 roads54_type4 roads70_type1 roads70_type2 roads70_type3 roads70_type4 roads86_type1 roads86_type2 roads86_type3 roads86_type4 hypoCMST_kms hypoEMST_kms hypomeanEMST_kms {
 	recode `var' (.=0)
 }
 

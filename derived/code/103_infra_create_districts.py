@@ -45,6 +45,18 @@ output=pathTemp + r'\\inter_roads54_l.shp'
 parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
 processing.run("qgis:fieldcalculator", parameters)
 
+#roads: 1970
+input = pathInput + r"/georef/roads/red_vial_1970.shp"
+overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+output= pathTemp + r"/inter_roads70.shp"
+parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
+processing.run("native:intersection", parameters)
+
+input = output
+output=pathTemp + r'\\inter_roads70_l.shp'
+parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
+processing.run("qgis:fieldcalculator", parameters)
+
 #roads: 1896
 input = pathInput + r"/georef/roads/red_vial_1986.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
