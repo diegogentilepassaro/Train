@@ -1,0 +1,27 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\hline\hline
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                    &\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}\\
+\hline
+Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         \\
+[1em]
+Change in kms of railroads&   0.0000930\sym{***}&   0.0000256         &    0.000114\sym{***}&   0.0000568\sym{*}  &   0.0000621\sym{**} \\
+                    & (0.0000315)         & (0.0000324)         & (0.0000321)         & (0.0000326)         & (0.0000302)         \\
+[1em]
+Share of unemployed 1970&                     &                     &                     &                     &      -0.725\sym{***}\\
+                    &                     &                     &                     &                     &     (0.101)         \\
+\hline
+Estimation          &          IV         &          IV         &          IV         &          IV         &          IV         \\
+P-value for testing $\beta\_2 >= \beta\_1$&        .002         &        .214         &           0         &        .041         &         .02         \\
+F-stat first stage  &      49.525         &      36.385         &      49.382         &      36.622         &      36.465         \\
+Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
+Observations        &         311         &         311         &         311         &         311         &         311         \\
+\hline\hline
+\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
