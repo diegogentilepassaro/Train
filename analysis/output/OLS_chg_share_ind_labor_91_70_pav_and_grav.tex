@@ -2,26 +2,24 @@
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
-                    &\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}&\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}&\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}&\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}&\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}&\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}&\multicolumn{1}{c}{Change in share of industrial labor 1991-1970}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of railroads&-0.000119         &-0.0000138         &-0.0000615         &0.0000155         \\
+                &(0.0000914)         &(0.0000886)         &(0.0000886)         &(0.0000615)         \\
 [1em]
-Change in kms of railroads&   -0.000119         &  -0.0000138         &  -0.0000615         &   0.0000155         \\
-                    & (0.0000914)         & (0.0000886)         & (0.0000886)         & (0.0000615)         \\
+Change in kms of paved and gravel roads 1986-1970&        0         &        0         &        0         &        0         \\
+                &      (.)         &      (.)         &      (.)         &      (.)         \\
 [1em]
-Share of manufacturing labor 1970&                     &                     &                     &      -0.620\sym{***}\\
-                    &                     &                     &                     &    (0.0353)         \\
+Share of manufacturing labor 1970&                  &                  &                  &   -0.620\sym{***}\\
+                &                  &                  &                  & (0.0353)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .903         &.5620000000000001         &        .756         &          .4         \\
-Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         \\
-R-squared           &    .0054299         &    .1542302         &    .3082556         &    .6701675         \\
-Observations        &         311         &         311         &         311         &         311         \\
+Estimation      &      OLS         &      OLS         &      OLS         &      OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&     .903         &.5620000000000001         &     .756         &       .4         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0054299         & .1542302         & .3082556         & .6701675         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

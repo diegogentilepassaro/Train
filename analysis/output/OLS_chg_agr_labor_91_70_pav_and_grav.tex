@@ -2,26 +2,24 @@
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
 \begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
-                    &\multicolumn{1}{c}{Change in agricultural labor 1991-1970}&\multicolumn{1}{c}{Change in agricultural labor 1991-1970}&\multicolumn{1}{c}{Change in agricultural labor 1991-1970}&\multicolumn{1}{c}{Change in agricultural labor 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{Change in agricultural labor 1991-1970}&\multicolumn{1}{c}{Change in agricultural labor 1991-1970}&\multicolumn{1}{c}{Change in agricultural labor 1991-1970}&\multicolumn{1}{c}{Change in agricultural labor 1991-1970}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of railroads&    10.07\sym{***}&    6.281         &    4.396         &   -1.282         \\
+                &  (3.814)         &  (3.819)         &  (3.317)         &  (1.505)         \\
 [1em]
-Change in kms of railroads&       10.07\sym{***}&       6.281         &       4.396         &      -1.282         \\
-                    &     (3.814)         &     (3.819)         &     (3.317)         &     (1.505)         \\
+Change in kms of paved and gravel roads 1986-1970&        0         &        0         &        0         &        0         \\
+                &      (.)         &      (.)         &      (.)         &      (.)         \\
 [1em]
-Agricultural labor 1970&                     &                     &                     &      -0.670\sym{***}\\
-                    &                     &                     &                     &    (0.0202)         \\
+Agricultural labor 1970&                  &                  &                  &   -0.670\sym{***}\\
+                &                  &                  &                  & (0.0202)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .004         &         .05         &        .092         &        .803         \\
-Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         \\
-R-squared           &    .0220385         &    .1128419         &    .4531496         &    .8892428         \\
-Observations        &         311         &         311         &         311         &         311         \\
+Estimation      &      OLS         &      OLS         &      OLS         &      OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&     .004         &      .05         &     .092         &     .803         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0220385         & .1128419         & .4531496         & .8892428         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }
