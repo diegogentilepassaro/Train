@@ -405,6 +405,7 @@ program run_OLS_regression
 
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
+		mtitles("" "" "" "") title("`: var label `depvar''") ///
 		order(`trains_var' `roads_var' `baseline_depvar') label ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(p_val geo_conts prov_FE r2 N, fmt(%9.3f %9.0g) ///
