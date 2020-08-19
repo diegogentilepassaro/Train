@@ -3,8 +3,12 @@ clear all
 cap cd "/Users/diegog/Desktop/Diego/Train/derived/code"
 cap cd  "C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\__repoGitHub\derived\code"
 
+adopath + ../../lib/stata/gslab_misc/ado
+
 shell rm -r ../output/
 shell mkdir ../output
+
+
 
 *Aggregates
 do 001_merge_yearly_aggregates.do

@@ -57,7 +57,7 @@ output=pathTemp + r'\\inter_roads70_l.shp'
 parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
 processing.run("qgis:fieldcalculator", parameters)
 
-#roads: 1896
+#roads: 1986
 input = pathInput + r"/georef/roads/red_vial_1986.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
 output= pathTemp + r"/inter_roads86.shp"

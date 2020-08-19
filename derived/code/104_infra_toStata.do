@@ -101,10 +101,12 @@ gen length_km=length_met/1000
 drop length_met
 collapse (sum) length_km, by(geolevel2 type)
 ren length_km roads70_type
+destring type, replace
+
 reshape wide roads70_type, i(geolevel2) j(type)
 
-tempfile roads54
-save `roads54', replace
+tempfile roads70
+save `roads70', replace
 
 import dbase using "..\temp\\inter_roads86_l.dbf", clear case(lower)
 ren *, lower
@@ -172,6 +174,7 @@ merge 1:1 geolevel2 using `roads54'
 drop _merge
 merge 1:1 geolevel2 using `roads70'
 assert _merge==3
+drop _merge
 merge 1:1 geolevel2 using `roads86'
 assert _merge==3
 drop _merge
