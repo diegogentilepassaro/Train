@@ -408,7 +408,7 @@ program run_OLS_regression
 		order(`trains_var' `roads_var' `baseline_depvar') label ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(p_val geo_conts prov_FE r2 N, fmt(%9.3f %9.0g) ///
-	    labels("P-value for testing $\beta\_2 >= \beta\_1$" ///
+	    labels("P-value for testing $\beta_{2} >= \beta_{1}$" ///
 		"Geographic controls" ///
 	    "Province FE" ///
 	    "R-squared" "Observations")) nonotes
@@ -467,7 +467,7 @@ program run_IV_regression
 		order(`trains_var' `roads_var' `baseline_depvar') label ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(p_val F_stat_fs geo_conts prov_FE N, fmt(%9.0g) ///
-	    labels("P-value for testing $\beta\_2 >= \beta\_1$" ///
+	    labels("P-value for testing $\beta_{2} >= \beta_{1}$" ///
 		"F-stat first stage" "Geographic controls" ///
 	    "Province FE" "Observations"))
 end
