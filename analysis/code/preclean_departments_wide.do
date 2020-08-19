@@ -198,12 +198,12 @@ program preclean_data
 	
 	gen pav_and_grav_chg_86_54 = pav_and_grav86 - pav_and_grav54
 	label var pav_and_grav_chg_86_54 "Change in kms of paved and gravel roads 1986-1954"
-	gen pav_and_grav_chg_86_70 = pav_and_grav70 - pav_and_grav70
+	gen pav_and_grav_chg_86_70 = pav_and_grav86 - pav_and_grav70
 	label var pav_and_grav_chg_86_70 "Change in kms of paved and gravel roads 1986-1970"
 	
 	gen paved_roads_chg_86_54 = paved_roads86 - paved_roads54
 	label var paved_roads_chg_86_54 "Change in kms of paved roads 1986-1954"
-	gen paved_roads_chg_86_70 = paved_roads86 - paved_roads54
+	gen paved_roads_chg_86_70 = paved_roads86 - paved_roads70
 	label var paved_roads_chg_86_70 "Change in kms of paved roads 1986-1970"
 
 	gen tot_rails60 = status79_1 + status79_2 + status79_3
