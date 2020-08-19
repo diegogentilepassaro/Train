@@ -1,27 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         \\
 [1em]
-Change in kms of railroads&     0.00155\sym{***}&     0.00118\sym{***}&     0.00130\sym{***}&     0.00107\sym{***}&     0.00108\sym{***}\\
-                    &  (0.000420)         &  (0.000398)         &  (0.000362)         &  (0.000370)         &  (0.000372)         \\
+Change in kms of railroads&     0.00155\sym{***}&     0.00118\sym{***}&     0.00107\sym{***}&     0.00108\sym{***}\\
+                    &  (0.000420)         &  (0.000398)         &  (0.000370)         &  (0.000372)         \\
 [1em]
-Log population 1970 &                     &                     &                     &                     &     0.00286         \\
-                    &                     &                     &                     &                     &    (0.0193)         \\
+Log population 1970 &                     &                     &                     &     0.00286         \\
+                    &                     &                     &                     &    (0.0193)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&           0         &        .001         &           0         &        .002         &        .002         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0423268         &    .2238202         &    .4262374         &    .4517963         &    .4518393         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+Estimation          &         OLS         &         OLS         &         OLS         &         OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&           0         &        .001         &        .002         &        .002         \\
+Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         \\
+R-squared           &    .0423268         &    .2238202         &    .4517963         &    .4518393         \\
+Observations        &         311         &         311         &         311         &         311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

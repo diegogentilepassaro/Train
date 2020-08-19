@@ -1,27 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in primary labor 1991-1970}&\multicolumn{1}{c}{Change in primary labor 1991-1970}&\multicolumn{1}{c}{Change in primary labor 1991-1970}&\multicolumn{1}{c}{Change in primary labor 1991-1970}&\multicolumn{1}{c}{Change in primary labor 1991-1970}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Change in primary labor 1991-1970}&\multicolumn{1}{c}{Change in primary labor 1991-1970}&\multicolumn{1}{c}{Change in primary labor 1991-1970}&\multicolumn{1}{c}{Change in primary labor 1991-1970}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         \\
 [1em]
-Change in kms of railroads&       50.23\sym{***}&       46.23\sym{***}&       46.64\sym{***}&       43.40\sym{***}&       8.196\sym{**} \\
-                    &     (9.212)         &     (10.26)         &     (8.163)         &     (9.172)         &     (4.099)         \\
+Change in kms of railroads&       50.23\sym{***}&       46.23\sym{***}&       43.40\sym{***}&       8.196\sym{**} \\
+                    &     (9.212)         &     (10.26)         &     (9.172)         &     (4.099)         \\
 [1em]
-Primary labor 1970  &                     &                     &                     &                     &      -0.650\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0246)         \\
+Primary labor 1970  &                     &                     &                     &      -0.650\sym{***}\\
+                    &                     &                     &                     &    (0.0246)         \\
 \hline
-Estimation          &          IV         &          IV         &          IV         &          IV         &          IV         \\
-P-value for testing $\beta\_2 >= \beta\_1$&           0         &           0         &           0         &           0         &        .023         \\
-F-stat first stage  &      49.525         &      36.385         &      49.382         &      36.622         &      33.819         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+Estimation          &          IV         &          IV         &          IV         &          IV         \\
+P-value for testing $\beta\_2 >= \beta\_1$&           0         &           0         &           0         &        .023         \\
+F-stat first stage  &      49.525         &      36.385         &      36.622         &      33.819         \\
+Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         \\
+Observations        &         311         &         311         &         311         &         311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

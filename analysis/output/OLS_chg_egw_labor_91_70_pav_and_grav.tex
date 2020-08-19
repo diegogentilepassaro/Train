@@ -1,27 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}&\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}&\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}&\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}&\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}&\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}&\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}&\multicolumn{1}{c}{Change in electric, gas, and water labor 1991-1970}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         \\
 [1em]
-Change in kms of railroads&       0.171         &       0.657\sym{*}  &      -0.190         &       0.486         &       0.306         \\
-                    &     (0.404)         &     (0.384)         &     (0.407)         &     (0.389)         &     (0.263)         \\
+Change in kms of railroads&       0.171         &       0.657\sym{*}  &       0.486         &       0.306         \\
+                    &     (0.404)         &     (0.384)         &     (0.389)         &     (0.263)         \\
 [1em]
-Electric, gas, and water labor 1970&                     &                     &                     &                     &      -0.432\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0236)         \\
+Electric, gas, and water labor 1970&                     &                     &                     &      -0.432\sym{***}\\
+                    &                     &                     &                     &    (0.0236)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .336         &        .044         &         .68         &        .106         &        .123         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0005817         &    .1830434         &    .1814117         &     .316859         &    .6884142         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+Estimation          &         OLS         &         OLS         &         OLS         &         OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&        .336         &        .044         &        .106         &        .123         \\
+Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         \\
+R-squared           &    .0005817         &    .1830434         &     .316859         &    .6884142         \\
+Observations        &         311         &         311         &         311         &         311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

@@ -379,6 +379,7 @@ program run_OLS_regression
 	estadd local geo_conts "No"
     estadd local prov_FE "No"
 	estadd local estimation "OLS"
+	
 	eststo: qui reg `depvar' `roads_var' `trains_var' ///
 	   `geo_vars'
 	qui test `roads_var' - `trains_var' = 0
@@ -387,14 +388,7 @@ program run_OLS_regression
     estadd local geo_conts "Yes"
     estadd local prov_FE "No"
 	estadd local estimation "OLS"
-	eststo: qui areg `depvar' `roads_var' `trains_var', ///
-	    absorb(provname)
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-	estadd local geo_conts "No"
-    estadd local prov_FE "Yes"
-	estadd local estimation "OLS"
+	
 	eststo: qui areg `depvar' `roads_var' `trains_var' ///
 	    `geo_vars', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
@@ -403,6 +397,7 @@ program run_OLS_regression
 	estadd local geo_conts "Yes"
     estadd local prov_FE "Yes"
 	estadd local estimation "OLS"
+	
 	eststo: qui areg `depvar' `roads_var' `trains_var' ///
 	    `geo_vars' `baseline_depvar', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
@@ -440,6 +435,7 @@ program run_IV_regression
     estadd local prov_FE "No"
 	estadd local estimation "IV"
 	estadd local F_stat_fs = round(e(cdf), 0.001)
+	
 	eststo: qui ivreghdfe `depvar' ///
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	   `geo_vars'
@@ -450,16 +446,7 @@ program run_IV_regression
     estadd local prov_FE "No"
 	estadd local estimation "IV"
 	estadd local F_stat_fs = round(e(cdf), 0.001)
-	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin), ///
-	    absorb(provname)
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-	estadd local geo_conts "No"
-    estadd local prov_FE "Yes"
-	estadd local estimation "IV"
-	estadd local F_stat_fs = round(e(cdf), 0.001)
+	
 	eststo: qui ivreghdfe `depvar' (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	    `geo_vars', absorb(provname) 
 	qui test `roads_var' - `trains_var' = 0
@@ -469,6 +456,7 @@ program run_IV_regression
     estadd local prov_FE "Yes"
 	estadd local estimation "IV"
 	estadd local F_stat_fs = round(e(cdf), 0.001)
+	
 	eststo: qui ivreghdfe `depvar' ///
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	    `geo_vars' `baseline_depvar', absorb(provname)

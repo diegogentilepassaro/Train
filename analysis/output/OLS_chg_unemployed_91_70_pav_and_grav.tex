@@ -1,27 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}&\multicolumn{1}{c}{chg\_unemployed\_91\_70}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         \\
 [1em]
-Change in kms of railroads&   0.0000258\sym{*}  &  0.00000376         &   0.0000176         & -0.00000342         &  0.00000524         \\
-                    & (0.0000151)         & (0.0000143)         & (0.0000152)         & (0.0000144)         & (0.0000133)         \\
+Change in kms of railroads&   0.0000258\sym{*}  &  0.00000376         & -0.00000342         &  0.00000524         \\
+                    & (0.0000151)         & (0.0000143)         & (0.0000144)         & (0.0000133)         \\
 [1em]
-Share of unemployed 1970&                     &                     &                     &                     &      -0.687\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0967)         \\
+Share of unemployed 1970&                     &                     &                     &      -0.687\sym{***}\\
+                    &                     &                     &                     &    (0.0967)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .044         &        .397         &        .125         &        .594         &        .347         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &     .009365         &    .1895815         &    .1834669         &    .3350222         &    .4363403         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+Estimation          &         OLS         &         OLS         &         OLS         &         OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&        .044         &        .397         &        .594         &        .347         \\
+Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         \\
+R-squared           &     .009365         &    .1895815         &    .3350222         &    .4363403         \\
+Observations        &         311         &         311         &         311         &         311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

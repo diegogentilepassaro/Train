@@ -1,27 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in construction labor 1991-1970}&\multicolumn{1}{c}{Change in construction labor 1991-1970}&\multicolumn{1}{c}{Change in construction labor 1991-1970}&\multicolumn{1}{c}{Change in construction labor 1991-1970}&\multicolumn{1}{c}{Change in construction labor 1991-1970}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Change in construction labor 1991-1970}&\multicolumn{1}{c}{Change in construction labor 1991-1970}&\multicolumn{1}{c}{Change in construction labor 1991-1970}&\multicolumn{1}{c}{Change in construction labor 1991-1970}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         \\
 [1em]
-Change in kms of railroads&       2.714         &       2.697         &       0.753         &       0.385         &       0.445         \\
-                    &     (2.358)         &     (2.392)         &     (2.333)         &     (2.391)         &     (2.357)         \\
+Change in kms of railroads&       2.714         &       2.697         &       0.385         &       0.445         \\
+                    &     (2.358)         &     (2.392)         &     (2.391)         &     (2.357)         \\
 [1em]
-Construction labor 1970&                     &                     &                     &                     &     -0.0863\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0287)         \\
+Construction labor 1970&                     &                     &                     &     -0.0863\sym{***}\\
+                    &                     &                     &                     &    (0.0287)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .125         &         .13         &        .373         &        .436         &        .425         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0042684         &    .0729609         &    .2122476         &    .2432477         &    .2668728         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+Estimation          &         OLS         &         OLS         &         OLS         &         OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&        .125         &         .13         &        .436         &        .425         \\
+Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         \\
+R-squared           &    .0042684         &    .0729609         &    .2432477         &    .2668728         \\
+Observations        &         311         &         311         &         311         &         311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

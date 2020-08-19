@@ -1,27 +1,27 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}\\
+                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                    &\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}\\
 \hline
-Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         &           0         \\
-                    &         (.)         &         (.)         &         (.)         &         (.)         &         (.)         \\
+Change in kms of paved and gravel roads 1986-1970&           0         &           0         &           0         &           0         \\
+                    &         (.)         &         (.)         &         (.)         &         (.)         \\
 [1em]
-Change in kms of railroads&   -0.000115         &  0.00000308         & -0.00000943         &   0.0000478         &   0.0000810         \\
-                    &  (0.000106)         &  (0.000107)         &  (0.000106)         &  (0.000108)         & (0.0000889)         \\
+Change in kms of railroads&   -0.000115         &  0.00000308         &   0.0000478         &   0.0000810         \\
+                    &  (0.000106)         &  (0.000107)         &  (0.000108)         & (0.0000889)         \\
 [1em]
-Share of salary workers 1970&                     &                     &                     &                     &      -0.447\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0386)         \\
+Share of salary workers 1970&                     &                     &                     &      -0.447\sym{***}\\
+                    &                     &                     &                     &    (0.0386)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .862         &        .489         &        .536         &        .329         &        .181         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0038278         &    .0698455         &    .1923949         &    .2306469         &    .4797299         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+Estimation          &         OLS         &         OLS         &         OLS         &         OLS         \\
+P-value for testing $\beta\_2 >= \beta\_1$&        .862         &        .489         &        .329         &        .181         \\
+Geographic controls &          No         &         Yes         &         Yes         &         Yes         \\
+Province FE         &          No         &          No         &         Yes         &         Yes         \\
+R-squared           &    .0038278         &    .0698455         &    .2306469         &    .4797299         \\
+Observations        &         311         &         311         &         311         &         311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }
