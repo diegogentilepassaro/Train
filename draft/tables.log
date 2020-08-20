@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  20 JUL 2020 18:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  20 AUG 2020 10:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -306,12 +306,40 @@ Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
 \c@subfigure=\count121
 \c@subtable=\count122
 )
+(/usr/local/texlive/2018/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count123
+\float@exts=\toks24
+\float@box=\box28
+\@float@everytoks=\toks25
+\@floatcapt=\box29
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2016/04/27 v1.618033 publication quality tables
+\heavyrulewidth=\dimen133
+\lightrulewidth=\dimen134
+\cmidrulewidth=\dimen135
+\belowrulesep=\dimen136
+\belowbottomsep=\dimen137
+\aboverulesep=\dimen138
+\abovetopsep=\dimen139
+\cmidrulesep=\dimen140
+\cmidrulekern=\dimen141
+\defaultaddspace=\dimen142
+\@cmidla=\count124
+\@cmidlb=\count125
+\@aboverulesep=\dimen143
+\@belowrulesep=\dimen144
+\@thisruleclass=\count126
+\@lastruleclass=\count127
+\@thisrulewidth=\dimen145
+)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2018/03/04 v3.11 programmable bibliographies (PK/MW)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count123
+\lrq@indent=\count128
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
@@ -322,49 +350,49 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 (/usr/local/texlive/2018/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/local/texlive/2018/texmf-dist/tex/generic/xstring/xstring.tex
 \@xs@message=\write3
-\integerpart=\count124
-\decimalpart=\count125
+\integerpart=\count129
+\decimalpart=\count130
 )
 Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 )
-\c@tabx@nest=\count126
-\c@listtotal=\count127
-\c@listcount=\count128
-\c@liststart=\count129
-\c@liststop=\count130
-\c@citecount=\count131
-\c@citetotal=\count132
-\c@multicitecount=\count133
-\c@multicitetotal=\count134
-\c@instcount=\count135
-\c@maxnames=\count136
-\c@minnames=\count137
-\c@maxitems=\count138
-\c@minitems=\count139
-\c@citecounter=\count140
-\c@savedcitecounter=\count141
-\c@uniquelist=\count142
-\c@uniquename=\count143
-\c@refsection=\count144
-\c@refsegment=\count145
-\c@maxextratitle=\count146
-\c@maxextratitleyear=\count147
-\c@maxextradate=\count148
-\c@maxextraalpha=\count149
-\c@abbrvpenalty=\count150
-\c@highnamepenalty=\count151
-\c@lownamepenalty=\count152
-\c@maxparens=\count153
-\c@parenlevel=\count154
-\blx@tempcnta=\count155
-\blx@tempcntb=\count156
-\blx@tempcntc=\count157
-\blx@maxsection=\count158
-\blx@maxsegment@0=\count159
-\blx@notetype=\count160
-\blx@parenlevel@text=\count161
-\blx@parenlevel@foot=\count162
-\blx@sectionciteorder@0=\count163
+\c@tabx@nest=\count131
+\c@listtotal=\count132
+\c@listcount=\count133
+\c@liststart=\count134
+\c@liststop=\count135
+\c@citecount=\count136
+\c@citetotal=\count137
+\c@multicitecount=\count138
+\c@multicitetotal=\count139
+\c@instcount=\count140
+\c@maxnames=\count141
+\c@minnames=\count142
+\c@maxitems=\count143
+\c@minitems=\count144
+\c@citecounter=\count145
+\c@savedcitecounter=\count146
+\c@uniquelist=\count147
+\c@uniquename=\count148
+\c@refsection=\count149
+\c@refsegment=\count150
+\c@maxextratitle=\count151
+\c@maxextratitleyear=\count152
+\c@maxextradate=\count153
+\c@maxextraalpha=\count154
+\c@abbrvpenalty=\count155
+\c@highnamepenalty=\count156
+\c@lownamepenalty=\count157
+\c@maxparens=\count158
+\c@parenlevel=\count159
+\blx@tempcnta=\count160
+\blx@tempcntb=\count161
+\blx@tempcntc=\count162
+\blx@maxsection=\count163
+\blx@maxsegment@0=\count164
+\blx@notetype=\count165
+\blx@parenlevel@text=\count166
+\blx@parenlevel@foot=\count167
+\blx@sectionciteorder@0=\count168
 \labelnumberwidth=\skip47
 \labelalphawidth=\skip48
 \biblabelsep=\skip49
@@ -375,9 +403,9 @@ Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
 \bibhang=\skip54
 \blx@bcfin=\read1
 \blx@bcfout=\write4
-\c@mincomprange=\count164
-\c@maxcomprange=\count165
-\c@mincompwidth=\count166
+\c@mincomprange=\count169
+\c@maxcomprange=\count170
+\c@mincompwidth=\count171
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -388,74 +416,74 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'authoryear.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count167
-\c@savedafterword=\count168
-\c@annotator=\count169
-\c@savedannotator=\count170
-\c@author=\count171
-\c@savedauthor=\count172
-\c@bookauthor=\count173
-\c@savedbookauthor=\count174
-\c@commentator=\count175
-\c@savedcommentator=\count176
-\c@editor=\count177
-\c@savededitor=\count178
-\c@editora=\count179
-\c@savededitora=\count180
-\c@editorb=\count181
-\c@savededitorb=\count182
-\c@editorc=\count183
-\c@savededitorc=\count184
-\c@foreword=\count185
-\c@savedforeword=\count186
-\c@holder=\count187
-\c@savedholder=\count188
-\c@introduction=\count189
-\c@savedintroduction=\count190
-\c@namea=\count191
-\c@savednamea=\count192
-\c@nameb=\count193
-\c@savednameb=\count194
-\c@namec=\count195
-\c@savednamec=\count196
-\c@translator=\count197
-\c@savedtranslator=\count198
-\c@shortauthor=\count199
-\c@savedshortauthor=\count266
-\c@shorteditor=\count267
-\c@savedshorteditor=\count268
-\c@labelname=\count269
-\c@savedlabelname=\count270
-\c@institution=\count271
-\c@savedinstitution=\count272
-\c@lista=\count273
-\c@savedlista=\count274
-\c@listb=\count275
-\c@savedlistb=\count276
-\c@listc=\count277
-\c@savedlistc=\count278
-\c@listd=\count279
-\c@savedlistd=\count280
-\c@liste=\count281
-\c@savedliste=\count282
-\c@listf=\count283
-\c@savedlistf=\count284
-\c@location=\count285
-\c@savedlocation=\count286
-\c@organization=\count287
-\c@savedorganization=\count288
-\c@origlocation=\count289
-\c@savedoriglocation=\count290
-\c@origpublisher=\count291
-\c@savedorigpublisher=\count292
-\c@publisher=\count293
-\c@savedpublisher=\count294
-\c@language=\count295
-\c@savedlanguage=\count296
-\c@origlanguage=\count297
-\c@savedoriglanguage=\count298
-\c@pageref=\count299
-\c@savedpageref=\count300
+\c@afterword=\count172
+\c@savedafterword=\count173
+\c@annotator=\count174
+\c@savedannotator=\count175
+\c@author=\count176
+\c@savedauthor=\count177
+\c@bookauthor=\count178
+\c@savedbookauthor=\count179
+\c@commentator=\count180
+\c@savedcommentator=\count181
+\c@editor=\count182
+\c@savededitor=\count183
+\c@editora=\count184
+\c@savededitora=\count185
+\c@editorb=\count186
+\c@savededitorb=\count187
+\c@editorc=\count188
+\c@savededitorc=\count189
+\c@foreword=\count190
+\c@savedforeword=\count191
+\c@holder=\count192
+\c@savedholder=\count193
+\c@introduction=\count194
+\c@savedintroduction=\count195
+\c@namea=\count196
+\c@savednamea=\count197
+\c@nameb=\count198
+\c@savednameb=\count199
+\c@namec=\count266
+\c@savednamec=\count267
+\c@translator=\count268
+\c@savedtranslator=\count269
+\c@shortauthor=\count270
+\c@savedshortauthor=\count271
+\c@shorteditor=\count272
+\c@savedshorteditor=\count273
+\c@labelname=\count274
+\c@savedlabelname=\count275
+\c@institution=\count276
+\c@savedinstitution=\count277
+\c@lista=\count278
+\c@savedlista=\count279
+\c@listb=\count280
+\c@savedlistb=\count281
+\c@listc=\count282
+\c@savedlistc=\count283
+\c@listd=\count284
+\c@savedlistd=\count285
+\c@liste=\count286
+\c@savedliste=\count287
+\c@listf=\count288
+\c@savedlistf=\count289
+\c@location=\count290
+\c@savedlocation=\count291
+\c@organization=\count292
+\c@savedorganization=\count293
+\c@origlocation=\count294
+\c@savedoriglocation=\count295
+\c@origpublisher=\count296
+\c@savedorigpublisher=\count297
+\c@publisher=\count298
+\c@savedpublisher=\count299
+\c@language=\count300
+\c@savedlanguage=\count301
+\c@origlanguage=\count302
+\c@savedoriglanguage=\count303
+\c@pageref=\count304
+\c@savedpageref=\count305
 \shorthandwidth=\skip55
 \shortjournalwidth=\skip56
 \shortserieswidth=\skip57
@@ -481,13 +509,13 @@ Package biblatex Info: ... file 'biblatex.def' found.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/biblatex.def
 File: biblatex.def 2018/03/04 v3.11 biblatex compatibility (PK/MW)
-\c@textcitecount=\count301
-\c@textcitetotal=\count302
-\c@textcitemaxnames=\count303
-\c@biburlnumpenalty=\count304
-\c@biburlucpenalty=\count305
-\c@biburllcpenalty=\count306
-\c@smartand=\count307
+\c@textcitecount=\count306
+\c@textcitetotal=\count307
+\c@textcitemaxnames=\count308
+\c@biburlnumpenalty=\count309
+\c@biburlucpenalty=\count310
+\c@biburllcpenalty=\count311
+\c@smartand=\count312
 )
 Package biblatex Info: Trying to load bibliography style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.bbx' found.
@@ -499,8 +527,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
 File: standard.bbx 2018/03/04 v3.11 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count308
-\c@bbx:relatedtotal=\count309
+\c@bbx:relatedcount=\count313
+\c@bbx:relatedtotal=\count314
 ))
 Package biblatex Info: Trying to load citation style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.cbx' found.
@@ -532,20 +560,20 @@ File: english.lbx 2018/03/04 v3.11 biblatex localization (PK/MW)
 (./tables.aux)
 \openout1 = `tables.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 26.
+LaTeX Font Info:    ... okay on input line 26.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -581,19 +609,19 @@ LaTeX Font Info:    ... okay on input line 21.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 21.
+\AtBeginShipoutBox=\box30
+Package hyperref Info: Link coloring OFF on input line 26.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count310
+\c@section@level=\count315
 )
-LaTeX Info: Redefining \ref on input line 21.
-LaTeX Info: Redefining \pageref on input line 21.
-LaTeX Info: Redefining \nameref on input line 21.
+LaTeX Info: Redefining \ref on input line 26.
+LaTeX Info: Redefining \pageref on input line 26.
+LaTeX Info: Redefining \nameref on input line 26.
 
 (./tables.out) (./tables.out)
 \@outlinefile=\write5
@@ -602,17 +630,17 @@ LaTeX Info: Redefining \nameref on input line 21.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count311
-\scratchdimen=\dimen133
-\scratchbox=\box29
-\nofMPsegments=\count312
-\nofMParguments=\count313
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count314
-\MPscratchDim=\dimen134
-\MPnumerator=\count315
-\makeMPintoPDFobject=\count316
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count316
+\scratchdimen=\dimen146
+\scratchbox=\box31
+\nofMPsegments=\count317
+\nofMParguments=\count318
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count319
+\MPscratchDim=\dimen147
+\MPnumerator=\count320
+\makeMPintoPDFobject=\count321
+\everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -631,6 +659,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
@@ -641,9 +670,9 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'tables.bbl' not found.
 
 No file tables.bbl.
-Package biblatex Info: Reference section=0 on input line 21.
-Package biblatex Info: Reference segment=0 on input line 21.
-(../analysis/output/OLS_chg_log_pop_91_60_paved.tex
+Package biblatex Info: Reference section=0 on input line 26.
+Package biblatex Info: Reference segment=0 on input line 26.
+(../analysis/output/OLS_chg_log_pop_91_60_pav_and_grav.tex
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -654,39 +683,115 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 3.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ))
-(../analysis/output/IV_EUC_chg_log_pop_91_60_paved.tex)
-(../analysis/output/IV_LCP_chg_log_pop_91_60_paved.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 44.
- [1
+(../analysis/output/IV_EUC_chg_log_pop_91_60_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_urbpop_91_60_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_urbpop_91_60_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_share_urbpop_91_60_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_share_urbpop_91_60_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 44.
+[2] [3] (../analysis/output/OLS_chg_log_pop_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_pop_91_70_pav_and_grav.tex) [4
+
+]
+(../analysis/output/OLS_chg_agr_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_agr_labor_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_min_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_min_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_ind_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_ind_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_egw_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_egw_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_constr_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_constr_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5
+
+] [6] [7] [8] [9] (../analysis/output/OLS_chg_primary_91_70_pav_and_grav.tex) (
+../analysis/output/IV_EUC_chg_primary_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_secondary_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_secondary_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_tertiary_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_tertiary_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_unemployed_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_unemployed_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_inactive_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_inactive_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_mig5_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_mig5_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_secondary_ed_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_secondary_ed_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
+[10
+
+] [11] [12] [13] [14] [15] [16]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
  (./tables.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 44.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 44.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
 Package rerunfilecheck Info: File `tables.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 935468AFF84251DA3057758D1864F908;720.
 Package logreq Info: Writing requests to 'tables.run.xml'.
 \openout1 = `tables.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 14413 strings out of 492649
- 240038 string characters out of 6129622
- 713115 words of memory out of 5000000
- 18153 multiletter control sequences out of 15000+600000
- 8439 words of font info for 34 fonts, out of 8000000 for 9000
+ 14675 strings out of 492649
+ 247083 string characters out of 6129622
+ 757391 words of memory out of 5000000
+ 18277 multiletter control sequences out of 15000+600000
+ 10564 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,11n,38p,844b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
-/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/l
-ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tables.pdf (1 page, 53877 bytes).
+ 36i,15n,38p,844b,742s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on tables.pdf (16 pages, 124174 bytes).
 PDF statistics:
- 36 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
- 5 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 180 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
