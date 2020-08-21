@@ -4,364 +4,216 @@ cd "/Users/diegog/Desktop/Diego/Train/analysis/code"
 
 program main
     use "../temp/departments_wide_panel.dta", clear
-		
-    *** 1960 base outcomes
-	    *** OLS 
-	        *** Population outcomes
-	run_OLS_regression, depvar(chg_log_pop_91_60) ///
-	    baseline_depvar(log_pop1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		trains_var(tot_rails_chg_80s_60) ///
-		table_name(OLS_chg_log_pop_91_60_pav_and_grav)
-	run_OLS_regression, depvar(chg_log_urbpop_91_60) ///
-	    baseline_depvar(log_urbpop1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		trains_var(tot_rails_chg_80s_60) ///
-		table_name(OLS_chg_log_urbpop_91_60_pav_and_grav)
-	run_OLS_regression, depvar(chg_share_urbpop_91_60) ///
-	    baseline_depvar(share_urbpop_1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		trains_var(tot_rails_chg_80s_60) ///
-		table_name(OLS_chg_share_urbpop_91_60_pav_and_grav)
 
 	local instrument_roads "euclidean_hypo_network"
-	*local instrument_roads "lcp_hypo_network"
-	    
-		*** IV
-		    *** Population outcomes
-    run_IV_regression, depvar(chg_log_pop_91_60) ///
-	    baseline_depvar(log_pop1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		trains_var(tot_rails_chg_80s_60) ///
-		table_name(IV_EUC_chg_log_pop_91_60_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-	run_IV_regression, depvar(chg_log_urbpop_91_60) ///
-	    baseline_depvar(log_urbpop1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		trains_var(tot_rails_chg_80s_60) ///
-		table_name(IV_EUC_chg_log_urbpop_91_60_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-	run_IV_regression, depvar(chg_share_urbpop_91_60) ///
-	    baseline_depvar(share_urbpop_1960) ///
-	    roads_var(pav_and_grav_chg_86_54) ///
-		trains_var(tot_rails_chg_80s_60) ///
-		table_name(IV_EUC_chg_share_urbpop_91_60_pav_and_grav) ///
-		instrument_roads(`instrument_roads')	
-		
+
+    *** 1960 base outcomes
+	    *** Population outcomes
+	foreach depvar in log_pop log_urbpop share_urbpop {
+	
+	    run_OLS_regression, depvar(chg_`depvar'_91_60) ///
+	        baseline_depvar(`depvar'_1960) ///
+	        roads_var(chg_pav_and_grav_86_54) ///
+		    trains_var(chg_tot_rails_86_60) ///
+		    table_name(OLS_chg_`depvar'_91_60_pav_and_grav)
+       run_IV_regression, depvar(chg_`depvar'_91_60) ///
+	        baseline_depvar(`depvar'_1960) ///
+	        roads_var(chg_pav_and_grav_86_54) ///
+		    trains_var(chg_tot_rails_86_60) ///
+		    table_name(IV_EUC_chg_`depvar'_91_60_pav_and_grav) ///
+		    instrument_roads(`instrument_roads')
+	}
+	
     *** 1970 base outcomes
-	    *** OLS
-		    *** Population outcomes    
+		*** Population outcomes 
 	run_OLS_regression, depvar(chg_log_pop_91_70) ///
-	    baseline_depvar(log_pop1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
+	    baseline_depvar(log_pop_1970) ///
+	    roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
 		table_name(OLS_chg_log_pop_91_70_pav_and_grav)
-
-		    *** Labor shares by activity
-	run_OLS_regression, depvar(chg_share_agr_labor_91_70) ///
-	    baseline_depvar(share_agr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_share_agr_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_share_min_labor_91_70) ///
-	    baseline_depvar(share_min_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_share_min_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_share_ind_labor_91_70) ///
-	    baseline_depvar(share_ind_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_share_ind_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_share_egw_labor_91_70) ///
-	    baseline_depvar(share_egw_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_share_egw_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_share_constr_labor_91_70) ///
-	    baseline_depvar(share_constr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_share_constr_labor_91_70_pav_and_grav)
-		
-		    *** Labor shares by broad sector
-	run_OLS_regression, depvar(chg_sh_primary_91_70) ///
-	    baseline_depvar(sh_primary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_sh_primary_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_sh_secondary_91_70) ///
-	    baseline_depvar(sh_secondary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_sh_secondary_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_sh_tertiary_91_70) ///
-	    baseline_depvar(sh_tertiary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_sh_tertiary_91_70_pav_and_grav)
-		
-		    *** Labor shares by class of workers
-	run_OLS_regression, depvar(chg_sh_sew_91_70) ///
-	    baseline_depvar(classwk_1_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_sh_sew_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_sh_sw_91_70) ///
-	    baseline_depvar(classwk_2_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_sh_sw_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_sh_uw_91_70) ///
-	    baseline_depvar(classwk_3_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_sh_uw_91_70_pav_and_grav)
-		
-		    *** Education outcomes
-	run_OLS_regression, depvar(chg_college_91_70) ///
-	    baseline_depvar(college_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_college_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_secondary_ed_91_70) ///
-	    baseline_depvar(secondary_ed_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_secondary_ed_91_70_pav_and_grav)
-
-		    *** Migration outcomes
-	run_OLS_regression, depvar(chg_mig5_91_70) ///
-	    baseline_depvar(mig5_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_mig5_91_70_pav_and_grav)
-
-		    *** Employment outcomes
-	run_OLS_regression, depvar(chg_unemployed_91_70) ///
-	    baseline_depvar(unemployed_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_unemployed_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_inactive_91_70) ///
-	    baseline_depvar(inactive_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_inactive_91_70_pav_and_grav)
-		
-		    **** Labor levels by activity
-    run_OLS_regression, depvar(chg_agr_labor_91_70) ///
-	    baseline_depvar(agr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_agr_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_min_labor_91_70) ///
-	    baseline_depvar(min_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_min_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_ind_labor_91_70) ///
-	    baseline_depvar(ind_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_ind_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_egw_labor_91_70) ///
-	    baseline_depvar(egw_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_egw_labor_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_constr_labor_91_70) ///
-	    baseline_depvar(constr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_constr_labor_91_70_pav_and_grav)
-
-		    *** Labor levels by broad sector
-	run_OLS_regression, depvar(chg_primary_91_70) ///
-	    baseline_depvar(primary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_primary_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_secondary_91_70) ///
-	    baseline_depvar(secondary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_secondary_91_70_pav_and_grav)
-	run_OLS_regression, depvar(chg_tertiary_91_70) ///
-	    baseline_depvar(tertiary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(OLS_chg_tertiary_91_70_pav_and_grav)
-		
-	    *** IV
-		    *** Population outcomes 
     run_IV_regression, depvar(chg_log_pop_91_70) ///
-	    baseline_depvar(log_pop1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
+	    baseline_depvar(log_pop_1970) ///
+	    roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_EUC_chg_log_pop_91_70_pav_and_grav) ///
 		instrument_roads(`instrument_roads')
 		
-		    *** Labor shares by activity
-    run_IV_regression, depvar(chg_share_agr_labor_91_70) ///
-	    baseline_depvar(share_agr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_share_agr_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_share_min_labor_91_70) ///
-	    baseline_depvar(share_min_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_share_min_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_share_ind_labor_91_70) ///
-	    baseline_depvar(share_ind_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_share_ind_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_share_egw_labor_91_70) ///
-	    baseline_depvar(share_egw_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_share_egw_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_share_constr_labor_91_70) ///
-	    baseline_depvar(share_constr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_share_constr_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
+		*** Labor shares by activity
+	foreach depvar in share_agr_labor share_min_labor share_ind_labor ///
+		share_egw_labor share_constr_labor ///
+		share_wret_labor share_hrest_labor share_tsc_labor ///
+		share_fin_labor share_pub_labor ///
+		share_rsb_labor share_edu_labor share_hsw_labor ///
+		share_ot_labor share_oth_labor {
 		
-		    *** Labor shares by broad sector
-    run_IV_regression, depvar(chg_sh_primary_91_70) ///
-	    baseline_depvar(sh_primary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_sh_primary_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_sh_secondary_91_70) ///
-	    baseline_depvar(sh_secondary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_sh_secondary_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_sh_tertiary_91_70) ///
-	    baseline_depvar(sh_tertiary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_sh_tertiary_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+		}
 		
-		    *** Labor shares by class of workers
-	run_IV_regression, depvar(chg_sh_sew_91_70) ///
-	    baseline_depvar(classwk_1_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_sh_sew_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-	run_IV_regression, depvar(chg_sh_sw_91_70) ///
-	    baseline_depvar(classwk_2_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_sh_sw_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-	run_IV_regression, depvar(chg_sh_uw_91_70) ///
-	    baseline_depvar(classwk_3_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_sh_uw_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
+		*** Labor shares by broad sector
+	foreach depvar in sh_primary sh_secondary sh_tertiary {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
+
+		 *** Labor shares by class of workers
+	foreach depvar in sh_sew sh_sw sh_uw {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
 		
-		    *** Education outcomes
-    run_IV_regression, depvar(chg_college_91_70) ///
-	    baseline_depvar(college_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_college_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_secondary_ed_91_70) ///
-	    baseline_depvar(secondary_ed_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_secondary_ed_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
+		*** Education shares
+	foreach depvar in secondary_ed college {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
+
+		*** Migration shares
+	run_OLS_regression, depvar(chg_mig5_91_70) ///
+		baseline_depvar(mig5_1970) ///
+		roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
+		table_name(OLS_chg_mig5_91_70_pav_and_grav)
 		
-		    *** Migration outcomes
-    run_IV_regression, depvar(chg_mig5_91_70) ///
-	    baseline_depvar(mig5_1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
+	run_IV_regression, depvar(chg_mig5_91_70) ///
+		baseline_depvar(mig5_1970) ///
+		roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_EUC_chg_mig5_91_70_pav_and_grav) ///
 		instrument_roads(`instrument_roads')
-		
-		    *** Employment outcomes
-    run_IV_regression, depvar(chg_unemployed_91_70) ///
-	    baseline_depvar(unemployed_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_unemployed_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_inactive_91_70) ///
-	    baseline_depvar(inactive_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_inactive_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-		
-		    **** Labor levels by activity
-    run_IV_regression, depvar(chg_agr_labor_91_70) ///
-	    baseline_depvar(agr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_agr_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_min_labor_91_70) ///
-	    baseline_depvar(min_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_min_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_ind_labor_91_70) ///
-	    baseline_depvar(ind_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_ind_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_egw_labor_91_70) ///
-	    baseline_depvar(egw_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_egw_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_constr_labor_91_70) ///
-	    baseline_depvar(constr_labor1970) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_constr_labor_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-		
-		    *** Labor levels by broad sector
-    run_IV_regression, depvar(chg_primary_91_70) ///
-	    baseline_depvar(primary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_primary_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_secondary_91_70) ///
-	    baseline_depvar(secondary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_secondary_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
-    run_IV_regression, depvar(chg_tertiary_91_70) ///
-	    baseline_depvar(tertiary_70) ///
-	    roads_var(pav_and_grav_chg_86_70) ///
-		trains_var(tot_rails_chg_80s_70s) ///
-		table_name(IV_EUC_chg_tertiary_91_70_pav_and_grav) ///
-		instrument_roads(`instrument_roads')
 
+		*** Employment status shares
+	foreach depvar in sh_unemployed sh_inactive {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
+		
+		**** Labor levels by activity
+	foreach depvar in log_agr_labor log_min_labor log_ind_labor ///
+		log_egw_labor log_constr_labor ///
+		log_wret_labor log_hrest_labor log_tsc_labor ///
+		log_fin_labor log_pub_labor ///
+		log_rsb_labor log_edu_labor log_hsw_labor ///
+		log_ot_labor log_oth_labor {
+		
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+		}
+
+		*** Labor levels by broad sector
+	foreach depvar in log_primary log_secondary log_tertiary {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
+	
+	**** Labor levels by class of workers
+	foreach depvar in log_sew log_sw log_uw {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
+
+	**** Employment status levels
+	foreach depvar in log_unemployed log_inactive {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
 end
 
 program run_OLS_regression
@@ -375,33 +227,33 @@ program run_OLS_regression
 	eststo: qui reg `depvar' `roads_var' `trains_var'
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-	estadd local geo_conts "No"
-    estadd local prov_FE "No"
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local geo_conts "No"
+    qui estadd local prov_FE "No"
 	
 	eststo: qui reg `depvar' `roads_var' `trains_var' ///
 	   `geo_vars'
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-    estadd local geo_conts "Yes"
-    estadd local prov_FE "No"
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+    qui estadd local geo_conts "Yes"
+    qui estadd local prov_FE "No"
 	
 	eststo: qui areg `depvar' `roads_var' `trains_var' ///
 	    `geo_vars', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-	estadd local geo_conts "Yes"
-    estadd local prov_FE "Yes"
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local geo_conts "Yes"
+    qui estadd local prov_FE "Yes"
 	
 	eststo: qui areg `depvar' `roads_var' `trains_var' ///
 	    `geo_vars' `baseline_depvar', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-	estadd local geo_conts "Yes"
-    estadd local prov_FE "Yes"
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local geo_conts "Yes"
+    qui estadd local prov_FE "Yes"
 
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
@@ -428,39 +280,39 @@ program run_IV_regression
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.001)
-	estadd local geo_conts "No"
-    estadd local prov_FE "No"
-	estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.001)
+	qui estadd local geo_conts "No"
+    qui estadd local prov_FE "No"
+	qui estadd local F_stat_fs = round(e(cdf), 0.001)
 	
 	eststo: qui ivreghdfe `depvar' ///
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	   `geo_vars'
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.001)
-    estadd local geo_conts "Yes"
-    estadd local prov_FE "No"
-	estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.001)
+    qui estadd local geo_conts "Yes"
+    qui estadd local prov_FE "No"
+	qui estadd local F_stat_fs = round(e(cdf), 0.001)
 	
 	eststo: qui ivreghdfe `depvar' (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	    `geo_vars', absorb(provname) 
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-	estadd local geo_conts "Yes"
-    estadd local prov_FE "Yes"
-	estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local geo_conts "Yes"
+    qui estadd local prov_FE "Yes"
+	qui estadd local F_stat_fs = round(e(cdf), 0.001)
 	
 	eststo: qui ivreghdfe `depvar' ///
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	    `geo_vars' `baseline_depvar', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
-	estadd local geo_conts "Yes"
-    estadd local prov_FE "Yes"	
-	estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local geo_conts "Yes"
+    qui estadd local prov_FE "Yes"	
+	qui estadd local F_stat_fs = round(e(cdf), 0.001)
 
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///

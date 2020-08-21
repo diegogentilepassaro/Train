@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
+\hline
+Change in kms of railroads 1986-1970&   0.0158\sym{***}&  0.00895\sym{*}  &   0.0111\sym{**} &   0.0106\sym{*}  \\
+                &(0.00507)         &(0.00513)         &(0.00550)         &(0.00547)         \\
+[1em]
+Change in kms of paved and gravel roads 1986-1970&  0.00191\sym{***}&  0.00170\sym{*}  &  0.00183\sym{*}  &  0.00178\sym{*}  \\
+                &(0.000736)         &(0.000916)         &(0.00108)         &(0.00107)         \\
+[1em]
+Log hotels and restaurants labor 1970&                  &                  &                  &  -0.0626         \\
+                &                  &                  &                  & (0.0683)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .001         &      .06         &      .03         &     .035         \\
+F-stat first stage&   16.458         &   11.715         &    10.03         &   10.017         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      241         &      241         &      241         &      241         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
