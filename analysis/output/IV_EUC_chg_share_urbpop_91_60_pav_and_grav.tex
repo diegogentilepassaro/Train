@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
+\hline
+Change in kms of railroads 1986-1960&-0.0000282         &-0.000190         &-0.000237         &-0.000123         \\
+                &(0.000380)         &(0.000438)         &(0.000428)         &(0.000298)         \\
+[1em]
+Change in kms of paved and gravel roads 1986-1954&0.0000500         &0.0000128         &-0.00000705         &-0.0000583         \\
+                &(0.0000790)         &(0.000106)         &(0.000104)         &(0.0000733)         \\
+[1em]
+Share of urban population 1960&                  &                  &                  &   -0.535\sym{***}\\
+                &                  &                  &                  & (0.0315)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&      .59         &.6990000000000001         &     .726         &     .595         \\
+F-stat first stage&   50.424         &   36.863         &   39.049         &   38.962         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      311         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}

@@ -1,27 +1,24 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in share of people living in province they were born 1991-1970}&\multicolumn{1}{c}{Change in share of people living in province they were born 1991-1970}&\multicolumn{1}{c}{Change in share of people living in province they were born 1991-1970}&\multicolumn{1}{c}{Change in share of people living in province they were born 1991-1970}&\multicolumn{1}{c}{Change in share of people living in province they were born 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads&  -0.0000593\sym{**} &  -0.0000382         &  -0.0000609\sym{**} &  -0.0000256         &  -0.0000103         \\
-                    & (0.0000237)         & (0.0000283)         & (0.0000260)         & (0.0000299)         & (0.0000293)         \\
+Change in kms of railroads 1986-1970&-0.0000939         &-0.000177         &-0.000268\sym{*}  &-0.000270\sym{**} \\
+                &(0.000137)         &(0.000136)         &(0.000136)         &(0.000132)         \\
 [1em]
-Change in kms of railroads&  -0.0000720         &   -0.000165         &   -0.000166         &   -0.000266\sym{*}  &   -0.000269\sym{**} \\
-                    &  (0.000136)         &  (0.000135)         &  (0.000138)         &  (0.000135)         &  (0.000132)         \\
+Change in kms of paved and gravel roads 1986-1970&-0.0000802\sym{***}&-0.0000614\sym{*}  &-0.0000306         &-0.0000127         \\
+                &(0.0000289)         &(0.0000359)         &(0.0000393)         &(0.0000384)         \\
 [1em]
-% of people living in the province they were born - 1970&                     &                     &                     &                     &      -0.609\sym{***}\\
-                    &                     &                     &                     &                     &     (0.145)         \\
+Share of people living in the province they were born 1970&                  &                  &                  &   -0.610\sym{***}\\
+                &                  &                  &                  &  (0.145)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &          .5         &          .5         &          .5         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &     .019886         &    .0925405         &    .1932275         &    .2708404         &    .3142349         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .541         &     .803         &     .961         &     .976         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0244221         & .0957935         & .2705115         & .3142002         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

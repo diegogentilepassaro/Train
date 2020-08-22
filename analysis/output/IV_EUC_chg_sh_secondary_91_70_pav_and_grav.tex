@@ -1,27 +1,26 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in share of secondary labor 1991-1970}&\multicolumn{1}{c}{Change in share of secondary labor 1991-1970}&\multicolumn{1}{c}{Change in share of secondary labor 1991-1970}&\multicolumn{1}{c}{Change in share of secondary labor 1991-1970}&\multicolumn{1}{c}{Change in share of secondary labor 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads&   0.0000319         &   0.0000108         &  -0.0000240         &  -0.0000129         & -0.00000202         \\
-                    & (0.0000353)         & (0.0000424)         & (0.0000448)         & (0.0000443)         & (0.0000327)         \\
+Change in kms of railroads 1986-1970&-0.000326         &-0.0000896         &-0.000388         &0.0000396         \\
+                &(0.000290)         &(0.000299)         &(0.000306)         &(0.000226)         \\
 [1em]
-Change in kms of railroads&   -0.000327         &  -0.0000809         &   -0.000783\sym{**} &   -0.000372         &   0.0000587         \\
-                    &  (0.000282)         &  (0.000291)         &  (0.000317)         &  (0.000295)         &  (0.000220)         \\
+Change in kms of paved and gravel roads 1986-1970&0.0000455         &0.0000175         &-0.0000225         &-0.00000449         \\
+                &(0.0000509)         &(0.0000706)         &(0.0000752)         &(0.0000553)         \\
 [1em]
-Share of secondary labor 1970&                     &                     &                     &                     &      -0.581\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0402)         \\
+Share of secondary labor 1970&                  &                  &                  &   -0.581\sym{***}\\
+                &                  &                  &                  & (0.0406)         \\
 \hline
-Estimation          &          IV         &          IV         &          IV         &          IV         &          IV         \\
-P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &        .501         &          .5         &          .5         \\
-F-stat first stage  &      28.641         &      22.501         &      21.583         &      23.059         &      22.811         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .922         &     .656         &     .913         &     .413         \\
+F-stat first stage&   25.688         &   18.574         &   19.361         &   19.608         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

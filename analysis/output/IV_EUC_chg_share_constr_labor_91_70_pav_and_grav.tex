@@ -1,27 +1,26 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in share of construction labor 1991-1970}&\multicolumn{1}{c}{Change in share of construction labor 1991-1970}&\multicolumn{1}{c}{Change in share of construction labor 1991-1970}&\multicolumn{1}{c}{Change in share of construction labor 1991-1970}&\multicolumn{1}{c}{Change in share of construction labor 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads& -0.00000232         &  -0.0000165         & -0.00000808         & -0.00000828         &  0.00000950         \\
-                    & (0.0000189)         & (0.0000246)         & (0.0000247)         & (0.0000263)         & (0.0000193)         \\
+Change in kms of railroads 1986-1970&-0.0000853         &-0.000129         &-0.000203         & 0.000172         \\
+                &(0.000155)         &(0.000174)         &(0.000181)         &(0.000134)         \\
 [1em]
-Change in kms of railroads&  -0.0000847         &   -0.000123         &   -0.000231         &   -0.000202         &    0.000166         \\
-                    &  (0.000151)         &  (0.000169)         &  (0.000174)         &  (0.000175)         &  (0.000130)         \\
+Change in kms of paved and gravel roads 1986-1970&-0.00000334         &-0.0000275         &-0.0000139         &0.0000161         \\
+                &(0.0000273)         &(0.0000412)         &(0.0000446)         &(0.0000326)         \\
 [1em]
-Share of construction labor 1970&                     &                     &                     &                     &      -0.734\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0485)         \\
+Share of construction labor 1970&                  &                  &                  &   -0.734\sym{***}\\
+                &                  &                  &                  & (0.0485)         \\
 \hline
-Estimation          &          IV         &          IV         &          IV         &          IV         &          IV         \\
-P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &          .5         &          .5         &          .5         \\
-F-stat first stage  &      28.641         &      22.501         &      21.583         &      23.059         &      22.742         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&      .72         &     .743         &     .882         &     .096         \\
+F-stat first stage&   25.688         &   18.574         &   19.361         &   19.376         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

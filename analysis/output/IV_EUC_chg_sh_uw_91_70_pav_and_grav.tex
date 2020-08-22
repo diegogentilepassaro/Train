@@ -1,27 +1,26 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in share of unpaid workers 1991-1970}&\multicolumn{1}{c}{Change in share of unpaid workers 1991-1970}&\multicolumn{1}{c}{Change in share of unpaid workers 1991-1970}&\multicolumn{1}{c}{Change in share of unpaid workers 1991-1970}&\multicolumn{1}{c}{Change in share of unpaid workers 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads&  -0.0000363\sym{**} &  -0.0000564\sym{**} &  -0.0000127         &  -0.0000196         &  -0.0000238         \\
-                    & (0.0000176)         & (0.0000230)         & (0.0000211)         & (0.0000219)         & (0.0000197)         \\
+Change in kms of railroads 1986-1970&-0.000229         &-0.000308\sym{*}  &-0.0000129         &-0.000100         \\
+                &(0.000144)         &(0.000162)         &(0.000151)         &(0.000135)         \\
 [1em]
-Change in kms of railroads&   -0.000223         &   -0.000296\sym{*}  &   -0.000143         &  -0.0000118         &  -0.0000959         \\
-                    &  (0.000141)         &  (0.000158)         &  (0.000149)         &  (0.000146)         &  (0.000131)         \\
+Change in kms of paved and gravel roads 1986-1970&-0.0000520\sym{**} &-0.0000936\sym{**} &-0.0000327         &-0.0000398         \\
+                &(0.0000254)         &(0.0000382)         &(0.0000370)         &(0.0000332)         \\
 [1em]
-Share of unpaid workers 1970&                     &                     &                     &                     &      -0.362\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0453)         \\
+Share of unpaid workers 1970&                  &                  &                  &   -0.358\sym{***}\\
+                &                  &                  &                  & (0.0459)         \\
 \hline
-Estimation          &          IV         &          IV         &          IV         &          IV         &          IV         \\
-P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &          .5         &          .5         &          .5         \\
-F-stat first stage  &      28.641         &      22.501         &      21.583         &      23.059         &      23.412         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .913         &     .931         &     .441         &.6940000000000001         \\
+F-stat first stage&   25.688         &   18.574         &   19.361         &   19.974         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

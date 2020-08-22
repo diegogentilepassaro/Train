@@ -1,27 +1,24 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in college 1991-1970}&\multicolumn{1}{c}{Change in college 1991-1970}&\multicolumn{1}{c}{Change in college 1991-1970}&\multicolumn{1}{c}{Change in college 1991-1970}&\multicolumn{1}{c}{Change in college 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads& -0.00000115         & 0.000000805         & -0.00000435\sym{**} & -0.00000106         &   -2.56e-08         \\
-                    &(0.00000192)         &(0.00000230)         &(0.00000207)         &(0.00000240)         &(0.00000225)         \\
+Change in kms of railroads 1986-1970&0.00000714         &-0.00000112         &0.00000423         &0.00000534         \\
+                &(0.0000113)         &(0.0000112)         &(0.0000111)         &(0.0000104)         \\
 [1em]
-Change in kms of railroads&  0.00000682         & -0.00000144         &  0.00000926         &  0.00000465         &  0.00000572         \\
-                    & (0.0000111)         & (0.0000110)         & (0.0000110)         & (0.0000109)         & (0.0000102)         \\
+Change in kms of paved and gravel roads 1986-1970&-0.00000106         &0.00000124         &-0.00000205         &-0.000000819         \\
+                &(0.00000238)         &(0.00000296)         &(0.00000320)         &(0.00000301)         \\
 [1em]
-Share of college 1970&                     &                     &                     &                     &       0.386\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0609)         \\
+Share of at least college 1970&                  &                  &                  &    0.372\sym{***}\\
+                &                  &                  &                  & (0.0601)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &          .5         &          .5         &          .5         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0030345         &    .0733373         &    .2145359         &    .2743507         &    .3652464         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .227         &     .584         &     .282         &     .274         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0025548         & .0732625         & .2718339         & .3592995         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

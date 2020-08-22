@@ -1,0 +1,24 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
+\hline
+Change in kms of railroads 1986-1970& -0.00175         & -0.00344\sym{**} & -0.00409\sym{**} & -0.00409\sym{**} \\
+                &(0.00160)         &(0.00153)         &(0.00170)         &(0.00171)         \\
+[1em]
+Change in kms of paved and gravel roads 1986-1970&-0.000395         &0.0000202         &0.0000162         &0.0000124         \\
+                &(0.000479)         &(0.000635)         &(0.000771)         &(0.000777)         \\
+[1em]
+Log financial services and insurance labor 1970&                  &                  &                  &  0.00340         \\
+                &                  &                  &                  & (0.0680)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .806         &     .984         &     .988         &     .987         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0084933         & .1629022         & .2516232         & .2516353         \\
+Observations    &      186         &      186         &      186         &      186         \\
+\hline\hline
+\end{tabular}
+}

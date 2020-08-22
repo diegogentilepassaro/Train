@@ -1,27 +1,24 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}&\multicolumn{1}{c}{Change in Log urban population}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads&    0.000156         &  -0.0000192         &   -0.000204         &  -0.0000959         &  -0.0000977         \\
-                    &  (0.000135)         &  (0.000145)         &  (0.000135)         &  (0.000155)         &  (0.000147)         \\
+Change in kms of railroads 1986-1960&  0.00144\sym{***}& 0.000498         & 0.000178         &-0.00000218         \\
+                &(0.000546)         &(0.000505)         &(0.000525)         &(0.000500)         \\
 [1em]
-Change in kms of railroads&     0.00144\sym{***}&    0.000490         &    0.000320         &    0.000191         &   0.0000134         \\
-                    &  (0.000551)         &  (0.000510)         &  (0.000511)         &  (0.000530)         &  (0.000506)         \\
+Change in kms of paved and gravel roads 1986-1954& 0.000162         &-0.0000139         &-0.0000938         &-0.0000980         \\
+                &(0.000135)         &(0.000144)         &(0.000155)         &(0.000147)         \\
 [1em]
-Log urban population 1960&                     &                     &                     &                     &      -0.134\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0254)         \\
+Log urban population 1960&                  &                  &                  &   -0.134\sym{***}\\
+                &                  &                  &                  & (0.0254)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .499         &          .5         &          .5         &          .5         &          .5         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0239387         &    .2454514         &    .3456676         &    .3532172         &    .4163183         \\
-Observations        &         286         &         286         &         286         &         286         &         286         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .007         &      .15         &     .297         &     .422         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0246414         &  .245522         & .3531073         & .4162969         \\
+Observations    &      286         &      286         &      286         &      286         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

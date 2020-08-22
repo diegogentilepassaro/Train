@@ -1,27 +1,24 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}&\multicolumn{1}{c}{Change in share of salary workers 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads&   0.0000595\sym{***}&   0.0000527\sym{**} &   0.0000462\sym{**} &   0.0000555\sym{**} &   0.0000327         \\
-                    & (0.0000185)         & (0.0000224)         & (0.0000203)         & (0.0000240)         & (0.0000199)         \\
+Change in kms of railroads 1986-1970&-0.0000257         &0.0000390         & 0.000100         & 0.000113         \\
+                &(0.000107)         &(0.000107)         &(0.000109)         &(0.0000902)         \\
 [1em]
-Change in kms of railroads&  -0.0000428         &   0.0000306         &   0.0000498         &   0.0000890         &    0.000105         \\
-                    &  (0.000106)         &  (0.000107)         &  (0.000108)         &  (0.000109)         & (0.0000898)         \\
+Change in kms of paved and gravel roads 1986-1970&0.0000763\sym{***}&0.0000684\sym{**} &0.0000784\sym{**} &0.0000483\sym{*}  \\
+                &(0.0000226)         &(0.0000285)         &(0.0000314)         &(0.0000262)         \\
 [1em]
-Share of salary workers 1970&                     &                     &                     &                     &      -0.441\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0386)         \\
+Share of salary workers 1970&                  &                  &                  &   -0.440\sym{***}\\
+                &                  &                  &                  & (0.0386)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &          .5         &          .5         &          .5         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0361265         &    .0866012         &    .2066849         &     .245068         &    .4846708         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .837         &     .608         &     .419         &     .234         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0393939         & .0872715         & .2472962         & .4859752         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

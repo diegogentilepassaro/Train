@@ -1,27 +1,26 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}&\multicolumn{1}{c}{Change in Log population 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads&    0.000336         &   -0.000154         &    0.000102         &    0.000119         &    0.000228         \\
-                    &  (0.000223)         &  (0.000244)         &  (0.000229)         &  (0.000245)         &  (0.000223)         \\
+Change in kms of railroads 1986-1960&  0.00622\sym{***}&  0.00346\sym{***}&  0.00366\sym{***}&  0.00294\sym{***}\\
+                &(0.00107)         &(0.00101)         &(0.00100)         &(0.000927)         \\
 [1em]
-Change in kms of railroads&     0.00625\sym{***}&     0.00345\sym{***}&     0.00361\sym{***}&     0.00369\sym{***}&     0.00296\sym{***}\\
-                    &   (0.00109)         &   (0.00102)         &   (0.00101)         &   (0.00102)         &  (0.000939)         \\
+Change in kms of paved and gravel roads 1986-1954& 0.000337         &-0.000150         & 0.000118         & 0.000227         \\
+                &(0.000223)         &(0.000244)         &(0.000245)         &(0.000222)         \\
 [1em]
-Log population 1960 &                     &                     &                     &                     &      -0.178\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0260)         \\
+Log population 1960&                  &                  &                  &   -0.177\sym{***}\\
+                &                  &                  &                  & (0.0261)         \\
 \hline
-Estimation          &          IV         &          IV         &          IV         &          IV         &          IV         \\
-P-value for testing $\beta\_2 >= \beta\_1$&        .486         &        .494         &        .494         &        .494         &        .496         \\
-F-stat first stage  &      49.981         &      36.683         &      32.732         &      38.621         &      38.004         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&        0         &        0         &        0         &     .001         \\
+F-stat first stage&   50.424         &   36.863         &   39.049         &   38.394         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

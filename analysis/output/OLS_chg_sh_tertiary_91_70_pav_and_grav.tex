@@ -1,27 +1,24 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{5}{c}}
+\begin{tabular}{l*{4}{c}}
 \hline\hline
-                    &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
-                    &\multicolumn{1}{c}{Change in share of tertiary labor 1991-1970}&\multicolumn{1}{c}{Change in share of tertiary labor 1991-1970}&\multicolumn{1}{c}{Change in share of tertiary labor 1991-1970}&\multicolumn{1}{c}{Change in share of tertiary labor 1991-1970}&\multicolumn{1}{c}{Change in share of tertiary labor 1991-1970}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
 \hline
-Change in kms of paved and gravel roads&   0.0000210         &  -0.0000178         &   0.0000115         & -0.00000542         &  -0.0000241         \\
-                    & (0.0000222)         & (0.0000266)         & (0.0000232)         & (0.0000278)         & (0.0000254)         \\
+Change in kms of railroads 1986-1970& 0.000105         &0.0000508         &0.0000432         &0.0000450         \\
+                &(0.000129)         &(0.000127)         &(0.000127)         &(0.000115)         \\
 [1em]
-Change in kms of railroads&    0.000117         &   0.0000671         &   0.0000862         &   0.0000496         &   0.0000552         \\
-                    &  (0.000127)         &  (0.000127)         &  (0.000124)         &  (0.000126)         &  (0.000115)         \\
+Change in kms of paved and gravel roads 1986-1970&0.0000117         &-0.0000488         &-0.0000155         &-0.0000420         \\
+                &(0.0000271)         &(0.0000337)         &(0.0000365)         &(0.0000334)         \\
 [1em]
-Share of tertiary labor 1970&                     &                     &                     &                     &      -0.271\sym{***}\\
-                    &                     &                     &                     &                     &    (0.0356)         \\
+Share of tertiary labor 1970&                  &                  &                  &   -0.273\sym{***}\\
+                &                  &                  &                  & (0.0356)         \\
 \hline
-Estimation          &         OLS         &         OLS         &         OLS         &         OLS         &         OLS         \\
-P-value for testing $\beta\_2 >= \beta\_1$&          .5         &          .5         &          .5         &          .5         &          .5         \\
-Geographic controls &          No         &         Yes         &          No         &         Yes         &         Yes         \\
-Province FE         &          No         &          No         &         Yes         &         Yes         &         Yes         \\
-R-squared           &    .0046566         &    .0704672         &    .2540004         &    .2688429         &    .3942207         \\
-Observations        &         311         &         311         &         311         &         311         &         311         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&     .227         &     .217         &     .319         &     .222         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       & .0023524         & .0754652         & .2692104         & .3956839         \\
+Observations    &      311         &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{6}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }
