@@ -16,7 +16,9 @@ gen x=hhwt if edattain!=0 & edattain!=9
 by country year geolev2: egen den = sum(x)
 
 gen college = educ / den
+gen ncollege = educ
 gen secondary = educ2 / den
+gen nsecondary = educ2
 drop e x educ educ2 den
 
 *Urbanization
@@ -36,6 +38,7 @@ bys country year geolev2: egen w=sum(x*hhwt)
 bys country year geolev2: egen z=sum(y*hhwt)
 
 gen mig5=z/w
+gen nmig5=z
 
 drop x y w z
 
@@ -83,7 +86,7 @@ drop y z x
 
 }
 
-collapse (mean) pop college secondary urbpop mig5 *indgen_* *occisco_*  *classwk_* *empstat_*, by(year country geolev1 geolev2 geo2_ar)
+collapse (mean) pop *college *secondary *urbpop mig5 *indgen_* *occisco_*  *classwk_* *empstat_*, by(year country geolev1 geolev2 geo2_ar)
 
 preserve
 

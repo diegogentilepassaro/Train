@@ -18,11 +18,11 @@ replace y=x if y==.
 drop provname x
 ren y provname
 
-foreach var of var urbpop mig5 *indgen_* *occisco_* *classwk_* *empstat* college secondary{
+foreach var of var urbpop *mig5 *indgen_* *occisco_* *classwk_* *empstat* *college *secondary{
   ren `var' `var'_
 }
 
-reshape wide pop urbpop mig5 *indgen_* *occisco_* *classwk_* *empstat* college secondary, i(geolev2) j(year)
+reshape wide pop urbpop *mig5 *indgen_* *occisco_* *classwk_* *empstat* *college *secondary, i(geolev2) j(year)
 
 merge 1:1 geolev2 using "..\temp\ARG_districts_geo.dta"
 
@@ -114,6 +114,7 @@ foreach year in 1970 1980 1991 2001 2010{
 
 
   label var mig5_`year' "% of people living in the province they were born - `year'"
+  label var nmig5_`year' "# of people living in the province they were born - `year'"
 
   label var classwk_1_`year' "`year' self-employed"
   label var classwk_2_`year' "`year' waged"

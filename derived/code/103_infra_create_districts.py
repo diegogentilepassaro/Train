@@ -33,6 +33,19 @@ output=pathTemp + r'\\inter_lp79_l.shp'
 parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
 processing.run("qgis:fieldcalculator", parameters)
 
+#roads: paved+gravel 1954;1970;1986
+
+input = pathInput + r"/georef/railroads/comparacion_1954_1970_1986.shp"
+overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+output= pathTemp + r"/inter_roadsall.shp"
+parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
+processing.run("native:intersection", parameters)
+
+input = output
+output=pathTemp + r'\\inter_roadsall_l.shp'
+parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
+processing.run("qgis:fieldcalculator", parameters)
+
 #roads: 1954
 input = pathInput + r"/georef/roads/red_vial_1954.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
@@ -68,6 +81,8 @@ input = output
 output=pathTemp + r'\\inter_roads86_l.shp'
 parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
 processing.run("qgis:fieldcalculator", parameters)
+
+
 
 #hypothetical network 1
 input = pathInput + r"/perez/output/hypo_CMST_network.shp"
