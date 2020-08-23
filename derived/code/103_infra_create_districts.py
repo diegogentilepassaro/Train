@@ -35,7 +35,7 @@ processing.run("qgis:fieldcalculator", parameters)
 
 #roads: paved+gravel 1954;1970;1986
 
-input = pathInput + r"/georef/railroads/comparacion_1954_1970_1986.shp"
+input = pathInput + r"/georef/roads/comparacion_54_70_86.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
 output= pathTemp + r"/inter_roadsall.shp"
 parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}

@@ -93,6 +93,9 @@ collapse (sum) length_km, by(geolevel2 class)
 ren length_km roadsall_class
 reshape wide roadsall_class, i(geolevel2) j(class)
 
+tempfile roadsall
+save `roadsall', replace
+
 import dbase using "..\temp\\inter_roads54_l.dbf", clear case(lower)
 ren *, lower
 keep type length_met geolevel2
@@ -188,6 +191,9 @@ assert _merge==3
 drop _merge
 merge 1:1 geolevel2 using `roads86'
 assert _merge==3
+drop _merge
+merge 1:1 geolevel2 using `roadsall'
+*assert _merge==3
 drop _merge
 merge 1:1 geolevel2 using `hypoCMST'
 *assert _merge==3

@@ -86,7 +86,7 @@ drop y z x
 
 }
 
-collapse (mean) pop *college *secondary *urbpop mig5 *indgen_* *occisco_*  *classwk_* *empstat_*, by(year country geolev1 geolev2 geo2_ar)
+collapse (mean) pop *college *secondary *urbpop *mig5 *indgen_* *occisco_*  *classwk_* *empstat_*, by(year country geolev1 geolev2 geo2_ar)
 
 preserve
 

@@ -22,7 +22,7 @@ foreach var of var urbpop *mig5 *indgen_* *occisco_* *classwk_* *empstat* *colle
   ren `var' `var'_
 }
 
-reshape wide pop urbpop *mig5 *indgen_* *occisco_* *classwk_* *empstat* *college *secondary, i(geolev2) j(year)
+reshape wide pop urbpop *mig5* *indgen_* *occisco_* *classwk_* *empstat* *college* *secondary*, i(geolev2) j(year)
 
 merge 1:1 geolev2 using "..\temp\ARG_districts_geo.dta"
 
@@ -124,6 +124,16 @@ foreach year in 1970 1980 1991 2001 2010{
   label var empstat_2_`year' "`year' unemployed"
   label var empstat_3_`year' "`year' inactive"
 }
+
+
+
+label var roadsall_class1 "existe en 1954 - 1970 - 1986"
+label var roadsall_class2 "existe en 1970 - 1986  ; no existe en 1954 "
+label var roadsall_class3 "existe en 1986 ; no existe en 1954 - 1970
+label var roadsall_class4 "existe en 1954 - 1970 ; no existe en - 1986"
+label var roadsall_class5 "existe en 1954 - 1986 ; no existe en - 1970"
+label var roadsall_class6 "existe en 1954 ; no existe en - 1970 - 1986"
+label var roadsall_class7 "existe en 1970 ; no existe en 1954 - 1986"
 
 
 
