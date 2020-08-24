@@ -12,12 +12,12 @@ program main
 	foreach depvar in log_pop log_urbpop share_urbpop {
 	
 	    run_OLS_regression, depvar(chg_`depvar'_91_60) ///
-	        baseline_depvar(`depvar'_1960) ///
+	        baseline_depvar(log_urbpop_1960) ///
 	        roads_var(chg_pav_and_grav_86_54) ///
 		    trains_var(chg_tot_rails_86_60) ///
 		    table_name(OLS_chg_`depvar'_91_60_pav_and_grav)
        run_IV_regression, depvar(chg_`depvar'_91_60) ///
-	        baseline_depvar(`depvar'_1960) ///
+	        baseline_depvar(log_urbpop_1960) ///
 	        roads_var(chg_pav_and_grav_86_54) ///
 		    trains_var(chg_tot_rails_86_60) ///
 		    table_name(IV_EUC_chg_`depvar'_91_60_pav_and_grav) ///
@@ -27,12 +27,12 @@ program main
     *** 1970 base outcomes
 		*** Population outcomes 
 	run_OLS_regression, depvar(chg_log_pop_91_70) ///
-	    baseline_depvar(log_pop_1970) ///
+	    baseline_depvar(log_urbpop_1960) ///
 	    roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(OLS_chg_log_pop_91_70_pav_and_grav)
     run_IV_regression, depvar(chg_log_pop_91_70) ///
-	    baseline_depvar(log_pop_1970) ///
+	    baseline_depvar(log_urbpop_1960) ///
 	    roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_EUC_chg_log_pop_91_70_pav_and_grav) ///
@@ -47,13 +47,13 @@ program main
 		share_ot_labor share_oth_labor {
 		
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -64,13 +64,13 @@ program main
 	foreach depvar in sh_primary sh_secondary sh_tertiary {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -81,13 +81,13 @@ program main
 	foreach depvar in sh_sew sh_sw sh_uw {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -98,13 +98,13 @@ program main
 	foreach depvar in secondary_ed college {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -113,13 +113,13 @@ program main
 
 		*** Migration shares
 	run_OLS_regression, depvar(chg_mig5_91_70) ///
-		baseline_depvar(mig5_1970) ///
+		baseline_depvar(log_urbpop_1960) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(OLS_chg_mig5_91_70_pav_and_grav)
 		
 	run_IV_regression, depvar(chg_mig5_91_70) ///
-		baseline_depvar(mig5_1970) ///
+		baseline_depvar(log_urbpop_1960) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_EUC_chg_mig5_91_70_pav_and_grav) ///
@@ -129,13 +129,13 @@ program main
 	foreach depvar in sh_unemployed sh_inactive {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -151,13 +151,13 @@ program main
 		log_ot_labor log_oth_labor {
 		
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -168,13 +168,13 @@ program main
 	foreach depvar in log_primary log_secondary log_tertiary {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -185,13 +185,13 @@ program main
 	foreach depvar in log_sew log_sw log_uw {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -202,13 +202,13 @@ program main
 	foreach depvar in log_nsecondary_ed log_ncollege {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
@@ -217,13 +217,13 @@ program main
 
 		*** Migration levels
 	run_OLS_regression, depvar(chg_log_nmig5_91_70) ///
-		baseline_depvar(log_nmig5_1970) ///
+		baseline_depvar(log_urbpop_1960) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(OLS_chg_log_nmig5_91_70_pav_and_grav)
 		
 	run_IV_regression, depvar(chg_log_nmig5_91_70) ///
-		baseline_depvar(log_nmig5_1970) ///
+		baseline_depvar(log_urbpop_1960) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_EUC_chg_log_nmig5_91_70_pav_and_grav) ///
@@ -233,13 +233,13 @@ program main
 	foreach depvar in log_unemployed log_inactive {
 	
 		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
 			
 		run_IV_regression, depvar(chg_`depvar'_91_70) ///
-			baseline_depvar(`depvar'_1970) ///
+			baseline_depvar(log_urbpop_1960) ///
 			roads_var(chg_pav_and_grav_86_70) ///
 			trains_var(chg_tot_rails_86_70) ///
 			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
