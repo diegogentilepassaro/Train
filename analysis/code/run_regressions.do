@@ -258,7 +258,7 @@ program run_OLS_regression
 	eststo: qui reg `depvar' `roads_var' `trains_var'
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
 	qui estadd local geo_conts "No"
     qui estadd local prov_FE "No"
 	
@@ -266,7 +266,7 @@ program run_OLS_regression
 	   `geo_vars'
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
     qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "No"
 	
@@ -274,7 +274,7 @@ program run_OLS_regression
 	    `geo_vars', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"
 	
@@ -282,7 +282,7 @@ program run_OLS_regression
 	    `geo_vars' `baseline_depvar', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"
 
@@ -291,7 +291,7 @@ program run_OLS_regression
 		mtitles("" "" "" "") ///
 		order(`trains_var' `roads_var' `baseline_depvar') label ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
-		stats(p_val geo_conts prov_FE r2 N, fmt(%9.3f %9.0g) ///
+		stats(p_val geo_conts prov_FE r2 N, fmt(a4 a4 a4 a4 a4) ///
 	    labels("P-value for testing $\beta_{2} >= \beta_{1}$" ///
 		"Geographic controls" ///
 	    "Province FE" ///
@@ -311,46 +311,46 @@ program run_IV_regression
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.0001)
 	qui estadd local geo_conts "No"
     qui estadd local prov_FE "No"
-	qui estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 	
 	eststo: qui ivreghdfe `depvar' ///
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	   `geo_vars'
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.0001)
     qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "No"
-	qui estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 	
 	eststo: qui ivreghdfe `depvar' (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	    `geo_vars', absorb(provname) 
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"
-	qui estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 	
 	eststo: qui ivreghdfe `depvar' ///
 	    (`roads_var' `trains_var' = `instrument_roads' studied_larkin) ///
 	    `geo_vars' `baseline_depvar', absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.001)
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"	
-	qui estadd local F_stat_fs = round(e(cdf), 0.001)
+	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
 		mtitles("" "" "" "") ///
 		order(`trains_var' `roads_var' `baseline_depvar') label ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
-		stats(p_val F_stat_fs geo_conts prov_FE N, fmt(%9.0g) ///
+		stats(p_val F_stat_fs geo_conts prov_FE N, fmt(a4 a4 a4 a4 a4) ///
 	    labels("P-value for testing $\beta_{2} >= \beta_{1}$" ///
 		"F-stat first stage" "Geographic controls" ///
 	    "Province FE" "Observations"))
