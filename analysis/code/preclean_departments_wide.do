@@ -314,7 +314,29 @@ program preclean_data
 	gen_chg_var_and_label, var(log_uw) year_pre(70) year_post(91) ///
 	    label(log unpaid workers)
 	
-	**** employment status levels
+	**** Education levels 
+	rename (nsecondary_1970 nsecondary_1991) ///
+	    (nsecondary_ed_1970 nsecondary_ed_1991)
+		
+	foreach year in 70 91 {
+		gen_log_var_and_label, var(ncollege_19`year') label(Log number of people with at least college 19`year')
+		gen_log_var_and_label, var(nsecondary_ed_19`year') label(Log number of people with at least secondary education 19`year')
+	}
+	
+	gen_chg_var_and_label, var(log_ncollege) year_pre(70) year_post(91) ///
+	    label(number of people with at least college education)
+	gen_chg_var_and_label, var(log_nsecondary_ed) year_pre(70) year_post(91) ///
+	    label(number of people with at least secondary education)
+		
+	**** Migration levels
+	foreach year in 70 91 {
+		gen_log_var_and_label, var(nmig5_19`year') label(Log number of people living in the province they were born 19`year')
+	}
+	
+	gen_chg_var_and_label, var(log_nmig5) year_pre(70) year_post(91) ///
+	    label(number of people living in the province they were born)	
+	
+	**** Employment status levels
 	rename (nempstat_2_1970 nempstat_3_1970 nempstat_2_1991 nempstat_3_1991) ////
 	    (unemployed_1970 inactive_1970 unemployed_1991 inactive_1991)
 	
@@ -329,7 +351,7 @@ program preclean_data
 	    label(log inactive)
 	
 	**** instruments 
-	rename (roads54_type1 roads54_type2 roads54_type3 roads54_type4 ///
+	/*rename (roads54_type1 roads54_type2 roads54_type3 roads54_type4 ///
 	    roads70_type1 roads70_type2 roads70_type3 roads70_type4 ///
 		roads86_type1 roads86_type2 roads86_type3 roads86_type4) ///
 		(paved_roads_1954 gravel_roads_1954 dirt_roads_1954 footprint_roads_1954 ///
@@ -356,10 +378,7 @@ program preclean_data
 	    label(kms of paved and gravel roads)
 	gen_chg_var_and_label, var(pav_and_grav) year_pre(70) year_post(86) ///
 	    label(kms of paved and gravel roads)
-	
-	gen connected_pav_grav_86_54 = (chg_pav_and_grav_86_54 > 0)
-	gen connected_pav_grav_86_70 = (chg_pav_and_grav_86_70 > 0)
-
+		
 	gen_chg_var_and_label, var(paved_roads) year_pre(54) year_post(86) ///
 	    label(kms of paved roads)
 	gen_chg_var_and_label, var(paved_roads) year_pre(70) year_post(86) ///
@@ -367,6 +386,22 @@ program preclean_data
 		
 	gen connected_paved_86_54 = (chg_paved_roads_86_54 > 0)
 	gen connected_paved_86_70 = (chg_paved_roads_86_70 > 0)
+	*/
+	
+	gen pav_and_grav_1954 = roadsall_class1 + roadsall_class4 + ///
+	    roadsall_class5 + roadsall_class6
+	gen pav_and_grav_1970 = roadsall_class1 + roadsall_class2 + ///
+	    roadsall_class4 + roadsall_class7
+    gen pav_and_grav_1986 = roadsall_class1 + roadsall_class2 + ///
+	    roadsall_class3 + roadsall_class5
+	
+	gen_chg_var_and_label, var(pav_and_grav) year_pre(54) year_post(86) ///
+	    label(kms of paved and gravel roads)
+	gen_chg_var_and_label, var(pav_and_grav) year_pre(70) year_post(86) ///
+	    label(kms of paved and gravel roads)
+
+	gen connected_pav_grav_86_54 = (chg_pav_and_grav_86_54 > 0)
+	gen connected_pav_grav_86_70 = (chg_pav_and_grav_86_70 > 0)
 
 	gen tot_rails_1960 = status79_1 + status79_2 + status79_3
 	gen tot_rails_1970 = status79_1 + status79_2
