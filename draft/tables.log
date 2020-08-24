@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  20 AUG 2020 12:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  24 AUG 2020 12:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -701,68 +701,140 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 (../analysis/output/IV_EUC_chg_log_pop_91_70_pav_and_grav.tex) [4
 
 ]
-(../analysis/output/OLS_chg_agr_labor_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_agr_labor_91_70_pav_and_grav.tex)
-(../analysis/output/OLS_chg_min_labor_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_min_labor_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_agr_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_agr_labor_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_min_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_min_labor_91_70_pav_and_grav.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../analysis/output/OLS_chg_ind_labor_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_ind_labor_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_ind_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_ind_labor_91_70_pav_and_grav.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../analysis/output/OLS_chg_egw_labor_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_egw_labor_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_egw_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_egw_labor_91_70_pav_and_grav.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../analysis/output/OLS_chg_constr_labor_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_constr_labor_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_constr_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_constr_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_wret_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_wret_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_hrest_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_hrest_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_tsc_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_tsc_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_fin_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_fin_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_pub_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_pub_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_rsb_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_rsb_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_edu_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_edu_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_hsw_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_hsw_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_ot_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_ot_labor_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_oth_labor_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_oth_labor_91_70_pav_and_grav.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [5
 
-] [6] [7] [8] [9] (../analysis/output/OLS_chg_primary_91_70_pav_and_grav.tex) (
-../analysis/output/IV_EUC_chg_primary_91_70_pav_and_grav.tex)
-(../analysis/output/OLS_chg_secondary_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_secondary_91_70_pav_and_grav.tex)
+] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19]
+(../analysis/output/OLS_chg_log_primary_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_primary_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_secondary_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_secondary_91_70_pav_and_grav.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(../analysis/output/OLS_chg_tertiary_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_tertiary_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_tertiary_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_tertiary_91_70_pav_and_grav.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10
+[20
 
-] [11] [12] (../analysis/output/OLS_chg_unemployed_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_unemployed_91_70_pav_and_grav.tex)
-(../analysis/output/OLS_chg_inactive_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_inactive_91_70_pav_and_grav.tex)
+] [21] [22]
+(../analysis/output/OLS_chg_log_unemployed_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_unemployed_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_inactive_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_inactive_91_70_pav_and_grav.tex)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13
+(../analysis/output/OLS_chg_log_sew_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_sew_91_70_pav_and_grav.tex)
 
-] [14] (../analysis/output/OLS_chg_mig5_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_mig5_91_70_pav_and_grav.tex) [15
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_sw_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_sw_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+(../analysis/output/OLS_chg_log_uw_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_uw_91_70_pav_and_grav.tex)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[23
+
+] [24] [25] [26] [27]
+(../analysis/output/OLS_chg_log_nmig5_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_nmig5_91_70_pav_and_grav.tex) [28
 
 ]
-(../analysis/output/OLS_chg_secondary_ed_91_70_pav_and_grav.tex)
-(../analysis/output/IV_EUC_chg_secondary_ed_91_70_pav_and_grav.tex)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 428.
- [16
+(../analysis/output/OLS_chg_log_nsecondary_ed_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_nsecondary_ed_91_70_pav_and_grav.tex)
+(../analysis/output/OLS_chg_log_ncollege_91_70_pav_and_grav.tex)
+(../analysis/output/IV_EUC_chg_log_ncollege_91_70_pav_and_grav.tex)
 
-]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 428.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-(./tables.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 428.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 428.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 750.
+[29
+
+] [30]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 750.
+ (./tables.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 750.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 750.
 Package rerunfilecheck Info: File `tables.out' has not changed.
 (rerunfilecheck)             Checksum: 935468AFF84251DA3057758D1864F908;720.
 Package logreq Info: Writing requests to 'tables.run.xml'.
@@ -770,9 +842,9 @@ Package logreq Info: Writing requests to 'tables.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 14675 strings out of 492649
- 247083 string characters out of 6129622
- 739391 words of memory out of 5000000
+ 14787 strings out of 492649
+ 252365 string characters out of 6129622
+ 821391 words of memory out of 5000000
  18277 multiletter control sequences out of 15000+600000
  10564 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -786,10 +858,10 @@ sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
 ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on tables.pdf (16 pages, 124171 bytes).
+Output written on tables.pdf (30 pages, 148842 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
+ 257 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
