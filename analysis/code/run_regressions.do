@@ -198,6 +198,37 @@ program main
 			instrument_roads(`instrument_roads')
 	}
 
+		*** Education levels
+	foreach depvar in log_nsecondary_ed log_ncollege {
+	
+		run_OLS_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(OLS_chg_`depvar'_91_70_pav_and_grav)
+			
+		run_IV_regression, depvar(chg_`depvar'_91_70) ///
+			baseline_depvar(`depvar'_1970) ///
+			roads_var(chg_pav_and_grav_86_70) ///
+			trains_var(chg_tot_rails_86_70) ///
+			table_name(IV_EUC_chg_`depvar'_91_70_pav_and_grav) ///
+			instrument_roads(`instrument_roads')
+	}
+
+		*** Migration levels
+	run_OLS_regression, depvar(chg_log_nmig5_91_70) ///
+		baseline_depvar(log_nmig5_1970) ///
+		roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
+		table_name(OLS_chg_log_nmig5_91_70_pav_and_grav)
+		
+	run_IV_regression, depvar(chg_log_nmig5_91_70) ///
+		baseline_depvar(log_nmig5_1970) ///
+		roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
+		table_name(IV_EUC_chg_log_nmig5_91_70_pav_and_grav) ///
+		instrument_roads(`instrument_roads')
+		
 	**** Employment status levels
 	foreach depvar in log_unemployed log_inactive {
 	
