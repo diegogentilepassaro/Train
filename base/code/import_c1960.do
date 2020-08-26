@@ -249,6 +249,23 @@ append using `p9'
 
 drop page
 
+preserve
+
+count
+sort pop
+gen i=_n
+gen x=r(N)-i
+sort x
+drop if provincia=="CAPITALFEDERAL"
+gen j=_n
+keep if j<=50
+order provincia distrito pop j
+list provincia distrito pop j
+export excel using "..\temp\top50localidades1960.xlsx", replace
+
+restore
+
+
 *COLLAPSING + URBANIZATION CALCULATION
 
 *1 observation for city of buenos Aires
@@ -256,9 +273,6 @@ replace distrito="CITYOFBUENOSAIRES" if provincia=="CAPITALFEDERAL"
 
 gen urban=(pop>2000)
 collapse (sum) pop, by(provincia distrito urban)
-
-
-
 
 gen g="-"
 egen x=concat(provincia g distrito)
