@@ -73,7 +73,7 @@ program run_first_stage
 		stats(f_stat geo_conts prov_FE N, fmt(%9.2g %9s %9s %9.0g) ///
 	    labels("F-stat (instruments = 0)" ///
 		"Geographic controls" ///
-	    "Province FE" "Observations"))
+	    "Province FE" "Observations")) nonotes
 end
 
 main
