@@ -27,6 +27,53 @@ singlelinecheck=false % <-- important
 
 \section{Results}
 
+\subsection{First stage}
+
+\begin{table}[h!]
+\caption{\textbf{First stage regressions}}
+    \centering
+  \begin{subtable}[t]{0.88\linewidth}
+          \caption*{\textbf{Panel A: Change in paved and gravel roads (kms) 1986-1954}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/FS_EUC_chg_pav_and_grav_86_54}
+    }
+    \end{subtable}
+      
+  \begin{subtable}[t]{0.88\linewidth}
+      \caption*{\textbf{Panel B: Change in paved and gravel roads (kms) 1986-1970}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/FS_EUC_chg_pav_and_grav_86_70}
+    }
+    \end{subtable}
+    
+  \begin{subtable}[t]{0.88\linewidth}
+          \caption*{\textbf{Panel C: Change in railroads (kms) 1986-1960}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/FS_EUC_chg_tot_rails_86_60}
+    }
+    \end{subtable}
+      
+  \begin{subtable}[t]{0.88\linewidth}
+      \caption*{\textbf{Panel D: Change in railroads (kms) 1986-1970}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/FS_EUC_chg_tot_rails_86_70}
+    }
+    \end{subtable}
+    
+\end{table}
+
+\clearpage
+
 \subsection{Baseline 1960}
 
 \subsubsection{Population outcomes}
@@ -480,6 +527,79 @@ singlelinecheck=false % <-- important
 
 \clearpage
 
+\subsubsection{Labor shares by sector of activity}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of agricultural labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_share_agr_labor_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_share_agr_labor_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of mining labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_share_min_labor_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_share_min_labor_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of manufacturing labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_share_ind_labor_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_share_ind_labor_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\clearpage
+
 \subsubsection{Labor levels by broad sector of activity}
 
 \begin{table}[h!]
@@ -553,7 +673,80 @@ singlelinecheck=false % <-- important
 
 \clearpage
 
-\subsubsection{Employment}
+\subsubsection{Labor shares by broad sector of activity}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of primary sector labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_sh_primary_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_sh_primary_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of secondary sector labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_sh_secondary_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_sh_secondary_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of tertiary sector labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_sh_tertiary_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_sh_tertiary_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\clearpage
+
+\subsubsection{Employment levels}
 
 \begin{table}[h!]
 \caption{\textbf{Change in log unemployed 1991-1970}}
@@ -672,6 +865,56 @@ singlelinecheck=false % <-- important
 
 \clearpage
 
+\subsubsection{Employment status shares}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of unemployed 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_sh_unemployed_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_sh_unemployed_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of inactive 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_sh_inactive_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_sh_inactive_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\clearpage
+
 \subsubsection{Migration}
 
 \begin{table}[h!]
@@ -699,7 +942,7 @@ singlelinecheck=false % <-- important
 
 \clearpage
 
-\subsubsection{Education}
+\subsubsection{Education levels}
 
 \begin{table}[h!]
 \caption{\textbf{Change in log number of people with at least secondary education completed 1991-1970}}
@@ -746,5 +989,175 @@ singlelinecheck=false % <-- important
     }
     \end{subtable}
 \end{table}
+
+\clearpage 
+
+\subsubsection{Education shares}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of people with at least secondary education completed 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_secondary_ed_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_secondary_ed_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in share of people with at least college education completed 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_chg_college_91_70_pav_and_grav}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_chg_college_91_70_pav_and_grav}
+    }
+    \end{subtable}
+\end{table}
+
+\clearpage
+
+\subsection{Complements or substitutes? (exploratory)}
+
+\begin{table}[h!]
+\caption{\textbf{Change in log population 1991-1960}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_int_chg_log_pop_91_60_pav_and_grav.tex}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_int_chg_log_pop_91_60_pav_and_grav.tex}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in log urban population 1991-1960}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_int_chg_log_urbpop_91_60_pav_and_grav.tex}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_int_chg_log_urbpop_91_60_pav_and_grav.tex}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in log primary sector labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_int_chg_log_primary_91_70_pav_and_grav.tex}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_int_chg_log_primary_91_70_pav_and_grav.tex}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in log secondary sector labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_int_chg_log_secondary_91_70_pav_and_grav.tex}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_int_chg_log_secondary_91_70_pav_and_grav.tex}
+    }
+    \end{subtable}
+\end{table}
+
+\begin{table}[h!]
+\caption{\textbf{Change in log tertiary sector labor 1991-1970}}
+    \centering
+  \begin{subtable}[t]{\linewidth}
+          \caption*{\textbf{Panel A: OLS}}
+
+    \centering
+    \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/OLS_int_chg_log_tertiary_91_70_pav_and_grav.tex}
+    }
+    \end{subtable}
+  
+  \begin{subtable}[t]{\linewidth}
+      \caption*{\textbf{Panel B: IV}}
+    \centering
+     \resizebox{\textwidth}{!}{
+    \vspace{0pt}    
+    \input{../analysis/output/IV_EUC_int_chg_log_tertiary_91_70_pav_and_grav.tex}
+    }
+    \end{subtable}
+\end{table}
+
 
 \end{document}
