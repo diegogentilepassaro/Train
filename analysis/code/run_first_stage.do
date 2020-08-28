@@ -67,6 +67,7 @@ program run_first_stage
 
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
+		mtitles("" "" "" "") /// 
 		order(`instrument_roads' studied_larkin `baseline_depvar') label ///
 	    keep(`instrument_roads' studied_larkin `baseline_depvar') ///
 		stats(f_stat geo_conts prov_FE N, fmt(%9.2g %9s %9s %9.0g) ///
