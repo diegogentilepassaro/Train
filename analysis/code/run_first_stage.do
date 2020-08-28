@@ -65,7 +65,7 @@ program run_first_stage
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"	
 
-	esttab * /*using "../output/`table_name'.tex"*/, replace compress ///
+	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
 		order(`instrument_roads' studied_larkin `baseline_depvar') label ///
 	    keep(`instrument_roads' studied_larkin `baseline_depvar') ///
