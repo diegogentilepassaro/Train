@@ -418,8 +418,8 @@ program preclean_data
 	rename (hypomeanEMST_kms hypoCMST_kms studied_1) ///
 	    (euclidean_hypo_network lcp_hypo_network studied_larkin)
 		
-	label var euclidean_hypo_network "Hypothetical LCP MST (Euclidean distance) (kms)"
-	label var lcp_hypo_network "Hypothetical LCP MST (Construction cost) (kms)"
+	label var euclidean_hypo_network "Euclidean spanning tree network (kms)"
+	label var lcp_hypo_network "Least-cost path spanning tree network (kms)"
     label var studied_larkin "Studied railroad tracks (kms)"
 end
 
