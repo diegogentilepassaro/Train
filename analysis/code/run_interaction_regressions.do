@@ -230,7 +230,7 @@ program run_IV_int_regression
 		order(`trains_var' `roads_var' c.`roads_var'#c.`trains_var' `baseline_depvar') label ///
 	    keep(`roads_var' `trains_var' c.`roads_var'#c.`trains_var' `baseline_depvar') ///
 		stats(F_stat_fs geo_conts prov_FE N, fmt(a4 a4 a4 a4 a4) ///
-	    labels("F-stat first stage" ///
+	    labels("Cragg-Donald (multivariate) F-stat" ///
 		"Geographic controls" ///
 	    "Province FE" "Observations"))
 end
