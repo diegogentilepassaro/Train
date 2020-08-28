@@ -156,19 +156,19 @@ program run_OLS_int_regression
     qui estadd local prov_FE "No"
 	
 	eststo: qui reg `depvar' `roads_var' `trains_var' ///
-	   `trains_var' c.`roads_var'#c.`trains_var' `geo_vars'
+	   c.`roads_var'#c.`trains_var' `geo_vars'
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
     qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "No"
 	
 	eststo: qui areg `depvar' `roads_var' `trains_var' ///
-	    `trains_var' c.`roads_var'#c.`trains_var' `geo_vars', absorb(provname)
+	    c.`roads_var'#c.`trains_var' `geo_vars', absorb(provname)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"
 	
 	eststo: qui areg `depvar' `roads_var' `trains_var' ///
-	    `trains_var' c.`roads_var'#c.`trains_var' `geo_vars' ///
+	    c.`roads_var'#c.`trains_var' `geo_vars' ///
 		`baseline_depvar', absorb(provname)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"
@@ -176,8 +176,8 @@ program run_OLS_int_regression
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
 		mtitles("" "" "" "") ///
-		order(`trains_var' `roads_var' `trains_var' c.`roads_var'#c.`trains_var' `baseline_depvar') label ///
-	    keep(`roads_var' `trains_var' `trains_var' c.`roads_var'#c.`trains_var' `baseline_depvar') ///
+		order(`trains_var' `roads_var' c.`roads_var'#c.`trains_var' `baseline_depvar') label ///
+	    keep(`roads_var' `trains_var' c.`roads_var'#c.`trains_var' `baseline_depvar') ///
 		stats(geo_conts prov_FE r2 N, fmt(a4 a4 a4 a4 a4) ///
 	    labels("Geographic controls" ///
 	    "Province FE" ///
@@ -194,14 +194,14 @@ program run_IV_int_regression
     eststo clear
 	
 	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
+	    (`roads_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
 		`instrument_roads' studied_larkin c.`instrument_roads'#c.studied_larkin)
 	qui estadd local geo_conts "No"
     qui estadd local prov_FE "No"
 	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 	
 	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
+	    (`roads_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
 		`instrument_roads' studied_larkin c.`instrument_roads'#c.studied_larkin) ///
 	   `geo_vars'
     qui estadd local geo_conts "Yes"
@@ -209,7 +209,7 @@ program run_IV_int_regression
 	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 	
 	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
+	    (`roads_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
 		`instrument_roads' studied_larkin c.`instrument_roads'#c.studied_larkin) ///
 	    `geo_vars', absorb(provname) 
 	qui estadd local geo_conts "Yes"
@@ -217,7 +217,7 @@ program run_IV_int_regression
 	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 	
 	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
+	    (`roads_var' `trains_var' c.`roads_var'#c.`trains_var' = ///
 		`instrument_roads' studied_larkin c.`instrument_roads'#c.studied_larkin) ///
 	    `geo_vars' `baseline_depvar', absorb(provname)
 	qui estadd local geo_conts "Yes"
