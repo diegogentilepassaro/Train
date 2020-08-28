@@ -352,7 +352,7 @@ program run_IV_regression
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(p_val F_stat_fs geo_conts prov_FE N, fmt(a4 a4 a4 a4 a4) ///
 	    labels("P-value for testing $\beta_{2} >= \beta_{1}$" ///
-		"F-stat first stage" "Geographic controls" ///
+		"Cragg-Donald (multivariate) F-stat" "Geographic controls" ///
 	    "Province FE" "Observations"))
 end
 

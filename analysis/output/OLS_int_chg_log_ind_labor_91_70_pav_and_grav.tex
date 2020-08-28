@@ -1,0 +1,35 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
+\hline
+Change in kms of railroads 1986-1970&  0.00254         &  0.00129         &  0.00130         & 0.000866         \\
+                &(0.00157)         &(0.00155)         &(0.00143)         &(0.00141)         \\
+[1em]
+Change in kms of railroads 1986-1970&                  &                  &                  &        0         \\
+                &                  &                  &                  &      (.)         \\
+[1em]
+Change in kms of railroads 1986-1970&                  &                  &        0         &                  \\
+                &                  &                  &      (.)         &                  \\
+[1em]
+Change in kms of railroads 1986-1970&                  &        0         &                  &                  \\
+                &                  &      (.)         &                  &                  \\
+[1em]
+Change in kms of paved and gravel roads 1986-1970& 0.000587\sym{*}  &0.0000632         &-0.000412         &0.0000116         \\
+                &(0.000300)         &(0.000362)         &(0.000385)         &(0.000410)         \\
+[1em]
+Change in kms of paved and gravel roads 1986-1970 $\times$ Change in kms of railroads 1986-1970&-0.00000439         &-0.00000282         &-0.00000697\sym{*}  &-0.00000439         \\
+                &(0.00000388)         &(0.00000378)         &(0.00000359)         &(0.00000367)         \\
+[1em]
+Log urban population 1960&                  &                  &                  &   0.0168         \\
+                &                  &                  &                  & (0.0394)         \\
+\hline
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+R-squared       &  0.03571         &   0.1656         &   0.4446         &   0.4693         \\
+Observations    &      306         &      306         &      306         &      283         \\
+\hline\hline
+\end{tabular}
+}

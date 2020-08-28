@@ -1,0 +1,28 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
+\hline
+Change in kms of railroads 1986-1970&  0.00881\sym{***}&  0.00534\sym{**} &  0.00549\sym{**} &  0.00562\sym{**} \\
+                &(0.00252)         &(0.00211)         &(0.00220)         &(0.00220)         \\
+[1em]
+Change in kms of paved and gravel roads 1986-1970&-0.000623         &-0.000292         &-0.000740         &-0.000799         \\
+                &(0.000818)         &(0.000524)         &(0.000553)         &(0.000584)         \\
+[1em]
+Change in kms of paved and gravel roads 1986-1970 $\times$ Change in kms of railroads 1986-1970&-0.0000200         &-0.00000830         &-0.0000121\sym{*}  &-0.0000127\sym{*}  \\
+                &(0.0000123)         &(0.00000667)         &(0.00000695)         &(0.00000724)         \\
+[1em]
+Log urban population 1960&                  &                  &                  &   0.0129         \\
+                &                  &                  &                  & (0.0191)         \\
+\hline
+F-stat first stage&   2.3319         &   6.6961         &   5.7249         &   5.1662         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      287         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
