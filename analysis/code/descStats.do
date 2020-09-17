@@ -1,59 +1,55 @@
 clear all
 
 program main
-    use "../temp/departments_wide_panel.dta"
-	
-	global depvar pop1960 pop1991 urbpop_1960 urbpop_1991
-	global control elev_mean rugged_mea dist_to_BA area_km2
-	global rail60 tot_rails60 statusLP_1 statusLP_2 statusLP_3 studied_0 studied_larkin
-	global rail80 tot_rails80s status79_1 status79_2 status79_3
-	global road54 tot_roads54  paved_roads54 gravel_roads54 dirt_roads54 footprint_roads54
-	global road86 tot_roads86 paved_roads86 gravel_roads86 dirt_roads86 footprint_roads86
-	global hyp euclidean_hypo_network
+  use "../temp/departments_wide_panel.dta"
 
-	label var tot_rails60 "railroads baseline kms - total"
-	label var tot_rails80s "railroads follow-up kms - total"
-	label var tot_roads54 "roads baseline kms - total"
-	label var tot_roads86 "roads follow-up kms - road"
+  global geo_vars "elev_mean rugged_mea wheat area_km2 dist_to_BA"
+  global outcomes_b "pop_1960 urbpop_1960  mig5_1970 sh_primary_1970 sh_secondary_1970 sh_tertiary_1970 "
+  global outcomes_f "pop_1991 urbpop_1991  mig5_1991 sh_primary_1991 sh_secondary_1991 sh_tertiary_1991"
+  global infra "tot_rails_1960 tot_rails_1986 studied_larkin roads54_type1 roads54_type2 roads86_type1 roads86_type2"
 
-	label var pop1960 "population baseline"
-	label var urbpop_1960 "urban population baseline"
+  label var tot_rails_1960 "railroads 1960 kms"
+  label var tot_rails_1986 "railroads 1986 kms"
 
-	label var pop1991 "population follow-up"
-	label var urbpop_1991 "urban population follow-up"
+  label var pop_1960 "population 1960"
+  label var urbpop_1960 "urban pop 1960"
+  label var mig5_1970 "migration 1970 \%"
+  label var pop_1991 "population 1991"
+  label var urbpop_1991 "urban pop 1991"
+  label var mig5_1991 "migration 1990 \%"
+  label var sh_primary_1970 "primary labor 1970 \%"
+  label var sh_secondary_1970 "secondary labor 1970 \%"
+  label var sh_tertiary_1970 "tertiary labor 1970 \%"
+  label var sh_primary_1991 "primary labor 1991 \%"
+  label var sh_secondary_1991 "secondary labor 1991 \%"
+  label var sh_tertiary_1991 "tertiary labor 1991 \%"
 
-	estpost sum $depvar $control $rail60 $rail80 $road54 $road86 $hyp, listwise
-	esttab using "../output/descStats_1.tex", label replace ///
+  replace rugged_mea = rugged_mea/1000
+
+  label var elev_mean "elevation mts"
+  label var rugged_mea "ruggedness mts"
+  label var wheat "wheat pot. yield - tons/ha"
+  label var area_km2 "area km2"
+  label var dist_to_BA "dist. to Buenos Aires kms"
+
+  foreach x in mig5_1970 mig5_1991 sh_primary_1970 sh_secondary_1970 sh_tertiary_1970  sh_primary_1991 sh_secondary_1991 sh_tertiary_1991{
+    replace `x'=`x'*100
+  }
+
+
+
+  foreach x in geo_vars outcomes_b outcomes_f infra{
+
+  estpost sum $`x', listwise
+  esttab using "../output/descStats_1_`x'.tex", label replace noobs ///
 	cells("mean(fmt(%12.0fc)) sd(fmt(%12.0fc)) min(fmt(%12.0fc)) max(fmt(%12.0fc))")  ///
-	title("Descriptive Statistics")
+  nomtitles nonumbers /*varwidth(27) modelwidth(10)*/ ///
+    prehead(`"{"'   ///
+    /*`"\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}"'*/ ///
+    `"\begin{tabular}{lcccc}}{p{0.1\textwidth}p{0.8\textwidth}}"') ///
+  postfoot(`"\end{tabular}{p{0.1\textwidth}p{0.8\textwidth}}"' `"}"')
+  }
 
-	gen studsh=studied_larkin/tot_rails60
-
-	gen studied=(studsh>0.4 & studsh!=.)
-
-	iebaltab pop1960 urbpop_1960 $control tot_rails60 tot_roads54, grpv(studied) ///
-	savet(../output/descStats_2.tex) replace rowv format(%12.0fc) grpl(0 "less than 40 per cent" @ 1 "more than 40 per cent")
-
-	gen hyp=1-(hypoCMST_kms==0)
-	iebaltab pop1960 urbpop_1960 $control tot_rails60 tot_roads54, grpv(hyp) ///
-	savet(../output/descStats_3.tex) replace rowv format(%12.0fc) grpl(0 "no hyp. net." @ 1 "some hyp. net.")
-
-
-	iebaltab pop1960 urbpop_1960 $control tot_rails60 tot_roads54, grpv(studied) ///
-	savet(../output/descStats_4.tex) replace rowv format(%12.0fc) grpl(0 "less than 40 per cent" @ 1 "more than 40 per cent") ///
-	fix(geolev1)
-
-	iebaltab pop1960 urbpop_1960 $control tot_rails60 tot_roads54, grpv(hyp) ///
-	savet(../output/descStats_5.tex) replace rowv format(%12.0fc) grpl(0 "no hyp. net." @ 1 "some hyp. net.") ///
-	fix(geolev1)
-
-
-
-	foreach var of var pop1960 urbpop_1960 $control tot_rails60 tot_roads54{
-	  plot `var' studsh
-	}
 end
 
 main
-
-
