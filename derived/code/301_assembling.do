@@ -36,6 +36,41 @@ drop _merge
 **CHECK: MISMATCH IN MERGE FOR TWO OBSERVATIONS FROM C1960_IPUMS
 
 
+*MERGE - AGRICULTURAL CENSUS 1960
+merge 1:1 geolev2 using "..\temp\ag1960_ipums.dta"
+
+foreach var of var nexp areatot_ha{
+  ren `var' ag`var'_1960
+}
+drop year
+list geolev2  if _merge!=3
+drop _merge
+
+
+*MERGE - INDUSTRIAL CENSUS 1954
+merge 1:1 geolev2 using "..\temp\in1954_ipums.dta"
+list geolev2  if _merge!=3
+drop _merge
+
+foreach var of var nestab nemp nobr massal valprod{
+  ren `var' ind`var'_1954
+}
+drop year
+
+*MERGE - ECONOMIC CENSUS 1985
+merge 1:1 geolev2 using "..\temp\ec1985_ipums.dta"
+list geolev2  if _merge!=3
+drop _merge
+
+foreach var of var nestab npers massal valprod1 valprod2{
+  ren `var' ind`var'_1985
+}
+drop year
+
+gen indnpers_1954 = indnemp_1954 + indnobr_1954
+
+*LABELS
+
 label var geolev2 "id ipums"
 label var wheat "wheat pot yield - tons per Ha, average"
 label var wheat_std " wheat pot yield- standardized"
@@ -134,6 +169,22 @@ label var roadsall_class4 "existe en 1954 - 1970 ; no existe en - 1986"
 label var roadsall_class5 "existe en 1954 - 1986 ; no existe en - 1970"
 label var roadsall_class6 "existe en 1954 ; no existe en - 1970 - 1986"
 label var roadsall_class7 "existe en 1970 ; no existe en 1954 - 1986"
+
+
+
+label var agnexp_1960 "agro 1960 - N farms"
+label var agareatot_ha_1960 "agro 1960 - area Ha"
+label var indnestab_1954 "ind  1954 - N firms"
+label var indnemp_1954 "ind 1954 - N employees - empleados"
+label var indnobr_1954 "ind 1954 - N employees - obreros"
+label var indnpers_1954 "ind 1954 - N employees total"
+label var indmassal_1954 "ind 1954 - wages, sum of paid (miles de m\$n)"
+label var indvalprod_1954 "ind 1954 - output value - produccion (miles de m\$n)"
+label var indnestab_1985 "ind 1985 - N firms"
+label var indnpers_1985 "ind 1985 - N employees, total"
+label var indmassal_1985 "ind 1985 - wages, sum of paid (miles de pesos)"
+label var indvalprod2_1985 "ind 1985 - output value - productos y subproductos (miles de pesos)"
+label var indvalprod1_1985 "ind 1985 - output value - trabajos y otros ingresos (miles de pesos)"
 
 
 

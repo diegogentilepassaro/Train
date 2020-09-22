@@ -30,4 +30,11 @@ gen year=1960
 drop if provincia =="" & distrito=="" & nexp==. & areatot_ha==.
 drop e
 
+foreach var of var provincia distrito{
+  replace `var' = upper(subinstr(`var'," ","",.))
+  replace `var' = subinstr(`var',"-","",.)
+  replace `var' = subinstr(`var',".","",.)
+
+}
+
 save_data "..\output\agro1988.dta", replace key(provincia distrito year)

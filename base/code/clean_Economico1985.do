@@ -51,7 +51,29 @@ drop if provincia =="" & distrito==""
 
 drop d e f h
 
+
+/*THE FOLLOWING OBSERVATIONS ARE BEING CHECKED BY (RA) JUANFRA
+(last update: Sept 21)*/
+
+list if _merge!=3
+
 keep if _merge==3
 drop _merge
+
+foreach var of var provincia distrito{
+  replace `var' = upper(subinstr(`var'," ","",.))
+  replace `var' = subinstr(`var',"-","",.)
+  replace `var' = subinstr(`var',".","",.)
+
+}
+
+
+*repeticiones
+
+duplicates tag ncodigo, g(t)
+drop if t>0 & provincia=="GRANBUENOSAIRES"
+drop t
+assert provincia!="GRANBUENOSAIRES"
+
 
 save_data "..\output\eco1985.dta", replace key(provincia distrito year)

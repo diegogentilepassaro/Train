@@ -1,66 +1,18 @@
 clear all
 
 *I. CLEAN NAMES AND RESHAPE IPUMS DATA
-/*such that there is on observation for each ever exiting distrito. this implies
-that GEOLEV2 is not a unique identifier anymore */
-use "..\..\base\output\ARG_IPUMS_7080910110.dta"
-
-keep if year==1991
-
-decode geo2_ar, g(x)
-split x, parse(,)
-drop x
-reshape long x, i(geolev2) j(d)
-drop if x==""
-
-
-foreach var of var x{
-  replace `var' = subinstr(`var', " ", "",.)
-  replace `var' = subinstr(`var', ".", "",.)
-  replace `var' = subinstr(`var', "'", "",.)
-  replace `var' = subinstr(`var', "-", "",.)
-  replace `var' = subinstr(`var', "ã³", "o",.)
-  replace `var' = subinstr(`var', "-", "",.)
-  replace `var' = subinstr(`var', "ã­", "i",.)
-  replace `var' = subinstr(`var', "ã¡", "a",.)
-  replace `var' = subinstr(`var', "ã©", "e",.)
-  replace `var' = subinstr(`var', "ã±", "n",.)
-  replace `var' = subinstr(`var', "ãº", "u",.)
-  replace `var' = subinstr(`var', "ã¼", "u",.)
-  replace `var' = subinstr(`var', "ã", "n",.)
-  replace `var' = upper(`var')
-}
-
-keep geolev1 geolev2 provname x geo*
-ren x districtIPUMS
-
-gen provmerge=provname
-gen distmerge=districtIPUMS
-
-duplicates tag provmerge distmerge, g(aux)
-list if aux!=0
-drop aux
-list if geolev2==32006032 | geolev2==32006073
-
-
-replace distmerge = "MARCOSPAZ" if geolev2==32006032 & distmerge=="MAIPU"
-/*I found the problem when checking merge. It is just a typo in the shapefile
-and the database of ipums*/
-
-
-isid provmerge distmerge
-keep provmerge distmerge districtIPUMS provname geolev2
-
+use "..\temp\ip.dta", replace
 tempfile ip
 save `ip', replace
-save "..\temp\ip.dta", replace
+desc
 
 *II. OPEN DATA CENSUS 1960 AND ACCOMODATE NAMES
-/*WHEN IT IS A MATTER OF SPELLING, THERE IS NO EXPLANATION IN THE CHANGE
-WHEN IT IS A MATTER OF CHANGE OF NAME, THERE IS AN EXPLANATION
+/*
+-WHEN IT IS A MATTER OF SPELLING, THERE IS NO EXPLANATION IN THE CHANGE.
+-WHEN IT IS A MATTER OF CHANGE OF NAME, THERE IS AN EXPLANATION.
  */
 
-use "..\..\base\output\c1960_urb.dta"
+use "..\..\base\output\agro1960.dta"
 gen provmerge=provincia
 gen distmerge=distrito
 
@@ -71,43 +23,52 @@ program de clean
 end
 
 local pr = "BUENOSAIRES"
-clean TRESDEFEBRERO 3DEFEBRERO `pr'
+*clean TRESDEFEBRERO 3DEFEBRERO `pr'
 clean ARRECIFES BARTOLOMEMITRE `pr'
 /*change of name. source:
 https://es.wikipedia.org/wiki/Arrecifes_(Argentina)
 */
-clean CORONELDEMARINELROSALES CORONELROSALES `pr'
+clean CORONELDEMARINELROSALES CNELDEMARINALEONARDOROSALES `pr'
 clean ADOLFOGONZALEZCHAVES GONZALEZCHAVES `pr'
-clean GENERALJUANMADARIAGA GENERALJMADARIAGA `pr'
+*clean GENERALJUANMADARIAGA GENERALJMADARIAGA `pr'
 clean DAIREAUX CASEROS `pr'
 /* Change of name. source:
 https://es.wikipedia.org/wiki/Partido_de_Daireaux
 */
 clean BENITOJUAREZ JUAREZ `pr'
+clean LAMATANZA MATANZA `pr'
 
 
 local pr = "CHACO"
-clean 12DEOCTUBRE DOCEDEOCTUBRE `pr'
-clean 1DEMAYO PRIMERODEMAYO `pr'
-clean 25DEMAYO VEINTICINCODEMAYO `pr'
-clean 9DEJULIO NUEVEDEJULIO  `pr'
-clean FRAYJUSTOSTAMARIADEORO FRAYJSANTAMARIADEORO  `pr'
+*clean 12DEOCTUBRE DOCEDEOCTUBRE `pr'
+*clean 1DEMAYO PRIMERODEMAYO `pr'
+*clean 25DEMAYO VEINTICINCODEMAYO `pr'
+*clean 9DEJULIO NUEVEDEJULIO  `pr'
+clean FRAYJUSTOSTAMARIADEORO FRAYJUSTOSANTAMARIADEORO  `pr'
 clean OHIGGINS CAPITANGENERALOHIGGINS `pr'
+
+
 
 local pr = "CHUBUT"
 clean PASODELOSINDIOS PASODEINDIOS `pr'
+clean RIOSENGUER RIOSENGUERR `pr'
+
+local pr = "ENTRERIOS"
+clean URUGUAY CONCEPCIONDELURUGUAY `pr'
+clean TALA ROSARIOTALA `pr'
 
 local pr = "FORMOSA"
-clean RAMONLISTA RAMONLIATA `pr'
+*clean RAMONLISTA RAMONLISTA `pr'
 
 local pr = "JUJUY"
 clean DRMANUELBELGRANO CAPITAL `pr'
+
 /* La capital de jujuy es San Salvador de Jujuy. Esta se ubica en el distrito
 Doctor Manuel Belgrano
 */
 
 local pr = "LAPAMPA"
-clean LEVENTUE LOVENTUE `pr'
+*clean LEVENTUE LOVENTUE `pr'
 
 local pr = "LARIOJA"
 clean CORONELFELIPEVARELA GENERALLAVALLE `pr'
@@ -128,7 +89,7 @@ local pr = "MENDOZA"
 clean LUJANDECUYO LUJAN `pr'
 
 local pr = "MISIONES"
-clean GENERALMANUELBELGRANO GENERALBELGRANO  `pr'
+*clean GENERALMANUELBELGRANO GENERALBELGRANO  `pr'
 
 local pr = "RIONEGRO"
 clean CONESA GENERALCONESA `pr'
@@ -137,17 +98,22 @@ local pr = "SALTA"
 clean GENERALJOSEDESANMARTIN GENERALJDESANMARTIN `pr'
 clean GENERALGUEMES GENERALMARTINMIGUELDEGUEMES  `pr'
 clean LACANDELARIA CANDELARIA `pr'
+clean LACALDERA CALDERA `pr'
 
 local pr = "SANJUAN"
-clean 25DEMAYO VEINTICINCODEMAYO `pr'
-clean 9DEJULIO NUEVEDEJULIO `pr'
-clean IGLESIA IGLESIAS `pr'
+*clean 25DEMAYO VEINTICINCODEMAYO `pr'
+*clean 9DEJULIO NUEVEDEJULIO `pr'
+*clean IGLESIA IGLESIAS `pr'
 clean ULLUM ULLUN `pr'
 
 local pr = "SANLUIS"
 clean LIBERTADORGENERALSANMARTIN SANMARTIN `pr'
+clean CORONELPRINGLES PRINGLES `pr'
+clean GOBERNADORDUPUY GOBERNADORVICENTEDUPUY `pr'
+
 
 local pr = "SANTIAGODELESTERO"
+clean QUEBRACHOS QUEBRACHO `pr'
 clean JUANFIBARRA MATARA `pr'
 /*
 changed name. source:
@@ -181,11 +147,12 @@ list provmerge distmerge _merge if _merge!=3
 tempfile a
 save `a', replace
 
+
 *IV. CHECK 1
 /*Every obs with _merge==2 has a geolev2 value. Let A be this set of values .
 Since geolev2 value is what matters at the end of the day, it is sufficient for
 us to check that for every value in A, there is at least one observation with
-_merge==3. Then, we can discard obs with __merge for which this condition is
+_merge==3. Then, we can discard from A obs with __merge for which this condition is
 true.
 
 After trying this for the first time, we could get rid of 39/43 obs. T
@@ -228,10 +195,14 @@ save `d'
 
 
 *V. MANUAL MERGE 1
-/*matching 1 obs in IPUMS that was not found in c1960 after
+/*matching 1/5 obs in IPUMS that was not found in c1960 after
 checking name changes
+
+The remaining obs correspond to TIERRA DEL FUEGO + CITYOFBUENOSAIRES; these
+make sense so this discrepancy is ignored.  SEE LINE 217
 */
-list if _merge==2
+list provmerge distmerge if _merge==2
+
 keep provmerge distmerge geolev2 provname districtIPUMS
 clean QUILMES BERAZATEGUI BUENOSAIRES
 tempfile beraz
@@ -243,6 +214,7 @@ ren _merge __merge
 count
 gen a=`r(N)'
 merge m:n provmerge distmerge using `beraz', replace update
+keep if provmerge!="TIERRADELFUEGO" & distmerge!="CITYOFBUENOSAIRES"
 count
 gen b=`r(N)'
 gen c=a+1
@@ -270,27 +242,31 @@ assert _merge!=1
 There are three type of matches
 
 - 1 to 1 (no problem)
-- many c1960 to 1 ipums (just sum by ipums)
-- 1 c1960 to many ipums (it is only one case of 1 to 2)
+- many agro 1960 to 1 ipums (just sum by ipums)
+- 1 agro 1960 to many ipums (it is only one case of 1 to 2)
 ------in the meantime, I will divide equally 2/3 and 1/3. This is very roughly
-      the proportion today
+      their population proportions today
  */
+
+gen a = 1
+egen x=count(a), by(provincia distrito)
+list provincia distrito geolev2 if x>1
+
+assert x==2 & (geolev2==32006087 | geolev2==32006076) if x!=1
+
+drop x a
 
 list if distmerge=="QUILMES"
 
-foreach var of var pop urb rur {
+foreach var of var nexp areatot_ha {
   replace `var'=`var'*(1/3) if geolev2==32006087
   replace `var'=`var'*(2/3) if geolev2==32006076
 
 }
 
 
-collapse (sum) pop urb rur, by(geolev2)
+collapse (sum) nexp areatot_ha, by(geolev2)
 
 gen year=1960
 
-label var pop "total population"
-label var rur "rural population"
-label var urb "urban population"
-
-save_data "..\temp\c1960_ipums.dta", replace key(geolev2)
+save_data "..\temp\ag1960_ipums.dta", replace key(geolev2)
