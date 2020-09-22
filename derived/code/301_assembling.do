@@ -114,10 +114,9 @@ label var roads86_type1 "roads 1986 kms - paved"
 label var roads86_type2 "roads 1986 kms - glavel"
 label var roads86_type3 "roads 1986 kms - dirt"
 label var roads86_type4 "roads 1986 kms - path"
-label var hypoCMST_kms  "hyp network kms - CMST"
-label var hypoEMST_kms  "hyp network kms - EMST"
-label var hypomeanEMST_kms  "hyp network kms - mean EMST "
 
+label var hypo_EUC_MST_kms  "Euclidean MST network (kms)"
+label var hypo_LCP_MST_kms  "Least-cost MST network (kms)"
 
 foreach year in 1970 1980 1991 2001 2010{
   label var occisco_1_`year' "`year' occup. legislators, senior officials and managers"
@@ -159,8 +158,6 @@ foreach year in 1970 1980 1991 2001 2010{
   label var empstat_2_`year' "`year' unemployed"
   label var empstat_3_`year' "`year' inactive"
 }
-
-
 
 label var roadsall_class1 "existe en 1954 - 1970 - 1986"
 label var roadsall_class2 "existe en 1970 - 1986  ; no existe en 1954 "
@@ -204,5 +201,4 @@ drop if area_km2==.
 
 /*one obs is "entrerrios-district unkown", the other one is "unknown"*/
 
-
-save_data "..\output\departments_wide_panel.dta", replace key(geolev2)
+save_data "../output/departments_wide_panel.dta", replace key(geolev2)

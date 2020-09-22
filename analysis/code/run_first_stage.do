@@ -5,7 +5,7 @@ cd "/Users/diegog/Desktop/Diego/Train/analysis/code"
 program main
     use "../temp/departments_wide_panel.dta", clear
 
-	local instrument_roads "euclidean_hypo_network"
+	local instrument_roads "hypo_EUC_MST_kms"
 
     *** 1960 base outcomes
 
@@ -27,6 +27,30 @@ program main
        run_first_stage, baseline_depvar(log_urbpop_1960) ///
 	        endo_var(chg_tot_rails_86_70) ///
 		    table_name(FS_EUC_chg_tot_rails_86_70) ///
+		    instrument_roads(`instrument_roads')
+			
+	local instrument_roads "hypo_LCP_MST_kms"
+
+    *** 1960 base outcomes
+
+       run_first_stage, baseline_depvar(log_urbpop_1960) ///
+	        endo_var(chg_pav_and_grav_86_54) ///
+		    table_name(FS_LCP_chg_pav_and_grav_86_54) ///
+		    instrument_roads(`instrument_roads')
+
+       run_first_stage, baseline_depvar(log_urbpop_1960) ///
+	        endo_var(chg_pav_and_grav_86_70) ///
+		    table_name(FS_LCP_chg_pav_and_grav_86_70) ///
+		    instrument_roads(`instrument_roads')
+			
+       run_first_stage, baseline_depvar(log_urbpop_1960) ///
+	        endo_var(chg_tot_rails_86_60) ///
+		    table_name(FS_LCP_chg_tot_rails_86_60) ///
+		    instrument_roads(`instrument_roads')
+
+       run_first_stage, baseline_depvar(log_urbpop_1960) ///
+	        endo_var(chg_tot_rails_86_70) ///
+		    table_name(FS_LCP_chg_tot_rails_86_70) ///
 		    instrument_roads(`instrument_roads')
 end
 

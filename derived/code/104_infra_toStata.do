@@ -135,43 +135,28 @@ tempfile roads86
 save `roads86', replace
 
 
-import dbase using "..\temp\\inter_hypoCMST_l.dbf", clear case(lower)
+import dbase using "..\temp\\hypo_LCP_MST.dbf", clear case(lower)
 ren *, lower
 keep length_met geolevel2
 
 collapse (sum) length_met, by(geolevel2)
-gen hypoCMST_kms = length_met / 1000
+gen hypo_LCP_MST_kms = length_met / 1000
 drop length_met
 
-tempfile hypoCMST
-save `hypoCMST', replace
+tempfile hypo_LCP_MST
+save `hypo_LCP_MST', replace
 
 
-import dbase using "..\temp\\inter_hypoEMST_l.dbf", clear case(lower)
+import dbase using "..\temp\\hypo_EUC_MST.dbf", clear case(lower)
 ren *, lower
 keep length_met geolevel2
 
 collapse (sum) length_met, by(geolevel2)
-gen hypoEMST_kms = length_met / 1000
+gen hypo_EUC_MST_kms = length_met / 1000
 drop length_met
 
-tempfile hypoEMST
-save `hypoEMST', replace
-
-import dbase using "..\temp\\inter_hypomeanEMST_l.dbf", clear case(lower)
-ren *, lower
-keep length_met geolevel2
-
-collapse (sum) length_met, by(geolevel2)
-
-gen hypomeanEMST_kms = length_met / 1000
-drop length_met
-
-tempfile hypomeanEMST
-save `hypomeanEMST', replace
-
-
-
+tempfile hypo_EUC_MST
+save `hypo_EUC_MST', replace
 
 *IV MERGE
 use `statusLP'
@@ -195,19 +180,20 @@ drop _merge
 merge 1:1 geolevel2 using `roadsall'
 *assert _merge==3
 drop _merge
-merge 1:1 geolevel2 using `hypoCMST'
+merge 1:1 geolevel2 using `hypo_LCP_MST'
 *assert _merge==3
 drop _merge
-merge 1:1 geolevel2 using `hypoEMST'
-*assert _merge==3
-drop _merge
-merge 1:1 geolevel2 using `hypomeanEMST'
+merge 1:1 geolevel2 using `hypo_EUC_MST'
 *assert _merge==3
 drop _merge
 
 ren geolevel2 id_main
 
-foreach var of var statusLP_1 statusLP_2 statusLP_3 status79_1 studied_0 studied_1 status79_2 status79_3 roadsall_class* roads54_type1 roads54_type2 roads54_type3 roads54_type4 roads70_type1 roads70_type2 roads70_type3 roads70_type4 roads86_type1 roads86_type2 roads86_type3 roads86_type4 hypoCMST_kms hypoEMST_kms hypomeanEMST_kms {
+foreach var of var statusLP_1 statusLP_2 statusLP_3 status79_1 studied_0 studied_1 ///
+    status79_2 status79_3 roadsall_class* roads54_type1 roads54_type2 roads54_type3 ///
+	roads54_type4 roads70_type1 roads70_type2 roads70_type3 roads70_type4 ///
+	roads86_type1 roads86_type2 roads86_type3 roads86_type4 ///
+	hypo_LCP_MST_kms hypo_EUC_MST_kms {
 	recode `var' (.=0)
 }
 
