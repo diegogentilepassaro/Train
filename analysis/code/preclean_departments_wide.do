@@ -415,11 +415,9 @@ program preclean_data
 	gen disconnected_rails_86_60 = (chg_tot_rails_86_60 < 0)
 	gen disconnected_rails_86_70 = (chg_tot_rails_86_70 < 0)
 
-	rename (hypomeanEMST_kms hypoCMST_kms studied_1) ///
-	    (euclidean_hypo_network lcp_hypo_network studied_larkin)
-		
-	label var euclidean_hypo_network "Euclidean spanning tree network (kms)"
-	label var lcp_hypo_network "Least-cost path spanning tree network (kms)"
+	rename (studied_1) ///
+	    (studied_larkin)
+
     label var studied_larkin "Studied railroad tracks (kms)"
 end
 

@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
+\hline
+Least-cost MST network (kms)&   -0.121\sym{***}&   -0.121\sym{***}&   -0.148\sym{***}&   -0.143\sym{***}\\
+                & (0.0332)         & (0.0389)         & (0.0428)         & (0.0457)         \\
+[1em]
+Studied railroad tracks (kms)&   -0.203\sym{***}&   -0.196\sym{***}&   -0.207\sym{***}&   -0.208\sym{***}\\
+                & (0.0210)         & (0.0231)         & (0.0243)         & (0.0254)         \\
+[1em]
+Log urban population 1960&                  &                  &                  &    1.550         \\
+                &                  &                  &                  &  (2.191)         \\
+\hline
+F-stat from testing both instruments = 0&    58.14         &     16.7         &    16.38         &    13.46         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      287         \\
+\hline\hline
+\end{tabular}
+}
