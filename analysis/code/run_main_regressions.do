@@ -5,7 +5,7 @@ cd "/Users/diegog/Desktop/Diego/Train/analysis/code"
 program main
     use "../temp/departments_wide_panel.dta", clear
 
-	local instrument_roads "euclidean"
+	local instrument_roads "euclidean_hypo_network"
 
     *** 1960 base outcomes
 	    *** Population outcomes

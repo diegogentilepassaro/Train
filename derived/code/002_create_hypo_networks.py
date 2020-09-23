@@ -176,6 +176,13 @@ processing.run("gdal:merge",
 	'PCT':False,'SEPARATE':True,'NODATA_INPUT':None,'NODATA_OUTPUT':None,'OPTIONS':'',
 	'DATA_TYPE':5,'OUTPUT':output})
 
+output = pathTemp + r'\\bandas_2.tif'
+processing.run("gdal:merge", 
+	{'INPUT':[pathTemp + r'\\exterior_pais.tif',
+	pathTemp + r'\\pais.tif'],
+	'PCT':False,'SEPARATE':True,'NODATA_INPUT':None,'NODATA_OUTPUT':None,'OPTIONS':'',
+	'DATA_TYPE':5,'OUTPUT':output})
+
 # Compute construction cost
 bands_raster = QgsRasterLayer(pathTemp + r'\\bandas.tif')
 output = pathTemp + r'\\construction_costs.tif'
@@ -187,6 +194,20 @@ for num in range(1,8):
 	ras.bandNumber = num
 	entries.append(ras)
 calc = QgsRasterCalculator('bandas@1 + bandas@2 + bandas@3 + bandas@4 + bandas@5 + bandas@6 + bandas@7', 
+	output,'GTiff', bands_raster.extent(), bands_raster.width(), 
+	bands_raster.height(), entries)
+calc.processCalculation()
+
+bands_raster = QgsRasterLayer(pathTemp + r'\\bandas_2.tif')
+output = pathTemp + r'\\construction_costs_plain.tif'
+entries = []
+for num in range(1,3):
+	ras = QgsRasterCalculatorEntry()
+	ras.ref = 'bandas@' + str(num)
+	ras.raster = bands_raster
+	ras.bandNumber = num
+	entries.append(ras)
+calc = QgsRasterCalculator('bandas@1 + bandas@2', 
 	output,'GTiff', bands_raster.extent(), bands_raster.width(), 
 	bands_raster.height(), entries)
 calc.processCalculation()
@@ -213,7 +234,7 @@ with edit(layer_input):
 		f['id'] = expression.evaluate(context)
 		layer_input.updateFeature(f)
 
-# Create shapefiles out of single capitals and compute a LCP for each capital point
+# Create shapefiles out of single capitals
 for num in range(1,25):
 	layers = QgsProject.instance().mapLayersByName('capitales')
 	layer = layers[0]
@@ -223,9 +244,22 @@ for num in range(1,25):
 		driverName = 'ESRI Shapefile', onlySelected = True)
 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
 	del(writer)
+
+# COmpute LCPs for each point (Dijkstra Algorithm)
+for num in range(1,25):
 	output = pathTemp + r'\\LCP' + str(num) + '.shp'
 	processing.run("Cost distance analysis:Least Cost Path", 
 		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
+		'INPUT_RASTER_BAND':1,
+		'INPUT_START_LAYER':pathTemp + r'\\capitales' + str(num) + '.shp',
+		'INPUT_END_LAYER':pathTemp + r'\\capitales.shp',
+		'BOOLEAN_FIND_LEAST_PATH_TO_ALL_ENDS':False,
+		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
+		'OUTPUT':output})
+
+	output = pathTemp + r'\\LCP_plain' + str(num) + '.shp'
+	processing.run("Cost distance analysis:Least Cost Path", 
+		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs_plain.tif',
 		'INPUT_RASTER_BAND':1,
 		'INPUT_START_LAYER':pathTemp + r'\\capitales' + str(num) + '.shp',
 		'INPUT_END_LAYER':pathTemp + r'\\capitales.shp',
@@ -262,6 +296,34 @@ processing.run("native:mergevectorlayers",
 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
 	'OUTPUT':pathTemp + r'\\LCP.shp'})
 
+processing.run("native:mergevectorlayers", 
+	{'LAYERS':[pathTemp + r'\\LCP_plain1.shp',
+	pathTemp + r'\\LCP_plain2.shp',
+	pathTemp + r'\\LCP_plain3.shp',
+	pathTemp + r'\\LCP_plain4.shp',
+	pathTemp + r'\\LCP_plain5.shp',
+	pathTemp + r'\\LCP_plain6.shp',
+	pathTemp + r'\\LCP_plain7.shp',
+	pathTemp + r'\\LCP_plain8.shp',
+	pathTemp + r'\\LCP_plain9.shp',
+	pathTemp + r'\\LCP_plain10.shp',
+	pathTemp + r'\\LCP_plain11.shp',
+	pathTemp + r'\\LCP_plain12.shp',
+	pathTemp + r'\\LCP_plain13.shp',
+	pathTemp + r'\\LCP_plain14.shp',
+	pathTemp + r'\\LCP_plain15.shp',
+	pathTemp + r'\\LCP_plain16.shp',
+	pathTemp + r'\\LCP_plain17.shp',
+	pathTemp + r'\\LCP_plain18.shp',
+	pathTemp + r'\\LCP_plain19.shp',
+	pathTemp + r'\\LCP_plain20.shp',
+	pathTemp + r'\\LCP_plain21.shp',
+	pathTemp + r'\\LCP_plain22.shp',
+	pathTemp + r'\\LCP_plain23.shp',
+	pathTemp + r'\\LCP_plain24.shp'],
+	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
+	'OUTPUT':pathTemp + r'\\LCP_plain.shp'})
+
 # Compute MST
 processing.run("grass7:v.net.spanningtree", 
 	{'input':pathTemp + r'\\LCP.shp',
@@ -271,6 +333,22 @@ processing.run("grass7:v.net.spanningtree",
 	'node_column':None,
 	'-g':False,
 	'output':pathTemp + r'\\LCP_MST.shp',
+	'GRASS_REGION_PARAMETER':None,
+	'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
+	'GRASS_MIN_AREA_PARAMETER':0.0001,
+	'GRASS_OUTPUT_TYPE_PARAMETER':0,
+	'GRASS_VECTOR_DSCO':'',
+	'GRASS_VECTOR_LCO':'',
+	'GRASS_VECTOR_EXPORT_NOCAT':False})
+
+processing.run("grass7:v.net.spanningtree", 
+	{'input':pathTemp + r'\\LCP_plain.shp',
+	'points':None,
+	'threshold':50,
+	'arc_column':None,
+	'node_column':None,
+	'-g':False,
+	'output':pathTemp + r'\\LCP_plain_MST.shp',
 	'GRASS_REGION_PARAMETER':None,
 	'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
 	'GRASS_MIN_AREA_PARAMETER':0.0001,

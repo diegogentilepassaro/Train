@@ -146,6 +146,16 @@ drop length_met
 tempfile hypo_LCP_MST
 save `hypo_LCP_MST', replace
 
+import dbase using "..\temp\\hypo_LCP_plain_MST.dbf", clear case(lower)
+ren *, lower
+keep length_met geolevel2
+
+collapse (sum) length_met, by(geolevel2)
+gen hypo_LCP_plain_MST_kms = length_met / 1000
+drop length_met
+
+tempfile hypo_LCP_plain_MST
+save `hypo_LCP_plain_MST', replace
 
 import dbase using "..\temp\\hypo_EUC_MST.dbf", clear case(lower)
 ren *, lower
@@ -157,7 +167,6 @@ drop length_met
 
 tempfile hypo_EUC_MST
 save `hypo_EUC_MST', replace
-
 
 **** Legacy instruments
 import dbase using "..\temp\\inter_hypoCMST_l.dbf", clear case(lower)
@@ -212,6 +221,9 @@ drop _merge
 merge 1:1 geolevel2 using `hypo_LCP_MST'
 *assert _merge==3
 drop _merge
+merge 1:1 geolevel2 using `hypo_LCP_plain_MST'
+*assert _merge==3
+drop _merge
 merge 1:1 geolevel2 using `hypo_EUC_MST'
 *assert _merge==3
 drop _merge
@@ -231,7 +243,8 @@ foreach var of var statusLP_1 statusLP_2 statusLP_3 status79_1 studied_0 studied
     status79_2 status79_3 roadsall_class* roads54_type1 roads54_type2 roads54_type3 ///
 	roads54_type4 roads70_type1 roads70_type2 roads70_type3 roads70_type4 ///
 	roads86_type1 roads86_type2 roads86_type3 roads86_type4 ///
-	hypo_LCP_MST_kms hypo_EUC_MST_kms hypoCMST_kms hypoEMST_kms hypomeanEMST_kms {
+	hypo_LCP_MST_kms hypo_LCP_plain_MST_kms hypo_EUC_MST_kms ///
+	hypoCMST_kms hypoEMST_kms hypomeanEMST_kms {
 	recode `var' (.=0)
 }
 

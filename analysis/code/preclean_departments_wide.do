@@ -415,6 +415,10 @@ program preclean_data
 	gen disconnected_rails_86_60 = (chg_tot_rails_86_60 < 0)
 	gen disconnected_rails_86_70 = (chg_tot_rails_86_70 < 0)
 	
+	label var hypo_EUC_MST_kms  "Euclidean MST network (kms)"
+	label var hypo_LCP_MST_kms  "Least-cost MST network (kms)"
+	label var hypo_LCP_plain_MST_kms  "Least-cost plain MST network (kms)"
+	
 	rename (hypomeanEMST_kms hypoCMST_kms studied_1) ///
 	    (euclidean_hypo_network lcp_hypo_network studied_larkin)
 

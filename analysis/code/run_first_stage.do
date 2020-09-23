@@ -5,7 +5,7 @@ cd "/Users/diegog/Desktop/Diego/Train/analysis/code"
 program main
     use "../temp/departments_wide_panel.dta", clear
 
-	local instrument_roads "euclidean"
+	local instrument_roads "euclidean_hypo_network"
 
     *** 1960 base outcomes
 
@@ -79,12 +79,14 @@ program run_first_stage
 	
 	eststo: qui reghdfe `endo_var' `instrument_roads' studied_larkin ///
 	    `geo_vars', absorb(provname)
+	test `instrument_roads' = studied_larkin = 0
     qui estadd local f_stat = round(e(F), 0.01)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"
 	
 	eststo: qui reghdfe `endo_var' `instrument_roads' studied_larkin ///
 	    `geo_vars' `baseline_depvar', absorb(provname)
+	test `instrument_roads' = studied_larkin = 0
     qui estadd local f_stat = round(e(F), 0.01)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"	

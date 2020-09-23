@@ -117,6 +117,7 @@ label var roads86_type4 "roads 1986 kms - path"
 
 label var hypo_EUC_MST_kms  "Euclidean MST network (kms)"
 label var hypo_LCP_MST_kms  "Least-cost MST network (kms)"
+label var hypo_LCP_plain_MST_kms  "Least-cost plain MST network (kms)"
 
 **** Legacy instruments
 label var hypoCMST_kms  "hyp network kms - CMST"
