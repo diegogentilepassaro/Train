@@ -19,9 +19,9 @@ do 001_merge_yearly_aggregates.do
 
 
 *Geographical controls at district level
-shell qgis-ltr-bin-g7 --code  101_geoControls_create_districts.py
-do 					          102_geoControls_toStata
-shell qgis-ltr-bin-g7 --code  002_create_hypo_networks.py
+*shell qgis-ltr-bin-g7 --code  101_geoControls_create_districts.py
+*do 					          102_geoControls_toStata
+*shell qgis-ltr-bin-g7 --code  002_create_hypo_networks.py
 shell qgis-ltr-bin-g7 --code  103_infra_create_districts.py
 do 					          104_infra_toStata
 do                            201_merge_c1960_to_IPUMS.do

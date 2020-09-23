@@ -46,6 +46,15 @@ drop year
 list geolev2  if _merge!=3
 drop _merge
 
+*MERGE - AGRO CENSUS 1988
+merge 1:1 geolev2 using "..\temp\ag1988_ipums.dta"
+
+foreach var of var nexp areatot_ha{
+  ren `var' ag`var'_1988
+}
+drop year
+list geolev2  if _merge!=3
+drop _merge
 
 *MERGE - INDUSTRIAL CENSUS 1954
 merge 1:1 geolev2 using "..\temp\in1954_ipums.dta"
@@ -68,6 +77,9 @@ foreach var of var nestab npers massal valprod1 valprod2{
 drop year
 
 gen indnpers_1954 = indnemp_1954 + indnobr_1954
+
+
+
 
 *LABELS
 
