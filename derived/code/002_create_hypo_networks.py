@@ -12,8 +12,8 @@ from qgis.PyQt.QtCore import *
 
 print(datetime.datetime.now())
 
-# path=r"C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\Train\derived\code"
-path=r"C:\Users\diegog\Desktop\Diego\Train\derived\code"
+path=r"C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\Train\derived\code"
+#path=r"C:\Users\diegog\Desktop\Diego\Train\derived\code"
 os.chdir(path)
 
 pathInput=r"../../raw_data"
@@ -62,18 +62,18 @@ with edit(layer_input):
 		f['rast'] = expression.evaluate(context)
 		layer_input.updateFeature(f)
 output = pathTemp + r'\\exterior_pais.tif'
-processing.run("gdal:rasterize", 
+processing.run("gdal:rasterize",
 	{'INPUT':pathTemp + r'\\exterior_pais.shp','FIELD':'rast','BURN':0,'UNITS':0,'WIDTH':1000,'HEIGHT':1000,
 	'EXTENT':'-81.85422635558515,-46.234142384660416,-57.824173773930674,-18.83037341566659 [EPSG:4326]',
 	'NODATA':0,'OPTIONS':'','DATA_TYPE':5,'INIT':None,'INVERT':False,'OUTPUT':output})
 
-copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.dbf", 
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.dbf",
 	pathTemp + r"/asentamientos.dbf")
-copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.prj", 
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.prj",
 	pathTemp + r"/asentamientos.prj")
-copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.shp", 
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.shp",
 	pathTemp + r"/asentamientos.shp")
-copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.shx", 
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/areas_de_asentamientos_y_edificios_020105.shx",
 	pathTemp + r"/asentamientos.shx")
 layer_input = iface.addVectorLayer(pathTemp + r"/asentamientos.shp", '', 'ogr')
 pv = layer_input.dataProvider()
@@ -88,7 +88,7 @@ with edit(layer_input):
 		f['rast'] = expression.evaluate(context)
 		layer_input.updateFeature(f)
 output = pathTemp + r'\\asentamientos.tif'
-processing.run("gdal:rasterize", 
+processing.run("gdal:rasterize",
 	{'INPUT':pathTemp + r"/asentamientos.shp",'FIELD':'rast','BURN':0,'UNITS':0,'WIDTH':1000,'HEIGHT':1000,
 	'EXTENT':'-72.89708309299994,-53.63873899999999,-54.848922356999935,-21.87500881899996 [EPSG:4326]',
 	'NODATA':0,'OPTIONS':'','DATA_TYPE':5,'INIT':None,'INVERT':False,'OUTPUT':output})
@@ -112,7 +112,7 @@ with edit(layer_input):
 		f['rast'] = expression.evaluate(context)
 		layer_input.updateFeature(f)
 output = pathTemp + r'\\banados.tif'
-processing.run("gdal:rasterize", 
+processing.run("gdal:rasterize",
 	{'INPUT':pathTemp + r"/banados.shp",'FIELD':'rast','BURN':0,'UNITS':0,'WIDTH':1000,'HEIGHT':1000,
 	'EXTENT':'-72.07939147949219,-55.73194885253906,-47.97042465209961,-21.998111724853516 [EPSG:4326]',
 	'NODATA':0,'OPTIONS':'','DATA_TYPE':5,'INIT':None,'INVERT':False,'OUTPUT':output})
@@ -135,7 +135,7 @@ with edit(layer_input):
 		f['rast'] = expression.evaluate(context)
 		layer_input.updateFeature(f)
 output = pathTemp + r'\\cuerpos_de_agua.tif'
-processing.run("gdal:rasterize", 
+processing.run("gdal:rasterize",
 	{'INPUT':pathTemp + r"/cuerpos_de_agua.shp",'FIELD':'rast','BURN':0,'UNITS':0,'WIDTH':1000,'HEIGHT':1000,
 	'EXTENT':'-73.45678711,-54.36331177,-55.0887413,-22.15041924 [EPSG:4326]',
 	'NODATA':0,'OPTIONS':'','DATA_TYPE':5,'INIT':None,'INVERT':False,'OUTPUT':output})
@@ -158,14 +158,14 @@ with edit(layer_input):
 		f['rast'] = expression.evaluate(context)
 		layer_input.updateFeature(f)
 output = pathTemp + r'\\cursos_de_agua.tif'
-processing.run("gdal:rasterize", 
+processing.run("gdal:rasterize",
 	{'INPUT':pathTemp + r"/cursos_de_agua.shp",'FIELD':'rast','BURN':0,'UNITS':0,'WIDTH':1000,'HEIGHT':1000,
 	'EXTENT':'-73.40245056,-53.64107895,-55.05172729,-21.77843666 [EPSG:4326]',
 	'NODATA':0,'OPTIONS':'','DATA_TYPE':5,'INIT':None,'INVERT':False,'OUTPUT':output})
 
 # Merge rasters
 output = pathTemp + r'\\bandas.tif'
-processing.run("gdal:merge", 
+processing.run("gdal:merge",
 	{'INPUT':[pathTemp + r'\\asentamientos.tif',
 	pathTemp + r'\\banados.tif',
 	pathTemp + r'\\cuerpos_de_agua.tif',
@@ -186,8 +186,8 @@ for num in range(1,8):
 	ras.raster = bands_raster
 	ras.bandNumber = num
 	entries.append(ras)
-calc = QgsRasterCalculator('bandas@1 + bandas@2 + bandas@3 + bandas@4 + bandas@5 + bandas@6 + bandas@7', 
-	output,'GTiff', bands_raster.extent(), bands_raster.width(), 
+calc = QgsRasterCalculator('bandas@1 + bandas@2 + bandas@3 + bandas@4 + bandas@5 + bandas@6 + bandas@7',
+	output,'GTiff', bands_raster.extent(), bands_raster.width(),
 	bands_raster.height(), entries)
 calc.processCalculation()
 
@@ -219,12 +219,12 @@ for num in range(1,25):
 	layer = layers[0]
 	layer.selectByExpression('"id" = ' + str(num))
 	fn = pathTemp + r"/capitales" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8',
 		driverName = 'ESRI Shapefile', onlySelected = True)
 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
 	del(writer)
 	output = pathTemp + r'\\LCP' + str(num) + '.shp'
-	processing.run("Cost distance analysis:Least Cost Path", 
+	processing.run("Cost distance analysis:Least Cost Path",
 		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
 		'INPUT_RASTER_BAND':1,
 		'INPUT_START_LAYER':pathTemp + r'\\capitales' + str(num) + '.shp',
@@ -234,7 +234,7 @@ for num in range(1,25):
 		'OUTPUT':output})
 
 # Merge all LCPs
-processing.run("native:mergevectorlayers", 
+processing.run("native:mergevectorlayers",
 	{'LAYERS':[pathTemp + r'\\LCP1.shp',
 	pathTemp + r'\\LCP2.shp',
 	pathTemp + r'\\LCP3.shp',
@@ -263,7 +263,7 @@ processing.run("native:mergevectorlayers",
 	'OUTPUT':pathTemp + r'\\LCP.shp'})
 
 # Compute MST
-processing.run("grass7:v.net.spanningtree", 
+processing.run("grass7:v.net.spanningtree",
 	{'input':pathTemp + r'\\LCP.shp',
 	'points':None,
 	'threshold':50,
@@ -280,7 +280,7 @@ processing.run("grass7:v.net.spanningtree",
 	'GRASS_VECTOR_EXPORT_NOCAT':False})
 
 # Crear matrix de distancia para computar MST euclideano
-processing.run("qgis:distancematrix", 
+processing.run("qgis:distancematrix",
 	{'INPUT':pathTemp + r'\\capitales.shp',
 	'INPUT_FIELD':'id',
 	'TARGET':pathTemp + r'\\capitales.shp',
@@ -290,7 +290,7 @@ processing.run("qgis:distancematrix",
 	'OUTPUT':pathTemp + r'\\distance_matrix.shp'})
 
 # Create all possible bilateral lines between the 24 capitals
-processing.run("native:hublines", 
+processing.run("native:hublines",
 	{'HUBS':pathTemp + r'\\capitales.shp',
 	'HUB_FIELD':'id',
 	'HUB_FIELDS':[],
@@ -300,7 +300,7 @@ processing.run("native:hublines",
 	'OUTPUT':pathTemp + r'\\bilateral_capitals_distances.shp'})
 
 # Create MST of bilateral euclidean distances
-processing.run("grass7:v.net.spanningtree", 
+processing.run("grass7:v.net.spanningtree",
 	{'input':pathTemp + r'\\bilateral_capitals_distances.shp',
 	'points':None,
 	'threshold':50,
