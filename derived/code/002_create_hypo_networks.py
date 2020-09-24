@@ -234,45 +234,45 @@ pathTemp=r"../temp"
 # 		f['id'] = expression.evaluate(context)
 # 		layer_input.updateFeature(f)
 
-# copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.dbf", pathTemp + r"/ciudades_seleccion.dbf")
-# copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.prj", pathTemp + r"/ciudades_seleccion.prj")
-# copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.shp", pathTemp + r"/ciudades_seleccion.shp")
-# copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.shx", pathTemp + r"/ciudades_seleccion.shx")
-# layer_input = iface.addVectorLayer(pathTemp + r"/ciudades_seleccion.shp", '', 'ogr')
-# pv = layer_input.dataProvider()
-# pv.addAttributes([QgsField('id', QVariant.Double)])
-# layer_input.updateFields()
-# context = QgsExpressionContext()
-# context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(layer_input))
-# count = 0
-# with edit(layer_input):
-# 	for f in layer_input.getFeatures():
-# 		count = count + 1
-# 		expression = QgsExpression(str(count))
-# 		context.setFeature(f)
-# 		f['id'] = expression.evaluate(context)
-# 		layer_input.updateFeature(f)
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.dbf", pathTemp + r"/ciudades_seleccion.dbf")
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.prj", pathTemp + r"/ciudades_seleccion.prj")
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.shp", pathTemp + r"/ciudades_seleccion.shp")
+copyfile(pathInput + r"/georef/generic_argentina/shapefiles/ciudades_seleccion.shx", pathTemp + r"/ciudades_seleccion.shx")
+layer_input = iface.addVectorLayer(pathTemp + r"/ciudades_seleccion.shp", '', 'ogr')
+pv = layer_input.dataProvider()
+pv.addAttributes([QgsField('id', QVariant.Double)])
+layer_input.updateFields()
+context = QgsExpressionContext()
+context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(layer_input))
+count = 0
+with edit(layer_input):
+	for f in layer_input.getFeatures():
+		count = count + 1
+		expression = QgsExpression(str(count))
+		context.setFeature(f)
+		f['id'] = expression.evaluate(context)
+		layer_input.updateFeature(f)
 
-for num in range(1,8):
-	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.cpg', pathTemp + r'/ciudades_zona_' + str(num) +'.cpg')
-	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.dbf', pathTemp + r'/ciudades_zona_' + str(num) +'.dbf')
-	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.prj', pathTemp + r'/ciudades_zona_' + str(num) +'.prj')
-	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.shp', pathTemp + r'/ciudades_zona_' + str(num) +'.shp')
-	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.shx', pathTemp + r'/ciudades_zona_' + str(num) +'.shx')
-	layer_input = iface.addVectorLayer(pathTemp + r'/ciudades_zona_' + str(num) + '.shp', '', 'ogr')
-	pv = layer_input.dataProvider()
-	pv.addAttributes([QgsField('id', QVariant.Double)])
-	layer_input.updateFields()
-	context = QgsExpressionContext()
-	context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(layer_input))
-	count = 0
-	with edit(layer_input):
-		for f in layer_input.getFeatures():
-			count = count + 1
-			expression = QgsExpression(str(count))
-			context.setFeature(f)
-			f['id'] = expression.evaluate(context)
-			layer_input.updateFeature(f)
+# for num in range(1,10):
+# 	# copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.cpg', pathTemp + r'/ciudades_zona_' + str(num) +'.cpg')
+# 	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.dbf', pathTemp + r'/ciudades_zona_' + str(num) +'.dbf')
+# 	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.prj', pathTemp + r'/ciudades_zona_' + str(num) +'.prj')
+# 	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.shp', pathTemp + r'/ciudades_zona_' + str(num) +'.shp')
+# 	copyfile(pathInput + r'/georef/generic_argentina/shapefiles/ciudades_zona_' + str(num) +'.shx', pathTemp + r'/ciudades_zona_' + str(num) +'.shx')
+# 	layer_input = iface.addVectorLayer(pathTemp + r'/ciudades_zona_' + str(num) + '.shp', '', 'ogr')
+# 	pv = layer_input.dataProvider()
+# 	pv.addAttributes([QgsField('id', QVariant.Double)])
+# 	layer_input.updateFields()
+# 	context = QgsExpressionContext()
+# 	context.appendScopes(QgsExpressionContextUtils.globalProjectLayerScopes(layer_input))
+# 	count = 0
+# 	with edit(layer_input):
+# 		for f in layer_input.getFeatures():
+# 			count = count + 1
+# 			expression = QgsExpression(str(count))
+# 			context.setFeature(f)
+# 			f['id'] = expression.evaluate(context)
+# 			layer_input.updateFeature(f)
 
 # # Create shapefiles out of single capitals
 # for num in range(1,25):
@@ -285,108 +285,128 @@ for num in range(1,8):
 # 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
 # 	del(writer)
 
-# for num in range(1,43):
-# 	layers = QgsProject.instance().mapLayersByName('ciudades_seleccion')
+for num in range(1,51):
+	layers = QgsProject.instance().mapLayersByName('ciudades_seleccion')
+	layer = layers[0]
+	layer.selectByExpression('"id" = ' + str(num))
+	fn = pathTemp + r"/ciudades_seleccion" + str(num) + ".shp"
+	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+		driverName = 'ESRI Shapefile', onlySelected = True)
+	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+	del(writer)
+
+# for num in range(1,6):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_1')
 # 	layer = layers[0]
 # 	layer.selectByExpression('"id" = ' + str(num))
-# 	fn = pathTemp + r"/ciudades_seleccion" + str(num) + ".shp"
+# 	fn = pathTemp + r"/ciudades_zona_1_" + str(num) + ".shp"
 # 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
 # 		driverName = 'ESRI Shapefile', onlySelected = True)
 # 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
 # 	del(writer)
 
-for num in range(1,6):
-	layers = QgsProject.instance().mapLayersByName('ciudades_zona_1')
-	layer = layers[0]
-	layer.selectByExpression('"id" = ' + str(num))
-	fn = pathTemp + r"/ciudades_zona_1_" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
-		driverName = 'ESRI Shapefile', onlySelected = True)
-	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
-	del(writer)
+# for num in range(1,6):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_2')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_2_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
 
-for num in range(1,6):
-	layers = QgsProject.instance().mapLayersByName('ciudades_zona_2')
-	layer = layers[0]
-	layer.selectByExpression('"id" = ' + str(num))
-	fn = pathTemp + r"/ciudades_zona_2_" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
-		driverName = 'ESRI Shapefile', onlySelected = True)
-	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
-	del(writer)
+# for num in range(1,7):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_3')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_3_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
 
-for num in range(1,7):
-	layers = QgsProject.instance().mapLayersByName('ciudades_zona_3')
-	layer = layers[0]
-	layer.selectByExpression('"id" = ' + str(num))
-	fn = pathTemp + r"/ciudades_zona_3_" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
-		driverName = 'ESRI Shapefile', onlySelected = True)
-	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
-	del(writer)
+# for num in range(1,6):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_4')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_4_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
 
-for num in range(1,6):
-	layers = QgsProject.instance().mapLayersByName('ciudades_zona_4')
-	layer = layers[0]
-	layer.selectByExpression('"id" = ' + str(num))
-	fn = pathTemp + r"/ciudades_zona_4_" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
-		driverName = 'ESRI Shapefile', onlySelected = True)
-	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
-	del(writer)
+# for num in range(1,6):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_5')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_5_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
 
-for num in range(1,6):
-	layers = QgsProject.instance().mapLayersByName('ciudades_zona_5')
-	layer = layers[0]
-	layer.selectByExpression('"id" = ' + str(num))
-	fn = pathTemp + r"/ciudades_zona_5_" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
-		driverName = 'ESRI Shapefile', onlySelected = True)
-	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
-	del(writer)
+# for num in range(1,7):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_6')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_6_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
 
-for num in range(1,8):
-	layers = QgsProject.instance().mapLayersByName('ciudades_zona_6')
-	layer = layers[0]
-	layer.selectByExpression('"id" = ' + str(num))
-	fn = pathTemp + r"/ciudades_zona_6_" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
-		driverName = 'ESRI Shapefile', onlySelected = True)
-	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
-	del(writer)
+# for num in range(1,7):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_7')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_7_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
 
-for num in range(1,10):
-	layers = QgsProject.instance().mapLayersByName('ciudades_zona_7')
-	layer = layers[0]
-	layer.selectByExpression('"id" = ' + str(num))
-	fn = pathTemp + r"/ciudades_zona_7_" + str(num) + ".shp"
-	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
-		driverName = 'ESRI Shapefile', onlySelected = True)
-	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
-	del(writer)
+# for num in range(1,7):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_8')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_8_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
 
-# # COmpute LCPs for each point (Dijkstra Algorithm)
-# for num in range(1,43):
-# 	output = pathTemp + r'\\LCP_sel' + str(num) + '.shp'
+# for num in range(1,7):
+# 	layers = QgsProject.instance().mapLayersByName('ciudades_zona_9')
+# 	layer = layers[0]
+# 	layer.selectByExpression('"id" = ' + str(num))
+# 	fn = pathTemp + r"/ciudades_zona_9_" + str(num) + ".shp"
+# 	writer = QgsVectorFileWriter.writeAsVectorFormat(layer, fn, 'utf-8', 
+# 		driverName = 'ESRI Shapefile', onlySelected = True)
+# 	selected_layer = iface.addVectorLayer(fn, '', 'ogr')
+# 	del(writer)
+
+# COmpute LCPs for each point (Dijkstra Algorithm)
+for num in range(1,51):
+	output = pathTemp + r'\\LCP_sel' + str(num) + '.shp'
+	processing.run("Cost distance analysis:Least Cost Path", 
+		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
+		'INPUT_RASTER_BAND':1,
+		'INPUT_START_LAYER':pathTemp + r'\\ciudades_seleccion' + str(num) + '.shp',
+		'INPUT_END_LAYER':pathTemp + r'\\ciudades_seleccion.shp',
+		'BOOLEAN_FIND_LEAST_PATH_TO_ALL_ENDS':False,
+		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
+		'OUTPUT':output})
+
+# for num in range(1,25):
+# 	output = pathTemp + r'\\LCP' + str(num) + '.shp'
 # 	processing.run("Cost distance analysis:Least Cost Path", 
 # 		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
 # 		'INPUT_RASTER_BAND':1,
-# 		'INPUT_START_LAYER':pathTemp + r'\\ciudades_seleccion' + str(num) + '.shp',
-# 		'INPUT_END_LAYER':pathTemp + r'\\ciudades_seleccion.shp',
+# 		'INPUT_START_LAYER':pathTemp + r'\\capitales' + str(num) + '.shp',
+# 		'INPUT_END_LAYER':pathTemp + r'\\capitales.shp',
 # 		'BOOLEAN_FIND_LEAST_PATH_TO_ALL_ENDS':False,
 # 		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
 # 		'OUTPUT':output})
-
-# for num in range(1,25):
-	# output = pathTemp + r'\\LCP' + str(num) + '.shp'
-	# processing.run("Cost distance analysis:Least Cost Path", 
-	# 	{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
-	# 	'INPUT_RASTER_BAND':1,
-	# 	'INPUT_START_LAYER':pathTemp + r'\\capitales' + str(num) + '.shp',
-	# 	'INPUT_END_LAYER':pathTemp + r'\\capitales.shp',
-	# 	'BOOLEAN_FIND_LEAST_PATH_TO_ALL_ENDS':False,
-	# 	'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
-	# 	'OUTPUT':output})
 
 	# output = pathTemp + r'\\LCP_plain' + str(num) + '.shp'
 	# processing.run("Cost distance analysis:Least Cost Path", 
@@ -453,7 +473,7 @@ for num in range(1,10):
 # 		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
 # 		'OUTPUT':output})
 
-# for num in range(1,8):
+# for num in range(1,7):
 # 	output = pathTemp + r'\\LCP_zona_6_' + str(num) + '.shp'
 # 	processing.run("Cost distance analysis:Least Cost Path", 
 # 		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
@@ -464,7 +484,7 @@ for num in range(1,10):
 # 		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
 # 		'OUTPUT':output})
 
-# for num in range(1,10):
+# for num in range(1,7):
 # 	output = pathTemp + r'\\LCP_zona_7_' + str(num) + '.shp'
 # 	processing.run("Cost distance analysis:Least Cost Path", 
 # 		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
@@ -475,52 +495,82 @@ for num in range(1,10):
 # 		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
 # 		'OUTPUT':output})
 
-# # Merge all LCPs
-# processing.run("native:mergevectorlayers", 
-# 	{'LAYERS':[pathTemp + r'\\LCP_sel1.shp',
-# 	pathTemp + r'\\LCP_sel2.shp',
-# 	pathTemp + r'\\LCP_sel3.shp',
-# 	pathTemp + r'\\LCP_sel4.shp',
-# 	pathTemp + r'\\LCP_sel5.shp',
-# 	pathTemp + r'\\LCP_sel6.shp',
-# 	pathTemp + r'\\LCP_sel7.shp',
-# 	pathTemp + r'\\LCP_sel8.shp',
-# 	pathTemp + r'\\LCP_sel9.shp',
-# 	pathTemp + r'\\LCP_sel10.shp',
-# 	pathTemp + r'\\LCP_sel11.shp',
-# 	pathTemp + r'\\LCP_sel12.shp',
-# 	pathTemp + r'\\LCP_sel13.shp',
-# 	pathTemp + r'\\LCP_sel14.shp',
-# 	pathTemp + r'\\LCP_sel15.shp',
-# 	pathTemp + r'\\LCP_sel16.shp',
-# 	pathTemp + r'\\LCP_sel17.shp',
-# 	pathTemp + r'\\LCP_sel18.shp',
-# 	pathTemp + r'\\LCP_sel19.shp',
-# 	pathTemp + r'\\LCP_sel20.shp',
-# 	pathTemp + r'\\LCP_sel21.shp',
-# 	pathTemp + r'\\LCP_sel22.shp',
-# 	pathTemp + r'\\LCP_sel23.shp',
-# 	pathTemp + r'\\LCP_sel24.shp',
-# 	pathTemp + r'\\LCP_sel25.shp',
-# 	pathTemp + r'\\LCP_sel26.shp',
-# 	pathTemp + r'\\LCP_sel27.shp',
-# 	pathTemp + r'\\LCP_sel28.shp',
-# 	pathTemp + r'\\LCP_sel29.shp',
-# 	pathTemp + r'\\LCP_sel30.shp',
-# 	pathTemp + r'\\LCP_sel31.shp',
-# 	pathTemp + r'\\LCP_sel32.shp',
-# 	pathTemp + r'\\LCP_sel33.shp',
-# 	pathTemp + r'\\LCP_sel34.shp',
-# 	pathTemp + r'\\LCP_sel35.shp',
-# 	pathTemp + r'\\LCP_sel36.shp',
-# 	pathTemp + r'\\LCP_sel37.shp',
-# 	pathTemp + r'\\LCP_sel38.shp',
-# 	pathTemp + r'\\LCP_sel39.shp',
-# 	pathTemp + r'\\LCP_sel40.shp',
-# 	pathTemp + r'\\LCP_sel41.shp',
-# 	pathTemp + r'\\LCP_sel42.shp'],
-# 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
-# 	'OUTPUT':pathTemp + r'\\LCP_sel.shp'})
+# for num in range(1,7):
+# 	output = pathTemp + r'\\LCP_zona_8_' + str(num) + '.shp'
+# 	processing.run("Cost distance analysis:Least Cost Path", 
+# 		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
+# 		'INPUT_RASTER_BAND':1,
+# 		'INPUT_START_LAYER':pathTemp + r'\\ciudades_zona_8_' + str(num) + '.shp',
+# 		'INPUT_END_LAYER':pathTemp + r'\\ciudades_zona_8.shp',
+# 		'BOOLEAN_FIND_LEAST_PATH_TO_ALL_ENDS':False,
+# 		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
+# 		'OUTPUT':output})
+
+# for num in range(1,7):
+# 	output = pathTemp + r'\\LCP_zona_9_' + str(num) + '.shp'
+# 	processing.run("Cost distance analysis:Least Cost Path", 
+# 		{'INPUT_COST_RASTER':pathTemp + r'\\construction_costs.tif',
+# 		'INPUT_RASTER_BAND':1,
+# 		'INPUT_START_LAYER':pathTemp + r'\\ciudades_zona_9_' + str(num) + '.shp',
+# 		'INPUT_END_LAYER':pathTemp + r'\\ciudades_zona_9.shp',
+# 		'BOOLEAN_FIND_LEAST_PATH_TO_ALL_ENDS':False,
+# 		'BOOLEAN_OUTPUT_LINEAR_REFERENCE':False,
+# 		'OUTPUT':output})
+
+# Merge all LCPs
+processing.run("native:mergevectorlayers", 
+	{'LAYERS':[pathTemp + r'\\LCP_sel1.shp',
+	pathTemp + r'\\LCP_sel2.shp',
+	pathTemp + r'\\LCP_sel3.shp',
+	pathTemp + r'\\LCP_sel4.shp',
+	pathTemp + r'\\LCP_sel5.shp',
+	pathTemp + r'\\LCP_sel6.shp',
+	pathTemp + r'\\LCP_sel7.shp',
+	pathTemp + r'\\LCP_sel8.shp',
+	pathTemp + r'\\LCP_sel9.shp',
+	pathTemp + r'\\LCP_sel10.shp',
+	pathTemp + r'\\LCP_sel11.shp',
+	pathTemp + r'\\LCP_sel12.shp',
+	pathTemp + r'\\LCP_sel13.shp',
+	pathTemp + r'\\LCP_sel14.shp',
+	pathTemp + r'\\LCP_sel15.shp',
+	pathTemp + r'\\LCP_sel16.shp',
+	pathTemp + r'\\LCP_sel17.shp',
+	pathTemp + r'\\LCP_sel18.shp',
+	pathTemp + r'\\LCP_sel19.shp',
+	pathTemp + r'\\LCP_sel20.shp',
+	pathTemp + r'\\LCP_sel21.shp',
+	pathTemp + r'\\LCP_sel22.shp',
+	pathTemp + r'\\LCP_sel23.shp',
+	pathTemp + r'\\LCP_sel24.shp',
+	pathTemp + r'\\LCP_sel25.shp',
+	pathTemp + r'\\LCP_sel26.shp',
+	pathTemp + r'\\LCP_sel27.shp',
+	pathTemp + r'\\LCP_sel28.shp',
+	pathTemp + r'\\LCP_sel29.shp',
+	pathTemp + r'\\LCP_sel30.shp',
+	pathTemp + r'\\LCP_sel31.shp',
+	pathTemp + r'\\LCP_sel32.shp',
+	pathTemp + r'\\LCP_sel33.shp',
+	pathTemp + r'\\LCP_sel34.shp',
+	pathTemp + r'\\LCP_sel35.shp',
+	pathTemp + r'\\LCP_sel36.shp',
+	pathTemp + r'\\LCP_sel37.shp',
+	pathTemp + r'\\LCP_sel38.shp',
+	pathTemp + r'\\LCP_sel39.shp',
+	pathTemp + r'\\LCP_sel40.shp',
+	pathTemp + r'\\LCP_sel41.shp',
+	pathTemp + r'\\LCP_sel42.shp',
+	pathTemp + r'\\LCP_sel43.shp',
+	pathTemp + r'\\LCP_sel44.shp',
+	pathTemp + r'\\LCP_sel45.shp',
+	pathTemp + r'\\LCP_sel46.shp',
+	pathTemp + r'\\LCP_sel47.shp',
+	pathTemp + r'\\LCP_sel48.shp',
+	pathTemp + r'\\LCP_sel49.shp',
+	pathTemp + r'\\LCP_sel50.shp'],
+	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
+	'OUTPUT':pathTemp + r'\\LCP_sel.shp'})
 
 # processing.run("native:mergevectorlayers", 
 # 	{'LAYERS':[pathTemp + r'\\LCP1.shp',
@@ -630,8 +680,7 @@ for num in range(1,10):
 # 	pathTemp + r'\\LCP_zona_6_3.shp',
 # 	pathTemp + r'\\LCP_zona_6_4.shp',
 # 	pathTemp + r'\\LCP_zona_6_5.shp',
-# 	pathTemp + r'\\LCP_zona_6_6.shp',
-# 	pathTemp + r'\\LCP_zona_6_7.shp'],
+# 	pathTemp + r'\\LCP_zona_6_6.shp'],
 # 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
 # 	'OUTPUT':pathTemp + r'\\LCP_zona_6.shp'})
 
@@ -641,29 +690,46 @@ for num in range(1,10):
 # 	pathTemp + r'\\LCP_zona_7_3.shp',
 # 	pathTemp + r'\\LCP_zona_7_4.shp',
 # 	pathTemp + r'\\LCP_zona_7_5.shp',
-# 	pathTemp + r'\\LCP_zona_7_6.shp',
-# 	pathTemp + r'\\LCP_zona_7_7.shp',
-# 	pathTemp + r'\\LCP_zona_7_8.shp',
-# 	pathTemp + r'\\LCP_zona_7_9.shp'],
+# 	pathTemp + r'\\LCP_zona_7_6.shp'],
 # 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
 # 	'OUTPUT':pathTemp + r'\\LCP_zona_7.shp'})
 
-# # Compute MST
-# processing.run("grass7:v.net.spanningtree", 
-# 	{'input':pathTemp + r'\\LCP_sel.shp',
-# 	'points':None,
-# 	'threshold':50,
-# 	'arc_column':None,
-# 	'node_column':None,
-# 	'-g':False,
-# 	'output':pathTemp + r'\\LCP_sel_MST.shp',
-# 	'GRASS_REGION_PARAMETER':None,
-# 	'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
-# 	'GRASS_MIN_AREA_PARAMETER':0.0001,
-# 	'GRASS_OUTPUT_TYPE_PARAMETER':0,
-# 	'GRASS_VECTOR_DSCO':'',
-# 	'GRASS_VECTOR_LCO':'',
-# 	'GRASS_VECTOR_EXPORT_NOCAT':False})
+# processing.run("native:mergevectorlayers", 
+# 	{'LAYERS':[pathTemp + r'\\LCP_zona_8_1.shp',
+# 	pathTemp + r'\\LCP_zona_8_2.shp',
+# 	pathTemp + r'\\LCP_zona_8_3.shp',
+# 	pathTemp + r'\\LCP_zona_8_4.shp',
+# 	pathTemp + r'\\LCP_zona_8_5.shp',
+# 	pathTemp + r'\\LCP_zona_8_6.shp'],
+# 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
+# 	'OUTPUT':pathTemp + r'\\LCP_zona_8.shp'})
+
+# processing.run("native:mergevectorlayers", 
+# 	{'LAYERS':[pathTemp + r'\\LCP_zona_9_1.shp',
+# 	pathTemp + r'\\LCP_zona_9_2.shp',
+# 	pathTemp + r'\\LCP_zona_9_3.shp',
+# 	pathTemp + r'\\LCP_zona_9_4.shp',
+# 	pathTemp + r'\\LCP_zona_9_5.shp',
+# 	pathTemp + r'\\LCP_zona_9_6.shp'],
+# 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
+# 	'OUTPUT':pathTemp + r'\\LCP_zona_9.shp'})
+
+# Compute MST
+processing.run("grass7:v.net.spanningtree", 
+	{'input':pathTemp + r'\\LCP_sel.shp',
+	'points':None,
+	'threshold':50,
+	'arc_column':None,
+	'node_column':None,
+	'-g':False,
+	'output':pathTemp + r'\\LCP_sel_MST.shp',
+	'GRASS_REGION_PARAMETER':None,
+	'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
+	'GRASS_MIN_AREA_PARAMETER':0.0001,
+	'GRASS_OUTPUT_TYPE_PARAMETER':0,
+	'GRASS_VECTOR_DSCO':'',
+	'GRASS_VECTOR_LCO':'',
+	'GRASS_VECTOR_EXPORT_NOCAT':False})
 
 # processing.run("grass7:v.net.spanningtree", 
 # 	{'input':pathTemp + r'\\LCP.shp',
@@ -697,7 +763,7 @@ for num in range(1,10):
 # 	'GRASS_VECTOR_LCO':'',
 # 	'GRASS_VECTOR_EXPORT_NOCAT':False})
 
-# for num in range(1,8):
+# for num in range(1,10):
 # 	processing.run("grass7:v.net.spanningtree", 
 # 		{'input':pathTemp + r'\\LCP_zona_' + str(num) + '.shp',
 # 		'points':None,
@@ -714,29 +780,31 @@ for num in range(1,10):
 # 		'GRASS_VECTOR_LCO':'',
 # 		'GRASS_VECTOR_EXPORT_NOCAT':False})
 
-# # Merge LCPs
-# processing.run("native:mergevectorlayers", 
-# 	{'LAYERS':[pathTemp + r'\\LCP_MST.shp',
-# 	pathTemp + r'\\LCP_zona_1_MST.shp',
-# 	pathTemp + r'\\LCP_zona_2_MST.shp',
-# 	pathTemp + r'\\LCP_zona_3_MST.shp',
-# 	pathTemp + r'\\LCP_zona_4_MST.shp',
-# 	pathTemp + r'\\LCP_zona_5_MST.shp',
-# 	pathTemp + r'\\LCP_zona_6_MST.shp',
-# 	pathTemp + r'\\LCP_zona_7_MST.shp'],
-# 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
-# 	'OUTPUT':pathTemp + r'\\LCP_total_MST.shp'})
+# Merge LCPs
+processing.run("native:mergevectorlayers", 
+	{'LAYERS':[pathTemp + r'\\LCP_sel_MST.shp',
+	pathTemp + r'\\LCP_zona_1_MST.shp',
+	pathTemp + r'\\LCP_zona_2_MST.shp',
+	pathTemp + r'\\LCP_zona_3_MST.shp',
+	pathTemp + r'\\LCP_zona_4_MST.shp',
+	pathTemp + r'\\LCP_zona_5_MST.shp',
+	pathTemp + r'\\LCP_zona_6_MST.shp',
+	pathTemp + r'\\LCP_zona_7_MST.shp',
+	pathTemp + r'\\LCP_zona_8_MST.shp',
+	pathTemp + r'\\LCP_zona_9_MST.shp'],
+	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
+	'OUTPUT':pathTemp + r'\\LCP_total_MST.shp'})
 
-### Euclidean 
-# # Crear matrix de distancia para computar MST euclideano
-# processing.run("qgis:distancematrix", 
-# 	{'INPUT':pathTemp + r'\\ciudades_seleccion.shp',
-# 	'INPUT_FIELD':'id',
-# 	'TARGET':pathTemp + r'\\ciudades_seleccion.shp',
-# 	'TARGET_FIELD':'id',
-# 	'MATRIX_TYPE':0,
-# 	'NEAREST_POINTS':0,
-# 	'OUTPUT':pathTemp + r'\\distance_matrix_sel.shp'})
+## Euclidean 
+# Crear matrix de distancia para computar MST euclideano
+processing.run("qgis:distancematrix", 
+	{'INPUT':pathTemp + r'\\ciudades_seleccion.shp',
+	'INPUT_FIELD':'id',
+	'TARGET':pathTemp + r'\\ciudades_seleccion.shp',
+	'TARGET_FIELD':'id',
+	'MATRIX_TYPE':0,
+	'NEAREST_POINTS':0,
+	'OUTPUT':pathTemp + r'\\distance_matrix_sel.shp'})
 
 # processing.run("qgis:distancematrix", 
 # 	{'INPUT':pathTemp + r'\\capitales.shp',
@@ -747,25 +815,25 @@ for num in range(1,10):
 # 	'NEAREST_POINTS':0,
 # 	'OUTPUT':pathTemp + r'\\distance_matrix.shp'})
 
-for num in range(1,8):
-	processing.run("qgis:distancematrix", 
-		{'INPUT':pathTemp + r'\\ciudades_zona_' + str(num) + '.shp',
-		'INPUT_FIELD':'id',
-		'TARGET':pathTemp + r'\\ciudades_zona_' + str(num) + '.shp',
-		'TARGET_FIELD':'id',
-		'MATRIX_TYPE':0,
-		'NEAREST_POINTS':0,
-		'OUTPUT':pathTemp + r'\\distance_matrix_zona_' + str(num) + '.shp'})
+# for num in range(1,10):
+# 	processing.run("qgis:distancematrix", 
+# 		{'INPUT':pathTemp + r'\\ciudades_zona_' + str(num) + '.shp',
+# 		'INPUT_FIELD':'id',
+# 		'TARGET':pathTemp + r'\\ciudades_zona_' + str(num) + '.shp',
+# 		'TARGET_FIELD':'id',
+# 		'MATRIX_TYPE':0,
+# 		'NEAREST_POINTS':0,
+# 		'OUTPUT':pathTemp + r'\\distance_matrix_zona_' + str(num) + '.shp'})
 
-# # Create all possible bilateral lines between the 24 capitals
-# processing.run("native:hublines", 
-# 	{'HUBS':pathTemp + r'\\ciudades_seleccion.shp',
-# 	'HUB_FIELD':'id',
-# 	'HUB_FIELDS':[],
-# 	'SPOKES':pathTemp + r'\\distance_matrix_sel.shp',
-# 	'SPOKE_FIELD':'InputID',
-# 	'SPOKE_FIELDS':[],
-# 	'OUTPUT':pathTemp + r'\\bilateral_ciudades_sel_distances.shp'})
+# Create all possible bilateral lines between the 24 capitals
+processing.run("native:hublines", 
+	{'HUBS':pathTemp + r'\\ciudades_seleccion.shp',
+	'HUB_FIELD':'id',
+	'HUB_FIELDS':[],
+	'SPOKES':pathTemp + r'\\distance_matrix_sel.shp',
+	'SPOKE_FIELD':'InputID',
+	'SPOKE_FIELDS':[],
+	'OUTPUT':pathTemp + r'\\bilateral_ciudades_sel_distances.shp'})
 
 # processing.run("native:hublines", 
 # 	{'HUBS':pathTemp + r'\\capitales.shp',
@@ -776,32 +844,32 @@ for num in range(1,8):
 # 	'SPOKE_FIELDS':[],
 # 	'OUTPUT':pathTemp + r'\\bilateral_capitals_distances.shp'})
 
-for num in range(1,8):
-	processing.run("native:hublines", 
-		{'HUBS':pathTemp + r'\\ciudades_zona_' + str(num) + '.shp',
-		'HUB_FIELD':'id',
-		'HUB_FIELDS':[],
-		'SPOKES':pathTemp + r'\\distance_matrix_zona_' + str(num) + '.shp',
-		'SPOKE_FIELD':'InputID',
-		'SPOKE_FIELDS':[],
-		'OUTPUT':pathTemp + r'\\bilateral_distances_zona_' + str(num) + '.shp'})
+# for num in range(1,10):
+# 	processing.run("native:hublines", 
+# 		{'HUBS':pathTemp + r'\\ciudades_zona_' + str(num) + '.shp',
+# 		'HUB_FIELD':'id',
+# 		'HUB_FIELDS':[],
+# 		'SPOKES':pathTemp + r'\\distance_matrix_zona_' + str(num) + '.shp',
+# 		'SPOKE_FIELD':'InputID',
+# 		'SPOKE_FIELDS':[],
+# 		'OUTPUT':pathTemp + r'\\bilateral_distances_zona_' + str(num) + '.shp'})
 
-# # Create MST of bilateral euclidean distances
-# processing.run("grass7:v.net.spanningtree", 
-# 	{'input':pathTemp + r'\\bilateral_ciudades_sel_distances.shp',
-# 	'points':None,
-# 	'threshold':50,
-# 	'arc_column':None,
-# 	'node_column':None,
-# 	'-g':False,
-# 	'output':pathTemp + r'\\EUC_sel_MST.shp',
-# 	'GRASS_REGION_PARAMETER':None,
-# 	'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
-# 	'GRASS_MIN_AREA_PARAMETER':0.0001,
-# 	'GRASS_OUTPUT_TYPE_PARAMETER':0,
-# 	'GRASS_VECTOR_DSCO':'',
-# 	'GRASS_VECTOR_LCO':'',
-# 	'GRASS_VECTOR_EXPORT_NOCAT':False})
+# Create MST of bilateral euclidean distances
+processing.run("grass7:v.net.spanningtree", 
+	{'input':pathTemp + r'\\bilateral_ciudades_sel_distances.shp',
+	'points':None,
+	'threshold':50,
+	'arc_column':None,
+	'node_column':None,
+	'-g':False,
+	'output':pathTemp + r'\\EUC_sel_MST.shp',
+	'GRASS_REGION_PARAMETER':None,
+	'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
+	'GRASS_MIN_AREA_PARAMETER':0.0001,
+	'GRASS_OUTPUT_TYPE_PARAMETER':0,
+	'GRASS_VECTOR_DSCO':'',
+	'GRASS_VECTOR_LCO':'',
+	'GRASS_VECTOR_EXPORT_NOCAT':False})
 
 # processing.run("grass7:v.net.spanningtree", 
 # 	{'input':pathTemp + r'\\bilateral_capitals_distances.shp',
@@ -819,33 +887,35 @@ for num in range(1,8):
 # 	'GRASS_VECTOR_LCO':'',
 # 	'GRASS_VECTOR_EXPORT_NOCAT':False})
 
-for num in range(1,8):
-	processing.run("grass7:v.net.spanningtree", 
-		{'input':pathTemp + r'\\bilateral_distances_zona_' + str(num) + '.shp',
-		'points':None,
-		'threshold':50,
-		'arc_column':None,
-		'node_column':None,
-		'-g':False,
-		'output':pathTemp + r'\\EUC_zona_' + str(num) + '_MST.shp',
-		'GRASS_REGION_PARAMETER':None,
-		'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
-		'GRASS_MIN_AREA_PARAMETER':0.0001,
-		'GRASS_OUTPUT_TYPE_PARAMETER':0,
-		'GRASS_VECTOR_DSCO':'',
-		'GRASS_VECTOR_LCO':'',
-		'GRASS_VECTOR_EXPORT_NOCAT':False})
+# for num in range(1,10):
+# 	processing.run("grass7:v.net.spanningtree", 
+# 		{'input':pathTemp + r'\\bilateral_distances_zona_' + str(num) + '.shp',
+# 		'points':None,
+# 		'threshold':50,
+# 		'arc_column':None,
+# 		'node_column':None,
+# 		'-g':False,
+# 		'output':pathTemp + r'\\EUC_zona_' + str(num) + '_MST.shp',
+# 		'GRASS_REGION_PARAMETER':None,
+# 		'GRASS_SNAP_TOLERANCE_PARAMETER':-1,
+# 		'GRASS_MIN_AREA_PARAMETER':0.0001,
+# 		'GRASS_OUTPUT_TYPE_PARAMETER':0,
+# 		'GRASS_VECTOR_DSCO':'',
+# 		'GRASS_VECTOR_LCO':'',
+# 		'GRASS_VECTOR_EXPORT_NOCAT':False})
 
 # Merge EUCs
 processing.run("native:mergevectorlayers", 
-	{'LAYERS':[pathTemp + r'\\EUC_MST.shp',
+	{'LAYERS':[pathTemp + r'\\EUC_sel_MST.shp',
 	pathTemp + r'\\EUC_zona_1_MST.shp',
 	pathTemp + r'\\EUC_zona_2_MST.shp',
 	pathTemp + r'\\EUC_zona_3_MST.shp',
 	pathTemp + r'\\EUC_zona_4_MST.shp',
 	pathTemp + r'\\EUC_zona_5_MST.shp',
 	pathTemp + r'\\EUC_zona_6_MST.shp',
-	pathTemp + r'\\EUC_zona_7_MST.shp'],
+	pathTemp + r'\\EUC_zona_7_MST.shp',
+	pathTemp + r'\\EUC_zona_8_MST.shp',
+	pathTemp + r'\\EUC_zona_9_MST.shp'],
 	'CRS':QgsCoordinateReferenceSystem('EPSG:4326'),
 	'OUTPUT':pathTemp + r'\\EUC_total_MST.shp'})
 
