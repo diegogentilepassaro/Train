@@ -5,7 +5,7 @@ cd "/Users/diegog/Desktop/Diego/Train/analysis/code"
 program main
     use "../temp/departments_wide_panel.dta", clear
 
-	local instrument_roads "hypo_EUC_MST_kms"
+	local instrument_roads "hypo_EUC_total_MST_kms"
 
     *** 1960 base outcomes
 
@@ -29,7 +29,7 @@ program main
 		    table_name(FS_EUC_chg_tot_rails_86_70) ///
 		    instrument_roads(`instrument_roads')
 			
-	local instrument_roads "hypo_LCP_MST_kms"
+	local instrument_roads "hypo_LCP_total_MST_kms"
 
     *** 1960 base outcomes
 
@@ -79,12 +79,14 @@ program run_first_stage
 	
 	eststo: qui reghdfe `endo_var' `instrument_roads' studied_larkin ///
 	    `geo_vars', absorb(provname)
+	test `instrument_roads' = studied_larkin = 0
     qui estadd local f_stat = round(e(F), 0.01)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"
 	
 	eststo: qui reghdfe `endo_var' `instrument_roads' studied_larkin ///
 	    `geo_vars' `baseline_depvar', absorb(provname)
+	test `instrument_roads' = studied_larkin = 0
     qui estadd local f_stat = round(e(F), 0.01)
 	qui estadd local geo_conts "Yes"
     qui estadd local prov_FE "Yes"	

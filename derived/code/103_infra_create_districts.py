@@ -107,6 +107,30 @@ parameters={'INPUT':input,
 	'OUTPUT':output}
 processing.run("qgis:fieldcalculator", parameters)
 
+# # Hypothetical network plain LCP
+# input = pathTemp + r"/LCP_plain_MST.shp"
+# overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+# output= pathTemp + r"/hypo_LCP_plain_MST_temp.shp"
+# parameters={'INPUT':input,
+# 	'OVERLAY':overlay,
+# 	'INPUT_FIELDS':[],
+# 	'OVERLAY_FIELDS':[],
+# 	'OVERLAY_FIELDS_PREFIX':'',
+# 	'OUTPUT':output}
+# processing.run("native:intersection", parameters)
+
+# input = output
+# output=pathTemp + r'\\hypo_LCP_plain_MST.shp'
+# parameters={'INPUT':input,
+# 	'FIELD_NAME':'length_meters',
+# 	'FIELD_TYPE':0,
+# 	'FIELD_LENGTH':10,
+# 	'FIELD_PRECISION':3,
+# 	'NEW_FIELD':True,
+# 	'FORMULA':' $length ',
+# 	'OUTPUT':output}
+# processing.run("qgis:fieldcalculator", parameters)
+
 # Hypothetical network EUC
 input = pathTemp + r"/EUC_MST.shp"
 overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
@@ -129,6 +153,91 @@ parameters={'INPUT':input,
 	'NEW_FIELD':True,
 	'FORMULA':' $length ',
 	'OUTPUT':output}
+processing.run("qgis:fieldcalculator", parameters)
+
+# Hypothetical network total LCP
+input = pathTemp + r"/LCP_total_MST.shp"
+overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+output= pathTemp + r"/hypo_LCP_total_MST_temp.shp"
+parameters={'INPUT':input,
+	'OVERLAY':overlay,
+	'INPUT_FIELDS':[],
+	'OVERLAY_FIELDS':[],
+	'OVERLAY_FIELDS_PREFIX':'',
+	'OUTPUT':output}
+processing.run("native:intersection", parameters)
+
+input = output
+output=pathTemp + r'\\hypo_LCP_total_MST.shp'
+parameters={'INPUT':input,
+	'FIELD_NAME':'length_meters',
+	'FIELD_TYPE':0,
+	'FIELD_LENGTH':10,
+	'FIELD_PRECISION':3,
+	'NEW_FIELD':True,
+	'FORMULA':' $length ',
+	'OUTPUT':output}
+processing.run("qgis:fieldcalculator", parameters)
+
+# Hypothetical network total EUC
+input = pathTemp + r"/EUC_total_MST.shp"
+overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+output= pathTemp + r"/hypo_EUC_total_MST_temp.shp"
+parameters={'INPUT':input,
+	'OVERLAY':overlay,
+	'INPUT_FIELDS':[],
+	'OVERLAY_FIELDS':[],
+	'OVERLAY_FIELDS_PREFIX':'',
+	'OUTPUT':output}
+processing.run("native:intersection", parameters)
+
+input = output
+output=pathTemp + r'\\hypo_EUC_total_MST.shp'
+parameters={'INPUT':input,
+	'FIELD_NAME':'length_meters',
+	'FIELD_TYPE':0,
+	'FIELD_LENGTH':10,
+	'FIELD_PRECISION':3,
+	'NEW_FIELD':True,
+	'FORMULA':' $length ',
+	'OUTPUT':output}
+processing.run("qgis:fieldcalculator", parameters)
+
+#### Legacy instruments
+#hypothetical network 1
+input = pathInput + r"/perez/output/hypo_CMST_network.shp"
+overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+output= pathTemp + r"/inter_hypoCMST.shp"
+parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
+processing.run("native:intersection", parameters)
+
+input = output
+output=pathTemp + r'\\inter_hypoCMST_l.shp'
+parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
+processing.run("qgis:fieldcalculator", parameters)
+
+#hypothetical network 2
+input = pathInput + r"/perez/output/hypo_EMST_network.shp"
+overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+output= pathTemp + r"/inter_hypoEMST.shp"
+parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
+processing.run("native:intersection", parameters)
+
+input = output
+output=pathTemp + r'\\inter_hypoEMST_l.shp'
+parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
+processing.run("qgis:fieldcalculator", parameters)
+
+#hypothetical network 3
+input = pathInput + r"/perez/output/hypo_mean_EMST_network.shp"
+overlay = pathTemp + r"/geo2_ar1970_2010_fix.shp"
+output= pathTemp + r"/inter_hypomeanEMST.shp"
+parameters={'INPUT':input,'OVERLAY':overlay,'INPUT_FIELDS':[],'OVERLAY_FIELDS':[],'OVERLAY_FIELDS_PREFIX':'','OUTPUT':output}
+processing.run("native:intersection", parameters)
+
+input = output
+output=pathTemp + r'\\inter_hypomeanEMST_l.shp'
+parameters={'INPUT':input,'FIELD_NAME':'length_meters','FIELD_TYPE':0,'FIELD_LENGTH':10,'FIELD_PRECISION':3,'NEW_FIELD':True,'FORMULA':' $length ','OUTPUT':output}
 processing.run("qgis:fieldcalculator", parameters)
 
 print('End of .py')

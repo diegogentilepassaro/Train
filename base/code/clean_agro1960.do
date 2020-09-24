@@ -14,7 +14,7 @@ foreach prov in `prov'{
   local i = `i' + 1
 }
 
-use "..\temp\d_1.dta"
+use "..\temp\agro60_1.dta"
 forvalues i = 2(1)22{
   append using "..\temp\agro60_`i'.dta"
 }
