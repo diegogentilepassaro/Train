@@ -24,6 +24,38 @@ program main
 		    instrument_roads(`instrument_roads')
 	}
 	
+	**** Agricultural census
+	foreach depvar in log_agnexp log_agareatot_ha {
+	
+	    run_OLS_regression, depvar(chg_`depvar'_88_60) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(chg_pav_and_grav_86_54) ///
+		    trains_var(chg_tot_rails_86_60) ///
+		    table_name(OLS_chg_`depvar'_88_60_pav_and_grav)
+       run_IV_regression, depvar(chg_`depvar'_88_60) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(chg_pav_and_grav_86_54) ///
+		    trains_var(chg_tot_rails_86_60) ///
+		    table_name(IV_EUC_chg_`depvar'_88_60_pav_and_grav) ///
+		    instrument_roads(`instrument_roads')
+	}
+	
+	**** Industrial census
+	foreach depvar in log_indnpers log_indmassal log_indvalprod {
+	
+	    run_OLS_regression, depvar(chg_`depvar'_85_54) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(chg_pav_and_grav_86_54) ///
+		    trains_var(chg_tot_rails_86_60) ///
+		    table_name(OLS_chg_`depvar'_85_54_pav_and_grav)
+       run_IV_regression, depvar(chg_`depvar'_85_54) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(chg_pav_and_grav_86_54) ///
+		    trains_var(chg_tot_rails_86_60) ///
+		    table_name(IV_EUC_chg_`depvar'_85_54_pav_and_grav) ///
+		    instrument_roads(`instrument_roads')
+	}
+	
     *** 1970 base outcomes
 		*** Population outcomes 
 	run_OLS_regression, depvar(chg_log_pop_91_70) ///

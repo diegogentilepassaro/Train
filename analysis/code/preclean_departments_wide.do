@@ -350,6 +350,34 @@ program preclean_data
 	gen_chg_var_and_label, var(log_inactive) year_pre(70) year_post(91) ///
 	    label(log inactive)
 	
+	**** Agr and Ind censuses
+	gen_log_var_and_label, var(agnexp_1960) label(Log number of farms 1960)
+	gen_log_var_and_label, var(agnexp_1988) label(Log number of farms 1988)
+	gen_chg_var_and_label, var(log_agnexp) year_pre(60) year_post(88) ///
+	    label(log number of farms)
+	gen_log_var_and_label, var(agareatot_ha_1960) label(Log agricultural area (ha) 1960)
+	gen_log_var_and_label, var(agareatot_ha_1988) label(Log agricultural area (ha) 1988)
+	gen_chg_var_and_label, var(log_agareatot_ha) year_pre(60) year_post(88) ///
+	    label(log agricultural area (ha))
+		
+	gen_log_var_and_label, var(indnestab_1954) label(Log number of firms 1954)
+	gen_log_var_and_label, var(indnestab_1985) label(Log number of firms 1985)
+	gen_chg_var_and_label, var(log_indnestab) year_pre(54) year_post(85) ///
+	    label(log number of firms)
+	gen_log_var_and_label, var(indnpers_1954) label(Log number of employees 1954)
+	gen_log_var_and_label, var(indnpers_1985) label(Log number of employees 1985)
+	gen_chg_var_and_label, var(log_indnpers) year_pre(54) year_post(85) ///
+	    label(log number of employees)
+	gen_log_var_and_label, var(indmassal_1954) label(Log total paid wages 1954)
+	gen_log_var_and_label, var(indmassal_1985) label(Log total paid wages 1985)
+	gen_chg_var_and_label, var(log_indmassal) year_pre(54) year_post(85) ///
+	    label(log total paid wages)
+	gen indvalprod_1985 = indvalprod1_1985 + indvalprod2_1985
+	gen_log_var_and_label, var(indvalprod_1954) label(Log total value of production 1954)
+	gen_log_var_and_label, var(indvalprod_1985) label(Log total value of production 1985)
+	gen_chg_var_and_label, var(log_indvalprod) year_pre(54) year_post(85) ///
+	    label(log total value of production)	
+		
 	**** instruments 
 	/*rename (roads54_type1 roads54_type2 roads54_type3 roads54_type4 ///
 	    roads70_type1 roads70_type2 roads70_type3 roads70_type4 ///

@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}&\multicolumn{1}{c}{}\\
+\hline
+Change in kms of railroads 1986-1960&  0.00455\sym{*}  &  0.00714\sym{**} &  0.00281         &  0.00324         \\
+                &(0.00274)         &(0.00315)         &(0.00254)         &(0.00258)         \\
+[1em]
+Change in kms of paved and gravel roads 1986-1954&-0.000182         &  0.00133\sym{*}  &-0.000124         &-0.000103         \\
+                &(0.000569)         &(0.000763)         &(0.000594)         &(0.000585)         \\
+[1em]
+Log urban population 1960&                  &                  &                  &   0.0440         \\
+                &                  &                  &                  & (0.0613)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&    .0241         &    .0155         &    .0952         &    .0716         \\
+Cragg-Donald (multivariate) F-stat&34.90790000000001         &  24.7522         &  34.8478         &   32.498         \\
+Geographic controls&       No         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &      Yes         &      Yes         \\
+Observations    &      308         &      308         &      308         &      285         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
