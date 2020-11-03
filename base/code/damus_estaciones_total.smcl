@@ -1,0 +1,901 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\Cote\Dropbox\Documents\Economia\__Brown\Research\Trains\Train\base\code\damus_estaciones_total.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}16 Oct 2020, 12:00:26
+{txt}
+{com}. display "$S_TIME"
+{res}12:00:26
+{txt}
+{com}. 
+. 
+. foreach filial in `filiales'{c -(}
+{txt}  2{com}.   foreach d in despachada recibida{c -(}
+{txt}  3{com}. 
+.   quietly{c -(}
+{txt}  4{com}.     import excel using "..\..\raw_data\damus\ESTACION\ESTACION\\`filial'.xls", clear sheet("Carga `d'")
+{txt}  5{com}.     if "`filial'"=="FCNEA"{c -(}
+{txt}  6{com}.       drop D
+{txt}  7{com}.     {c )-}
+{txt}  8{com}.     cap ren Estaci A
+{txt}  9{com}.     ren A estacion
+{txt} 10{com}.     ds estacion, not
+{txt} 11{com}.     tostring `r(varlist)', replace force
+{txt} 12{com}.     ds estacion, not
+{txt} 13{com}.     foreach var of var `r(varlist)'{c -(}
+{txt} 14{com}.       replace `var' = subinstr(`var',"/","_",.) in 1
+{txt} 15{com}.       if `var'[1]!="."{c -(}
+{txt} 16{com}.         ren `var' year`=`var'[1]'
+{txt} 17{com}.       {c )-}
+{txt} 18{com}.       else {c -(}
+{txt} 19{com}.         drop `var'
+{txt} 20{com}.       {c )-}
+{txt} 21{com}.     {c )-}
+{txt} 22{com}.     ds estacion, not
+{txt} 23{com}.     destring `r(varlist)', replace force
+{txt} 24{com}.     foreach var of var estacion{c -(}
+{txt} 25{com}.       replace `var' = subinstr(`var',"á","a",.)
+{txt} 26{com}.       replace `var' = subinstr(`var',"é","e",.)
+{txt} 27{com}.       replace `var' = subinstr(`var',"í","i",.)
+{txt} 28{com}.       replace `var' = subinstr(`var',"ó","o",.)
+{txt} 29{com}.       replace `var' = subinstr(`var',"ú","u",.)
+{txt} 30{com}.       replace `var' = subinstr(`var',"ü","u",.)
+{txt} 31{com}.       replace `var' = subinstr(`var',"ñ","n",.)
+{txt} 32{com}.       replace `var' = subinstr(`var',"Ñ","N",.)
+{txt} 33{com}.       replace `var' = upper(subinstr(`var'," ","",.)  )
+{txt} 34{com}.       replace `var' = subinstr(`var',"-","",.)
+{txt} 35{com}.       replace `var' = subinstr(`var',".","",.)
+{txt} 36{com}.       replace `var' = subinstr(`var',"'","",.)
+{txt} 37{com}.     {c )-}
+{txt} 38{com}.     gen x=_n if estacion==""
+{txt} 39{com}.     replace x=x[_n-1] if x==.
+{txt} 40{com}.     bys x: gen w=_n
+{txt} 41{com}.     gen q = 0 if w==1
+{txt} 42{com}.     replace q = 1 if strpos(estacion ,"TOTAL")>0 & strpos(estacion ,"TOTAL")!=.
+{txt} 43{com}.     replace q=q[_n-1] if q==.
+{txt} 44{com}.     drop if q==1
+{txt} 45{com}.     drop q x w
+{txt} 46{com}.     drop if estacion==""
+{txt} 47{com}.     compress
+{txt} 48{com}.     gen direccion = "`d'"
+{txt} 49{com}.     gen filial = "`filial'"
+{txt} 50{com}.     noisily display("`filial' - `d'")
+{txt} 51{com}.     noisily ds
+{txt} 52{com}.     noisily save "..\temp\damus_`filial'_total_`d'.dta", replace
+{txt} 53{com}.     {c )-}
+{txt} 54{com}.   {c )-}
+{txt} 55{com}. {c )-}
+ANDINO - despachada
+{txt}{col 1}estacion{col 12}year1897{col 23}year1899{col 34}year1901{col 45}year1903{col 56}year1905{col 67}year1907{col 78}year1909{col 89}year1911{col 100}direccion
+{col 1}year1896{col 12}year1898{col 23}year1900{col 34}year1902{col 45}year1904{col 56}year1906{col 67}year1908{col 78}year1910{col 89}year1912{col 100}filial
+file ..\temp\damus_ANDINO_total_despachada.dta saved
+ANDINO - recibida
+{col 1}estacion{col 12}year1897{col 23}year1899{col 34}year1901{col 45}year1903{col 56}year1905{col 67}year1907{col 78}year1909{col 89}year1911{col 100}direccion
+{col 1}year1896{col 12}year1898{col 23}year1900{col 34}year1902{col 45}year1904{col 56}year1906{col 67}year1908{col 78}year1910{col 89}year1912{col 100}filial
+file ..\temp\damus_ANDINO_total_recibida.dta saved
+CHUBUT - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}year1945
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}direccion
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41{col 105}filial
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_CHUBUT_total_despachada.dta saved
+CHUBUT - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}year1945
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}direccion
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41{col 105}filial
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_CHUBUT_total_recibida.dta saved
+COMODORO - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}year1945
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}direccion
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41{col 105}filial
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_COMODORO_total_despachada.dta saved
+COMODORO - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}year1945
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}direccion
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41{col 105}filial
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_COMODORO_total_recibida.dta saved
+DESEADO - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}year1945
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}direccion
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41{col 105}filial
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_DESEADO_total_despachada.dta saved
+DESEADO - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}year1945
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}direccion
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41{col 105}filial
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_DESEADO_total_recibida.dta saved
+FC_ESTE - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}year1945
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}direccion
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41{col 105}filial
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_FC_ESTE_total_despachada.dta saved
+FC_ESTE - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1936_7{col 105}year1942_43
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1937_8{col 105}year1943_44
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1938_9{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1939_40{col 105}filial
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1940_41
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936{col 92}year1941_42
+file ..\temp\damus_FC_ESTE_total_recibida.dta saved
+FCBAP - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1945
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}filial
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCBAP_total_despachada.dta saved
+FCBAP - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCBAP_total_recibida.dta saved
+FCBBNO - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCBBNO_total_despachada.dta saved
+FCBBNO - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCBBNO_total_recibida.dta saved
+FCCA - despachada
+{col 1}estacion{col 14}year1899{col 27}year1907{col 40}year1915{col 53}year1923{col 66}year1931{col 79}year1939_40{col 92}year1947{col 105}direccion
+{col 1}year1876{col 14}year1900{col 27}year1908{col 40}year1916{col 53}year1924{col 66}year1932{col 79}year1940_41{col 92}year1948{col 105}filial
+{col 1}year1877{col 14}year1901{col 27}year1909{col 40}year1917{col 53}year1925{col 66}year1933{col 79}year1941_42{col 92}year1949
+{col 1}year1882{col 14}year1902{col 27}year1910{col 40}year1918{col 53}year1926{col 66}year1934{col 79}year1942_43{col 92}year1950
+{col 1}year1884{col 14}year1903{col 27}year1911{col 40}year1919{col 53}year1927{col 66}year1935{col 79}year1943_44{col 92}year1951
+{col 1}year1896{col 14}year1904{col 27}year1912{col 40}year1920{col 53}year1928{col 66}year1936_7{col 79}year1944{col 92}year1952
+{col 1}year1897{col 14}year1905{col 27}year1913{col 40}year1921{col 53}year1929{col 66}year1937_8{col 79}year1945{col 92}year1953
+{col 1}year1898{col 14}year1906{col 27}year1914{col 40}year1922{col 53}year1930{col 66}year1938_9{col 79}year1946{col 92}year1968
+file ..\temp\damus_FCCA_total_despachada.dta saved
+FCCA - recibida
+{col 1}estacion{col 14}year1901{col 27}year1909{col 40}year1917{col 53}year1925{col 66}year1933{col 79}year1941_42{col 92}year1949
+{col 1}year1882{col 14}year1902{col 27}year1910{col 40}year1918{col 53}year1926{col 66}year1934{col 79}year1942_43{col 92}year1950
+{col 1}year1884{col 14}year1903{col 27}year1911{col 40}year1919{col 53}year1927{col 66}year1935{col 79}year1943_44{col 92}year1951
+{col 1}year1896{col 14}year1904{col 27}year1912{col 40}year1920{col 53}year1928{col 66}year1936_7{col 79}year1944{col 92}year1952
+{col 1}year1897{col 14}year1905{col 27}year1913{col 40}year1921{col 53}year1929{col 66}year1937_8{col 79}year1945{col 92}year1953
+{col 1}year1898{col 14}year1906{col 27}year1914{col 40}year1922{col 53}year1930{col 66}year1938_9{col 79}year1946{col 92}year1968
+{col 1}year1899{col 14}year1907{col 27}year1915{col 40}year1923{col 53}year1931{col 66}year1939_40{col 79}year1947{col 92}direccion
+{col 1}year1900{col 14}year1908{col 27}year1916{col 40}year1924{col 53}year1932{col 66}year1940_41{col 79}year1948{col 92}filial
+file ..\temp\damus_FCCA_total_recibida.dta saved
+FCCBA - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCCBA_total_despachada.dta saved
+FCCBA - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCCBA_total_recibida.dta saved
+FCCC - despachada
+{col 1}estacion{col 14}year1899{col 27}year1905{col 40}year1911{col 53}year1917{col 66}year1923{col 79}year1929{col 92}year1935{col 105}year1941_42
+{col 1}year1877{col 14}year1900{col 27}year1906{col 40}year1912{col 53}year1918{col 66}year1924{col 79}year1930{col 92}year1936_7{col 105}year1942_43
+{col 1}year1882{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1945
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}filial
+file ..\temp\damus_FCCC_total_despachada.dta saved
+FCCC - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1945
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}filial
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCCC_total_recibida.dta saved
+FCCGBA - despachada
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1944{col 105}year1951
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1945{col 105}year1952
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1946{col 105}year1953
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1947{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1948{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1949
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1950
+file ..\temp\damus_FCCGBA_total_despachada.dta saved
+FCCGBA - recibida
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1944{col 105}year1951
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1945{col 105}year1952
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1946{col 105}year1953
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1947{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1948{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1949
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1950
+file ..\temp\damus_FCCGBA_total_recibida.dta saved
+FCCNA - despachada
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1945{col 105}direccion
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1958_9{col 105}filial
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1959_60
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1960_1
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1961_2
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1962_3
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1963_4
+file ..\temp\damus_FCCNA_total_despachada.dta saved
+FCCNA - recibida
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1945{col 105}direccion
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1958_9{col 105}filial
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1959_60
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1960_1
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1961_2
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1962_3
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1963_4
+file ..\temp\damus_FCCNA_total_recibida.dta saved
+FCCNO - despachada
+{col 1}estacion{col 14}year1899{col 27}year1903{col 40}year1907{col 53}year1929{col 66}year1933{col 79}year1937_8{col 92}year1941_42{col 105}year1945_46
+{col 1}year1896{col 14}year1900{col 27}year1904{col 40}year1908{col 53}year1930{col 66}year1934{col 79}year1938_9{col 92}year1942_43{col 105}year1946_47
+{col 1}year1897{col 14}year1901{col 27}year1905{col 40}year1909{col 53}year1931{col 66}year1935{col 79}year1939_40{col 92}year1943_44{col 105}direccion
+{col 1}year1898{col 14}year1902{col 27}year1906{col 40}year1928{col 53}year1932{col 66}year1936_7{col 79}year1940_41{col 92}year1944_45{col 105}filial
+file ..\temp\damus_FCCNO_total_despachada.dta saved
+FCCNO - recibida
+{col 1}estacion{col 14}year1899{col 27}year1903{col 40}year1907{col 53}year1929{col 66}year1933{col 79}year1937_8{col 92}year1941_42{col 105}year1945_46
+{col 1}year1896{col 14}year1900{col 27}year1904{col 40}year1908{col 53}year1930{col 66}year1934{col 79}year1938_9{col 92}year1942_43{col 105}year1946_47
+{col 1}year1897{col 14}year1901{col 27}year1905{col 40}year1909{col 53}year1931{col 66}year1935{col 79}year1939_40{col 92}year1943_44{col 105}direccion
+{col 1}year1898{col 14}year1902{col 27}year1906{col 40}year1928{col 53}year1932{col 66}year1936_7{col 79}year1940_41{col 92}year1944_45{col 105}filial
+file ..\temp\damus_FCCNO_total_recibida.dta saved
+FCCyR - despachada
+{col 1}estacion{col 14}year1898{col 27}year1901{col 40}year1904{col 53}year1907{col 66}year1910{col 79}year1958_9{col 92}year1961_2{col 105}direccion
+{col 1}year1896{col 14}year1899{col 27}year1902{col 40}year1905{col 53}year1908{col 66}year1911{col 79}year1959_60{col 92}year1962_3{col 105}filial
+{col 1}year1897{col 14}year1900{col 27}year1903{col 40}year1906{col 53}year1909{col 66}year1912{col 79}year1960_1{col 92}year1963_4
+file ..\temp\damus_FCCyR_total_despachada.dta saved
+FCCyR - recibida
+{col 1}estacion{col 12}year1897{col 23}year1899{col 34}year1901{col 45}year1903{col 56}year1905{col 67}year1907{col 78}year1909{col 89}year1911{col 100}direccion
+{col 1}year1896{col 12}year1898{col 23}year1900{col 34}year1902{col 45}year1904{col 56}year1906{col 67}year1908{col 78}year1910{col 89}year1912{col 100}filial
+file ..\temp\damus_FCCyR_total_recibida.dta saved
+FCER - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1958_59
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}filial
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCER_total_despachada.dta saved
+FCER - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1958_59
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}filial
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCER_total_recibida.dta saved
+FCMBA - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCMBA_total_despachada.dta saved
+FCMBA - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCMBA_total_recibida.dta saved
+FCNEA - despachada
+{col 1}estacion{col 14}year1898{col 27}year1905{col 40}year1912{col 53}year1919{col 66}year1926{col 79}year1933{col 92}year1940_41
+{col 1}year1892{col 14}year1899{col 27}year1906{col 40}year1913{col 53}year1920{col 66}year1927{col 79}year1934{col 92}year1941_42
+{col 1}year1893{col 14}year1900{col 27}year1907{col 40}year1914{col 53}year1921{col 66}year1928{col 79}year1935{col 92}year1942_43
+{col 1}year1894{col 14}year1901{col 27}year1908{col 40}year1915{col 53}year1922{col 66}year1929{col 79}year1936_7{col 92}year1943_44
+{col 1}year1895{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}direccion
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}filial
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40
+file ..\temp\damus_FCNEA_total_despachada.dta saved
+FCNEA - recibida
+{col 1}estacion{col 14}year1898{col 27}year1905{col 40}year1912{col 53}year1919{col 66}year1926{col 79}year1933{col 92}year1940_41
+{col 1}year1892{col 14}year1899{col 27}year1906{col 40}year1913{col 53}year1920{col 66}year1927{col 79}year1934{col 92}year1941_42
+{col 1}year1893{col 14}year1900{col 27}year1907{col 40}year1914{col 53}year1921{col 66}year1928{col 79}year1935{col 92}year1942_43
+{col 1}year1894{col 14}year1901{col 27}year1908{col 40}year1915{col 53}year1922{col 66}year1929{col 79}year1936_7{col 92}year1943_44
+{col 1}year1895{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}direccion
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}filial
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40
+file ..\temp\damus_FCNEA_total_recibida.dta saved
+FCNOA - despachada
+{col 1}estacion{col 12}year1897{col 23}year1899{col 34}year1901{col 45}year1903{col 56}year1905{col 67}year1907{col 78}filial
+{col 1}year1896{col 12}year1898{col 23}year1900{col 34}year1902{col 45}year1904{col 56}year1906{col 67}direccion
+file ..\temp\damus_FCNOA_total_despachada.dta saved
+FCNOA - recibida
+{col 1}estacion{col 12}year1897{col 23}year1899{col 34}year1901{col 45}year1903{col 56}year1905{col 67}year1907{col 78}filial
+{col 1}year1896{col 12}year1898{col 23}year1900{col 34}year1902{col 45}year1904{col 56}year1906{col 67}direccion
+file ..\temp\damus_FCNOA_total_recibida.dta saved
+FCO - despachada
+{col 1}estacion{col 14}year1899{col 27}year1905{col 40}year1911{col 53}year1917{col 66}year1923{col 79}year1929{col 92}year1935{col 105}year1941_42
+{col 1}year1871{col 14}year1900{col 27}year1906{col 40}year1912{col 53}year1918{col 66}year1924{col 79}year1930{col 92}year1936_7{col 105}year1942_43
+{col 1}year1888_9{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+file ..\temp\damus_FCO_total_despachada.dta saved
+FCO - recibida
+{col 1}estacion{col 14}year1899{col 27}year1905{col 40}year1911{col 53}year1917{col 66}year1923{col 79}year1929{col 92}year1935{col 105}year1941_42
+{col 1}year1871{col 14}year1900{col 27}year1906{col 40}year1912{col 53}year1918{col 66}year1924{col 79}year1930{col 92}year1936_7{col 105}year1942_43
+{col 1}year1888_9{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}direccion
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}filial
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41
+file ..\temp\damus_FCO_total_recibida.dta saved
+FCRPB - despachada
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1944{col 105}year1951
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1945{col 105}year1952
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1946{col 105}year1953
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1947{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1948{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1949
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1950
+file ..\temp\damus_FCRPB_total_despachada.dta saved
+FCRPB - recibida
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1944{col 105}year1951
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1945{col 105}year1952
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1946{col 105}year1953
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1947{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1948{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1949
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1950
+file ..\temp\damus_FCRPB_total_recibida.dta saved
+FCS - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1958_59
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}filial
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCS_total_despachada.dta saved
+FCS - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1958_59
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}direccion
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}filial
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43
+file ..\temp\damus_FCS_total_recibida.dta saved
+FCSF - despachada
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1944{col 105}year1951
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1945{col 105}year1952
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1946{col 105}year1953
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1947{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1948{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1949
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1950
+file ..\temp\damus_FCSF_total_despachada.dta saved
+FCSF - recibida
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1937_8{col 92}year1944{col 105}year1951
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1938_9{col 92}year1945{col 105}year1952
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1939_40{col 92}year1946{col 105}year1953
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1940_41{col 92}year1947{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1941_42{col 92}year1948{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1942_43{col 92}year1949
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936_7{col 79}year1943_44{col 92}year1950
+file ..\temp\damus_FCSF_total_recibida.dta saved
+FCTA - despachada
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1944_45
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}year1945_46
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}year1946_47
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42{col 105}direccion
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43{col 105}filial
+file ..\temp\damus_FCTA_total_despachada.dta saved
+FCTA - recibida
+{col 1}estacion{col 14}year1901{col 27}year1907{col 40}year1913{col 53}year1919{col 66}year1925{col 79}year1931{col 92}year1937_8{col 105}year1943_44
+{col 1}year1896{col 14}year1902{col 27}year1908{col 40}year1914{col 53}year1920{col 66}year1926{col 79}year1932{col 92}year1938_9{col 105}year1944_45
+{col 1}year1897{col 14}year1903{col 27}year1909{col 40}year1915{col 53}year1921{col 66}year1927{col 79}year1933{col 92}year1939_40{col 105}year1945_46
+{col 1}year1898{col 14}year1904{col 27}year1910{col 40}year1916{col 53}year1922{col 66}year1928{col 79}year1934{col 92}year1940_41{col 105}year1946_47
+{col 1}year1899{col 14}year1905{col 27}year1911{col 40}year1917{col 53}year1923{col 66}year1929{col 79}year1935{col 92}year1941_42{col 105}direccion
+{col 1}year1900{col 14}year1906{col 27}year1912{col 40}year1918{col 53}year1924{col 66}year1930{col 79}year1936_7{col 92}year1942_43{col 105}filial
+file ..\temp\damus_FCTA_total_recibida.dta saved
+FCTVR - despachada
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1936_7{col 92}year1943_44{col 105}year1961_2
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1937_8{col 92}year1944_45{col 105}year1962_3
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1938_9{col 92}year1945_46{col 105}year1963_4
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1939_40{col 92}year1946_47{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1940_41{col 92}year1958_9{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1941_42{col 92}year1959_60
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936{col 79}year1942_43{col 92}year1960_1
+file ..\temp\damus_FCTVR_total_despachada.dta saved
+FCTVR - recibida
+{col 1}estacion{col 14}year1902{col 27}year1909{col 40}year1916{col 53}year1923{col 66}year1930{col 79}year1936_7{col 92}year1943_44{col 105}year1961_2
+{col 1}year1896{col 14}year1903{col 27}year1910{col 40}year1917{col 53}year1924{col 66}year1931{col 79}year1937_8{col 92}year1944_45{col 105}year1962_3
+{col 1}year1897{col 14}year1904{col 27}year1911{col 40}year1918{col 53}year1925{col 66}year1932{col 79}year1938_9{col 92}year1945_46{col 105}year1963_4
+{col 1}year1898{col 14}year1905{col 27}year1912{col 40}year1919{col 53}year1926{col 66}year1933{col 79}year1939_40{col 92}year1946_47{col 105}direccion
+{col 1}year1899{col 14}year1906{col 27}year1913{col 40}year1920{col 53}year1927{col 66}year1934{col 79}year1940_41{col 92}year1958_9{col 105}filial
+{col 1}year1900{col 14}year1907{col 27}year1914{col 40}year1921{col 53}year1928{col 66}year1935{col 79}year1941_42{col 92}year1959_60
+{col 1}year1901{col 14}year1908{col 27}year1915{col 40}year1922{col 53}year1929{col 66}year1936{col 79}year1942_43{col 92}year1960_1
+file ..\temp\damus_FCTVR_total_recibida.dta saved
+
+{com}. 
+. 
+. *III. APPEND
+. quietly{c -(}
+{txt}
+{com}. 
+. 
+. *IV. CLEANING
+. sort filial estacion direccion
+{txt}
+{com}. /*
+> foreach x in TOTAL TRANSITO DISCREPANCIA REDESPACHO SERVICIO OTRASESTACIONES SINCLASIFICAR ANIMALESYVEHICULOS SEGUNTABLA19 DESPACHAD{c -(}
+>   drop if strpos(estacion ,"`x'")>0 & strpos(estacion ,"`x'")!=.
+> {c )-}
+> */
+. 
+. foreach var of var year*{c -(}
+{txt}  2{com}.   egen `var'_s = sum(`var'), missing by(filial estacion direccion)
+{txt}  3{com}.   drop `var'
+{txt}  4{com}.   ren `var'_s `var'
+{txt}  5{com}. {c )-}
+{txt}(7016 missing values generated)
+{res}{txt}(6977 missing values generated)
+{res}{txt}(6082 missing values generated)
+{res}{txt}(5782 missing values generated)
+{res}{txt}(5801 missing values generated)
+{res}{txt}(5747 missing values generated)
+{res}{txt}(5681 missing values generated)
+{res}{txt}(5546 missing values generated)
+{res}{txt}(5401 missing values generated)
+{res}{txt}(5330 missing values generated)
+{res}{txt}(5166 missing values generated)
+{res}{txt}(4948 missing values generated)
+{res}{txt}(4658 missing values generated)
+{res}{txt}(4431 missing values generated)
+{res}{txt}(4043 missing values generated)
+{res}{txt}(3763 missing values generated)
+{res}{txt}(3560 missing values generated)
+{res}{txt}(3394 missing values generated)
+{res}{txt}(3357 missing values generated)
+{res}{txt}(3287 missing values generated)
+{res}{txt}(3174 missing values generated)
+{res}{txt}(3166 missing values generated)
+{res}{txt}(3144 missing values generated)
+{res}{txt}(3136 missing values generated)
+{res}{txt}(3105 missing values generated)
+{res}{txt}(3108 missing values generated)
+{res}{txt}(3089 missing values generated)
+{res}{txt}(3000 missing values generated)
+{res}{txt}(2869 missing values generated)
+{res}{txt}(2878 missing values generated)
+{res}{txt}(2866 missing values generated)
+{res}{txt}(2798 missing values generated)
+{res}{txt}(2701 missing values generated)
+{res}{txt}(2604 missing values generated)
+{res}{txt}(2523 missing values generated)
+{res}{txt}(2454 missing values generated)
+{res}{txt}(2431 missing values generated)
+{res}{txt}(2376 missing values generated)
+{res}{txt}(2361 missing values generated)
+{res}{txt}(2270 missing values generated)
+{res}{txt}(7901 missing values generated)
+{res}{txt}(1972 missing values generated)
+{res}{txt}(1872 missing values generated)
+{res}{txt}(1722 missing values generated)
+{res}{txt}(1663 missing values generated)
+{res}{txt}(1723 missing values generated)
+{res}{txt}(1661 missing values generated)
+{res}{txt}(1624 missing values generated)
+{res}{txt}(1353 missing values generated)
+{res}{txt}(6898 missing values generated)
+{res}{txt}(8059 missing values generated)
+{res}{txt}(8035 missing values generated)
+{res}{txt}(8047 missing values generated)
+{res}{txt}(8056 missing values generated)
+{res}{txt}(8046 missing values generated)
+{res}{txt}(8046 missing values generated)
+{res}{txt}(8046 missing values generated)
+{res}{txt}(8050 missing values generated)
+{res}{txt}(8050 missing values generated)
+{res}{txt}(8060 missing values generated)
+{res}{txt}(8060 missing values generated)
+{res}{txt}(8060 missing values generated)
+{res}{txt}(8060 missing values generated)
+{res}{txt}(7936 missing values generated)
+{res}{txt}(8074 missing values generated)
+{res}{txt}(8074 missing values generated)
+{res}{txt}(8074 missing values generated)
+{res}{txt}(8074 missing values generated)
+{res}{txt}(8026 missing values generated)
+{res}{txt}(8042 missing values generated)
+{res}{txt}(8043 missing values generated)
+{res}{txt}(8074 missing values generated)
+{res}{txt}(8074 missing values generated)
+{res}{txt}(8054 missing values generated)
+{res}{txt}(8046 missing values generated)
+{res}{txt}(8046 missing values generated)
+{res}{txt}(8040 missing values generated)
+{res}{txt}(8040 missing values generated)
+{res}{txt}(8047 missing values generated)
+{res}{txt}(7902 missing values generated)
+{res}{txt}
+{com}. 
+. collapse (mean) year*, by(filial estacion direccion)
+{txt}
+{com}. 
+. 
+. egen x=rowmin(year*)
+{txt}(363 missing values generated)
+
+{com}. list filial estacion direccion if x<0
+{txt}
+      {c TLC}{hline 8}{c -}{hline 10}{c -}{hline 12}{c TRC}
+      {c |} {res}filial   estacion    direccion {txt}{c |}
+      {c LT}{hline 8}{c -}{hline 10}{c -}{hline 12}{c RT}
+ 742. {c |} {res} FCBAP   MALARGUE   despachada {txt}{c |}
+      {c BLC}{hline 8}{c -}{hline 10}{c -}{hline 12}{c BRC}
+
+{com}. replace year1924=0 if x<0
+{txt}(1 real change made)
+
+{com}. drop x
+{txt}
+{com}. 
+. foreach var of var year*{c -(}
+{txt}  2{com}.   qui count if `var'<0
+{txt}  3{com}.   qui assert `r(N)'==0
+{txt}  4{com}. {c )-}
+{txt}
+{com}. 
+. mdesc
+
+{txt}    Variable{col 17}{c |}     Missing          Total     Percent Missing
+{hline 16}{c +}{hline 47}
+       estacion{col 17}{c |} {res}          0          7,965           0.00
+      {txt}direccion{col 17}{c |} {res}          0          7,965           0.00
+         {txt}filial{col 17}{c |} {res}          0          7,965           0.00
+       {txt}year1896{col 17}{c |} {res}      6,932          7,965          87.03
+       {txt}year1897{col 17}{c |} {res}      6,893          7,965          86.54
+       {txt}year1898{col 17}{c |} {res}      6,009          7,965          75.44
+       {txt}year1899{col 17}{c |} {res}      5,709          7,965          71.68
+       {txt}year1900{col 17}{c |} {res}      5,726          7,965          71.89
+       {txt}year1901{col 17}{c |} {res}      5,672          7,965          71.21
+       {txt}year1902{col 17}{c |} {res}      5,606          7,965          70.38
+       {txt}year1903{col 17}{c |} {res}      5,473          7,965          68.71
+       {txt}year1904{col 17}{c |} {res}      5,329          7,965          66.91
+       {txt}year1905{col 17}{c |} {res}      5,258          7,965          66.01
+       {txt}year1906{col 17}{c |} {res}      5,095          7,965          63.97
+       {txt}year1907{col 17}{c |} {res}      4,877          7,965          61.23
+       {txt}year1908{col 17}{c |} {res}      4,591          7,965          57.64
+       {txt}year1909{col 17}{c |} {res}      4,364          7,965          54.79
+       {txt}year1910{col 17}{c |} {res}      3,978          7,965          49.94
+       {txt}year1911{col 17}{c |} {res}      3,702          7,965          46.48
+       {txt}year1912{col 17}{c |} {res}      3,499          7,965          43.93
+       {txt}year1913{col 17}{c |} {res}      3,333          7,965          41.85
+       {txt}year1914{col 17}{c |} {res}      3,297          7,965          41.39
+       {txt}year1915{col 17}{c |} {res}      3,230          7,965          40.55
+       {txt}year1916{col 17}{c |} {res}      3,123          7,965          39.21
+       {txt}year1917{col 17}{c |} {res}      3,115          7,965          39.11
+       {txt}year1918{col 17}{c |} {res}      3,099          7,965          38.91
+       {txt}year1919{col 17}{c |} {res}      3,085          7,965          38.73
+       {txt}year1920{col 17}{c |} {res}      3,062          7,965          38.44
+       {txt}year1921{col 17}{c |} {res}      3,061          7,965          38.43
+       {txt}year1922{col 17}{c |} {res}      3,046          7,965          38.24
+       {txt}year1923{col 17}{c |} {res}      2,959          7,965          37.15
+       {txt}year1924{col 17}{c |} {res}      2,829          7,965          35.52
+       {txt}year1925{col 17}{c |} {res}      2,840          7,965          35.66
+       {txt}year1926{col 17}{c |} {res}      2,828          7,965          35.51
+       {txt}year1927{col 17}{c |} {res}      2,764          7,965          34.70
+       {txt}year1928{col 17}{c |} {res}      2,663          7,965          33.43
+       {txt}year1929{col 17}{c |} {res}      2,572          7,965          32.29
+       {txt}year1930{col 17}{c |} {res}      2,487          7,965          31.22
+       {txt}year1931{col 17}{c |} {res}      2,422          7,965          30.41
+       {txt}year1932{col 17}{c |} {res}      2,403          7,965          30.17
+       {txt}year1933{col 17}{c |} {res}      2,348          7,965          29.48
+       {txt}year1934{col 17}{c |} {res}      2,332          7,965          29.28
+       {txt}year1935{col 17}{c |} {res}      2,244          7,965          28.17
+       {txt}year1936{col 17}{c |} {res}      7,792          7,965          97.83
+     {txt}year1936_7{col 17}{c |} {res}      1,952          7,965          24.51
+     {txt}year1937_8{col 17}{c |} {res}      1,856          7,965          23.30
+     {txt}year1938_9{col 17}{c |} {res}      1,707          7,965          21.43
+    {txt}year1939_40{col 17}{c |} {res}      1,647          7,965          20.68
+    {txt}year1940_41{col 17}{c |} {res}      1,707          7,965          21.43
+    {txt}year1941_42{col 17}{c |} {res}      1,645          7,965          20.65
+    {txt}year1942_43{col 17}{c |} {res}      1,606          7,965          20.16
+    {txt}year1943_44{col 17}{c |} {res}      1,339          7,965          16.81
+       {txt}year1945{col 17}{c |} {res}      6,825          7,965          85.69
+       {txt}year1876{col 17}{c |} {res}      7,950          7,965          99.81
+       {txt}year1877{col 17}{c |} {res}      7,928          7,965          99.54
+       {txt}year1882{col 17}{c |} {res}      7,941          7,965          99.70
+       {txt}year1884{col 17}{c |} {res}      7,947          7,965          99.77
+       {txt}year1944{col 17}{c |} {res}      7,937          7,965          99.65
+       {txt}year1946{col 17}{c |} {res}      7,937          7,965          99.65
+       {txt}year1947{col 17}{c |} {res}      7,937          7,965          99.65
+       {txt}year1948{col 17}{c |} {res}      7,941          7,965          99.70
+       {txt}year1949{col 17}{c |} {res}      7,941          7,965          99.70
+       {txt}year1950{col 17}{c |} {res}      7,951          7,965          99.82
+       {txt}year1951{col 17}{c |} {res}      7,951          7,965          99.82
+       {txt}year1952{col 17}{c |} {res}      7,951          7,965          99.82
+       {txt}year1953{col 17}{c |} {res}      7,951          7,965          99.82
+       {txt}year1968{col 17}{c |} {res}      7,829          7,965          98.29
+     {txt}year1958_9{col 17}{c |} {res}      7,965          7,965         100.00
+    {txt}year1959_60{col 17}{c |} {res}      7,965          7,965         100.00
+     {txt}year1960_1{col 17}{c |} {res}      7,965          7,965         100.00
+     {txt}year1961_2{col 17}{c |} {res}      7,965          7,965         100.00
+     {txt}year1962_3{col 17}{c |} {res}      7,917          7,965          99.40
+     {txt}year1963_4{col 17}{c |} {res}      7,933          7,965          99.60
+    {txt}year1944_45{col 17}{c |} {res}      7,934          7,965          99.61
+    {txt}year1945_46{col 17}{c |} {res}      7,965          7,965         100.00
+    {txt}year1946_47{col 17}{c |} {res}      7,965          7,965         100.00
+    {txt}year1958_59{col 17}{c |} {res}      7,945          7,965          99.75
+       {txt}year1892{col 17}{c |} {res}      7,939          7,965          99.67
+       {txt}year1893{col 17}{c |} {res}      7,939          7,965          99.67
+       {txt}year1894{col 17}{c |} {res}      7,933          7,965          99.60
+       {txt}year1895{col 17}{c |} {res}      7,933          7,965          99.60
+       {txt}year1871{col 17}{c |} {res}      7,938          7,965          99.66
+     {txt}year1888_9{col 17}{c |} {res}      7,793          7,965          97.84
+{txt}{hline 16}{c +}{hline 47}
+
+{com}. sum
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}estacion {c |}{res}          0
+{txt}{space 3}direccion {c |}{res}          0
+{txt}{space 6}filial {c |}{res}          0
+{txt}{space 4}year1896 {c |}{res}      1,033    9179.398    17173.62          0     177307
+{txt}{space 4}year1897 {c |}{res}      1,072    7083.795    14699.91          0     172002
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1898 {c |}{res}      1,956    6804.184    18644.01          0     416588
+{txt}{space 4}year1899 {c |}{res}      2,256     8254.85    28356.62          0     689589
+{txt}{space 4}year1900 {c |}{res}      2,239    8888.657    29317.79          0     697297
+{txt}{space 4}year1901 {c |}{res}      2,293    8647.634    26943.05          0     702402
+{txt}{space 4}year1902 {c |}{res}      2,359    8095.843    23843.59          0     500565
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1903 {c |}{res}      2,492    9942.388    37565.45          0    1083446
+{txt}{space 4}year1904 {c |}{res}      2,636    10871.05    40514.68          0    1302531
+{txt}{space 4}year1905 {c |}{res}      2,707    12280.27    42014.25          0    1126772
+{txt}{space 4}year1906 {c |}{res}      2,870    13260.27    42654.67          0    1205307
+{txt}{space 4}year1907 {c |}{res}      3,088    12646.23    38183.94          0     945972
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1908 {c |}{res}      3,374    14427.89    53249.69          0    1365918
+{txt}{space 4}year1909 {c |}{res}      3,601    13696.97    48205.42          0    1116739
+{txt}{space 4}year1910 {c |}{res}      3,987    12859.35    46926.16          0    1156708
+{txt}{space 4}year1911 {c |}{res}      4,263    11669.37    44022.91          0    1323382
+{txt}{space 4}year1912 {c |}{res}      4,466    13711.56     55075.8          0    1388196
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1913 {c |}{res}      4,632     14056.8    70513.36          0    2676169
+{txt}{space 4}year1914 {c |}{res}      4,668    11267.72    60840.57          0    2511126
+{txt}{space 4}year1915 {c |}{res}      4,735    11777.39    59754.11          0    2124341
+{txt}{space 4}year1916 {c |}{res}      4,842    11691.24    52724.73          0    1849750
+{txt}{space 4}year1917 {c |}{res}      4,850    9485.392    43180.03          0    1489366
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1918 {c |}{res}      4,866    12140.44    55132.01          0    1905357
+{txt}{space 4}year1919 {c |}{res}      4,880     14417.7    71045.87          0    2563994
+{txt}{space 4}year1920 {c |}{res}      4,903    14770.61    73797.58          0    2463146
+{txt}{space 4}year1921 {c |}{res}      4,904    11828.24    57194.36          0    2039741
+{txt}{space 4}year1922 {c |}{res}      4,919    12380.23     58916.2          0    2043381
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1923 {c |}{res}      5,006    13524.08    65311.42          0    2172015
+{txt}{space 4}year1924 {c |}{res}      5,136    25235.53    255224.7          0    6960848
+{txt}{space 4}year1925 {c |}{res}      5,125    14134.34    72873.28          0    2919800
+{txt}{space 4}year1926 {c |}{res}      5,137    14773.18    72043.36          0    2707541
+{txt}{space 4}year1927 {c |}{res}      5,201    16894.71    83957.44          0    2782570
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1928 {c |}{res}      5,302    16050.99    75886.07          0    2513196
+{txt}{space 4}year1929 {c |}{res}      5,393    15384.01    73869.83          0    2436960
+{txt}{space 4}year1930 {c |}{res}      5,478    12334.57    57129.61          0    2191652
+{txt}{space 4}year1931 {c |}{res}      5,543    14396.63    89591.74          0    3087223
+{txt}{space 4}year1932 {c |}{res}      5,562    12896.66    80600.15          0    2754964
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1933 {c |}{res}      5,617    12275.16    80140.45          0    2920162
+{txt}{space 4}year1934 {c |}{res}      5,633    13340.94    87644.48          0    3240118
+{txt}{space 4}year1935 {c |}{res}      5,721    13859.37    91039.72          0    3464951
+{txt}{space 4}year1936 {c |}{res}        173    3207.832    7730.524          0      81700
+{txt}{space 2}year1936_7 {c |}{res}      6,013    15396.16    105121.3          0    3806816
+{txt}{hline 13}{c +}{hline 57}
+{space 2}year1937_8 {c |}{res}      6,109    12045.96    80948.62          0    3589679
+{txt}{space 2}year1938_9 {c |}{res}      6,258    13100.84    92218.74          0    4027345
+{txt}{space 1}year1939_40 {c |}{res}      6,318    12929.86    100706.6          0    4112222
+{txt}{space 1}year1940_41 {c |}{res}      6,258    12019.94     92481.5          0    3892292
+{txt}{space 1}year1941_42 {c |}{res}      6,320    12986.94    101522.9          0    4442919
+{txt}{hline 13}{c +}{hline 57}
+{space 1}year1942_43 {c |}{res}      6,359    14147.97    107257.3          0    4768002
+{txt}{space 1}year1943_44 {c |}{res}      6,626    13851.03    103243.9          0    4551586
+{txt}{space 4}year1945 {c |}{res}      1,140    17310.99    173577.4          0    4377613
+{txt}{space 4}year1876 {c |}{res}         15    3966.267    6599.413          3      25830
+{txt}{space 4}year1877 {c |}{res}         37    2268.346    5141.256   .3629764      24657
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1882 {c |}{res}         24     10837.3     27993.6       2.57     111134
+{txt}{space 4}year1884 {c |}{res}         18    17154.83    39578.74         67     145488
+{txt}{space 4}year1944 {c |}{res}         28    76831.21    272936.5          0    1444473
+{txt}{space 4}year1946 {c |}{res}         28    96491.71    303399.6         11    1606921
+{txt}{space 4}year1947 {c |}{res}         28       94877    281283.1          0    1472554
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1948 {c |}{res}         24    100819.3    360381.8          0    1783869
+{txt}{space 4}year1949 {c |}{res}         24    78097.08    299123.3          0    1478016
+{txt}{space 4}year1950 {c |}{res}         14    132908.9    428100.8          0    1616865
+{txt}{space 4}year1951 {c |}{res}         14    118106.6    368838.7          0    1395305
+{txt}{space 4}year1952 {c |}{res}         14    79979.71    234177.7          0     887360
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1953 {c |}{res}         14    119165.6    390293.4          0    1473055
+{txt}{space 4}year1968 {c |}{res}        136    6231.044    9024.658          0      43043
+{txt}{space 2}year1958_9 {c |}{res}          0
+{txt}{space 1}year1959_60 {c |}{res}          0
+{txt}{space 2}year1960_1 {c |}{res}          0
+{txt}{hline 13}{c +}{hline 57}
+{space 2}year1961_2 {c |}{res}          0
+{txt}{space 2}year1962_3 {c |}{res}         48    616.8542    1810.649          0      11359
+{txt}{space 2}year1963_4 {c |}{res}         32    1167.938    2968.151          0      16084
+{txt}{space 1}year1944_45 {c |}{res}         31    2035.516    5457.584          0      28786
+{txt}{space 1}year1945_46 {c |}{res}          0
+{txt}{hline 13}{c +}{hline 57}
+{space 1}year1946_47 {c |}{res}          0
+{txt}{space 1}year1958_59 {c |}{res}         20     3192.05    2764.692        154       9498
+{txt}{space 4}year1892 {c |}{res}         26    1969.769    3058.725         68      13334
+{txt}{space 4}year1893 {c |}{res}         26    2159.692    3643.463         39      16583
+{txt}{space 4}year1894 {c |}{res}         32    2607.125     5548.33         59      28259
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1895 {c |}{res}         32    2868.063    5957.107         64      30039
+{txt}{space 4}year1871 {c |}{res}         27    4987.333    8491.776          0      37844
+{txt}{space 2}year1888_9 {c |}{res}        172        7963    26584.23          0     303839
+{txt}
+{com}. 
+. 
+. save_data "..\output\damuspanel_total.dta", replace key(estacion direccion filial)
+{txt}(data now sorted by estacion direccion filial)
+  variable {bf}year1876{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1958_9{sf} was {bf}{res}float{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}year1959_60{sf} was {bf}{res}float{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}year1960_1{sf} was {bf}{res}float{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}year1961_2{sf} was {bf}{res}float{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}year1962_3{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1963_4{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1944_45{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1945_46{sf} was {bf}{res}float{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}year1946_47{sf} was {bf}{res}float{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}year1958_59{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1892{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1893{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1894{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}year1895{sf} was {bf}{res}float{sf}{txt} now {bf}{res}int{sf}
+{txt}  (286,740 bytes saved)
+==================================================================================================
+File: ..\output\damuspanel_total.dta
+Key: estacion direccion filial
+==================================================================================================
+  {res}7965:83(108929):372364718:142204802
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}estacion {c |}{res}          0
+{txt}{space 3}direccion {c |}{res}          0
+{txt}{space 6}filial {c |}{res}          0
+{txt}{space 4}year1896 {c |}{res}      1,033    9179.398    17173.62          0     177307
+{txt}{space 4}year1897 {c |}{res}      1,072    7083.795    14699.91          0     172002
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1898 {c |}{res}      1,956    6804.184    18644.01          0     416588
+{txt}{space 4}year1899 {c |}{res}      2,256     8254.85    28356.62          0     689589
+{txt}{space 4}year1900 {c |}{res}      2,239    8888.657    29317.79          0     697297
+{txt}{space 4}year1901 {c |}{res}      2,293    8647.634    26943.05          0     702402
+{txt}{space 4}year1902 {c |}{res}      2,359    8095.843    23843.59          0     500565
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1903 {c |}{res}      2,492    9942.388    37565.45          0    1083446
+{txt}{space 4}year1904 {c |}{res}      2,636    10871.05    40514.68          0    1302531
+{txt}{space 4}year1905 {c |}{res}      2,707    12280.27    42014.25          0    1126772
+{txt}{space 4}year1906 {c |}{res}      2,870    13260.27    42654.67          0    1205307
+{txt}{space 4}year1907 {c |}{res}      3,088    12646.23    38183.94          0     945972
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1908 {c |}{res}      3,374    14427.89    53249.69          0    1365918
+{txt}{space 4}year1909 {c |}{res}      3,601    13696.97    48205.42          0    1116739
+{txt}{space 4}year1910 {c |}{res}      3,987    12859.35    46926.16          0    1156708
+{txt}{space 4}year1911 {c |}{res}      4,263    11669.37    44022.91          0    1323382
+{txt}{space 4}year1912 {c |}{res}      4,466    13711.56     55075.8          0    1388196
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1913 {c |}{res}      4,632     14056.8    70513.36          0    2676169
+{txt}{space 4}year1914 {c |}{res}      4,668    11267.72    60840.57          0    2511126
+{txt}{space 4}year1915 {c |}{res}      4,735    11777.39    59754.11          0    2124341
+{txt}{space 4}year1916 {c |}{res}      4,842    11691.24    52724.73          0    1849750
+{txt}{space 4}year1917 {c |}{res}      4,850    9485.392    43180.03          0    1489366
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1918 {c |}{res}      4,866    12140.44    55132.01          0    1905357
+{txt}{space 4}year1919 {c |}{res}      4,880     14417.7    71045.87          0    2563994
+{txt}{space 4}year1920 {c |}{res}      4,903    14770.61    73797.58          0    2463146
+{txt}{space 4}year1921 {c |}{res}      4,904    11828.24    57194.36          0    2039741
+{txt}{space 4}year1922 {c |}{res}      4,919    12380.23     58916.2          0    2043381
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1923 {c |}{res}      5,006    13524.08    65311.42          0    2172015
+{txt}{space 4}year1924 {c |}{res}      5,136    25235.53    255224.7          0    6960848
+{txt}{space 4}year1925 {c |}{res}      5,125    14134.34    72873.28          0    2919800
+{txt}{space 4}year1926 {c |}{res}      5,137    14773.18    72043.36          0    2707541
+{txt}{space 4}year1927 {c |}{res}      5,201    16894.71    83957.44          0    2782570
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1928 {c |}{res}      5,302    16050.99    75886.07          0    2513196
+{txt}{space 4}year1929 {c |}{res}      5,393    15384.01    73869.83          0    2436960
+{txt}{space 4}year1930 {c |}{res}      5,478    12334.57    57129.61          0    2191652
+{txt}{space 4}year1931 {c |}{res}      5,543    14396.63    89591.74          0    3087223
+{txt}{space 4}year1932 {c |}{res}      5,562    12896.66    80600.15          0    2754964
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1933 {c |}{res}      5,617    12275.16    80140.45          0    2920162
+{txt}{space 4}year1934 {c |}{res}      5,633    13340.94    87644.48          0    3240118
+{txt}{space 4}year1935 {c |}{res}      5,721    13859.37    91039.72          0    3464951
+{txt}{space 4}year1936 {c |}{res}        173    3207.832    7730.524          0      81700
+{txt}{space 2}year1936_7 {c |}{res}      6,013    15396.16    105121.3          0    3806816
+{txt}{hline 13}{c +}{hline 57}
+{space 2}year1937_8 {c |}{res}      6,109    12045.96    80948.62          0    3589679
+{txt}{space 2}year1938_9 {c |}{res}      6,258    13100.84    92218.74          0    4027345
+{txt}{space 1}year1939_40 {c |}{res}      6,318    12929.86    100706.6          0    4112222
+{txt}{space 1}year1940_41 {c |}{res}      6,258    12019.94     92481.5          0    3892292
+{txt}{space 1}year1941_42 {c |}{res}      6,320    12986.94    101522.9          0    4442919
+{txt}{hline 13}{c +}{hline 57}
+{space 1}year1942_43 {c |}{res}      6,359    14147.97    107257.3          0    4768002
+{txt}{space 1}year1943_44 {c |}{res}      6,626    13851.03    103243.9          0    4551586
+{txt}{space 4}year1945 {c |}{res}      1,140    17310.99    173577.4          0    4377613
+{txt}{space 4}year1876 {c |}{res}         15    3966.267    6599.413          3      25830
+{txt}{space 4}year1877 {c |}{res}         37    2268.346    5141.256   .3629764      24657
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1882 {c |}{res}         24     10837.3     27993.6       2.57     111134
+{txt}{space 4}year1884 {c |}{res}         18    17154.83    39578.74         67     145488
+{txt}{space 4}year1944 {c |}{res}         28    76831.21    272936.5          0    1444473
+{txt}{space 4}year1946 {c |}{res}         28    96491.71    303399.6         11    1606921
+{txt}{space 4}year1947 {c |}{res}         28       94877    281283.1          0    1472554
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1948 {c |}{res}         24    100819.3    360381.8          0    1783869
+{txt}{space 4}year1949 {c |}{res}         24    78097.08    299123.3          0    1478016
+{txt}{space 4}year1950 {c |}{res}         14    132908.9    428100.8          0    1616865
+{txt}{space 4}year1951 {c |}{res}         14    118106.6    368838.7          0    1395305
+{txt}{space 4}year1952 {c |}{res}         14    79979.71    234177.7          0     887360
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1953 {c |}{res}         14    119165.6    390293.4          0    1473055
+{txt}{space 4}year1968 {c |}{res}        136    6231.044    9024.658          0      43043
+{txt}{space 2}year1958_9 {c |}{res}          0
+{txt}{space 1}year1959_60 {c |}{res}          0
+{txt}{space 2}year1960_1 {c |}{res}          0
+{txt}{hline 13}{c +}{hline 57}
+{space 2}year1961_2 {c |}{res}          0
+{txt}{space 2}year1962_3 {c |}{res}         48    616.8542    1810.649          0      11359
+{txt}{space 2}year1963_4 {c |}{res}         32    1167.938    2968.151          0      16084
+{txt}{space 1}year1944_45 {c |}{res}         31    2035.516    5457.584          0      28786
+{txt}{space 1}year1945_46 {c |}{res}          0
+{txt}{hline 13}{c +}{hline 57}
+{space 1}year1946_47 {c |}{res}          0
+{txt}{space 1}year1958_59 {c |}{res}         20     3192.05    2764.692        154       9498
+{txt}{space 4}year1892 {c |}{res}         26    1969.769    3058.725         68      13334
+{txt}{space 4}year1893 {c |}{res}         26    2159.692    3643.463         39      16583
+{txt}{space 4}year1894 {c |}{res}         32    2607.125     5548.33         59      28259
+{txt}{hline 13}{c +}{hline 57}
+{space 4}year1895 {c |}{res}         32    2868.063    5957.107         64      30039
+{txt}{space 4}year1871 {c |}{res}         27    4987.333    8491.776          0      37844
+{txt}{space 2}year1888_9 {c |}{res}        172        7963    26584.23          0     303839
+
+
+
+
+{txt}file ..\output\damuspanel_total.dta saved
+
+{com}. cap log close
+{smcl}
+{com}{sf}{ul off}

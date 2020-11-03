@@ -78,8 +78,22 @@ drop year
 
 gen indnpers_1954 = indnemp_1954 + indnobr_1954
 
+*MERGE - POP CENSUS 1946
+merge 1:1 geolev2 using "..\temp\census1946_ipums.dta"
+list geolev2  if _merge!=3
+drop _merge
 
+foreach var of var urbpop urbpop_imputed pop pop_imputed{
+  ren `var' `var'1946
+}
+ren pop_imputed1946 pop1946_imputed
+ren urbpop_imputed1946 urbpop1946_imputed
+drop year
 
+label var pop1946 "1946 pop"
+label var urbpop1946 "1946 urbpop_"
+label var pop1946_imputed "1946 pop - imputed for MISIONES"
+label var urbpop1946_imputed "1946 pop - imputed for MISIONES"
 
 *LABELS
 
@@ -132,9 +146,9 @@ label var hypo_LCP_MST_kms  "Least-cost MST network (kms)"
 *label var hypo_LCP_plain_MST_kms  "Least-cost plain MST network (kms)"
 
 **** Legacy instruments
-label var hypoCMST_kms  "hyp network kms - CMST"
-label var hypoEMST_kms  "hyp network kms - EMST"
-label var hypomeanEMST_kms  "hyp network kms - mean EMST"
+*label var hypoCMST_kms  "hyp network kms - CMST"
+*label var hypoEMST_kms  "hyp network kms - EMST"
+*label var hypomeanEMST_kms  "hyp network kms - mean EMST"
 
 foreach year in 1970 1980 1991 2001 2010{
   label var occisco_1_`year' "`year' occup. legislators, senior officials and managers"
