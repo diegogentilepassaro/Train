@@ -14,6 +14,12 @@ program main
 	        roads_var(chg_pav_and_grav_86_54) ///
 		    trains_var(chg_tot_rails_86_60) ///
 		    table_name(IV_both_chg_`depvar'_91_60_pav_and_grav)
+
+	   run_IV_regression, depvar(chg_`depvar'_91_60) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(connected_pav_grav_86_54) ///
+		    trains_var(disconnected_rails_86_60) ///
+		    table_name(IV_both_chg_`depvar'_91_60_connected)
 	}
 
     *** 1970 base outcomes
@@ -25,6 +31,12 @@ program main
 	        roads_var(chg_pav_and_grav_86_70) ///
 		    trains_var(chg_tot_rails_86_70) ///
 		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
+			
+	   run_IV_regression, depvar(chg_`depvar'_91_70) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(connected_pav_grav_86_70) ///
+		    trains_var(disconnected_rails_86_70) ///
+		    table_name(IV_both_chg_`depvar'_91_70_connected)
 	}
 	
 	    *** Migration level
@@ -35,6 +47,12 @@ program main
 	        roads_var(chg_pav_and_grav_86_70) ///
 		    trains_var(chg_tot_rails_86_70) ///
 		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
+			
+	   run_IV_regression, depvar(chg_`depvar'_91_70) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(connected_pav_grav_86_70) ///
+		    trains_var(disconnected_rails_86_70) ///
+		    table_name(IV_both_chg_`depvar'_91_70_connected)
 	}
 	
 	    *** Broad sector levels
@@ -45,6 +63,12 @@ program main
 	        roads_var(chg_pav_and_grav_86_70) ///
 		    trains_var(chg_tot_rails_86_70) ///
 		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
+			
+	   run_IV_regression, depvar(chg_`depvar'_91_70) ///
+	        baseline_depvar(log_urbpop_1960) ///
+	        roads_var(connected_pav_grav_86_70) ///
+		    trains_var(disconnected_rails_86_70) ///
+		    table_name(IV_both_chg_`depvar'_91_70_connected)
 	}
 end
 

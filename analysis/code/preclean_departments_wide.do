@@ -428,8 +428,8 @@ program preclean_data
 	gen_chg_var_and_label, var(pav_and_grav) year_pre(70) year_post(86) ///
 	    label(kms of paved and gravel roads)
 
-	gen connected_pav_grav_86_54 = (chg_pav_and_grav_86_54 > 0)
-	gen connected_pav_grav_86_70 = (chg_pav_and_grav_86_70 > 0)
+	gen connected_pav_grav_86_54 = (chg_pav_and_grav_86_54 > 0 & pav_and_grav_1954 == 0)
+	gen connected_pav_grav_86_70 = (chg_pav_and_grav_86_70 > 0 & pav_and_grav_1970 == 0)
 
 	gen tot_rails_1960 = status79_1 + status79_2 + status79_3
 	gen tot_rails_1970 = status79_1 + status79_2
@@ -440,8 +440,8 @@ program preclean_data
     gen_chg_var_and_label, var(tot_rails) year_pre(70) year_post(86) ///
 	    label(kms of railroads)
 		
-	gen disconnected_rails_86_60 = (chg_tot_rails_86_60 < 0)
-	gen disconnected_rails_86_70 = (chg_tot_rails_86_70 < 0)
+	gen disconnected_rails_86_60 = (tot_rails_1986 == 0 & tot_rails_1960 > 0)
+	gen disconnected_rails_86_70 = (tot_rails_1986 == 0 & tot_rails_1970 > 0)
 	
 	label var hypo_EUC_MST_kms  "Euclidean MST network (kms)"
 	label var hypo_LCP_MST_kms  "Least-cost MST network (kms)"
@@ -451,10 +451,15 @@ program preclean_data
 	
 	rename (hypomeanEMST_kms hypoCMST_kms studied_1) ///
 	    (euclidean_hypo_network lcp_hypo_network studied_larkin)
+	 label var studied_larkin "Studied railroad tracks (kms)"
+		
+    gen share_studied_larkin = studied_larkin/tot_rails_1960
+	gen studied_larkin_dummy = (studied_larkin > 0)
+	gen hypo_EUC_dummy = (hypo_EUC_total_MST_kms > 0)
+	gen hypo_LCP_dummy = (hypo_LCP_total_MST_kms > 0)
 
-	label var euclidean_hypo_network "Euclidean spanning tree network (kms)"
-	label var lcp_hypo_network "Least-cost path spanning tree network (kms)"
-    label var studied_larkin "Studied railroad tracks (kms)"
+	/*label var euclidean_hypo_network "Euclidean spanning tree network (kms)"
+	label var lcp_hypo_network "Least-cost path spanning tree network (kms)"*/
 end
 
 main

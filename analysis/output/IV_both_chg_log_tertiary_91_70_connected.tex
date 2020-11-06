@@ -1,0 +1,26 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{8}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
+                &\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}\\
+\hline
+disconnected\_rails\_86\_70&   -5.875         &   -3.300\sym{*}  &   -37.06         &   -1.299         &   -0.981         &   -0.866         &   -1.392         &   -1.299         \\
+                &  (7.423)         &  (1.897)         & (3261.3)         &  (2.336)         &  (1.600)         &  (0.760)         &  (2.084)         &  (1.225)         \\
+[1em]
+connected\_pav\_grav\_86\_70&    11.69         &    5.623         &    237.0         &    5.710         &    2.087         &    1.599         &    3.036         &    2.717         \\
+                &  (17.18)         &  (4.044)         &(21068.1)         &  (13.29)         &  (6.235)         &  (2.381)         &  (6.592)         &  (3.313)         \\
+[1em]
+Log urban population 1960&                  &                  &                  &                  &                  &                  &    0.159         &    0.146         \\
+                &                  &                  &                  &                  &                  &                  &  (0.275)         &  (0.151)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&.7635000000000001         &.9377000000000001         &.5045000000000001         &    .6745         &    .6534         &.7907000000000001         &.6969000000000001         &    .8183         \\
+Cragg-Donald (multivariate) F-stat&    .2532         &    1.224         &    .0001         &    .1012         &     .099         &     .497         &    .1436         &    .4711         \\
+Geographic controls&       No         &       No         &      Yes         &      Yes         &      Yes         &      Yes         &      Yes         &      Yes         \\
+Province FE     &       No         &       No         &       No         &       No         &      Yes         &      Yes         &      Yes         &      Yes         \\
+Observations    &      311         &      311         &      311         &      311         &      311         &      311         &      287         &      287         \\
+\hline\hline
+\multicolumn{9}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{9}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
