@@ -27,4 +27,5 @@ do                            202_merge_ag1960_to_IPUMS.do
 do                            203_merge_in1954_to_IPUMS.do
 do                            204_merge_ec1985_to_IPUMS.do
 do                            205_merge_ag1988_to_IPUMS.do
+do                            206_merge_popurb1946_to_IPUMS.do
 do                            301_assembling

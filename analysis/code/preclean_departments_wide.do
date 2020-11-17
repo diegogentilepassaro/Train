@@ -32,28 +32,49 @@ program preclean_data
 	*drop if geolev2 == 32006001 /* La Plata */
 	
 	**** population outcomes
-	rename (pop1960 pop1970 pop1991) ///
-	    (pop_1960 pop_1970 pop_1991)
+	rename (pop1946 urbpop1946 pop1960 pop1970 pop1991) ///
+	    (pop_1946 urbpop_1946 pop_1960 pop_1970 pop_1991)
+	gen_log_var_and_label, var(pop_1946) label(Log population 1946)
 	gen_log_var_and_label, var(pop_1960) label(Log population 1960)
 	gen_log_var_and_label, var(pop_1970) label(Log population 1970)
 	gen_log_var_and_label, var(pop_1991) label(Log population 1991)
 	
+	gen_chg_var_and_label, var(log_pop) year_pre(46) year_post(60) ///
+	    label(log population)
 	gen_chg_var_and_label, var(log_pop) year_pre(60) year_post(91) ///
 	    label(log population)
 	gen_chg_var_and_label, var(log_pop) year_pre(70) year_post(91) ///
 	    label(log population)
 
+	gen_log_var_and_label, var(urbpop_1946) label(Log urban population 1946)
 	gen_log_var_and_label, var(urbpop_1960) label(Log urban population 1960)
 	gen_log_var_and_label, var(urbpop_1991) label(Log urban population 1991)
 	
+	gen_chg_var_and_label, var(log_urbpop) year_pre(46) year_post(60) ///
+	    label(log urban population)
 	gen_chg_var_and_label, var(log_urbpop) year_pre(60) year_post(91) ///
 	    label(log urban population)
 
+	gen share_urbpop_1946 = urbpop_1946/pop_1946
 	gen share_urbpop_1960 = urbpop_1960/pop_1960
 	gen share_urbpop_1991 = urbpop_1991/pop_1991
+	
+	label var share_urbpop_1946 "Share of urban population 1946"
 	label var share_urbpop_1960 "Share of urban population 1960"
+
+	gen_chg_var_and_label, var(share_urbpop) year_pre(46) year_post(60) ///
+	    label(share of urban population)
 	gen_chg_var_and_label, var(share_urbpop) year_pre(60) year_post(91) ///
 	    label(share of urban population)
+		
+	gen_log_var_and_label, var(share_urbpop_1946) label(Log share population 1946)
+	gen_log_var_and_label, var(share_urbpop_1960) label(Log share population 1960)
+	gen_log_var_and_label, var(share_urbpop_1991) label(Log share population 1991)
+	
+	gen_chg_var_and_label, var(log_share_urbpop) year_pre(46) year_post(60) ///
+	    label(log share of urban population)
+	gen_chg_var_and_label, var(log_share_urbpop) year_pre(60) year_post(91) ///
+	    label(log share of urban population)
 		
 	**** labor shares by activity 
 	rename (indgen_1_1970 indgen_2_1970 indgen_3_1970 ///
@@ -425,6 +446,8 @@ program preclean_data
 	
 	gen_chg_var_and_label, var(pav_and_grav) year_pre(54) year_post(86) ///
 	    label(kms of paved and gravel roads)
+	gen_chg_var_and_label, var(pav_and_grav) year_pre(54) year_post(70) ///
+	    label(kms of paved and gravel roads)
 	gen_chg_var_and_label, var(pav_and_grav) year_pre(70) year_post(86) ///
 	    label(kms of paved and gravel roads)
 
@@ -436,6 +459,8 @@ program preclean_data
     gen tot_rails_1986 = status79_1
 
     gen_chg_var_and_label, var(tot_rails) year_pre(60) year_post(86) ///
+	    label(kms of railroads)
+    gen_chg_var_and_label, var(tot_rails) year_pre(60) year_post(70) ///
 	    label(kms of railroads)
     gen_chg_var_and_label, var(tot_rails) year_pre(70) year_post(86) ///
 	    label(kms of railroads)
@@ -452,9 +477,20 @@ program preclean_data
 	rename (hypomeanEMST_kms hypoCMST_kms studied_1) ///
 	    (euclidean_hypo_network lcp_hypo_network studied_larkin)
 	 label var studied_larkin "Studied railroad tracks (kms)"
-		
+	 
+	qui sum studied_larkin, d
+	gen above_median_studied_kms = (studied_larkin >= r(p50))
+	label var above_median_studied_kms "Studied kms above median"
+
+	egen studied_kms_quint = xtile(studied_larkin), n(5)
+	label var studied_kms_quint "Quintile of studied kms"
+	
     gen share_studied_larkin = studied_larkin/tot_rails_1960
+	label var share_studied_larkin "Share of studied kms"
 	gen studied_larkin_dummy = (studied_larkin > 0)
+	label var studied_larkin_dummy "At least one studied segment"
+	
+	
 	gen hypo_EUC_dummy = (hypo_EUC_total_MST_kms > 0)
 	gen hypo_LCP_dummy = (hypo_LCP_total_MST_kms > 0)
 

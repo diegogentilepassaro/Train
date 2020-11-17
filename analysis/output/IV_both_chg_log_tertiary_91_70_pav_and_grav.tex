@@ -1,26 +1,21 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{8}{c}}
+\begin{tabular}{l*{3}{c}}
 \hline\hline
-                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
-                &\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV EUC Network}&\multicolumn{1}{c}{IV LCP Network}\\
 \hline
-Change in kms of railroads 1986-1970&   0.0142\sym{***}&   0.0148\sym{***}&  0.00476\sym{**} &  0.00501\sym{**} &  0.00326\sym{*}  &  0.00386\sym{*}  &  0.00365\sym{**} &  0.00468\sym{**} \\
-                &(0.00294)         &(0.00313)         &(0.00223)         &(0.00242)         &(0.00187)         &(0.00204)         &(0.00175)         &(0.00198)         \\
+Change in kms of railroads 1986-1970& 0.000810         &  0.00326\sym{*}  &  0.00386\sym{*}  \\
+                &(0.000822)         &(0.00187)         &(0.00204)         \\
 [1em]
-Change in kms of paved and gravel roads 1986-1970&  0.00190\sym{***}&  0.00207\sym{***}& 0.000579         & 0.000672         &0.0000495         & 0.000278         & 0.000225         & 0.000607         \\
-                &(0.000488)         &(0.000484)         &(0.000470)         &(0.000517)         &(0.000400)         &(0.000455)         &(0.000383)         &(0.000464)         \\
-[1em]
-Log urban population 1960&                  &                  &                  &                  &                  &                  &   0.0288         &   0.0281         \\
-                &                  &                  &                  &                  &                  &                  & (0.0294)         & (0.0303)         \\
+Change in kms of paved and gravel roads 1986-1970&0.0000415         &0.0000495         & 0.000278         \\
+                &(0.000195)         &(0.000400)         &(0.000455)         \\
 \hline
-P-value for testing $\beta\_{2} >= \beta\_{1}$&        0         &        0         &    .0191         &    .0213         &    .0324         &     .026         &    .0178         &    .0108         \\
-Cragg-Donald (multivariate) F-stat&   26.526         &  24.5343         &  21.1949         &  16.7271         &  29.9293         &   23.428         &  28.3404         &  21.0163         \\
-Geographic controls&       No         &       No         &      Yes         &      Yes         &      Yes         &      Yes         &      Yes         &      Yes         \\
-Province FE     &       No         &       No         &       No         &       No         &      Yes         &      Yes         &      Yes         &      Yes         \\
-Observations    &      311         &      311         &      311         &      311         &      311         &      311         &      287         &      287         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&                  &    .0324         &     .026         \\
+Cragg-Donald (multivariate) F-stat&                  &  29.9293         &   23.428         \\
+Observations    &      311         &      311         &      311         \\
 \hline\hline
-\multicolumn{9}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{9}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }
