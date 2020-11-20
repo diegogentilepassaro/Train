@@ -35,6 +35,10 @@ merge 1:1 geolev2 using "..\temp\ARG_districts_infra_hypo.dta"
 drop _merge
 **CHECK: MISMATCH IN MERGE FOR TWO OBSERVATIONS FROM C1960_IPUMS
 
+*MERGE - MA
+merge 1:1 geolev2 using "..\temp\MA.dta"
+assert _merge!=2
+drop _merge
 
 *MERGE - AGRICULTURAL CENSUS 1960
 merge 1:1 geolev2 using "..\temp\ag1960_ipums.dta"
