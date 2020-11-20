@@ -1,21 +1,24 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{3}{c}}
+\begin{tabular}{l*{6}{c}}
 \hline\hline
-                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
-                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV EUC Network}&\multicolumn{1}{c}{IV LCP Network}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV EUC Network}&\multicolumn{1}{c}{IV LCP Network}&\multicolumn{1}{c}{est4}&\multicolumn{1}{c}{est5}&\multicolumn{1}{c}{est6}\\
 \hline
-Change in kms of railroads 1986-1960& 0.000314         &  0.00175         &  0.00271\sym{**} \\
-                &(0.000507)         &(0.00114)         &(0.00123)         \\
+Change in kms of railroads 1986-1960& 0.000187         &-0.0000136         &  0.00175         &  0.00185\sym{**} &  0.00271\sym{**} &  0.00264\sym{***}\\
+                &(0.000525)         &(0.000509)         &(0.00114)         &(0.000882)         &(0.00123)         &(0.000965)         \\
 [1em]
-Change in kms of paved and gravel roads 1986-1954&-0.000194         &-0.000119         & 0.000240         \\
-                &(0.000135)         &(0.000261)         &(0.000305)         \\
+Change in kms of paved and gravel roads 1986-1954&-0.0000821         &-0.000192         &-0.000119         &-0.000248         & 0.000240         & 0.000345         \\
+                &(0.000155)         &(0.000175)         &(0.000261)         &(0.000294)         &(0.000305)         &(0.000364)         \\
+[1em]
+Change in log urban population 1960-1946&                  &   0.0717         &                  &   0.0520         &                  &   0.0615         \\
+                &                  & (0.0573)         &                  & (0.0597)         &                  & (0.0616)         \\
 \hline
-P-value for testing $\beta\_{2} >= \beta\_{1}$&                  &    .0331         &    .0103         \\
-Cragg-Donald (multivariate) F-stat&                  &  32.8523         &  27.0955         \\
-Observations    &      286         &      286         &      286         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&                  &                  &    .0331         &    .0038         &    .0103         &    .0026         \\
+Cragg-Donald (multivariate) F-stat&                  &                  &  32.8523         &  49.1762         &  27.0955         &  31.9865         \\
+Observations    &      286         &      234         &      286         &      234         &      286         &      234         \\
 \hline\hline
-\multicolumn{4}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\multicolumn{7}{l}{\footnotesize Standard errors in parentheses}\\
+\multicolumn{7}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

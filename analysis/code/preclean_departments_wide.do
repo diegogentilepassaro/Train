@@ -400,14 +400,14 @@ program preclean_data
 	    label(log total value of production)	
 		
 	**** instruments 
-	/*rename (roads54_type1 roads54_type2 roads54_type3 roads54_type4 ///
+	rename (roads54_type1 roads54_type2 roads54_type3 roads54_type4 ///
 	    roads70_type1 roads70_type2 roads70_type3 roads70_type4 ///
 		roads86_type1 roads86_type2 roads86_type3 roads86_type4) ///
 		(paved_roads_1954 gravel_roads_1954 dirt_roads_1954 footprint_roads_1954 ///
 		paved_roads_1970 gravel_roads_1970 dirt_roads_1970 footprint_roads_1970 ///
 		paved_roads_1986 gravel_roads_1986 dirt_roads_1986 footprint_roads_1986)
 	
-	gen tot_roads_1954 = paved_roads_1954 + gravel_roads_1954 + ///
+	/*gen tot_roads_1954 = paved_roads_1954 + gravel_roads_1954 + ///
 	    dirt_roads_1954 + footprint_roads_1954
 	gen tot_roads_1970 = paved_roads_1970 + gravel_roads_1970 + ///
 	    dirt_roads_1970 + footprint_roads_1970
@@ -417,15 +417,15 @@ program preclean_data
 	gen_chg_var_and_label, var(tot_roads) year_pre(54) year_post(86) ///
 	    label(kms of total roads)
 	gen_chg_var_and_label, var(tot_roads) year_pre(70) year_post(86) ///
-	    label(kms of total roads)
+	    label(kms of total roads)*/
 	
-	gen pav_and_grav_1954 = paved_roads_1954 + gravel_roads_1954
-	gen pav_and_grav_1970 = paved_roads_1970 + gravel_roads_1970
-	gen pav_and_grav_1986 = paved_roads_1986 + gravel_roads_1986
+	gen old_pav_and_grav_1954 = paved_roads_1954 + gravel_roads_1954
+	gen old_pav_and_grav_1970 = paved_roads_1970 + gravel_roads_1970
+	gen old_pav_and_grav_1986 = paved_roads_1986 + gravel_roads_1986
 	
-	gen_chg_var_and_label, var(pav_and_grav) year_pre(54) year_post(86) ///
+	gen_chg_var_and_label, var(old_pav_and_grav) year_pre(54) year_post(86) ///
 	    label(kms of paved and gravel roads)
-	gen_chg_var_and_label, var(pav_and_grav) year_pre(70) year_post(86) ///
+	gen_chg_var_and_label, var(old_pav_and_grav) year_pre(70) year_post(86) ///
 	    label(kms of paved and gravel roads)
 		
 	gen_chg_var_and_label, var(paved_roads) year_pre(54) year_post(86) ///
@@ -433,7 +433,7 @@ program preclean_data
 	gen_chg_var_and_label, var(paved_roads) year_pre(70) year_post(86) ///
 	    label(kms of paved roads)
 		
-	gen connected_paved_86_54 = (chg_paved_roads_86_54 > 0)
+	/*gen connected_paved_86_54 = (chg_paved_roads_86_54 > 0)
 	gen connected_paved_86_70 = (chg_paved_roads_86_70 > 0)
 	*/
 	
