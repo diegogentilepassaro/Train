@@ -445,11 +445,11 @@ program preclean_data
 	    roadsall_class3 + roadsall_class5
 	
 	gen_chg_var_and_label, var(pav_and_grav) year_pre(54) year_post(86) ///
-	    label(kms of paved and gravel roads)
+	    label(kms of roads)
 	gen_chg_var_and_label, var(pav_and_grav) year_pre(54) year_post(70) ///
-	    label(kms of paved and gravel roads)
+	    label(kms of roads)
 	gen_chg_var_and_label, var(pav_and_grav) year_pre(70) year_post(86) ///
-	    label(kms of paved and gravel roads)
+	    label(kms of roads)
 
 	gen connected_pav_grav_86_54 = (chg_pav_and_grav_86_54 > 0 & pav_and_grav_1954 == 0)
 	gen connected_pav_grav_86_70 = (chg_pav_and_grav_86_70 > 0 & pav_and_grav_1970 == 0)
@@ -476,8 +476,12 @@ program preclean_data
 	
 	rename (hypomeanEMST_kms hypoCMST_kms studied_1) ///
 	    (euclidean_hypo_network lcp_hypo_network studied_larkin)
-	 label var studied_larkin "Studied railroad tracks (kms)"
-	 
+	label var studied_larkin "Studied railroad tracks (kms)"
+	gen studied_larkin_sq = studied_larkin*studied_larkin
+	label var studied_larkin_sq "Studied railroad tracks (kms) square"
+	gen studied_larkin_cu = studied_larkin*studied_larkin*studied_larkin
+	label var studied_larkin_cu "Studied railroad tracks (kms) cube"
+	
 	qui sum studied_larkin, d
 	gen above_median_studied_kms = (studied_larkin >= r(p50))
 	label var above_median_studied_kms "Studied kms above median"
@@ -489,6 +493,7 @@ program preclean_data
 	label var share_studied_larkin "Share of studied kms"
 	gen studied_larkin_dummy = (studied_larkin > 0)
 	label var studied_larkin_dummy "At least one studied segment"
+
 	
 	
 	gen hypo_EUC_dummy = (hypo_EUC_total_MST_kms > 0)
