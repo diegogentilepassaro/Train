@@ -39,7 +39,7 @@ program main
 	
 	    *** Broad sector levels
 	foreach depvar in log_primary log_secondary log_tertiary ///
-	    sh_primary sh_secondary sh_tertiary {
+	    log_sh_primary log_sh_secondary log_sh_tertiary {
 
        run_IV_regression, depvar(chg_`depvar'_91_70) ///
 	        baseline_depvar(chg_log_urbpop_60_46) ///

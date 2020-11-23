@@ -166,7 +166,21 @@ program preclean_data
 	    label(share of secondary sector labor)
 	gen_chg_var_and_label, var(sh_tertiary) year_pre(70) year_post(91) ///
 	    label(share of tertiary sector labor)
+		
+	gen_log_var_and_label, var(sh_primary_1970) label(Log share primary sector 1970)
+	gen_log_var_and_label, var(sh_primary_1991) label(Log share primary sector 1991)
+	gen_log_var_and_label, var(sh_secondary_1970) label(Log share secondary sector 1970)
+	gen_log_var_and_label, var(sh_secondary_1991) label(Log share secondary sector 1991)
+	gen_log_var_and_label, var(sh_tertiary_1970) label(Log share tertiary sector 1970)
+	gen_log_var_and_label, var(sh_tertiary_1991) label(Log share tertiary sector 1991)
 	
+	gen_chg_var_and_label, var(log_sh_primary) year_pre(70) year_post(91) ///
+	    label(log share of primary sector labor)
+	gen_chg_var_and_label, var(log_sh_secondary) year_pre(70) year_post(91) ///
+	    label(log share of secondary sector labor)
+	gen_chg_var_and_label, var(log_sh_tertiary) year_pre(70) year_post(91) ///
+	    label(log share of tertiary sector labor)
+		
 	**** labor shares by class of workers
 	rename (classwk_1_1970 classwk_2_1970 classwk_3_1970 ///
 	    classwk_1_1991 classwk_2_1991 classwk_3_1991) ///
