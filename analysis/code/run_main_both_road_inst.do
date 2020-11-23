@@ -92,7 +92,7 @@ program run_IV_regression
 	
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
-        mtitles("OLS" "IV EUC Network" "IV LCP Network") ///
+        mtitles("OLS" "OLS" "IV EUC Network" "IV EUC Network" "IV LCP Network" "IV LCP Network") ///
 		order(`trains_var' `roads_var' `baseline_depvar') label nonotes ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(p_val F_stat_fs N, fmt(a4 a4 a4 a4 a4) ///
