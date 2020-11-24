@@ -10,7 +10,7 @@ program main
 	    chg_log_constr_labor chg_log_wret_labor chg_log_hrest_labor chg_log_tsc_labor ///
 	    chg_log_fin_labor chg_log_pub_labor chg_log_rsb_labor chg_log_edu_labor ///
 		chg_log_hsw_labor chg_log_ot_labor chg_log_oth_labor) ///
-		baseline_depvar(chg_log_urbpop_60_46) ///
+		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_both_chg_log_activities_91_70_pav_and_grav)
@@ -20,7 +20,7 @@ program main
 	    chg_share_constr_labor chg_share_wret_labor chg_share_hrest_labor chg_share_tsc_labor ///
 	    chg_share_fin_labor chg_share_pub_labor chg_share_rsb_labor chg_share_edu_labor ///
 		chg_share_hsw_labor chg_share_ot_labor chg_share_oth_labor) ///
-		baseline_depvar(chg_log_urbpop_60_46) ///
+		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_both_chg_sh_activities_91_70_pav_and_grav)
@@ -28,7 +28,7 @@ program main
       run_IV_regression, ///
        depvars(chg_log_primary_91_70 chg_log_ind_91_70 chg_log_nt_ind_91_70 ///
 	    chg_log_gov_ed_health_91_70 chg_log_oth_serv_91_70) ///
-		baseline_depvar(chg_log_urbpop_60_46) ///
+		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_both_chg_log_sectors_91_70_pav_and_grav)
@@ -36,7 +36,7 @@ program main
    run_IV_regression, ///
        depvars(chg_sh_primary_91_70 chg_sh_ind_91_70 chg_sh_nt_ind_91_70 ///
 	    chg_sh_gov_ed_health_91_70 chg_sh_oth_serv_91_70) ///
-		baseline_depvar(chg_log_urbpop_60_46) ///
+		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_both_chg_sh_sectors_91_70_pav_and_grav)
@@ -44,7 +44,7 @@ program main
    run_IV_regression, ///
        depvars(chg_log_sh_primary_91_70 chg_log_sh_ind_91_70 chg_log_sh_nt_ind_91_70 ///
 	    chg_log_sh_gov_ed_health_91_70 chg_log_sh_oth_serv_91_70) ///
-		baseline_depvar(chg_log_urbpop_60_46) ///
+		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_both_chg_log_sh_sectors_91_70_pav_and_grav)

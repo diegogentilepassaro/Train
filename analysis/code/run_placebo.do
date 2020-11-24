@@ -8,10 +8,10 @@ program main
 	    *** Population outcomes
 	foreach depvar in log_pop log_urbpop log_share_urbpop {
 
-       run_IV_regression, depvar(chg_`depvar'_60_46) ///
+       run_IV_regression, depvar(chg_`depvar'_60_47) ///
 	        roads_var(chg_pav_and_grav_86_70) ///
 		    trains_var(chg_tot_rails_86_70) ///
-		    table_name(IV_both_chg_`depvar'_60_46_pav_and_grav)
+		    table_name(IV_both_chg_`depvar'_60_47_pav_and_grav)
 	}
 end
 

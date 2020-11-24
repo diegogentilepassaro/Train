@@ -6,12 +6,12 @@ program main
     use "../temp/departments_wide_panel.dta", clear
 	
 	eststo clear
-	make_diff_means_table,  vars(chg_log_pop_60_46 chg_log_urbpop_60_46) ///
+	make_diff_means_table,  vars(chg_log_pop_60_47 chg_log_urbpop_60_47) ///
 	    by_var(studied_larkin_dummy)
 	mat colnames diff_means = "No studied segments" "At least one studied segment" ///
 	    "Diff-in-means" "SE Diff-in-means"
-	mat rownames diff_means = "Change in log pop 1960-1946" "N" ///
-	    "Change in log urb pop 1960-1946" "N"
+	mat rownames diff_means = "Change in log pop 1960-1947" "N" ///
+	    "Change in log urb pop 1960-1947" "N"
 	esttab matrix(diff_means) using "../output/balance_table.tex", mtitle("") replace
 
 	make_balance_reg, depvar(log_pop)
@@ -39,10 +39,10 @@ program make_balance_reg
 	
 	eststo clear
 	
-	eststo: qui reg chg_`depvar'_60_46 i.studied_larkin_dummy hypo_LCP_total_MST_kms `geo_vars'
-	eststo: qui reg chg_`depvar'_60_46 i.above_median_studied_kms hypo_LCP_total_MST_kms `geo_vars'
-	eststo: qui reg chg_`depvar'_60_46 i.studied_kms_quint hypo_LCP_total_MST_kms `geo_vars'
-	eststo: qui reg chg_`depvar'_60_46 studied_larkin ///
+	eststo: qui reg chg_`depvar'_60_47 i.studied_larkin_dummy hypo_LCP_total_MST_kms `geo_vars'
+	eststo: qui reg chg_`depvar'_60_47 i.above_median_studied_kms hypo_LCP_total_MST_kms `geo_vars'
+	eststo: qui reg chg_`depvar'_60_47 i.studied_kms_quint hypo_LCP_total_MST_kms `geo_vars'
+	eststo: qui reg chg_`depvar'_60_47 studied_larkin ///
 	    studied_larkin_sq studied_larkin_cu ///
 		hypo_LCP_total_MST_kms `geo_vars'
 	

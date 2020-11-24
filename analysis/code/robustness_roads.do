@@ -10,7 +10,7 @@ program main
 	foreach depvar in log_pop log_urbpop {
 
        run_IV_regression, depvar(chg_`depvar'_91_60) ///
-	        baseline_depvar(chg_log_urbpop_60_46) ///
+	        baseline_depvar(chg_log_urbpop_60_47) ///
 	        roads_vars(chg_pav_and_grav_86_54 chg_paved_roads_86_54) ///
 		    trains_var(chg_tot_rails_86_60) ///
 		    table_name(robust_roads_chg_`depvar'_91_60)
@@ -21,7 +21,7 @@ program main
 	foreach depvar in log_pop {
 
        run_IV_regression, depvar(chg_`depvar'_91_70) ///
-	        baseline_depvar(chg_log_urbpop_60_46) ///
+	        baseline_depvar(chg_log_urbpop_60_47) ///
 	        roads_vars(chg_pav_and_grav_86_54 chg_paved_roads_86_70) ///
 		    trains_var(chg_tot_rails_86_70) ///
 		    table_name(robust_roads_chg_`depvar'_91_70)

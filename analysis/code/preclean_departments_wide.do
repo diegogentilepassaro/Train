@@ -33,45 +33,45 @@ program preclean_data
 	
 	**** population outcomes
 	rename (pop1946 urbpop1946 pop1960 pop1970 pop1991) ///
-	    (pop_1946 urbpop_1946 pop_1960 pop_1970 pop_1991)
-	gen_log_var_and_label, var(pop_1946) label(Log population 1946)
+	    (pop_1947 urbpop_1947 pop_1960 pop_1970 pop_1991)
+	gen_log_var_and_label, var(pop_1947) label(Log population 1947)
 	gen_log_var_and_label, var(pop_1960) label(Log population 1960)
 	gen_log_var_and_label, var(pop_1970) label(Log population 1970)
 	gen_log_var_and_label, var(pop_1991) label(Log population 1991)
 	
-	gen_chg_var_and_label, var(log_pop) year_pre(46) year_post(60) ///
+	gen_chg_var_and_label, var(log_pop) year_pre(47) year_post(60) ///
 	    label(log population)
 	gen_chg_var_and_label, var(log_pop) year_pre(60) year_post(91) ///
 	    label(log population)
 	gen_chg_var_and_label, var(log_pop) year_pre(70) year_post(91) ///
 	    label(log population)
 
-	gen_log_var_and_label, var(urbpop_1946) label(Log urban population 1946)
+	gen_log_var_and_label, var(urbpop_1947) label(Log urban population 1947)
 	gen_log_var_and_label, var(urbpop_1960) label(Log urban population 1960)
 	gen_log_var_and_label, var(urbpop_1991) label(Log urban population 1991)
 	
-	gen_chg_var_and_label, var(log_urbpop) year_pre(46) year_post(60) ///
+	gen_chg_var_and_label, var(log_urbpop) year_pre(47) year_post(60) ///
 	    label(log urban population)
 	gen_chg_var_and_label, var(log_urbpop) year_pre(60) year_post(91) ///
 	    label(log urban population)
 
-	gen share_urbpop_1946 = urbpop_1946/pop_1946
+	gen share_urbpop_1947 = urbpop_1947/pop_1947
 	gen share_urbpop_1960 = urbpop_1960/pop_1960
 	gen share_urbpop_1991 = urbpop_1991/pop_1991
 	
-	label var share_urbpop_1946 "Share of urban population 1946"
+	label var share_urbpop_1947 "Share of urban population 1947"
 	label var share_urbpop_1960 "Share of urban population 1960"
 
-	gen_chg_var_and_label, var(share_urbpop) year_pre(46) year_post(60) ///
+	gen_chg_var_and_label, var(share_urbpop) year_pre(47) year_post(60) ///
 	    label(share of urban population)
 	gen_chg_var_and_label, var(share_urbpop) year_pre(60) year_post(91) ///
 	    label(share of urban population)
 		
-	gen_log_var_and_label, var(share_urbpop_1946) label(Log share population 1946)
+	gen_log_var_and_label, var(share_urbpop_1947) label(Log share population 1947)
 	gen_log_var_and_label, var(share_urbpop_1960) label(Log share population 1960)
 	gen_log_var_and_label, var(share_urbpop_1991) label(Log share population 1991)
 	
-	gen_chg_var_and_label, var(log_share_urbpop) year_pre(46) year_post(60) ///
+	gen_chg_var_and_label, var(log_share_urbpop) year_pre(47) year_post(60) ///
 	    label(log share of urban population)
 	gen_chg_var_and_label, var(log_share_urbpop) year_pre(60) year_post(91) ///
 	    label(log share of urban population)

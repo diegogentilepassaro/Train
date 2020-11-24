@@ -1,0 +1,18 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}\\
+                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}\\
+\hline
+Change in kms of railroads 1986-1970& 0.000255         &-0.000451         &-0.000934         \\
+                &(0.000594)         &(0.00121)         &(0.00135)         \\
+[1em]
+Change in kms of roads 1986-1970& 0.000314\sym{**} &0.0000814         &-0.000162         \\
+                &(0.000149)         &(0.000312)         &(0.000383)         \\
+\hline
+Cragg-Donald (multivariate) F-stat&                  &  30.9219         &  20.6783         \\
+Observations    &      235         &      235         &      235         \\
+\hline\hline
+\end{tabular}
+}
