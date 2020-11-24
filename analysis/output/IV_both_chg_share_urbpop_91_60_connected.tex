@@ -1,26 +1,22 @@
 {
 \def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
-\begin{tabular}{l*{8}{c}}
+\begin{tabular}{l*{6}{c}}
 \hline\hline
-                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}&\multicolumn{1}{c}{(7)}&\multicolumn{1}{c}{(8)}\\
-                &\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}&\multicolumn{1}{c}{EUC}&\multicolumn{1}{c}{LCP}\\
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV EUC Network}&\multicolumn{1}{c}{IV EUC Network}&\multicolumn{1}{c}{IV LCP Network}&\multicolumn{1}{c}{IV LCP Network}\\
 \hline
-disconnected\_rails\_86\_60&   0.0604         & -0.00854         &   0.0666         &   0.0488         &   0.0652         &  0.00724         &    0.132         &   0.0676         \\
-                &  (0.157)         & (0.0949)         &  (0.166)         & (0.0811)         & (0.0975)         &  (0.113)         &  (0.114)         &  (0.196)         \\
+disconnected\_rails\_86\_60&    0.189\sym{***}&    0.150\sym{***}&    0.179         &    2.336         &    6.878         &   -10.95         \\
+                & (0.0554)         & (0.0492)         &  (1.285)         &  (4.483)         &  (49.27)         &  (53.75)         \\
 [1em]
-connected\_pav\_grav\_86\_54&  -0.0855         &    0.150         &   -1.473         &   -0.443         &   -0.132         &    0.521         &    0.553         &    1.481         \\
-                &  (0.539)         &  (0.313)         &  (2.876)         &  (0.939)         &  (0.580)         &  (0.664)         &  (0.887)         &  (1.544)         \\
+connected\_pav\_grav\_86\_54&  -0.0159         &  -0.0259         &    0.220         &    0.665         &   -0.348         &    0.479         \\
+                & (0.0331)         & (0.0283)         &  (0.355)         &  (0.999)         &  (2.514)         &  (3.567)         \\
 [1em]
-Log urban population 1960&                  &                  &                  &                  &                  &                  &  -0.0277         &  -0.0144         \\
-                &                  &                  &                  &                  &                  &                  & (0.0175)         & (0.0310)         \\
+Log urban population 1960&                  &  -0.0277\sym{***}&                  &  0.00902         &                  &  -0.0231         \\
+                &                  &(0.00861)         &                  & (0.0602)         &                  &  (0.175)         \\
 \hline
-P-value for testing $\beta\_{2} >= \beta\_{1}$&    .4158         &    .6579         &    .3007         &    .3047         &    .3763         &    .7689         &    .6744         &.8158000000000001         \\
-Cragg-Donald (multivariate) F-stat&    .6019         &   1.9186         &    .1541         &    .3839         &     .666         &    .8257         &    .4054         &.5197000000000001         \\
-Geographic controls&       No         &       No         &      Yes         &      Yes         &      Yes         &      Yes         &      Yes         &      Yes         \\
-Province FE     &       No         &       No         &       No         &       No         &      Yes         &      Yes         &      Yes         &      Yes         \\
-Observations    &      311         &      311         &      311         &      311         &      311         &      311         &      287         &      287         \\
+P-value for testing $\beta\_{2} >= \beta\_{1}$&                  &                  &    .5139         &    .3331         &    .4439         &    .5805         \\
+Cragg-Donald (multivariate) F-stat&                  &                  &    .2929         &     .158         &    .0094         &    .0214         \\
+Observations    &      311         &      287         &      311         &      287         &      311         &      287         \\
 \hline\hline
-\multicolumn{9}{l}{\footnotesize Standard errors in parentheses}\\
-\multicolumn{9}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 \end{tabular}
 }

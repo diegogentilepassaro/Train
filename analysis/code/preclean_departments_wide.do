@@ -103,7 +103,7 @@ program preclean_data
 		share_ot_labor_1991 share_oth_labor_1991)
 	label var share_agr_labor_1970 "Share of agricultural labor 1970"
 	label var share_min_labor_1970 "Share of mining labor 1970"
-	label var share_ind_labor_1970 "Share of manufacturing labor 1970"
+	label var share_ind_labor_1970 "Share of industrial labor 1970"
 	label var share_egw_labor_1970 "Share of electric, gas, and water labor 1970"
 	label var share_constr_labor_1970 "Share of construction labor 1970"
     label var share_wret_labor_1970 "Share of wholesale and retail labor 1970"
@@ -121,12 +121,22 @@ program preclean_data
 	    label(share of agricultural labor)
 	gen_chg_var_and_label, var(share_min_labor) year_pre(70) year_post(91) ///
 	    label(share of mining labor)
+		
 	gen_chg_var_and_label, var(share_ind_labor) year_pre(70) year_post(91) ///
-	    label(share of manufacturing labor)
+	    label(share of industrial labor)
+		
 	gen_chg_var_and_label, var(share_egw_labor) year_pre(70) year_post(91) ///
 	    label(share of electric, gas, and water labor)
 	gen_chg_var_and_label, var(share_constr_labor) year_pre(70) year_post(91) ///
 	    label(share of construction labor)
+		
+	gen_chg_var_and_label, var(share_pub_labor) year_pre(70) year_post(91) ///
+	    label(share of public administration labor)
+	gen_chg_var_and_label, var(share_edu_labor) year_pre(70) year_post(91) ///
+	    label(share of education labor)
+	gen_chg_var_and_label, var(share_hsw_labor) year_pre(70) year_post(91) ///
+	    label(share of health and social work labor)
+		
 	gen_chg_var_and_label, var(share_wret_labor) year_pre(70) year_post(91) ///
 	    label(share of wholesale and retail labor)
 	gen_chg_var_and_label, var(share_hrest_labor) year_pre(70) year_post(91) ///
@@ -135,51 +145,73 @@ program preclean_data
 	    label(share of transportation, storage, and communications labor)
 	gen_chg_var_and_label, var(share_fin_labor) year_pre(70) year_post(91) ///
 	    label(share of financial services and insurance labor)
-	gen_chg_var_and_label, var(share_pub_labor) year_pre(70) year_post(91) ///
-	    label(share of public administration labor)
 	gen_chg_var_and_label, var(share_rsb_labor) year_pre(70) year_post(91) ///
 	    label(share of real state and business labor)
-	gen_chg_var_and_label, var(share_edu_labor) year_pre(70) year_post(91) ///
-	    label(share of education labor)
-	gen_chg_var_and_label, var(share_hsw_labor) year_pre(70) year_post(91) ///
-	    label(share of health and social work labor)
 	gen_chg_var_and_label, var(share_ot_labor) year_pre(70) year_post(91) ///
 	    label(share of other services labor)
 	gen_chg_var_and_label, var(share_oth_labor) year_pre(70) year_post(91) ///
 	    label(share of other household services labor)
 
-	**** labor shares by broad sector 
+	**** labor shares by broad sectors
 	gen sh_primary_1970 = share_agr_labor_1970 + share_min_labor_1970
-	gen sh_secondary_1970 = share_ind_labor_1970 + share_egw_labor_1970 + share_constr_labor_1970
-	gen sh_tertiary_1970 = 1 - sh_primary_1970 - sh_secondary_1970
-	label var sh_primary_1970 "Share of primary labor 1970"
-	label var sh_secondary_1970 "Share of secondary labor 1970"
-	label var sh_tertiary_1970 "Share of tertiary labor 1970"
+	label var sh_primary_1970 "Share of agriculture and mining 1970"
+	gen sh_ind_1970 = share_ind_labor_1970
+	label var sh_ind_1970 "Share of industrial 1970"
+	gen sh_nt_ind_1970 = share_egw_labor_1970 + share_constr_labor_1970
+	label var sh_nt_ind_1970 "Share of non-tradable industrial 1970"
+    gen sh_gov_ed_health_1970 = share_pub_labor_1970 + share_edu_labor_1970 + share_hsw_labor_1970
+	label var sh_gov_ed_health_1970 "Share of education, health, and public 1970"
+	gen sh_oth_serv_1970 = share_wret_labor_1970 + share_hrest_labor_1970 + ///
+	    share_tsc_labor_1970 + share_fin_labor_1970 + share_rsb_labor_1970 + ///
+		share_ot_labor_1970 + share_oth_labor_1970
+	label var sh_oth_serv_1970 "Share other services 1970"
+
 	
 	gen sh_primary_1991 = share_agr_labor_1991 + share_min_labor_1991
-	gen sh_secondary_1991 = share_ind_labor_1991 + share_egw_labor_1991 + share_constr_labor_1991
-	gen sh_tertiary_1991 = 1 - sh_primary_1991 - sh_secondary_1991
+	label var sh_primary_1991 "Share agriculture and mining 1991"
+	gen sh_ind_1991 = share_ind_labor_1991
+	label var sh_ind_1991 "Share industrial 1991"
+	gen sh_nt_ind_1991 = share_egw_labor_1991 + share_constr_labor_1991
+	label var sh_nt_ind_1991 "Share non-tradable industrial 1991"
+    gen sh_gov_ed_health_1991 = share_pub_labor_1991 + share_edu_labor_1991 + share_hsw_labor_1991
+	label var sh_gov_ed_health_1991 "Share education, health, and public services 1991"
+	gen sh_oth_serv_1991 = share_wret_labor_1991 + share_hrest_labor_1991 + ///
+	    share_tsc_labor_1991 + share_fin_labor_1991 + share_rsb_labor_1991 + ///
+		share_ot_labor_1991 + share_oth_labor_1991
+	label var sh_oth_serv_1991 "Share other services 1991"
 	
 	gen_chg_var_and_label, var(sh_primary) year_pre(70) year_post(91) ///
-	    label(share of primary sector labor)
-	gen_chg_var_and_label, var(sh_secondary) year_pre(70) year_post(91) ///
-	    label(share of secondary sector labor)
-	gen_chg_var_and_label, var(sh_tertiary) year_pre(70) year_post(91) ///
-	    label(share of tertiary sector labor)
+	    label(share agriculture and mining)
+	gen_chg_var_and_label, var(sh_ind) year_pre(70) year_post(91) ///
+	    label(share industrial)
+	gen_chg_var_and_label, var(sh_nt_ind) year_pre(70) year_post(91) ///
+	    label(share non-tradeable industrial)
+	gen_chg_var_and_label, var(sh_gov_ed_health) year_pre(70) year_post(91) ///
+	    label(share education, health, and public services)
+	gen_chg_var_and_label, var(sh_oth_serv) year_pre(70) year_post(91) ///
+	    label(share other services)
+
+	gen_log_var_and_label, var(sh_primary_1970) label(Log share agriculture and mining 1970)
+	gen_log_var_and_label, var(sh_primary_1991) label(Log share agriculture and mining 1991)
+	gen_log_var_and_label, var(sh_ind_1970) label(Log share industrial 1970)
+	gen_log_var_and_label, var(sh_ind_1991) label(Log share industrial 1991)
+	gen_log_var_and_label, var(sh_nt_ind_1970) label(Log share non-tradeable industrial 1970)
+	gen_log_var_and_label, var(sh_nt_ind_1991) label(Log share non-tradeable industrial 1991)
+	gen_log_var_and_label, var(sh_gov_ed_health_1970) label(Log share education, health, and public services 1970)
+	gen_log_var_and_label, var(sh_gov_ed_health_1991) label(Log share education, health, and public services 1991)
+	gen_log_var_and_label, var(sh_oth_serv_1970) label(Log share other services 1970)
+	gen_log_var_and_label, var(sh_oth_serv_1991) label(Log share other services 1991)
 		
-	gen_log_var_and_label, var(sh_primary_1970) label(Log share primary sector 1970)
-	gen_log_var_and_label, var(sh_primary_1991) label(Log share primary sector 1991)
-	gen_log_var_and_label, var(sh_secondary_1970) label(Log share secondary sector 1970)
-	gen_log_var_and_label, var(sh_secondary_1991) label(Log share secondary sector 1991)
-	gen_log_var_and_label, var(sh_tertiary_1970) label(Log share tertiary sector 1970)
-	gen_log_var_and_label, var(sh_tertiary_1991) label(Log share tertiary sector 1991)
-	
 	gen_chg_var_and_label, var(log_sh_primary) year_pre(70) year_post(91) ///
-	    label(log share of primary sector labor)
-	gen_chg_var_and_label, var(log_sh_secondary) year_pre(70) year_post(91) ///
-	    label(log share of secondary sector labor)
-	gen_chg_var_and_label, var(log_sh_tertiary) year_pre(70) year_post(91) ///
-	    label(log share of tertiary sector labor)
+	    label(log share agriculture and mining)
+	gen_chg_var_and_label, var(log_sh_ind) year_pre(70) year_post(91) ///
+	    label(log share industrial)
+	gen_chg_var_and_label, var(log_sh_nt_ind) year_pre(70) year_post(91) ///
+	    label(log share non-tradeable industrial)
+	gen_chg_var_and_label, var(log_sh_gov_ed_health) year_pre(70) year_post(91) ///
+	    label(log share ducation, health, and public services)
+	gen_chg_var_and_label, var(log_sh_oth_serv) year_pre(70) year_post(91) ///
+	    label(log share other services)
 		
 	**** labor shares by class of workers
 	rename (classwk_1_1970 classwk_2_1970 classwk_3_1970 ///
@@ -303,32 +335,62 @@ program preclean_data
 		
 	**** labor levels by broad sector 
 	gen primary_1970 = agr_labor_1970 + min_labor_1970
-	gen secondary_1970 = ind_labor_1970 + egw_labor_1970 + constr_labor_1970
-	gen tertiary_1970 = wret_labor_1970 + hrest_labor_1970 + tsc_labor_1970 + ///
-		fin_labor_1970 + pub_labor_1970 + rsb_labor_1970 + edu_labor_1970 + ///
-		hsw_labor_1970 + ot_labor_1970 + oth_labor_1970
-	label var primary_1970 "Primary sector labor 1970"
-	label var secondary_1970 "Secondary sector labor 1970"
-	label var tertiary_1970 "Tertiary sector labor 1970"
+	label var primary_1970 "Agriculture and mining 1970"
+	gen ind_1970 = ind_labor_1970
+	label var ind_1970 "Industrial 1970"
+	gen nt_ind_1970 = egw_labor_1970 + constr_labor_1970
+	label var nt_ind_1970 "Non-tradable industrial 1970"
+    gen gov_ed_health_1970 = pub_labor_1970 + edu_labor_1970 + hsw_labor_1970
+	label var gov_ed_health_1970 "Education, health, and public 1970"
+	gen oth_serv_1970 = wret_labor_1970 + hrest_labor_1970 + ///
+	    tsc_labor_1970 + fin_labor_1970 + rsb_labor_1970 + ///
+		ot_labor_1970 + oth_labor_1970
 	
-	gen primary_1991 = ind_labor_1991 + egw_labor_1991 + constr_labor_1991
-	gen secondary_1991 = ind_labor_1991 + egw_labor_1991 + constr_labor_1991
-	gen tertiary_1991 = wret_labor_1991 + hrest_labor_1991 + tsc_labor_1991 + ///
-		fin_labor_1991 + pub_labor_1991 + rsb_labor_1991 + edu_labor_1991 + ///
-		hsw_labor_1991 + ot_labor_1991 + oth_labor_1991
+	gen primary_1991 = agr_labor_1991 + min_labor_1991
+	label var primary_1991 "Agriculture and mining 1991"
+	gen ind_1991 = ind_labor_1991
+	label var ind_1991 "Industrial 1991"
+	gen nt_ind_1991 = egw_labor_1991 + constr_labor_1991
+	label var nt_ind_1991 "Non-tradable industrial 1991"
+    gen gov_ed_health_1991 = pub_labor_1991 + edu_labor_1991 + hsw_labor_1991
+	label var gov_ed_health_1991 "Education, health, and public services 1991"
+	gen oth_serv_1991 = wret_labor_1991 + hrest_labor_1991 + ///
+	    tsc_labor_1991 + fin_labor_1991 + rsb_labor_1991 + ///
+		ot_labor_1991 + oth_labor_1991
+	label var oth_serv_1991 "Other services 1991"
 	
-	foreach year in 70 91 {
-		gen_log_var_and_label, var(primary_19`year') label(Log primary sector labor 19`year')
-		gen_log_var_and_label, var(secondary_19`year') label(Log secondary sector labor 19`year')
-		gen_log_var_and_label, var(tertiary_19`year') label(Log tertiary sector labor 19`year')
-	}
-	
+	gen_chg_var_and_label, var(primary) year_pre(70) year_post(91) ///
+	    label(agriculture and mining)
+	gen_chg_var_and_label, var(ind) year_pre(70) year_post(91) ///
+	    label(industrial)
+	gen_chg_var_and_label, var(nt_ind) year_pre(70) year_post(91) ///
+	    label(non-tradeable industrial)
+	gen_chg_var_and_label, var(gov_ed_health) year_pre(70) year_post(91) ///
+	    label(education, health, and public services)
+	gen_chg_var_and_label, var(oth_serv) year_pre(70) year_post(91) ///
+	    label(other services)
+
+	gen_log_var_and_label, var(primary_1970) label(Log agriculture and mining 1970)
+	gen_log_var_and_label, var(primary_1991) label(Log agriculture and mining 1991)
+	gen_log_var_and_label, var(ind_1970) label(Log industrial 1970)
+	gen_log_var_and_label, var(ind_1991) label(Log industrial 1991)
+	gen_log_var_and_label, var(nt_ind_1970) label(Log non-tradeable industrial 1970)
+	gen_log_var_and_label, var(nt_ind_1991) label(Log non-tradeable industrial 1991)
+	gen_log_var_and_label, var(gov_ed_health_1970) label(Log education, health, and public services 1970)
+	gen_log_var_and_label, var(gov_ed_health_1991) label(Log education, health, and public services 1991)
+	gen_log_var_and_label, var(oth_serv_1970) label(Log other services 1970)
+	gen_log_var_and_label, var(oth_serv_1991) label(Log other services 1991)
+		
 	gen_chg_var_and_label, var(log_primary) year_pre(70) year_post(91) ///
-	    label(log primary sector labor)
-	gen_chg_var_and_label, var(log_secondary) year_pre(70) year_post(91) ///
-	    label(log secondary sector labor)
-	gen_chg_var_and_label, var(log_tertiary) year_pre(70) year_post(91) ///
-	    label(log tertiary sector labor)
+	    label(log agriculture and mining)
+	gen_chg_var_and_label, var(log_ind) year_pre(70) year_post(91) ///
+	    label(log industrial)
+	gen_chg_var_and_label, var(log_nt_ind) year_pre(70) year_post(91) ///
+	    label(log non-tradeable industrial)
+	gen_chg_var_and_label, var(log_gov_ed_health) year_pre(70) year_post(91) ///
+	    label(log education, health, and public services)
+	gen_chg_var_and_label, var(log_oth_serv) year_pre(70) year_post(91) ///
+	    label(log other services)
 	
 	**** labor levels by class of workers
 	rename (nclasswk_1_1970 nclasswk_2_1970 nclasswk_3_1970 ///

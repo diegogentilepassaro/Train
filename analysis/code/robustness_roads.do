@@ -7,7 +7,7 @@ program main
 
     *** 1960 base outcomes
 	    *** Population outcomes
-	foreach depvar in log_pop log_urbpop log_share_urbpop {
+	foreach depvar in log_pop log_urbpop {
 
        run_IV_regression, depvar(chg_`depvar'_91_60) ///
 	        baseline_depvar(chg_log_urbpop_60_46) ///

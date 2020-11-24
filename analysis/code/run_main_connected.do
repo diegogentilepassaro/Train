@@ -28,7 +28,7 @@ program main
 	}
 	
 	    *** Migration level
-	foreach depvar in log_nmig5 {
+	foreach depvar in log_nmig5 mig5 {
 			
 	   run_IV_regression, depvar(chg_`depvar'_91_70) ///
 	        baseline_depvar(log_urbpop_1960) ///
@@ -38,7 +38,12 @@ program main
 	}
 	
 	    *** Broad sector levels
-	foreach depvar in log_primary log_secondary log_tertiary {
+	foreach depvar in log_primary log_ind log_nt_ind ///
+	    log_gov_ed_health log_oth_serv ///
+		sh_primary sh_ind sh_nt_ind ///
+	    sh_gov_ed_health sh_oth_serv ///
+		log_sh_primary log_sh_ind log_sh_nt_ind ///
+	    log_sh_gov_ed_health log_sh_oth_serv {
 			
 	   run_IV_regression, depvar(chg_`depvar'_91_70) ///
 	        baseline_depvar(log_urbpop_1960) ///
@@ -51,95 +56,52 @@ end
 program run_IV_regression
     syntax, depvar(str) baseline_depvar(str) ///
 	    roads_var(str) trains_var(str) table_name(str)
-
-	local geo_vars "elev_mean_std rugged_mea_std wheat_std area_km2 dist_to_BA_std"
    
-    eststo clear
-	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' = hypo_EUC_total_MST_kms studied_larkin)
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.0001)
-	qui estadd local geo_conts "No"
-    qui estadd local prov_FE "No"
-	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
-	
-	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' = hypo_LCP_total_MST_kms studied_larkin)
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.0001)
-	qui estadd local geo_conts "No"
-    qui estadd local prov_FE "No"
-	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
-	
-	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' = hypo_EUC_total_MST_kms studied_larkin) ///
-	   `geo_vars'
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.0001)
-    qui estadd local geo_conts "Yes"
-    qui estadd local prov_FE "No"
-	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
-	
-	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' = hypo_LCP_total_MST_kms studied_larkin) ///
-	   `geo_vars'
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(chi2))), 0.0001)
-    qui estadd local geo_conts "Yes"
-    qui estadd local prov_FE "No"
-	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
-	
-	eststo: qui ivreghdfe `depvar' (`roads_var' `trains_var' = hypo_EUC_total_MST_kms studied_larkin) ///
-	    `geo_vars', absorb(provname) 
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
-	qui estadd local geo_conts "Yes"
-    qui estadd local prov_FE "Yes"
-	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
-	
-	eststo: qui ivreghdfe `depvar' (`roads_var' `trains_var' = hypo_LCP_total_MST_kms studied_larkin) ///
-	    `geo_vars', absorb(provname) 
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
-	qui estadd local geo_conts "Yes"
-    qui estadd local prov_FE "Yes"
-	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
-	
-	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' = hypo_EUC_total_MST_kms studied_larkin) ///
-	    `geo_vars' `baseline_depvar', absorb(provname)
-	qui test `roads_var' - `trains_var' = 0
-	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
-	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
-	qui estadd local geo_conts "Yes"
-    qui estadd local prov_FE "Yes"	
-	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
+ 	local geo_vars "elev_mean_std rugged_mea_std wheat_std area_km2 dist_to_BA_std"
 
-	eststo: qui ivreghdfe `depvar' ///
-	    (`roads_var' `trains_var' = hypo_LCP_total_MST_kms studied_larkin) ///
-	    `geo_vars' `baseline_depvar', absorb(provname)
+    eststo clear
+	
+	eststo: qui reghdfe `depvar' `geo_vars' `roads_var' `trains_var', absorb(provname)
+		
+	eststo: qui reghdfe `depvar' `geo_vars' `roads_var' `trains_var' ///
+	    `baseline_depvar', absorb(provname)
+	
+	eststo: qui ivreghdfe `depvar' `geo_vars' ///
+	    (`roads_var' `trains_var' = hypo_EUC_total_MST_kms studied_larkin), absorb(provname)
+	 test `roads_var' - `trains_var' = 0
+	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
+	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
+	
+	eststo: qui ivreghdfe `depvar' `geo_vars' `baseline_depvar' ///
+	    (`roads_var' `trains_var' = hypo_EUC_total_MST_kms studied_larkin), absorb(provname)
+	 test `roads_var' - `trains_var' = 0
+	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
+	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
+	
+	eststo: qui ivreghdfe `depvar' `geo_vars' ///
+	    (`roads_var' `trains_var' = hypo_LCP_total_MST_kms studied_larkin), absorb(provname)
 	qui test `roads_var' - `trains_var' = 0
 	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
 	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
-	qui estadd local geo_conts "Yes"
-    qui estadd local prov_FE "Yes"	
+	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
+	
+	eststo: qui ivreghdfe `depvar' `geo_vars' `baseline_depvar' ///
+	    (`roads_var' `trains_var' = hypo_LCP_total_MST_kms studied_larkin), absorb(provname)
+	qui test `roads_var' - `trains_var' = 0
+	local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
+	qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
 	qui estadd local F_stat_fs = round(e(cdf), 0.0001)
 	
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
-        mtitles("EUC" "LCP" "EUC" "LCP" "EUC" "LCP" "EUC" "LCP") ///
-		order(`trains_var' `roads_var' `baseline_depvar') label ///
+        mtitles("OLS" "OLS" "IV EUC Network" "IV EUC Network" "IV LCP Network" "IV LCP Network") ///
+		order(`trains_var' `roads_var' `baseline_depvar') label nonotes ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
-		stats(p_val F_stat_fs geo_conts prov_FE N, fmt(a4 a4 a4 a4 a4) ///
+		stats(p_val F_stat_fs N, fmt(a4 a4 a4 a4 a4) ///
 	    labels("P-value for testing $\beta_{2} >= \beta_{1}$" ///
-		"Cragg-Donald (multivariate) F-stat" "Geographic controls" ///
-	    "Province FE" "Observations"))
+		"Cragg-Donald (multivariate) F-stat" "Observations"))
 end
 
 main

@@ -16,7 +16,6 @@ program main
 
 	make_balance_reg, depvar(log_pop)
 	make_balance_reg, depvar(log_urbpop)
-	make_balance_reg, depvar(log_share_urbpop)
 end
 
 program make_diff_means_table

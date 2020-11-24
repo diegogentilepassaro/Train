@@ -7,7 +7,7 @@ program main
 
     *** 1960 base outcomes
 	    *** Population outcomes
-	foreach depvar in log_pop log_urbpop log_share_urbpop {
+	foreach depvar in log_pop log_urbpop share_urbpop log_share_urbpop {
 
        run_IV_regression, depvar(chg_`depvar'_91_60) ///
 	        baseline_depvar(chg_log_urbpop_60_46) ///
@@ -27,8 +27,8 @@ program main
 		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
 	}
 	
-	    *** Migration level
-	foreach depvar in log_nmig5 {
+	    *** Migration
+	foreach depvar in log_nmig5 mig5 {
 
        run_IV_regression, depvar(chg_`depvar'_91_70) ///
 	        baseline_depvar(chg_log_urbpop_60_46) ///
@@ -37,9 +37,9 @@ program main
 		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
 	}
 	
-	    *** Broad sector levels
-	foreach depvar in log_primary log_secondary log_tertiary ///
-	    log_sh_primary log_sh_secondary log_sh_tertiary {
+	*** Employment
+	foreach depvar in log_unemployed log_inactive sh_unemployed sh_inactive ///
+	    sh_sw log_sw {
 
        run_IV_regression, depvar(chg_`depvar'_91_70) ///
 	        baseline_depvar(chg_log_urbpop_60_46) ///
@@ -47,6 +47,55 @@ program main
 		    trains_var(chg_tot_rails_86_70) ///
 		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
 	}
+	
+	    *** Broad sectors
+	foreach depvar in log_primary log_ind log_nt_ind ///
+	    log_gov_ed_health log_oth_serv ///
+		sh_primary sh_ind sh_nt_ind ///
+	    sh_gov_ed_health sh_oth_serv ///
+		log_sh_primary log_sh_ind log_sh_nt_ind ///
+	    log_sh_gov_ed_health log_sh_oth_serv {
+
+       run_IV_regression, depvar(chg_`depvar'_91_70) ///
+	        baseline_depvar(chg_log_urbpop_60_46) ///
+	        roads_var(chg_pav_and_grav_86_70) ///
+		    trains_var(chg_tot_rails_86_70) ///
+		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
+	}
+	
+	    *** By ind code
+	foreach depvar in log_agr_labor log_min_labor log_ind_labor log_egw_labor ///
+	    log_constr_labor log_wret_labor log_hrest_labor log_tsc_labor ///
+	    log_fin_labor log_pub_labor log_rsb_labor log_edu_labor ///
+		log_hsw_labor log_ot_labor log_oth_labor {
+
+       run_IV_regression, depvar(chg_`depvar'_91_70) ///
+	        baseline_depvar(chg_log_urbpop_60_46) ///
+	        roads_var(chg_pav_and_grav_86_70) ///
+		    trains_var(chg_tot_rails_86_70) ///
+		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
+	}
+	
+	    *** Agr censuses
+	foreach depvar in log_agareatot_ha log_agnexp {
+
+       run_IV_regression, depvar(chg_`depvar'_88_60) ///
+	        baseline_depvar(chg_log_urbpop_60_46) ///
+	        roads_var(chg_pav_and_grav_86_70) ///
+		    trains_var(chg_tot_rails_86_70) ///
+		    table_name(IV_both_chg_`depvar'_pav_and_grav)
+	}
+	
+	    *** Ind censuses
+	foreach depvar in log_indvalprod log_indmassal log_indnpers log_indnestab {
+
+       run_IV_regression, depvar(chg_`depvar'_85_54) ///
+	        baseline_depvar(chg_log_urbpop_60_46) ///
+	        roads_var(chg_pav_and_grav_86_70) ///
+		    trains_var(chg_tot_rails_86_70) ///
+		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
+	}
+ 
 end
 
 program run_IV_regression

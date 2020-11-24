@@ -1,0 +1,22 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV EUC Network}&\multicolumn{1}{c}{IV EUC Network}&\multicolumn{1}{c}{IV LCP Network}&\multicolumn{1}{c}{IV LCP Network}\\
+\hline
+disconnected\_rails\_86\_70&  0.00979         &   0.0247         &   -0.567         &    0.306         &   -0.473         &    0.369         \\
+                &  (0.201)         &  (0.197)         &  (1.555)         &  (1.760)         &  (1.715)         &  (2.269)         \\
+[1em]
+connected\_pav\_grav\_86\_70&   -0.106         &  -0.0269         &   -1.260         &   -1.522         &   -1.302         &   -1.536         \\
+                &  (0.126)         &  (0.123)         &  (1.798)         &  (1.702)         &  (1.687)         &  (1.539)         \\
+[1em]
+Log urban population 1960&                  &   0.0298         &                  &  -0.0186         &                  &  -0.0190         \\
+                &                  & (0.0322)         &                  & (0.0693)         &                  & (0.0660)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&                  &                  &    .3587         &    .1832         &     .318         &    .1527         \\
+Cragg-Donald (multivariate) F-stat&                  &                  &.8945000000000001         &   1.0489         &    .9728         &.9773000000000001         \\
+Observations    &      309         &      287         &      309         &      287         &      309         &      287         \\
+\hline\hline
+\end{tabular}
+}
