@@ -32,14 +32,20 @@ program preclean_data
 	*drop if geolev2 == 32006001 /* La Plata */
 	
 	**** population outcomes
-	rename (pop1946 urbpop1946 pop1960 pop1970 pop1991) ///
-	    (pop_1947 urbpop_1947 pop_1960 pop_1970 pop_1991)
+	rename (pop1946_imputed pop1946 urbpop1946_imputed urbpop1946 pop1960 pop1970 pop1991) ///
+	    (pop_imputed_1947 pop_1947 urbpop_imputed_1947 urbpop_1947 pop_1960 pop_1970 pop_1991)
+	gen pop_imputed_1960 = pop_1960
+	gen urbpop_imputed_1960 = urbpop_1960
+	gen_log_var_and_label, var(pop_imputed_1947) label(Log population 1947)
 	gen_log_var_and_label, var(pop_1947) label(Log population 1947)
 	gen_log_var_and_label, var(pop_1960) label(Log population 1960)
+	gen_log_var_and_label, var(pop_imputed_1960) label(Log population 1960)
 	gen_log_var_and_label, var(pop_1970) label(Log population 1970)
 	gen_log_var_and_label, var(pop_1991) label(Log population 1991)
 	
 	gen_chg_var_and_label, var(log_pop) year_pre(47) year_post(60) ///
+	    label(log population)
+	gen_chg_var_and_label, var(log_pop_imputed) year_pre(47) year_post(60) ///
 	    label(log population)
 	gen_chg_var_and_label, var(log_pop) year_pre(60) year_post(91) ///
 	    label(log population)
@@ -47,10 +53,14 @@ program preclean_data
 	    label(log population)
 
 	gen_log_var_and_label, var(urbpop_1947) label(Log urban population 1947)
+	gen_log_var_and_label, var(urbpop_imputed_1947) label(Log urban population 1947)
 	gen_log_var_and_label, var(urbpop_1960) label(Log urban population 1960)
+	gen_log_var_and_label, var(urbpop_imputed_1960) label(Log urban population 1960)
 	gen_log_var_and_label, var(urbpop_1991) label(Log urban population 1991)
 	
 	gen_chg_var_and_label, var(log_urbpop) year_pre(47) year_post(60) ///
+	    label(log urban population)
+	gen_chg_var_and_label, var(log_urbpop_imputed) year_pre(47) year_post(60) ///
 	    label(log urban population)
 	gen_chg_var_and_label, var(log_urbpop) year_pre(60) year_post(91) ///
 	    label(log urban population)

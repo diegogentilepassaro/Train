@@ -34,7 +34,7 @@ program run_IV_regression
 
 	esttab * using "../output/placebo_`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
-        mtitles("OLS" "EUC" "LCP") ///
+        mtitles("OLS" "IV EUC" "IV LCP") ///
 		order(`trains_var' `roads_var') label nonotes ///
 	    keep(`roads_var' `trains_var') ///
 		stats(F_stat_fs N, fmt(a4 a4 a4 a4 a4) ///

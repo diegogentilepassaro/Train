@@ -95,7 +95,6 @@ program main
 		    trains_var(chg_tot_rails_86_70) ///
 		    table_name(IV_both_chg_`depvar'_91_70_pav_and_grav)
 	}
- 
 end
 
 program run_IV_regression
@@ -141,7 +140,7 @@ program run_IV_regression
 	
 	esttab * using "../output/`table_name'.tex", replace compress ///
 	    se star(* 0.10 ** 0.05 *** 0.01) ///
-        mtitles("OLS" "OLS" "IV EUC Network" "IV EUC Network" "IV LCP Network" "IV LCP Network") ///
+        mtitles("OLS" "OLS" "IV EUC" "IV EUC" "IV LCP" "IV LCP") ///
 		order(`trains_var' `roads_var' `baseline_depvar') label nonotes ///
 	    keep(`roads_var' `trains_var' `baseline_depvar') ///
 		stats(p_val F_stat_fs N, fmt(a4 a4 a4 a4 a4) ///
