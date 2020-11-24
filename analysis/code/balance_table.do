@@ -10,8 +10,8 @@ program main
 	    by_var(studied_larkin_dummy)
 	mat colnames diff_means = "No studied segments" "At least one studied segment" ///
 	    "Diff-in-means" "SE Diff-in-means"
-	mat rownames diff_means = "Change in log pop 1960-1947" "N" ///
-	    "Change in log urb pop 1960-1947" "N"
+	mat rownames diff_means = "Change in log pop 1960-1947" "Number of districts" ///
+	    "Change in log urb pop 1960-1947" "Number of districts"
 	esttab matrix(diff_means) using "../output/balance_table.tex", mtitle("") replace
 
 	make_balance_reg, depvar(log_pop)
