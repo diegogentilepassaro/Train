@@ -8,18 +8,17 @@ program main
 **** EUC
     *** 1960 base outcomes
 	    **** Kms
-       run_first_stage, baseline_depvar(log_urbpop_1960) ///
+       run_first_stage, ///
 	        endo_vars(chg_pav_and_grav_86_54 chg_pav_and_grav_86_70) ///
 		    table_name(FS_chg_pav_and_grav)
 			
-       run_first_stage, baseline_depvar(log_urbpop_1960) ///
+       run_first_stage, ///
 	        endo_vars(chg_tot_rails_86_60 chg_tot_rails_86_70) ///
 		    table_name(FS_chg_tot_rails)
 end
 
 program run_first_stage
-    syntax, endo_vars(str) baseline_depvar(str) ///
-	    table_name(str)
+    syntax, endo_vars(str) table_name(str)
    
  	local geo_vars "elev_mean_std rugged_mea_std wheat_std area_km2 dist_to_BA_std"
 
