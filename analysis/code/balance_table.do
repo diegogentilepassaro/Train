@@ -39,19 +39,23 @@ program make_balance_reg
 	
 	eststo clear
 	
-	eststo: qui reg chg_`depvar'_60_47 i.studied_larkin_dummy hypo_LCP_total_MST_kms `geo_vars'
-	eststo: qui reg chg_`depvar'_60_47 i.above_median_studied_kms hypo_LCP_total_MST_kms `geo_vars'
-	eststo: qui reg chg_`depvar'_60_47 i.studied_kms_quint hypo_LCP_total_MST_kms `geo_vars'
+	eststo: qui reg chg_`depvar'_60_47 i.studied_larkin_dummy hypo_LCP_total_MST_kms ///
+	    `geo_vars', absorb(provname)
+	eststo: qui reg chg_`depvar'_60_47 i.above_median_studied_kms hypo_LCP_total_MST_kms ///
+	    `geo_vars', absorb(provname)
+	eststo: qui reg chg_`depvar'_60_47 i.studied_kms_quint hypo_LCP_total_MST_kms ///
+	    `geo_vars', absorb(provname)
 	eststo: qui reg chg_`depvar'_60_47 studied_larkin ///
-	    studied_larkin_sq studied_larkin_cu ///
-		hypo_LCP_total_MST_kms `geo_vars'
+	    studied_larkin_sq studied_larkin_cu studied_larkin_quart ///
+		hypo_LCP_total_MST_kms `geo_vars', absorb(provname)
 	
 	esttab * using "../output/balance_reg_table_`depvar'.tex", ///
 		se star(* 0.10 ** 0.05 *** 0.01) ///
 	    keep(1.studied_larkin_dummy 1.above_median_studied_kms ///
 		2.studied_kms_quint 3.studied_kms_quint ///
 		4.studied_kms_quint 5.studied_kms_quint ///
-		studied_larkin studied_larkin_sq studied_larkin_cu) stats(r2 N) ///
+		studied_larkin studied_larkin_sq ///
+		studied_larkin_cu studied_larkin_quart) stats(r2 N) ///
 		nonotes label replace
 end
 

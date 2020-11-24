@@ -557,6 +557,8 @@ program preclean_data
 	label var studied_larkin_sq "Studied railroad tracks (kms) square"
 	gen studied_larkin_cu = studied_larkin*studied_larkin*studied_larkin
 	label var studied_larkin_cu "Studied railroad tracks (kms) cube"
+	gen studied_larkin_quart = studied_larkin*studied_larkin*studied_larkin*studied_larkin
+	label var studied_larkin_quart "Studied railroad tracks (kms) fourth"
 	
 	qui sum studied_larkin, d
 	gen above_median_studied_kms = (studied_larkin >= r(p50))
