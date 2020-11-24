@@ -55,7 +55,8 @@ program make_balance_reg
 		2.studied_kms_quint 3.studied_kms_quint ///
 		4.studied_kms_quint 5.studied_kms_quint ///
 		studied_larkin studied_larkin_sq ///
-		studied_larkin_cu studied_larkin_quart) stats(r2 N) ///
+		studied_larkin_cu studied_larkin_quart) ///
+		stats(r2 N, label("R-squared" "Observationss")) ///
 		nonotes label replace
 end
 
