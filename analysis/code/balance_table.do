@@ -57,7 +57,7 @@ program make_balance_reg
 		studied_larkin studied_larkin_sq ///
 		studied_larkin_cu studied_larkin_quart) ///
 		stats(r2 N, label("R-squared" "Observationss")) ///
-		nonotes label replace
+		nonotes label replace nomtitles
 end
 
 main
