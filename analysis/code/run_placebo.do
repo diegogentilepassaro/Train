@@ -9,8 +9,8 @@ program main
 	foreach depvar in log_pop log_urbpop log_share_urbpop {
 
        run_IV_regression, depvar(chg_`depvar'_60_47) ///
-	        roads_var(chg_pav_and_grav_86_70) ///
-		    trains_var(chg_tot_rails_86_70) ///
+	        roads_var(chg_pav_and_grav_86_54) ///
+		    trains_var(chg_tot_rails_86_60) ///
 		    table_name(IV_both_chg_`depvar'_60_47_pav_and_grav)
 	}
 end
