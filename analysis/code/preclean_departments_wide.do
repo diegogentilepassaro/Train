@@ -581,8 +581,6 @@ program preclean_data
 	label var share_studied_larkin "Share of studied kms"
 	gen studied_larkin_dummy = (studied_larkin > 0)
 	label var studied_larkin_dummy "At least one studied segment"
-
-	
 	
 	gen hypo_EUC_dummy = (hypo_EUC_total_MST_kms > 0)
 	gen hypo_LCP_dummy = (hypo_LCP_total_MST_kms > 0)

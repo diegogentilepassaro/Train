@@ -48,6 +48,15 @@ program main
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_both_chg_log_sh_sectors_91_70_pav_and_grav)
+		
+   run_IV_regression, ///
+        depvars(chg_log_agareatot_ha chg_log_agnexp ///
+		chg_log_indvalprod chg_log_indmassal ///
+		chg_log_indnpers chg_log_indnestab) ///
+		baseline_depvar(chg_log_urbpop_60_47) ///
+		roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
+		table_name(IV_both_chg_ind_agr_censuses_91_70_pav_and_grav)
 end
 
 program run_IV_regression
