@@ -27,7 +27,7 @@ program main
 		
       run_IV_regression, ///
        depvars(chg_log_primary_91_70 chg_log_ind_91_70 chg_log_nt_ind_91_70 ///
-	    chg_log_gov_ed_health_91_70 chg_log_oth_serv_91_70) ///
+	    chg_log_gov_ed_health_91_70 chg_log_busi_serv_91_70 chg_log_oth_serv_91_70) ///
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
@@ -35,7 +35,7 @@ program main
 		
    run_IV_regression, ///
         depvars(chg_sh_primary_91_70 chg_sh_ind_91_70 chg_sh_nt_ind_91_70 ///
-	    chg_sh_gov_ed_health_91_70 chg_sh_oth_serv_91_70) ///
+	    chg_sh_gov_ed_health_91_70 chg_sh_busi_serv_91_70 chg_sh_oth_serv_91_70) ///
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///

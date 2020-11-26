@@ -157,6 +157,8 @@ program preclean_data
 	    label(share of financial services and insurance labor)
 	gen_chg_var_and_label, var(share_rsb_labor) year_pre(70) year_post(91) ///
 	    label(share of real state and business labor)
+	
+	
 	gen_chg_var_and_label, var(share_ot_labor) year_pre(70) year_post(91) ///
 	    label(share of other services labor)
 	gen_chg_var_and_label, var(share_oth_labor) year_pre(70) year_post(91) ///
@@ -170,10 +172,11 @@ program preclean_data
 	gen sh_nt_ind_1970 = share_egw_labor_1970 + share_constr_labor_1970
 	label var sh_nt_ind_1970 "Share of non-tradable industrial 1970"
     gen sh_gov_ed_health_1970 = share_pub_labor_1970 + share_edu_labor_1970 + share_hsw_labor_1970
-	label var sh_gov_ed_health_1970 "Share of education, health, and public 1970"
-	gen sh_oth_serv_1970 = share_wret_labor_1970 + share_hrest_labor_1970 + ///
-	    share_tsc_labor_1970 + share_fin_labor_1970 + share_rsb_labor_1970 + ///
-		share_ot_labor_1970 + share_oth_labor_1970
+	label var sh_gov_ed_health_1970 "Share of education, health, and public services 1970"
+	gen sh_busi_serv_1970 = share_wret_labor_1970 + share_hrest_labor_1970 + ///
+	    share_tsc_labor_1970 + share_fin_labor_1970 + share_rsb_labor_1970
+	label var sh_busi_serv_1970 "Share of business services 1970"
+	gen sh_oth_serv_1970 = share_ot_labor_1970 + share_oth_labor_1970
 	label var sh_oth_serv_1970 "Share other services 1970"
 
 	
@@ -185,9 +188,10 @@ program preclean_data
 	label var sh_nt_ind_1991 "Share non-tradable industrial 1991"
     gen sh_gov_ed_health_1991 = share_pub_labor_1991 + share_edu_labor_1991 + share_hsw_labor_1991
 	label var sh_gov_ed_health_1991 "Share education, health, and public services 1991"
-	gen sh_oth_serv_1991 = share_wret_labor_1991 + share_hrest_labor_1991 + ///
-	    share_tsc_labor_1991 + share_fin_labor_1991 + share_rsb_labor_1991 + ///
-		share_ot_labor_1991 + share_oth_labor_1991
+	gen sh_busi_serv_1991 = share_wret_labor_1991 + share_hrest_labor_1991 + ///
+	    share_tsc_labor_1991 + share_fin_labor_1991 + share_rsb_labor_1991
+	label var sh_busi_serv_1991 "Share business services 1991"
+	gen sh_oth_serv_1991 = share_ot_labor_1991 + share_oth_labor_1991
 	label var sh_oth_serv_1991 "Share other services 1991"
 	
 	gen_chg_var_and_label, var(sh_primary) year_pre(70) year_post(91) ///
@@ -198,6 +202,8 @@ program preclean_data
 	    label(share non-tradeable industrial)
 	gen_chg_var_and_label, var(sh_gov_ed_health) year_pre(70) year_post(91) ///
 	    label(share education, health, and public services)
+	gen_chg_var_and_label, var(sh_busi_serv) year_pre(70) year_post(91) ///
+	    label(share business services)
 	gen_chg_var_and_label, var(sh_oth_serv) year_pre(70) year_post(91) ///
 	    label(share other services)
 
@@ -209,6 +215,8 @@ program preclean_data
 	gen_log_var_and_label, var(sh_nt_ind_1991) label(Log share non-tradeable industrial 1991)
 	gen_log_var_and_label, var(sh_gov_ed_health_1970) label(Log share education, health, and public services 1970)
 	gen_log_var_and_label, var(sh_gov_ed_health_1991) label(Log share education, health, and public services 1991)
+	gen_log_var_and_label, var(sh_busi_serv_1970) label(Log share business services 1970)
+	gen_log_var_and_label, var(sh_busi_serv_1991) label(Log share business services 1991)
 	gen_log_var_and_label, var(sh_oth_serv_1970) label(Log share other services 1970)
 	gen_log_var_and_label, var(sh_oth_serv_1991) label(Log share other services 1991)
 		
@@ -220,6 +228,8 @@ program preclean_data
 	    label(log share non-tradeable industrial)
 	gen_chg_var_and_label, var(log_sh_gov_ed_health) year_pre(70) year_post(91) ///
 	    label(log share ducation, health, and public services)
+	gen_chg_var_and_label, var(log_sh_busi_serv) year_pre(70) year_post(91) ///
+	    label(log share business services)
 	gen_chg_var_and_label, var(log_sh_oth_serv) year_pre(70) year_post(91) ///
 	    label(log share other services)
 		
@@ -293,7 +303,7 @@ program preclean_data
 		fin_labor_1991 pub_labor_1991 ///
 		rsb_labor_1991 edu_labor_1991 hsw_labor_1991 ///
 		ot_labor_1991 oth_labor_1991)
-		
+				
 	foreach year in 70 91 {
 		gen_log_var_and_label, var(agr_labor_19`year') label(Log agricultural labor 19`year')
 		gen_log_var_and_label, var(min_labor_19`year') label(Log mining labor 19`year')
@@ -351,10 +361,12 @@ program preclean_data
 	gen nt_ind_1970 = egw_labor_1970 + constr_labor_1970
 	label var nt_ind_1970 "Non-tradable industrial 1970"
     gen gov_ed_health_1970 = pub_labor_1970 + edu_labor_1970 + hsw_labor_1970
-	label var gov_ed_health_1970 "Education, health, and public 1970"
-	gen oth_serv_1970 = wret_labor_1970 + hrest_labor_1970 + ///
-	    tsc_labor_1970 + fin_labor_1970 + rsb_labor_1970 + ///
-		ot_labor_1970 + oth_labor_1970
+	label var gov_ed_health_1970 "Education, health, and public services 1970"
+	gen busi_serv_1970 = wret_labor_1970 + hrest_labor_1970 + ///
+	    tsc_labor_1970 + fin_labor_1970 + rsb_labor_1970
+    label var busi_serv_1970 "Business services 1970"
+	gen oth_serv_1970 = ot_labor_1970 + oth_labor_1970
+	label var oth_serv_1970 "Other services 1970"
 	
 	gen primary_1991 = agr_labor_1991 + min_labor_1991
 	label var primary_1991 "Agriculture and mining 1991"
@@ -364,9 +376,10 @@ program preclean_data
 	label var nt_ind_1991 "Non-tradable industrial 1991"
     gen gov_ed_health_1991 = pub_labor_1991 + edu_labor_1991 + hsw_labor_1991
 	label var gov_ed_health_1991 "Education, health, and public services 1991"
-	gen oth_serv_1991 = wret_labor_1991 + hrest_labor_1991 + ///
-	    tsc_labor_1991 + fin_labor_1991 + rsb_labor_1991 + ///
-		ot_labor_1991 + oth_labor_1991
+	gen busi_serv_1991 = wret_labor_1991 + hrest_labor_1991 + ///
+	    tsc_labor_1991 + fin_labor_1991 + rsb_labor_1991
+	label var busi_serv_1991 "Business services 1991"
+    gen oth_serv_1991 = ot_labor_1991 + oth_labor_1991
 	label var oth_serv_1991 "Other services 1991"
 	
 	gen_chg_var_and_label, var(primary) year_pre(70) year_post(91) ///
@@ -377,6 +390,8 @@ program preclean_data
 	    label(non-tradeable industrial)
 	gen_chg_var_and_label, var(gov_ed_health) year_pre(70) year_post(91) ///
 	    label(education, health, and public services)
+	gen_chg_var_and_label, var(busi_serv) year_pre(70) year_post(91) ///
+	    label(business services)
 	gen_chg_var_and_label, var(oth_serv) year_pre(70) year_post(91) ///
 	    label(other services)
 
@@ -388,6 +403,8 @@ program preclean_data
 	gen_log_var_and_label, var(nt_ind_1991) label(Log non-tradeable industrial 1991)
 	gen_log_var_and_label, var(gov_ed_health_1970) label(Log education, health, and public services 1970)
 	gen_log_var_and_label, var(gov_ed_health_1991) label(Log education, health, and public services 1991)
+	gen_log_var_and_label, var(busi_serv_1970) label(Log business services 1970)
+	gen_log_var_and_label, var(busi_serv_1991) label(Log business services 1991)
 	gen_log_var_and_label, var(oth_serv_1970) label(Log other services 1970)
 	gen_log_var_and_label, var(oth_serv_1991) label(Log other services 1991)
 		
@@ -399,6 +416,8 @@ program preclean_data
 	    label(log non-tradeable industrial)
 	gen_chg_var_and_label, var(log_gov_ed_health) year_pre(70) year_post(91) ///
 	    label(log education, health, and public services)
+	gen_chg_var_and_label, var(log_busi_serv) year_pre(70) year_post(91) ///
+	    label(log business services)
 	gen_chg_var_and_label, var(log_oth_serv) year_pre(70) year_post(91) ///
 	    label(log other services)
 	
