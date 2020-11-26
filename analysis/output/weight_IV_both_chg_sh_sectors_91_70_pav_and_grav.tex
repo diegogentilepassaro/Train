@@ -1,0 +1,22 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{Change in share agriculture and mining 1991-1970}&\multicolumn{1}{c}{Change in share industrial 1991-1970}&\multicolumn{1}{c}{Change in share non-tradeable industrial 1991-1970}&\multicolumn{1}{c}{Change in share education, health, and public services 1991-1970}&\multicolumn{1}{c}{Change in share business services 1991-1970}&\multicolumn{1}{c}{Change in share other services 1991-1970}\\
+\hline
+Change in kms of railroads 1986-1970& 0.000414\sym{*}  &-0.000410\sym{**} &-0.000183\sym{*}  & 0.000108         & 0.000254         &-0.000182         \\
+                &(0.000242)         &(0.000197)         &(0.000101)         &(0.000248)         &(0.000185)         &(0.000135)         \\
+[1em]
+Change in kms of roads 1986-1970&-0.00000217         &0.0000553         &0.00000653         &-0.000000907         &0.0000608         &-0.000120\sym{**} \\
+                &(0.0000932)         &(0.0000757)         &(0.0000390)         &(0.0000956)         &(0.0000712)         &(0.0000519)         \\
+[1em]
+Change in log urban population 1960-1947&  0.00639         & -0.00699         &  -0.0103\sym{***}&  -0.0316\sym{***}&   0.0261\sym{***}&   0.0164\sym{***}\\
+                &(0.00925)         &(0.00751)         &(0.00387)         &(0.00948)         &(0.00706)         &(0.00515)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&    .0339         &.9941000000000001         &    .9767         &    .3206         &    .1337         &.6880000000000001         \\
+Cragg-Donald (multivariate) F-stat&  25.8505         &  25.8505         &  25.8505         &  25.8505         &  25.8505         &  25.8505         \\
+Observations    &      235         &      235         &      235         &      235         &      235         &      235         \\
+\hline\hline
+\end{tabular}
+}

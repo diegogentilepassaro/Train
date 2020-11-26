@@ -13,7 +13,7 @@ program main
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
-		table_name(IV_both_chg_log_activities_91_70_pav_and_grav)
+		table_name(weight_IV_both_chg_log_activities_91_70_pav_and_grav)
 		
       run_IV_regression, ///
         depvars(chg_share_agr_labor chg_share_min_labor chg_share_ind_labor chg_share_egw_labor ///
@@ -23,7 +23,7 @@ program main
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
-		table_name(IV_both_chg_sh_activities_91_70_pav_and_grav)
+		table_name(weight_IV_both_chg_sh_activities_91_70_pav_and_grav)
 		
       run_IV_regression, ///
        depvars(chg_log_primary_91_70 chg_log_ind_91_70 chg_log_nt_ind_91_70 ///
@@ -31,7 +31,7 @@ program main
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
-		table_name(IV_both_chg_log_sectors_91_70_pav_and_grav)
+		table_name(weight_IV_both_chg_log_sectors_91_70_pav_and_grav)
 		
    run_IV_regression, ///
         depvars(chg_sh_primary_91_70 chg_sh_ind_91_70 chg_sh_nt_ind_91_70 ///
@@ -39,7 +39,7 @@ program main
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
-		table_name(IV_both_chg_sh_sectors_91_70_pav_and_grav)
+		table_name(weight_IV_both_chg_sh_sectors_91_70_pav_and_grav)
 		
    run_IV_regression, ///
         depvars(chg_log_sh_primary_91_70 chg_log_sh_ind_91_70 chg_log_sh_nt_ind_91_70 ///
@@ -47,7 +47,7 @@ program main
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
-		table_name(IV_both_chg_log_sh_sectors_91_70_pav_and_grav)
+		table_name(weight_IV_both_chg_log_sh_sectors_91_70_pav_and_grav)
 		
    run_IV_regression, ///
         depvars(chg_log_agareatot_ha chg_log_agnexp ///
@@ -56,7 +56,7 @@ program main
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
-		table_name(IV_both_chg_ind_agr_censuses_91_70_pav_and_grav)
+		table_name(weight_IV_both_chg_ind_agr_censuses_91_70_pav_and_grav)
 end
 
 program run_IV_regression
@@ -71,7 +71,7 @@ program run_IV_regression
         local depvar: word `i' of `depvars'
 		eststo: qui ivreghdfe `depvar' `geo_vars' `baseline_depvar' ///
 			(`roads_var' `trains_var' = hypo_LCP_total_MST_kms studied_larkin) ///
-			`if', absorb(provname)
+			`if' [aw = pop_1960], absorb(provname)
 		qui test `roads_var' - `trains_var' = 0
 		local sign_stat = sign(_b[`roads_var'] - _b[`trains_var'])
 		qui estadd local p_val = round(normal(`sign_stat'*sqrt(r(F))), 0.0001)
