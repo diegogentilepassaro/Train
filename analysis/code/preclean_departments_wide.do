@@ -521,33 +521,33 @@ program preclean_data
 	gen_chg_var_and_label, var(log_indvalprod) year_pre(54) year_post(85) ///
 	    label(log total value of production)	
 		
-	gen indnestab_pc_1954 = indnestab_1954/pop_1960
-	gen indnestab_pc_1985 = indnestab_1985/pop_1991
+	gen indnestab_pc_1954 = indnestab_1954/indnpers_1954
+	gen indnestab_pc_1985 = indnestab_1985/indnpers_1985
 
-	gen indmassal_pc_1954 = indmassal_1954/pop_1960
-	gen indmassal_pc_1985 = indmassal_1985/pop_1991
+	gen indmassal_pc_1954 = indmassal_1954/indnpers_1954
+	gen indmassal_pc_1985 = indmassal_1985/indnpers_1985
 
-	gen indvalprod_pc_1954 = indvalprod_1954/pop_1960
-	gen indvalprod_pc_1985 = indvalprod_1985/pop_1991
+	gen indvalprod_pc_1954 = indvalprod_1954/indnpers_1954
+	gen indvalprod_pc_1985 = indvalprod_1985/indnpers_1985
 	
 	gen_log_var_and_label, var(indnestab_pc_1954) ///
-	    label(Log number of firms per capita 1954)
+	    label(Log number of firms per worker 1954)
 	gen_log_var_and_label, var(indnestab_pc_1985) ///
-	    label(Log number of firms per capita 1985)
+	    label(Log number of firms per worker 1985)
 	gen_chg_var_and_label, var(log_indnestab_pc) year_pre(54) year_post(85) ///
-	    label(log number of firms per capita)
+	    label(log number of firms per worker)
 		
-	gen_log_var_and_label, var(indmassal_pc_1954) label(Log paid wages per capita 1954)
-	gen_log_var_and_label, var(indmassal_pc_1985) label(Log paid wages per capita 1985)
+	gen_log_var_and_label, var(indmassal_pc_1954) label(Log paid wages per worker 1954)
+	gen_log_var_and_label, var(indmassal_pc_1985) label(Log paid wages per worker 1985)
 	gen_chg_var_and_label, var(log_indmassal_pc) year_pre(54) year_post(85) ///
-	    label(log paid wages per capita)
+	    label(log paid wages per worker)
 		
 	gen_log_var_and_label, var(indvalprod_pc_1954) ///
-	    label(Log value of production per capita 1954)
+	    label(Log value of production per worker 1954)
 	gen_log_var_and_label, var(indvalprod_pc_1985) ///
-	    label(Log value of production per capita 1985)
+	    label(Log value of production per worker 1985)
 	gen_chg_var_and_label, var(log_indvalprod_pc) year_pre(54) year_post(85) ///
-	    label(log value of production per capita)
+	    label(log value of production per worker)
 
 	**** instruments 
 	rename (roads54_type1 roads54_type2 roads54_type3 roads54_type4 ///
