@@ -26,7 +26,25 @@ program main
 	
 	spatgsa chg_log_pop_91_60 chg_log_pop_91_70 chg_log_urbpop_91_60 ///
 	    chg_tot_rails_86_60 chg_tot_rails_86_70 ///
-		chg_pav_and_grav_86_54 chg_pav_and_grav_86_70, ///
+		chg_pav_and_grav_86_54 chg_pav_and_grav_86_70 ///
+		studied_larkin hypo_EUC_total_MST_kms hypo_LCP_total_MST_kms, ///
+		weights(bilateral_distance_weights) moran
+		
+	local geo_vars "elev_mean_std rugged_mea_std wheat_std area_km2 dist_to_BA_std"
+	
+    foreach var in chg_log_pop_91_60 chg_log_pop_91_70 chg_log_urbpop_91_60 ///
+	    chg_tot_rails_86_60 chg_tot_rails_86_70 ///
+		chg_pav_and_grav_86_54 chg_pav_and_grav_86_70 ///
+		studied_larkin hypo_EUC_total_MST_kms hypo_LCP_total_MST_kms {
+		
+	    areg `var' `geo_vars', absorb(provname)
+		predict `var'_resid, residuals
+	}
+	
+    spatgsa chg_log_pop_91_60_resid chg_log_pop_91_70_resid chg_log_urbpop_91_60_resid ///
+	    chg_tot_rails_86_60_resid chg_tot_rails_86_70_resid ///
+		chg_pav_and_grav_86_54_resid chg_pav_and_grav_86_70_resid ///
+		studied_larkin_resid hypo_EUC_total_MST_kms_resid hypo_LCP_total_MST_kms_resid, ///
 		weights(bilateral_distance_weights) moran
 end
 

@@ -1,0 +1,24 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+                &\multicolumn{1}{c}{Change in log population 1991-1970}&\multicolumn{1}{c}{Change in log population 1991-1970}&\multicolumn{1}{c}{Change in log population 1991-1970}&\multicolumn{1}{c}{Change in log population 1991-1970}\\
+\hline
+Change in kms of railroads 1986-1970&  0.00284\sym{***}&                  &  0.00277\sym{***}&-0.000271         \\
+                &(0.000804)         &                  &(0.000901)         &(0.00617)         \\
+[1em]
+Change in kms of roads 1986-1954&                  &-0.000311\sym{*}  &-0.0000306         &  0.00121         \\
+                &                  &(0.000166)         &(0.000200)         &(0.00284)         \\
+[1em]
+Change in kms of railroads 1986-1970 $\times$ Change in kms of roads 1986-1954&                  &                  &                  &0.0000132         \\
+                &                  &                  &                  &(0.0000284)         \\
+[1em]
+Change in log urban population 1960-1947&   0.0875\sym{**} &    0.103\sym{***}&   0.0871\sym{**} &   0.0587         \\
+                & (0.0365)         & (0.0337)         & (0.0365)         & (0.0772)         \\
+\hline
+Cragg-Donald (multivariate) F-stat&  34.8673         &56.29190000000001         &  24.1295         &    .2743         \\
+Observations    &      235         &      235         &      235         &      235         \\
+\hline\hline
+\end{tabular}
+}
