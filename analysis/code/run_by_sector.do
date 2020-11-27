@@ -6,7 +6,7 @@ program main
     use "../temp/departments_wide_panel.dta", clear
 	
       run_IV_regression, ///
-        depvars(chg_log_agr_labor chg_log_min_labor chg_log_ind_labor chg_log_egw_labor ///
+        depvars(chg_log_agr_labor_91_70 chg_log_min_labor chg_log_ind_labor chg_log_egw_labor ///
 	    chg_log_constr_labor chg_log_wret_labor chg_log_hrest_labor chg_log_tsc_labor ///
 	    chg_log_fin_labor chg_log_pub_labor chg_log_rsb_labor chg_log_edu_labor ///
 		chg_log_hsw_labor chg_log_ot_labor chg_log_oth_labor) ///
@@ -51,12 +51,21 @@ program main
 		
    run_IV_regression, ///
         depvars(chg_log_agareatot_ha chg_log_agnexp ///
-		chg_log_indvalprod chg_log_indmassal ///
-		chg_log_indnpers chg_log_indnestab) ///
+		chg_log_indvalprod_85 chg_log_indmassal_85 ///
+		chg_log_indnpers chg_log_indnestab_85) ///
 		baseline_depvar(chg_log_urbpop_60_47) ///
 		roads_var(chg_pav_and_grav_86_70) ///
 		trains_var(chg_tot_rails_86_70) ///
 		table_name(IV_both_chg_ind_agr_censuses_91_70_pav_and_grav)
+		
+   run_IV_regression, ///
+        depvars(chg_log_agr_labor_per_ha chg_log_agr_labor_per_farm ///
+		chg_log_indvalprod_pc chg_log_indmassal_pc ///
+		chg_log_indnestab_pc) ///
+		baseline_depvar(chg_log_urbpop_60_47) ///
+		roads_var(chg_pav_and_grav_86_70) ///
+		trains_var(chg_tot_rails_86_70) ///
+		table_name(IV_both_chg_ind_agr_pc_censuses_91_70_pav_and_grav)
 end
 
 program run_IV_regression

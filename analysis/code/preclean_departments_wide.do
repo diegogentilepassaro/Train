@@ -481,10 +481,27 @@ program preclean_data
 	gen_log_var_and_label, var(agnexp_1988) label(Log number of farms 1988)
 	gen_chg_var_and_label, var(log_agnexp) year_pre(60) year_post(88) ///
 	    label(log number of farms)
+		
 	gen_log_var_and_label, var(agareatot_ha_1960) label(Log agricultural area (ha) 1960)
 	gen_log_var_and_label, var(agareatot_ha_1988) label(Log agricultural area (ha) 1988)
 	gen_chg_var_and_label, var(log_agareatot_ha) year_pre(60) year_post(88) ///
 	    label(log agricultural area (ha))
+		
+	gen agr_labor_per_ha_1970 = agr_labor_1970/agareatot_ha_1960
+	gen agr_labor_per_ha_1991 = agr_labor_1991/agareatot_ha_1988
+
+	gen agr_labor_per_farm_1970 = agr_labor_1970/agnexp_1960
+	gen agr_labor_per_farm_1991 = agr_labor_1991/agnexp_1988
+	
+    gen_log_var_and_label, var(agr_labor_per_ha_1970) label(Log agricultural workers per ha 1970)
+	gen_log_var_and_label, var(agr_labor_per_ha_1991) label(Log agricultural workers per ha 1991)
+	gen_chg_var_and_label, var(log_agr_labor_per_ha) year_pre(70) year_post(91) ///
+	    label(log agricultural workers per ha)
+		
+    gen_log_var_and_label, var(agr_labor_per_farm_1970) label(Log agricultural workers per farm 1970)
+	gen_log_var_and_label, var(agr_labor_per_farm_1991) label(Log agricultural workers per farm 1991)
+	gen_chg_var_and_label, var(log_agr_labor_per_farm) year_pre(70) year_post(91) ///
+	    label(log agricultural workers per farm)
 		
 	gen_log_var_and_label, var(indnestab_1954) label(Log number of firms 1954)
 	gen_log_var_and_label, var(indnestab_1985) label(Log number of firms 1985)
@@ -504,6 +521,34 @@ program preclean_data
 	gen_chg_var_and_label, var(log_indvalprod) year_pre(54) year_post(85) ///
 	    label(log total value of production)	
 		
+	gen indnestab_pc_1954 = indnestab_1954/pop_1960
+	gen indnestab_pc_1985 = indnestab_1985/pop_1991
+
+	gen indmassal_pc_1954 = indmassal_1954/pop_1960
+	gen indmassal_pc_1985 = indmassal_1985/pop_1991
+
+	gen indvalprod_pc_1954 = indvalprod_1954/pop_1960
+	gen indvalprod_pc_1985 = indvalprod_1985/pop_1991
+	
+	gen_log_var_and_label, var(indnestab_pc_1954) ///
+	    label(Log number of firms per capita 1954)
+	gen_log_var_and_label, var(indnestab_pc_1985) ///
+	    label(Log number of firms per capita 1985)
+	gen_chg_var_and_label, var(log_indnestab_pc) year_pre(54) year_post(85) ///
+	    label(log number of firms per capita)
+		
+	gen_log_var_and_label, var(indmassal_pc_1954) label(Log paid wages per capita 1954)
+	gen_log_var_and_label, var(indmassal_pc_1985) label(Log paid wages per capita 1985)
+	gen_chg_var_and_label, var(log_indmassal_pc) year_pre(54) year_post(85) ///
+	    label(log paid wages per capita)
+		
+	gen_log_var_and_label, var(indvalprod_pc_1954) ///
+	    label(Log value of production per capita 1954)
+	gen_log_var_and_label, var(indvalprod_pc_1985) ///
+	    label(Log value of production per capita 1985)
+	gen_chg_var_and_label, var(log_indvalprod_pc) year_pre(54) year_post(85) ///
+	    label(log value of production per capita)
+
 	**** instruments 
 	rename (roads54_type1 roads54_type2 roads54_type3 roads54_type4 ///
 	    roads70_type1 roads70_type2 roads70_type3 roads70_type4 ///

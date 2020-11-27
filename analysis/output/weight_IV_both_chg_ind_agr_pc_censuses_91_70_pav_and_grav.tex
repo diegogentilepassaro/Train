@@ -1,0 +1,22 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}\\
+                &\multicolumn{1}{c}{Change in log agricultural workers per ha 1991-1970}&\multicolumn{1}{c}{Change in log agricultural workers per farm 1991-1970}&\multicolumn{1}{c}{Change in log value of production per capita 1985-1954}&\multicolumn{1}{c}{Change in log paid wages per capita 1985-1954}&\multicolumn{1}{c}{Change in log number of firms per capita 1985-1954}\\
+\hline
+Change in kms of railroads 1986-1970&  0.00378         &  0.00616\sym{**} & -0.00100         & -0.00317         & -0.00137         \\
+                &(0.00432)         &(0.00260)         &(0.00363)         &(0.00304)         &(0.00137)         \\
+[1em]
+Change in kms of roads 1986-1970&-0.0000774         & 0.000542         & 0.000478         &-0.000661         & 0.000789         \\
+                &(0.00165)         &(0.000993)         &(0.00140)         &(0.00117)         &(0.000529)         \\
+[1em]
+Change in log urban population 1960-1947&    0.429\sym{**} &  -0.0726         &    0.255\sym{*}  &    0.243\sym{**} &    0.353\sym{***}\\
+                &  (0.175)         &  (0.106)         &  (0.138)         &  (0.116)         & (0.0525)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&    .1715         &    .0108         &.6678000000000001         &.8099000000000001         &.9528000000000001         \\
+Cragg-Donald (multivariate) F-stat&  25.2276         &  25.0416         &  25.8505         &  25.8505         &  25.8505         \\
+Observations    &      226         &      225         &      235         &      235         &      235         \\
+\hline\hline
+\end{tabular}
+}
