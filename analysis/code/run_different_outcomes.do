@@ -9,8 +9,8 @@ program main
         depvars(chg_log_pop_91_60 chg_log_urbpop_91_60 chg_log_nmig5_91_70 ///
 		chg_log_agareatot_ha chg_log_indvalprod_85 chg_log_indmassal_85) ///
 		baseline_depvar(chg_log_urbpop_60_47) ///
-		roads_var(chg_pav_and_grav_86_70) ///
-		trains_var(chg_tot_rails_86_70) ///
+		roads_var(chg_pav_and_grav_86_54) ///
+		trains_var(chg_tot_rails_86_60) ///
 		table_name(IV_different_outcomes)
 end
 
