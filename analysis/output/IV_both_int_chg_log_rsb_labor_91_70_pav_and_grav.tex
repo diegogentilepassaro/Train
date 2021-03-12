@@ -1,0 +1,28 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV EUC}&\multicolumn{1}{c}{IV EUC}&\multicolumn{1}{c}{IV LCP}&\multicolumn{1}{c}{IV LCP}\\
+\hline
+Change in kms of railroads 1986-1970&  0.00179         &0.0000374         &   0.0136         &  0.00313         &  0.00435         &  0.00434         \\
+                &(0.00247)         &(0.00223)         & (0.0432)         & (0.0120)         &(0.00564)         &(0.00524)         \\
+[1em]
+1960 pop $\times$ Change in kms of railroads 1986-1970&-4.51e-08         &-3.00e-08         &-0.000000506         & 2.99e-08         &-9.56e-08\sym{*}  &-9.18e-08\sym{*}  \\
+                &(3.39e-08)         &(3.04e-08)         &(0.00000220)         &(0.000000721)         &(5.25e-08)         &(4.79e-08)         \\
+[1em]
+Change in kms of roads 1986-1970&-0.000138         & 0.000168         &  0.00323         & -0.00159         & -0.00123         &-0.000635         \\
+                &(0.000632)         &(0.000563)         & (0.0217)         &(0.00755)         &(0.00117)         &(0.000993)         \\
+[1em]
+1960 pop $\times$ Change in kms of roads 1986-1970& 1.47e-08\sym{*}  & 1.14e-08         &-0.000000103         & 3.92e-08         & 9.61e-09         & 5.34e-09         \\
+                &(7.70e-09)         &(6.90e-09)         &(0.000000607)         &(0.000000203)         &(1.07e-08)         &(9.65e-09)         \\
+[1em]
+Change in log urban population 1960-1947&                  &    0.579\sym{***}&                  &    0.511\sym{***}&                  &    0.511\sym{***}\\
+                &                  &  (0.128)         &                  &  (0.150)         &                  &  (0.141)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&                  &                  &                  &                  &                  &                  \\
+Cragg-Donald (multivariate) F-stat&                  &                  &    .0135         &    .0298         &   7.3441         &   6.6845         \\
+Observations    &      172         &      160         &      172         &      160         &      172         &      160         \\
+\hline\hline
+\end{tabular}
+}

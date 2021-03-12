@@ -639,10 +639,13 @@ program preclean_data
 	label var above_median_studied_kms "Studied kms above median"
 	
 	qui sum share_urbpop_1947, d
-	gen above_share_urbpop_1947 = (share_urbpop_1947 >= r(p50))
+	gen above_share_urbpop_1947 = (share_urbpop_1947 >= r(p50)) if !missing(share_urbpop_1947)
 
 	qui sum share_urbpop_1960, d
-	gen above_share_urbpop_1960 = (share_urbpop_1960 >= r(p50))
+	gen above_share_urbpop_1960 = (share_urbpop_1960 >= r(p50)) if !missing(share_urbpop_1960)
+	
+	qui sum pop_1960, d
+	gen above_pop_1960 = (pop_1960 >= r(p50)) if !missing(pop_1960)
 	
 	egen studied_kms_quint = xtile(studied_larkin), n(5)
 	label var studied_kms_quint "Quintile of studied kms"

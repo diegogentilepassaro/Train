@@ -1,0 +1,22 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{6}{c}}
+\hline\hline
+                &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}&\multicolumn{1}{c}{(5)}&\multicolumn{1}{c}{(6)}\\
+                &\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{OLS}&\multicolumn{1}{c}{IV EUC}&\multicolumn{1}{c}{IV EUC}&\multicolumn{1}{c}{IV LCP}&\multicolumn{1}{c}{IV LCP}\\
+\hline
+Change in kms of railroads 1986-1970& 0.000594         & 0.000193         & -0.00352         & -0.00519         &  0.00355         &  0.00214         \\
+                &(0.00169)         &(0.00167)         &(0.00552)         &(0.00569)         &(0.00330)         &(0.00324)         \\
+[1em]
+Change in kms of roads 1986-1970& -0.00106         & -0.00106         &  -0.0102         &  -0.0108         &-0.000311         &-0.000348         \\
+                &(0.000980)         &(0.000965)         &(0.00683)         &(0.00716)         &(0.00272)         &(0.00267)         \\
+[1em]
+Change in log urban population 1960-1947&                  &    0.367\sym{**} &                  &    0.384\sym{*}  &                  &    0.358\sym{**} \\
+                &                  &  (0.146)         &                  &  (0.205)         &                  &  (0.148)         \\
+\hline
+P-value for testing $\beta\_{2} >= \beta\_{1}$&                  &                  &    .1119         &    .1645         &    .1554         &    .2519         \\
+Cragg-Donald (multivariate) F-stat&                  &                  &   2.0631         &    1.958         &   8.8268         &   8.4556         \\
+Observations    &      140         &      136         &      140         &      136         &      140         &      136         \\
+\hline\hline
+\end{tabular}
+}
